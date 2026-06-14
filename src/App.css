@@ -1,0 +1,102 @@
+:root {
+  --bg: #0b0d12;
+  --fg: #f4f6fb;
+  --muted: #9aa3b2;
+  --ray-1: #5b8cff;
+  --ray-2: #b06bff;
+  --ray-3: #ff6fae;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  background-image: radial-gradient(
+    1200px 600px at 50% -10%,
+    #1b2236,
+    #0b0d12
+  );
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+.shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  gap: 1.25rem;
+}
+
+.mark {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+}
+
+.ray {
+  position: absolute;
+  width: 8px;
+  height: 64px;
+  border-radius: 999px;
+  transform-origin: center bottom;
+  bottom: 50%;
+  opacity: 0.9;
+}
+
+.ray-1 {
+  background: var(--ray-1);
+  transform: rotate(-28deg);
+}
+.ray-2 {
+  background: var(--ray-2);
+  transform: rotate(0deg);
+}
+.ray-3 {
+  background: var(--ray-3);
+  transform: rotate(28deg);
+}
+
+.wordmark {
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+.tagline {
+  margin: 0;
+  max-width: 36ch;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--fg);
+}
+
+.status {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+code {
+  font-family: 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+  background: #ffffff14;
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  font-size: 0.85em;
+}
