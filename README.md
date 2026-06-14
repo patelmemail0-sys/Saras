@@ -1,11 +1,11 @@
-# Saaras
+# Saras
 
-**One concept, seen three ways.** Saaras turns a STEM concept, formula, or problem
+**One concept, seen three ways.** Saras turns a STEM concept, formula, or problem
 into interactive visuals that let you manipulate variables and understand an idea
 from multiple angles, so it actually sticks.
 
 The name comes from the Sanskrit root *saras* ("flowing") — the same root as
-Saraswati, associated with the flow of knowledge. Saaras is about making
+Saraswati, associated with the flow of knowledge. Saras is about making
 understanding flow.
 
 > Status: **pre-product.** This repo is scaffolding. The product thesis,
@@ -14,7 +14,7 @@ understanding flow.
 
 ## What it does (the thesis)
 
-Most tools explain *a* concept. Saaras takes the *specific* thing in front of you
+Most tools explain *a* concept. Saras takes the *specific* thing in front of you
 and renders it as **3 distinct mental models** of the same idea — for example a
 manipulable graph, a physical analogy, and a step-by-step interactive walkthrough.
 Three representations of one concept, not three random pictures.
@@ -44,7 +44,7 @@ bun run preview
 ## Project structure
 
 ```
-Saaras/
+Saras/
 ├── docs/
 │   └── DESIGN.md      # approved design doc (problem, architecture, validation plan)
 ├── src/

@@ -9,7 +9,7 @@ function App() {
         <span className="ray ray-3" />
       </div>
 
-      <h1 className="wordmark">Saaras</h1>
+      <h1 className="wordmark">Saras</h1>
       <p className="tagline">
         One concept, seen three ways. Paste a STEM idea, formula, or problem and
         watch it become interactive visuals you can actually play with.

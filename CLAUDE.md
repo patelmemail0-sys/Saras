@@ -1,6 +1,6 @@
-# Saaras
+# Saras
 
-Saaras turns a STEM concept, formula, or problem into 3 interactive visuals —
+Saras turns a STEM concept, formula, or problem into 3 interactive visuals —
 three distinct mental models of the same idea — to help high school and college
 students build intuition, not just get answers.
 
