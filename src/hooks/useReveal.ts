@@ -11,7 +11,7 @@ export function useReveal<T extends HTMLElement = HTMLElement>() {
     const node = root.current
     if (!node) return
 
-    const targets = node.querySelectorAll<HTMLElement>('.reveal')
+    const targets = node.querySelectorAll<HTMLElement>('.reveal, .reveal-fade')
     if (!('IntersectionObserver' in window) || targets.length === 0) {
       targets.forEach((el) => el.classList.add('is-in'))
       return

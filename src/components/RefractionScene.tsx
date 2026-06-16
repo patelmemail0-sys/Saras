@@ -31,7 +31,7 @@ export default function RefractionScene() {
         <g className="scene__prism">
           <path
             d="M250 196 L300 280 L200 280 Z"
-            fill="oklch(0.24 0.01 72)"
+            fill="oklch(0.34 0.03 285)"
             stroke="var(--line)"
             strokeWidth="1.5"
           />
