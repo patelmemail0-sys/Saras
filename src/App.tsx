@@ -1,6 +1,9 @@
 import './App.css'
-import type { CSSProperties } from 'react'
+import type { CSSProperties, HTMLAttributes, ReactNode } from 'react'
 import { useReveal } from './hooks/useReveal'
+import { usePointerField, useParallax, useTilt } from './hooks/useMotion'
+import Aurora from './components/Aurora'
+import ScrollProgress from './components/ScrollProgress'
 import MagneticButton from './components/MagneticButton'
 import RefractionScene from './components/RefractionScene'
 import InteractiveGraph from './components/InteractiveGraph'
@@ -8,9 +11,14 @@ import EarlyAccessForm from './components/EarlyAccessForm'
 
 function App() {
   const root = useReveal<HTMLDivElement>()
+  usePointerField()
+  const artPar = useParallax<HTMLDivElement>(0.05)
+  const artTilt = useTilt<HTMLDivElement>(9)
 
   return (
     <div ref={root} id="top">
+      <Aurora />
+      <ScrollProgress />
       <Nav />
 
       <main>
@@ -44,8 +52,14 @@ function App() {
               </div>
             </div>
 
-            <div className="hero__art reveal" style={revealDelay(160)}>
-              <RefractionScene />
+            <div
+              className="hero__art reveal-fade"
+              ref={artPar}
+              style={revealDelay(160)}
+            >
+              <div className="tilt" ref={artTilt}>
+                <RefractionScene />
+              </div>
             </div>
           </div>
         </section>
@@ -109,16 +123,16 @@ function App() {
             </header>
 
             <div className="bento">
-              <article className="card card--lead reveal" data-ch="graph">
+              <TiltCard className="card--lead" data-ch="graph">
                 <div className="card__head">
                   <span className="dot" />
                   <span className="label">Channel 01 / Graph</span>
                 </div>
                 <h3 className="card__t">Change a variable, watch the shape answer.</h3>
                 <InteractiveGraph />
-              </article>
+              </TiltCard>
 
-              <article className="card reveal" data-ch="analogy" style={revealDelay(90)}>
+              <TiltCard data-ch="analogy" style={revealDelay(90)}>
                 <div className="card__head">
                   <span className="dot" />
                   <span className="label">Channel 02 / Analogy</span>
@@ -128,9 +142,9 @@ function App() {
                   A spring, a pendulum, water in a tank. The math mapped onto
                   something your hands already understand.
                 </p>
-              </article>
+              </TiltCard>
 
-              <article className="card reveal" data-ch="steps" style={revealDelay(150)}>
+              <TiltCard data-ch="steps" style={revealDelay(150)}>
                 <div className="card__head">
                   <span className="dot" />
                   <span className="label">Channel 03 / Steps</span>
@@ -140,7 +154,7 @@ function App() {
                   One move at a time, in order, with the why beside each step. Go
                   back as many times as you need.
                 </p>
-              </article>
+              </TiltCard>
             </div>
           </div>
         </section>
@@ -172,6 +186,20 @@ function App() {
 
       <Footer />
     </div>
+  )
+}
+
+function TiltCard({
+  className = '',
+  children,
+  ...rest
+}: { className?: string; children: ReactNode } & HTMLAttributes<HTMLElement>) {
+  // Channel cards hold still on hover (no 3D tilt) — only the glass and the
+  // per-channel border glow respond. The hero panel keeps its tilt separately.
+  return (
+    <article className={`card reveal-fade ${className}`} {...rest}>
+      {children}
+    </article>
   )
 }
 

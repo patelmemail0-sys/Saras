@@ -1,8 +1,10 @@
 /* ============================================================
    Saras — design tokens + base
-   Aesthetic: warm ink-and-lamplight instrument (dark).
+   Aesthetic: pearly-white instrument — soft luminous mother-of-pearl
+   surfaces, black ink, chrome-silver highlights, and an iridescent
+   (soap-bubble) channel triad.
    Fonts: Satoshi (Fontshare) + JetBrains Mono.
-   Color: OKLCH, warm-tinted neutrals + single lamp-amber accent.
+   Color: OKLCH, cool pearl neutrals + chrome + iridescent secondaries.
    The 3-channel triad is MEANING (the 3 representations), not decor.
    ============================================================ */
 
@@ -12,30 +14,70 @@
 :root {
   color-scheme: dark;
 
-  /* Surfaces — warm near-black, tinted toward the brand hue */
-  --bg: oklch(0.17 0.006 70);
-  --bg-1: oklch(0.205 0.008 70);
-  --bg-2: oklch(0.245 0.009 72);
-  --glass: oklch(0.2 0.008 70 / 0.62);
+  /* Surfaces — near-black graphite, faint cool tint */
+  --bg: oklch(0.175 0.01 285);
+  --bg-1: oklch(0.23 0.012 285); /* raised solid (fallback) */
+  --bg-2: oklch(0.145 0.008 285); /* recessed wells (graph, tiles) */
+
+  /* Glass — translucent pearl over the dark base */
+  --glass: oklch(0.78 0.03 285 / 0.07);
+  --glass-2: oklch(0.82 0.035 285 / 0.12);
+  --glass-blur: 22px;
 
   /* Hairlines */
-  --line: oklch(0.32 0.008 72);
-  --line-soft: oklch(0.27 0.008 72);
+  --line: oklch(0.45 0.014 285 / 0.7);
+  --line-soft: oklch(0.36 0.012 285 / 0.6);
 
-  /* Ink */
-  --ink: oklch(0.95 0.012 85);
-  --ink-2: oklch(0.8 0.012 80);
-  --ink-3: oklch(0.64 0.012 78);
+  /* Ink — pearl whites on dark */
+  --ink: oklch(0.97 0.008 285);
+  --ink-2: oklch(0.82 0.012 285);
+  --ink-3: oklch(0.64 0.014 285);
 
-  /* Single accent (lamp amber) — also channel A */
-  --accent: oklch(0.81 0.135 72);
-  --accent-press: oklch(0.74 0.13 70);
-  --on-accent: oklch(0.2 0.03 70);
+  /* Single accent — bright iridescent violet-blue (focus, beams, input focus) */
+  --accent: oklch(0.74 0.17 280);
+  --accent-press: oklch(0.66 0.17 280);
+  --on-accent: oklch(0.2 0.012 285); /* dark ink on chrome buttons */
 
-  /* The three representation channels (meaningful, used sparingly) */
-  --ch-graph: oklch(0.81 0.135 72); /* symbolic / graph  — amber */
-  --ch-analogy: oklch(0.78 0.085 195); /* physical analogy  — teal */
-  --ch-steps: oklch(0.74 0.14 28); /* procedural / steps — clay */
+  /* Chrome — shiny brushed-silver gradient for buttons & metallic edges */
+  --chrome: linear-gradient(
+    180deg,
+    oklch(0.99 0.004 285) 0%,
+    oklch(0.84 0.008 285) 20%,
+    oklch(0.62 0.012 288) 50%,
+    oklch(0.8 0.01 285) 64%,
+    oklch(0.97 0.005 285) 100%
+  );
+  --chrome-hi: linear-gradient(
+    180deg,
+    oklch(1 0.003 285) 0%,
+    oklch(0.92 0.006 285) 22%,
+    oklch(0.72 0.012 288) 50%,
+    oklch(0.9 0.008 285) 64%,
+    oklch(1 0.004 285) 100%
+  );
+
+  /* Iridescent sheen — vivid soap-bubble, for glows, edges, progress.
+     Oversized so background-position animation makes the color flow. */
+  --iris: linear-gradient(
+    100deg,
+    oklch(0.82 0.17 200),
+    oklch(0.74 0.2 280),
+    oklch(0.76 0.22 320),
+    oklch(0.76 0.21 8),
+    oklch(0.84 0.2 160),
+    oklch(0.82 0.17 200)
+  );
+
+  /* The three representation channels — vivid iridescent triad */
+  --ch-graph: oklch(0.8 0.17 200); /* symbolic / graph  — aqua */
+  --ch-analogy: oklch(0.72 0.21 300); /* physical analogy  — violet */
+  --ch-steps: oklch(0.74 0.21 5); /* procedural / steps — rose */
+
+  /* pointer field (set by usePointerField) */
+  --px: 0;
+  --py: 0;
+  --mx: 50vw;
+  --my: 50vh;
 
   --maxw: 1180px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
@@ -61,7 +103,15 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  /* dark graphite base + soft top vignette; aurora colour is its own layer */
+  background:
+    radial-gradient(
+      120% 90% at 50% -10%,
+      oklch(0.27 0.018 285),
+      transparent 60%
+    ),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 17px;
@@ -69,6 +119,7 @@ body {
   font-synthesis: none;
   overflow-x: hidden;
 }
+
 
 h1,
 h2,
@@ -106,18 +157,195 @@ a {
   padding-inline: var(--gutter);
 }
 
-/* Scroll-reveal utility (driven by IntersectionObserver) */
+/* Scroll-reveal utility (driven by IntersectionObserver) — more dynamic:
+   rises, unblurs and settles from a slight scale. */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(26px) scale(0.985);
+  filter: blur(6px);
   transition:
-    opacity 0.7s var(--ease),
-    transform 0.7s var(--ease);
+    opacity 0.85s var(--ease),
+    transform 0.85s var(--ease),
+    filter 0.85s var(--ease);
   transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform, opacity, filter;
 }
 .reveal.is-in {
   opacity: 1;
   transform: none;
+  filter: none;
+}
+
+/* Transform-free reveal for elements that own their transform (tilt/parallax) */
+.reveal-fade {
+  opacity: 0;
+  filter: blur(10px);
+  transition:
+    opacity 0.9s var(--ease),
+    filter 0.9s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-fade.is-in {
+  opacity: 1;
+  filter: none;
+}
+
+/* ---------- Dynamic iridescence engine ---------- */
+@property --iris-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+/* flowing colour: slides the oversized iris gradient + slowly rotates hue */
+@keyframes iris-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+@keyframes hue-drift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Aurora background ---------- */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+.aurora__blob {
+  position: absolute;
+  width: 62vmax;
+  height: 62vmax;
+  border-radius: 50%;
+  filter: blur(60px) saturate(1.5);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  will-change: transform;
+}
+.aurora__blob--a {
+  top: -22%;
+  left: -10%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    oklch(0.8 0.15 235 / 0.9),
+    transparent 62%
+  );
+  animation: blobA 22s ease-in-out infinite;
+}
+.aurora__blob--b {
+  top: -8%;
+  right: -16%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    oklch(0.78 0.18 200 / 0.85),
+    transparent 62%
+  );
+  animation: blobB 26s ease-in-out infinite;
+}
+.aurora__blob--c {
+  bottom: -28%;
+  left: 24%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    oklch(0.74 0.2 330 / 0.8),
+    transparent 62%
+  );
+  animation: blobC 30s ease-in-out infinite;
+}
+/* each blob drifts on its own path AND leans toward the cursor (--px/--py) */
+@keyframes blobA {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--px) * 60px), calc(var(--py) * 50px), 0)
+      scale(1);
+  }
+  50% {
+    transform: translate3d(
+        calc(var(--px) * 60px + 8vw),
+        calc(var(--py) * 50px + 6vh),
+        0
+      )
+      scale(1.12);
+  }
+}
+@keyframes blobB {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--px) * -70px), calc(var(--py) * 55px), 0)
+      scale(1.05);
+  }
+  50% {
+    transform: translate3d(
+        calc(var(--px) * -70px - 7vw),
+        calc(var(--py) * 55px + 8vh),
+        0
+      )
+      scale(0.92);
+  }
+}
+@keyframes blobC {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--px) * 50px), calc(var(--py) * -60px), 0)
+      scale(1);
+  }
+  50% {
+    transform: translate3d(
+        calc(var(--px) * 50px + 6vw),
+        calc(var(--py) * -60px - 6vh),
+        0
+      )
+      scale(1.15);
+  }
+}
+.aurora__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* keep all content above the aurora */
+#top {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Iridescent scroll-progress bar ---------- */
+.scrollbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 60;
+  pointer-events: none;
+  background: oklch(0.5 0.01 285 / 0.15);
+}
+.scrollbar__fill {
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--iris);
+  background-size: 200% 100%;
+  animation: iris-flow 6s linear infinite;
+  box-shadow: 0 0 14px oklch(0.75 0.2 300 / 0.6);
 }
 
 :focus-visible {
@@ -130,10 +358,16 @@ a {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
+  .reveal,
+  .reveal-fade {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
+  }
+  .aurora__blob,
+  .scrollbar__fill {
+    animation: none;
   }
   *,
   *::before,
