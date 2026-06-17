@@ -4,6 +4,31 @@ All notable changes to Saras are documented in this file.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com); versions
 use `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.2.0.0] - 2026-06-17
+
+### Added
+- **Spec engine** at `#/try` (`src/engine/`): paste a concept or formula and an
+  AI-emitted, schema-validated JSON spec is drawn by a deterministic renderer. A
+  numeric correctness gate (`validate.ts`) runs before any render — a wrong visual
+  is worse than none. Backend is a Vercel function (`api/spec.ts`, Claude
+  structured output); under plain `bun dev` it degrades to a built-in example.
+- **Projectile motion model** (`widgets/ProjectileSim.tsx`, spec type `projectile`):
+  a hands-on 2D launch — drag speed/angle/height, switch gravity (Moon/Mars/Earth/
+  Jupiter), animate the flight or scrub time, with live range/apex/flight-time.
+  Closed-form kinematics in `validate.ts` are shared by the gate and the renderer,
+  so the verified physics and the drawn physics can't drift. First renderable
+  concept: `physics.high-school-physics.projectile-motion` (1/734).
+- **Equation engine** (`equations.ts` + `EquationPanel.tsx`): per-topic equation
+  sets (each a display form + variables + a residual `r(vars)=0`) with a numeric
+  solver that lets a student set the knowns and have any remaining unknown solved
+  for — forward and backward — and fed straight into the visual. Equations render
+  as real math via KaTeX.
+- **Word problem → model** (`projectileWordProblem.ts`): a deterministic parser
+  extracts launch parameters from a plain-English projectile problem and detects
+  what it asks (how far / how high / how long) to auto-select the equation and
+  unknown. Offline by default; an opt-in `VITE_SPEC_AI` flag adds AI extraction
+  for messier phrasing, falling back to the parser.
+
 ## [0.1.0.0] - 2026-06-16
 
 ### Added
