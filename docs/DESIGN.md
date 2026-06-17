@@ -62,7 +62,7 @@ front or declaring victory on scattered one-time reactions.
 **Smallest paid-worthy version:** A web app where a student pastes a concept or a
 specific problem and gets 3 interactive, *correct* visuals — three different
 mental models of the same idea across distinct representation categories (e.g., a
-manipulable graph, a physical analogy, and a step-by-step interactive walkthrough). The
+hands-on 3D interactive model, a physical analogy, and a step-by-step interactive walkthrough). The
 "3 = 3 representations" framing is the actual thesis, not a quantity; show fewer than 3
 when fewer valid distinct representations exist rather than padding.
 
@@ -157,7 +157,7 @@ its vocabulary.
   validate the math → render. Never emits rendering code.
 - **Representation-selection contract (resolves the "3 = 3 mental models" identity):**
   the 3 chosen spec types MUST span distinct representation *categories* (e.g.
-  symbolic/graph, physical-analogy, procedural/step-through), not 3 variants of the
+  spatial / hands-on 3D model, physical-analogy, procedural/step-through), not 3 variants of the
   same category. When a concept has fewer than 3 valid distinct representations, the
   product shows the 1–2 that are valid and says so — it never pads with a weak third or
   a duplicate. "3" is a ceiling and an aspiration, not a guarantee.

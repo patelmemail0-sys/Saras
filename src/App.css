@@ -338,7 +338,7 @@
   animation: rayflow 2.6s linear infinite;
 }
 .ray--a {
-  stroke: var(--ch-graph);
+  stroke: var(--ch-model);
 }
 .ray--b {
   stroke: var(--ch-analogy);
@@ -382,25 +382,17 @@
   font-size: 9px;
   letter-spacing: 0.14em;
 }
-.dot-on-curve {
-  offset-path: path('M2 34 C 30 34, 36 6, 60 18 S 96 34, 118 8');
-  offset-rotate: 0deg;
-  animation: trace 3s var(--ease) infinite;
+.cube-bob {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bob 3s ease-in-out infinite alternate;
 }
-@keyframes trace {
+@keyframes bob {
   0% {
-    offset-distance: 0%;
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
+    transform: translateY(1px);
   }
   100% {
-    offset-distance: 100%;
-    opacity: 0;
+    transform: translateY(-2px);
   }
 }
 .pendulum {
@@ -615,8 +607,8 @@ section {
   border-radius: 50%;
   flex: none;
 }
-.card[data-ch='graph'] .dot {
-  background: var(--ch-graph);
+.card[data-ch='model'] .dot {
+  background: var(--ch-model);
 }
 .card[data-ch='analogy'] .dot {
   background: var(--ch-analogy);
@@ -624,7 +616,7 @@ section {
 .card[data-ch='steps'] .dot {
   background: var(--ch-steps);
 }
-.card[data-ch='graph']:hover {
+.card[data-ch='model']:hover {
   border-color: oklch(0.8 0.17 200 / 0.6);
 }
 .card[data-ch='analogy']:hover {
@@ -644,35 +636,35 @@ section {
   margin-top: auto;
 }
 
-/* interactive graph */
-.igraph {
+/* interactive 3D model */
+.imodel {
   margin-top: auto;
   border: 1px solid var(--line-soft);
   border-radius: 12px;
   background: oklch(0.16 0.01 285 / 0.6);
   padding: 1rem;
 }
-.igraph__svg {
+.imodel__svg {
   width: 100%;
   height: auto;
   display: block;
 }
-.igraph__control {
+.imodel__control {
   margin-top: 0.9rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-.igraph__readout {
+.imodel__readout {
   font-family: var(--font-mono);
   font-size: 0.95rem;
   color: var(--ink-2);
 }
-.igraph__coef {
-  color: var(--ch-graph);
+.imodel__coef {
+  color: var(--ch-model);
   font-weight: 500;
 }
-.igraph input[type='range'] {
+.imodel input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -681,22 +673,22 @@ section {
   background: var(--line);
   cursor: pointer;
 }
-.igraph input[type='range']::-webkit-slider-thumb {
+.imodel input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--ch-graph);
+  background: var(--ch-model);
   border: 3px solid var(--bg);
-  box-shadow: 0 0 0 1px var(--ch-graph);
+  box-shadow: 0 0 0 1px var(--ch-model);
 }
-.igraph input[type='range']::-moz-range-thumb {
+.imodel input[type='range']::-moz-range-thumb {
   width: 18px;
   height: 18px;
   border: 3px solid var(--bg);
   border-radius: 50%;
-  background: var(--ch-graph);
+  background: var(--ch-model);
 }
 
 /* ---------- Early access ---------- */

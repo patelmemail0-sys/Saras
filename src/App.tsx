@@ -6,7 +6,7 @@ import Aurora from './components/Aurora'
 import ScrollProgress from './components/ScrollProgress'
 import MagneticButton from './components/MagneticButton'
 import RefractionScene from './components/RefractionScene'
-import InteractiveGraph from './components/InteractiveGraph'
+import InteractiveModel from './components/InteractiveModel'
 import EarlyAccessForm from './components/EarlyAccessForm'
 
 function App() {
@@ -123,13 +123,13 @@ function App() {
             </header>
 
             <div className="bento">
-              <TiltCard className="card--lead" data-ch="graph">
+              <TiltCard className="card--lead" data-ch="model">
                 <div className="card__head">
                   <span className="dot" />
-                  <span className="label">Channel 01 / Graph</span>
+                  <span className="label">Channel 01 / Model</span>
                 </div>
-                <h3 className="card__t">Change a variable, watch the shape answer.</h3>
-                <InteractiveGraph />
+                <h3 className="card__t">Grab it, move it, watch the whole thing respond.</h3>
+                <InteractiveModel />
               </TiltCard>
 
               <TiltCard data-ch="analogy" style={revealDelay(90)}>
@@ -249,7 +249,7 @@ function Prismlet() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" className="prismlet">
       <path d="M12 4 L20 19 L4 19 Z" fill="none" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="12" y1="4" x2="12" y2="19" stroke="var(--ch-graph)" strokeWidth="1.4" />
+      <line x1="12" y1="4" x2="12" y2="19" stroke="var(--ch-model)" strokeWidth="1.4" />
       <line x1="12" y1="11.5" x2="20" y2="19" stroke="var(--ch-analogy)" strokeWidth="1.4" />
       <line x1="12" y1="11.5" x2="4" y2="19" stroke="var(--ch-steps)" strokeWidth="1.4" />
     </svg>
