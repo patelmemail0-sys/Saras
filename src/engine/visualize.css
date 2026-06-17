@@ -1,0 +1,99 @@
+/* Visualize surface (#/try). Self-contained; Saras dark-graphite / pearl theme. */
+.viz {
+  --bg: #0b0d10;
+  --panel: #14171c;
+  --panel-2: #181c22;
+  --line: #262b33;
+  --ink: #e8ebf0;
+  --ink-dim: #9aa3af;
+  --ink-faint: #6b7280;
+  --pearl: #d6dbe3;
+  --chrome: #aeb6c2;
+  --accent: #7fb0ff;
+  --good: #6fcf97;
+  --curve: #8fd0ff;
+
+  min-height: 100vh;
+  background: radial-gradient(1100px 560px at 80% -10%, #161b22 0%, var(--bg) 60%);
+  color: var(--ink);
+  font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  padding: 28px clamp(16px, 5vw, 64px) 80px;
+  box-sizing: border-box;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.viz__head { display: flex; align-items: baseline; justify-content: space-between; }
+.viz__title { font-size: 19px; font-weight: 600; }
+.viz__title b {
+  background: linear-gradient(90deg, var(--pearl), var(--chrome));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.viz__back { color: var(--ink-dim); text-decoration: none; font-size: 13px; }
+.viz__back:hover { color: var(--ink); }
+
+.viz__lede { color: var(--ink-dim); margin: 14px 0 18px; max-width: 60ch; }
+
+.viz__form { display: flex; gap: 10px; align-items: stretch; }
+.viz__input {
+  flex: 1; resize: vertical; min-height: 48px;
+  background: var(--panel); border: 1px solid var(--line); color: var(--ink);
+  border-radius: 11px; padding: 12px 14px; font: inherit;
+}
+.viz__input:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
+.viz__go {
+  align-self: stretch; padding: 0 20px; cursor: pointer; font: inherit; font-weight: 600;
+  color: #0b0d10; border: 0; border-radius: 11px; white-space: nowrap;
+  background: linear-gradient(180deg, #cfe0ff, #9cc0ff);
+}
+.viz__go:disabled { opacity: 0.6; cursor: progress; }
+
+.viz__examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 22px; }
+.viz__chip {
+  cursor: pointer; font: inherit; font-size: 13px;
+  background: var(--panel-2); border: 1px solid var(--line); color: var(--chrome);
+  border-radius: 999px; padding: 6px 12px;
+}
+.viz__chip:hover { border-color: var(--accent); color: var(--ink); }
+
+.viz__stage {
+  border: 1px solid var(--line); border-radius: 14px; background: var(--panel);
+  min-height: 300px; display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.viz__empty { color: var(--ink-faint); }
+
+.viz__result { margin: 0; width: 100%; max-width: 600px; }
+.viz__caption { font-weight: 600; margin-bottom: 10px; text-align: center; }
+.viz__notes { color: var(--ink-dim); font-size: 14px; margin: 14px 4px 0; }
+
+.viz__fallback { max-width: 56ch; text-align: center; }
+.viz__fallback b { display: block; margin-bottom: 8px; }
+.viz__fallback p { color: var(--ink-dim); margin: 8px 0; }
+.viz__muted { color: var(--ink-faint); font-size: 13px; }
+.viz__fallback code {
+  background: var(--panel-2); border: 1px solid var(--line); border-radius: 5px;
+  padding: 1px 5px; font-size: 12px;
+}
+
+/* Graph widget */
+.fg { width: 100%; display: flex; flex-direction: column; align-items: center; }
+.fg__svg { width: 100%; height: auto; display: block; }
+.fg__frame { fill: var(--panel-2); stroke: var(--line); }
+.fg__axis { stroke: #39414c; stroke-width: 1; }
+.fg__curve { fill: none; stroke: var(--curve); stroke-width: 2.25; stroke-linejoin: round; stroke-linecap: round; }
+.fg__lbl { fill: var(--ink-dim); font-size: 12px; }
+.fg__lbl--x { text-anchor: end; }
+.fg__lbl--y { text-anchor: start; }
+.fg__tick { fill: var(--ink-faint); font-size: 10px; }
+.fg__tick--end { text-anchor: end; }
+.fg__tick--right { text-anchor: end; }
+
+.fg__controls {
+  width: 100%; max-width: 480px; margin-top: 18px;
+  display: grid; gap: 12px;
+}
+.fg__ctrl { display: grid; gap: 5px; }
+.fg__ctrl-label { font-size: 13px; color: var(--ink-dim); display: flex; justify-content: space-between; }
+.fg__ctrl-label b { color: var(--good); font-variant-numeric: tabular-nums; }
+.fg__ctrl input[type='range'] { width: 100%; accent-color: var(--accent); }
