@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 /* Visualize surface (#/try). Self-contained; Saras dark-graphite / pearl theme. */
 .viz {
+  --display-font: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --bg: #0b0d10;
   --panel: #14171c;
   --panel-2: #181c22;
@@ -13,42 +16,50 @@
   --good: #6fcf97;
   --curve: #8fd0ff;
 
-  min-height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
   background: radial-gradient(1100px 560px at 80% -10%, #161b22 0%, var(--bg) 60%);
   color: var(--ink);
   font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  padding: 28px clamp(16px, 5vw, 64px) 80px;
+  padding: 14px clamp(14px, 2.5vw, 32px) 16px;
   box-sizing: border-box;
-  max-width: 980px;
-  margin: 0 auto;
+  overflow: hidden;
 }
 
-.viz__head { display: flex; align-items: baseline; justify-content: space-between; }
-.viz__title { font-size: 19px; font-weight: 600; }
+.viz__head { display: flex; align-items: flex-start; justify-content: space-between; flex: 0 0 auto; margin-bottom: 16px; gap: 16px; }
+.viz__heading { display: grid; gap: 8px; }
+.viz__title {
+  font-family: var(--display-font, inherit);
+  font-size: clamp(28px, 3.2vw, 40px); font-weight: 600; line-height: 1.05; margin: 0;
+  letter-spacing: -0.01em;
+}
 .viz__title b {
-  background: linear-gradient(90deg, var(--pearl), var(--chrome));
+  font-weight: 700;
+  /* brushed chrome */
+  background: linear-gradient(105deg, #eef1f5 0%, #aeb6c2 38%, #e4e8ee 56%, #9aa3af 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.viz__back { color: var(--ink-dim); text-decoration: none; font-size: 13px; }
+/* accent: quiet uppercase label — tracked, muted, no gradient */
+.viz__title span {
+  font-family: var(--display-font, inherit);
+  font-weight: 400; font-size: 0.42em; letter-spacing: 0.38em;
+  text-transform: uppercase; color: var(--ink-dim);
+}
+/* topic shown in a glassy chrome pill */
+.viz__topic {
+  justify-self: start;
+  display: inline-flex; align-items: center;
+  margin: 2px 0 0; font-size: 18px; font-weight: 500; color: var(--pearl);
+  font-family: var(--display-font, inherit);
+  padding: 4px 15px; border-radius: 999px;
+  background: linear-gradient(180deg, rgba(230, 235, 240, 0.16), rgba(174, 182, 194, 0.05));
+  border: 1px solid rgba(174, 182, 194, 0.38);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.viz__back { color: var(--ink-dim); text-decoration: none; font-size: 13px; white-space: nowrap; padding-top: 6px; }
 .viz__back:hover { color: var(--ink); }
 
-.viz__lede { color: var(--ink-dim); margin: 14px 0 18px; max-width: 60ch; }
-
-.viz__form { display: flex; gap: 10px; align-items: stretch; }
-.viz__input {
-  flex: 1; resize: vertical; min-height: 48px;
-  background: var(--panel); border: 1px solid var(--line); color: var(--ink);
-  border-radius: 11px; padding: 12px 14px; font: inherit;
-}
-.viz__input:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
-.viz__go {
-  align-self: stretch; padding: 0 20px; cursor: pointer; font: inherit; font-weight: 600;
-  color: #0b0d10; border: 0; border-radius: 11px; white-space: nowrap;
-  background: linear-gradient(180deg, #cfe0ff, #9cc0ff);
-}
-.viz__go:disabled { opacity: 0.6; cursor: progress; }
-
-.viz__examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 22px; }
 .viz__chip {
   cursor: pointer; font: inherit; font-size: 13px;
   background: var(--panel-2); border: 1px solid var(--line); color: var(--chrome);
@@ -57,14 +68,16 @@
 .viz__chip:hover { border-color: var(--accent); color: var(--ink); }
 
 .viz__stage {
+  flex: 1 1 auto; min-height: 0;
   border: 1px solid var(--line); border-radius: 14px; background: var(--panel);
-  min-height: 300px; display: flex; align-items: center; justify-content: center;
-  padding: 24px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px; overflow: hidden;
 }
 .viz__empty { color: var(--ink-faint); }
 
 .viz__result { margin: 0; width: 100%; max-width: 600px; }
-.viz__result:has(.pmodel) { max-width: 100%; }
+/* The model spans the full stage and fills its height (no page scroll). */
+.viz__result--model { margin: 0; width: 100%; max-width: 100%; height: 100%; }
 .viz__caption { font-weight: 600; margin-bottom: 10px; text-align: center; }
 .viz__notes { color: var(--ink-dim); font-size: 14px; margin: 14px 4px 0; }
 
@@ -100,8 +113,8 @@
 .fg__ctrl input[type='range'] { width: 100%; accent-color: var(--accent); }
 
 /* Projectile widget */
-.ps { width: 100%; display: flex; flex-direction: column; align-items: center; }
-.ps__svg { width: 100%; height: auto; display: block; }
+.ps { width: 100%; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; align-items: center; }
+.ps__svg { width: 100%; flex: 1 1 auto; min-height: 0; display: block; }
 .ps__ground { stroke: #39414c; stroke-width: 1.5; }
 .ps__arc { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 3 4; }
 .ps__arc--trail { stroke: var(--curve); stroke-width: 2.5; stroke-dasharray: none; stroke-linecap: round; }
@@ -116,12 +129,12 @@
 
 .ps__readout {
   display: flex; flex-wrap: wrap; gap: 6px 20px; justify-content: center;
-  margin: 14px 0 4px; font-size: 13px; color: var(--ink-dim);
+  margin: 10px 0 2px; font-size: 13px; color: var(--ink-dim); flex: 0 0 auto;
 }
 .ps__readout b { color: var(--good); font-variant-numeric: tabular-nums; }
 
 .ps__transport {
-  display: flex; align-items: center; gap: 12px; width: 100%; max-width: 520px; margin-top: 16px;
+  display: flex; align-items: center; gap: 12px; width: 100%; max-width: 560px; margin-top: 10px; flex: 0 0 auto;
 }
 .ps__play {
   cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; white-space: nowrap;
@@ -135,34 +148,32 @@
 .ps__scrub:disabled { opacity: 0.45; cursor: not-allowed; }
 .ps__play:disabled { opacity: 0.45; cursor: not-allowed; }
 
-/* Two-column model: visual + equation column */
-.pmodel { display: flex; flex-wrap: wrap; gap: 20px; width: 100%; align-items: flex-start; }
-.pmodel__visual { flex: 1 1 340px; min-width: 300px; }
+/* Model fills the stage: word-problem row on top, then visual + equation row. */
+.pmodel { display: flex; flex-direction: column; gap: 12px; width: 100%; height: 100%; min-height: 0; }
+.pmodel__body { display: flex; gap: 18px; flex: 1 1 auto; min-height: 0; align-items: stretch; }
+.pmodel__visual { flex: 1 1 auto; min-width: 0; min-height: 0; display: flex; flex-direction: column; }
 
-/* Word-problem → model section (spans the full width, on top) */
+/* Word-problem → model bar (full width, on top, single compact row) */
 .pmodel__wp {
-  flex: 1 1 100%;
+  flex: 0 0 auto;
   background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px;
-  padding: 14px; display: grid; gap: 10px;
+  padding: 10px 12px; display: grid; gap: 7px;
 }
-.wp__head {
-  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint);
-}
+.wp__bar { display: flex; gap: 10px; align-items: stretch; }
 .wp__input {
-  width: 100%; box-sizing: border-box; resize: vertical; min-height: 46px;
+  flex: 1; min-width: 0; box-sizing: border-box;
   background: var(--panel); border: 1px solid var(--line); color: var(--ink);
-  border-radius: 9px; padding: 10px 12px; font: inherit;
+  border-radius: 9px; padding: 9px 12px; font: inherit;
 }
 .wp__input:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
-.wp__row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .wp__go {
-  cursor: pointer; font: inherit; font-weight: 600; color: #0b0d10; border: 0;
-  border-radius: 9px; padding: 8px 16px; background: linear-gradient(180deg, #cfe0ff, #9cc0ff);
+  cursor: pointer; font: inherit; font-weight: 600; color: #0b0d10; border: 0; white-space: nowrap;
+  border-radius: 9px; padding: 0 16px; background: linear-gradient(180deg, #cfe0ff, #9cc0ff);
 }
 .wp__go:disabled { opacity: 0.5; cursor: not-allowed; }
 .wp__ex {
-  cursor: pointer; font: inherit; font-size: 13px; color: var(--chrome);
-  background: transparent; border: 1px solid var(--line); border-radius: 9px; padding: 7px 12px;
+  cursor: pointer; font: inherit; font-size: 13px; color: var(--chrome); white-space: nowrap;
+  background: transparent; border: 1px solid var(--line); border-radius: 9px; padding: 0 14px;
 }
 .wp__ex:hover { border-color: var(--accent); color: var(--ink); }
 .wp__result { margin: 0; font-size: 13px; color: var(--good); }
@@ -172,9 +183,10 @@
 
 /* Equation explorer panel */
 .eqp {
-  flex: 0 0 286px; box-sizing: border-box;
+  flex: 0 0 340px; box-sizing: border-box; align-self: stretch;
+  min-height: 0; overflow-y: auto;
   background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px;
-  padding: 14px; display: grid; gap: 12px; align-content: start;
+  padding: 12px; display: grid; gap: 8px; align-content: start;
 }
 .eqp__head {
   font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint);
@@ -188,10 +200,10 @@
 .eqp__select:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
 .eqp__formula {
   color: var(--pearl); background: var(--panel); border: 1px solid var(--line);
-  border-radius: 8px; padding: 12px 10px;
+  border-radius: 8px; padding: 8px 10px;
   overflow-x: auto; overflow-y: hidden;
 }
-.eqp__formula .katex { color: var(--pearl); font-size: 0.92em; }
+.eqp__formula .katex { color: var(--pearl); font-size: 0.88em; }
 .eqp__formula .katex-display { margin: 0; }
 
 .eqp__solvefor { display: grid; gap: 6px; }
@@ -205,8 +217,8 @@
 .eqp__chip:hover { border-color: var(--accent); color: var(--ink); }
 .eqp__chip--on { border-color: var(--accent); color: #0b0d10; background: var(--accent); font-weight: 600; }
 
-.eqp__vars { display: grid; gap: 9px; }
-.eqp__var { display: grid; gap: 3px; }
+.eqp__vars { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; }
+.eqp__var { display: grid; gap: 2px; align-content: start; }
 .eqp__var-label { font-size: 12px; color: var(--ink-dim); }
 .eqp__var--unknown .eqp__var-label { color: var(--accent); }
 .eqp__input { display: flex; align-items: baseline; gap: 6px; }
@@ -225,3 +237,13 @@
 .eqp__nores { color: #e0a04a; font-size: 14px; }
 .eqp__hint { font-size: 12px; color: #e0a04a; margin: 0; }
 .eqp__note { font-size: 11.5px; color: var(--ink-faint); margin: 0; line-height: 1.45; }
+
+/* Narrow screens: stack the visual above the equation panel. Page may scroll
+   here (unavoidable with this much content on a phone); desktop stays fit. */
+@media (max-width: 760px) {
+  .viz { height: auto; min-height: 100dvh; overflow: visible; }
+  .viz__stage { overflow: visible; }
+  .pmodel__body { flex-direction: column; }
+  .eqp { flex-basis: auto; overflow-y: visible; }
+  .ps__svg { min-height: 240px; }
+}

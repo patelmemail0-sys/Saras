@@ -13,8 +13,6 @@ import { validateFunctionGrapher, validateProjectile } from './validate.ts';
 import type { VizSpec, SpecResponse } from './spec.ts';
 import './visualize.css';
 
-const EXAMPLES = ['projectile motion', 'y = x^2', 'a sine wave', 'a damped oscillation'];
-
 const EXAMPLE_SPEC: VizSpec = {
   type: 'projectile',
   title: 'Projectile motion',
@@ -41,30 +39,16 @@ type State =
   | { kind: 'error'; message: string };
 
 export default function VisualizePanel() {
-  const [input, setInput] = useState('');
-  const [state, setState] = useState<State>({ kind: 'idle' });
+  // Show the projectile model right away so the surface is never an empty stage.
+  // A STEM-field menu (math / physics / … → topic by grade) will drive this next.
+  const [state, setState] = useState<State>({
+    kind: 'spec',
+    spec: EXAMPLE_SPEC,
+    concept: EXAMPLE_SPEC.title,
+  });
 
-  async function submit(text: string) {
-    const q = text.trim();
-    if (!q) return;
-    setState({ kind: 'loading' });
-    try {
-      const res = await fetch('/api/spec', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ input: q }),
-      });
-      if (!res.ok) {
-        const detail = await res.text().catch(() => '');
-        throw new Error(`Backend returned ${res.status}. ${detail.slice(0, 140)}`);
-      }
-      const data = (await res.json()) as SpecResponse;
-      acceptResponse(data);
-    } catch (e) {
-      setState({ kind: 'error', message: e instanceof Error ? e.message : 'Request failed.' });
-    }
-  }
-
+  // Kept for the upcoming menu (and the offline "render the example" path): turn a
+  // SpecResponse into the right rendered/fallback state through the correctness gate.
   function acceptResponse(data: SpecResponse) {
     if (!data.supported || !data.spec) {
       setState({
@@ -83,48 +67,22 @@ export default function VisualizePanel() {
     setState({ kind: 'spec', spec: data.spec, concept: data.concept });
   }
 
+  const topic =
+    state.kind === 'spec'
+      ? state.spec.title
+      : state.kind === 'unsupported' || state.kind === 'invalid'
+        ? state.concept
+        : '';
+
   return (
     <div className="viz">
       <header className="viz__head">
-        <div className="viz__title"><b>Saras</b> · visualize</div>
+        <div className="viz__heading">
+          <h1 className="viz__title"><b>Saras</b> <span>visualize</span></h1>
+          <p className="viz__topic">{topic || 'Pick a topic to visualize'}</p>
+        </div>
         <a className="viz__back" href="#/">← home</a>
       </header>
-
-      <p className="viz__lede">
-        Paste a concept or formula. A single-variable function becomes an
-        interactive graph; a projectile launch becomes a trajectory you can push
-        around — both yours to play with.
-      </p>
-
-      <form
-        className="viz__form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          submit(input);
-        }}
-      >
-        <textarea
-          className="viz__input"
-          placeholder="e.g. y = a·sin(b·x), exponential decay, the logistic function…"
-          value={input}
-          rows={2}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) submit(input);
-          }}
-        />
-        <button className="viz__go" type="submit" disabled={state.kind === 'loading'}>
-          {state.kind === 'loading' ? 'Thinking…' : 'Visualize'}
-        </button>
-      </form>
-
-      <div className="viz__examples">
-        {EXAMPLES.map((ex) => (
-          <button key={ex} className="viz__chip" onClick={() => { setInput(ex); submit(ex); }}>
-            {ex}
-          </button>
-        ))}
-      </div>
 
       <div className="viz__stage">
         {state.kind === 'idle' && (
@@ -133,17 +91,20 @@ export default function VisualizePanel() {
 
         {state.kind === 'loading' && <div className="viz__empty">Generating a spec…</div>}
 
-        {state.kind === 'spec' && (
-          <figure className="viz__result">
-            <figcaption className="viz__caption">{state.spec.title}</figcaption>
-            {state.spec.type === 'projectile' ? (
+        {state.kind === 'spec' &&
+          (state.spec.type === 'projectile' ? (
+            // The model fills the stage; it carries its own labels, so no
+            // outer caption/notes (which would force the page to scroll).
+            <div className="viz__result viz__result--model">
               <ProjectileSim spec={state.spec} />
-            ) : (
+            </div>
+          ) : (
+            <figure className="viz__result">
+              <figcaption className="viz__caption">{state.spec.title}</figcaption>
               <FunctionGrapher spec={state.spec} />
-            )}
-            <p className="viz__notes">{state.spec.notes}</p>
-          </figure>
-        )}
+              <p className="viz__notes">{state.spec.notes}</p>
+            </figure>
+          ))}
 
         {state.kind === 'unsupported' && (
           <div className="viz__fallback">
