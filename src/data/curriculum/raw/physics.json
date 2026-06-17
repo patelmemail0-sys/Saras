@@ -170,7 +170,8 @@
       "keywords": ["projectile", "trajectory", "parabola", "launch angle", "range"],
       "prerequisites": ["physics.high-school-physics.vectors-and-components", "physics.high-school-physics.free-fall"],
       "representations": ["physical", "graph", "symbolic"],
-      "diagram3dFit": "high"
+      "diagram3dFit": "high",
+      "specType": "projectile"
     },
     {
       "id": "physics.high-school-physics.relative-velocity",

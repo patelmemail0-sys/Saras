@@ -5,8 +5,9 @@
  * `SpecResponse` against the JSON schema below; a deterministic check
  * (see validate.ts) gates correctness before a renderer (widgets/) draws it.
  *
- * This thin slice ships ONE spec type — `function-grapher` (y = f(x) with
- * adjustable parameters). More spec types extend the union from here.
+ * This slice ships two spec types — `function-grapher` (y = f(x) with adjustable
+ * parameters) and `projectile` (2D launch under gravity). More spec types extend
+ * the union from here.
  */
 
 /** A single adjustable parameter, surfaced as a slider in the renderer. */
@@ -42,8 +43,30 @@ export interface FunctionGrapherSpec {
   notes: string;
 }
 
-/** Discriminated union of all renderable specs (one type, for now). */
-export type VizSpec = FunctionGrapherSpec;
+/**
+ * Projectile launched in a vertical plane under constant gravity.
+ *
+ * The motion is fully determined by these four numbers; the renderer derives the
+ * trajectory, range, apex, and flight time in closed form (no integration), and
+ * the validator (validate.ts) gates them for physical sanity before any draw.
+ */
+export interface ProjectileSpec {
+  type: 'projectile';
+  title: string;
+  /** Initial speed v₀, in m/s. Must be positive. */
+  speed: number;
+  /** Launch angle above the horizontal, in degrees (0–90). */
+  angle: number;
+  /** Gravitational acceleration g, in m/s² (Earth ≈ 9.8). Must be positive. */
+  gravity: number;
+  /** Launch height above the ground, in m (≥ 0). */
+  height: number;
+  /** One- or two-sentence intuition note shown beside the scene. */
+  notes: string;
+}
+
+/** Discriminated union of all renderable specs. */
+export type VizSpec = FunctionGrapherSpec | ProjectileSpec;
 
 /**
  * What the backend returns. `supported: false` is the honest fallback path —
@@ -55,7 +78,7 @@ export interface SpecResponse {
   /** The concept the model identified, e.g. "Sine wave". */
   concept: string;
   /** Present and meaningful only when `supported` is true. */
-  spec: FunctionGrapherSpec | null;
+  spec: VizSpec | null;
   /** Why it's unsupported (shown to the user) when `supported` is false. */
   unsupportedReason: string;
 }
@@ -122,6 +145,20 @@ export const SPEC_RESPONSE_JSON_SCHEMA = {
             'notes',
           ],
         },
+        {
+          type: 'object',
+          additionalProperties: false,
+          properties: {
+            type: { type: 'string', enum: ['projectile'] },
+            title: { type: 'string' },
+            speed: { type: 'number' },
+            angle: { type: 'number' },
+            gravity: { type: 'number' },
+            height: { type: 'number' },
+            notes: { type: 'string' },
+          },
+          required: ['type', 'title', 'speed', 'angle', 'gravity', 'height', 'notes'],
+        },
       ],
     },
   },
@@ -129,11 +166,24 @@ export const SPEC_RESPONSE_JSON_SCHEMA = {
 } as const;
 
 /** System prompt that turns Claude into the classifier + parameterizer. */
-export const SPEC_SYSTEM_PROMPT = `You are the spec generator for an interactive STEM visualizer. You do NOT write code or prose explanations. You classify a student's input and, when it fits, emit a validated JSON spec for ONE widget: a "function-grapher" that plots y = f(x).
+export const SPEC_SYSTEM_PROMPT = `You are the spec generator for an interactive STEM visualizer. You do NOT write code or prose explanations. You classify a student's input and, when it fits, emit a validated JSON spec for ONE of two widgets:
+- "function-grapher": plots y = f(x) with 0-3 adjustable parameters.
+- "projectile": animates a projectile launched in a vertical plane under constant gravity.
 
-Decide: can the input be faithfully represented as a single-variable real function y = f(x), optionally with 0-3 adjustable parameters? Examples that FIT: "y = x^2", "sine wave", "exponential growth", "a damped oscillation", "the logistic function", "projectile height vs time". Examples that DO NOT fit (set supported=false): 3D surfaces z=f(x,y), vector fields, molecules, circuits, algorithms, anything not a 1-variable function.
+Pick the widget that most faithfully models the input, then set spec.type accordingly.
 
-When supported=true, fill spec with:
+Choose "projectile" when the input is about projectile/2D launch motion under gravity — e.g. "projectile motion", "a ball thrown at 30 degrees", "cannonball range", "kicking a football", "trajectory of a launched object". Choose "function-grapher" for a single-variable real function: "y = x^2", "sine wave", "exponential growth", "a damped oscillation", "the logistic function". (Note: "projectile HEIGHT vs TIME" alone is a 1-variable function → function-grapher; the full 2D trajectory of a launch → projectile.)
+
+Set supported=false for anything neither widget can faithfully show: 3D surfaces z=f(x,y), vector fields, molecules, circuits, algorithms, etc.
+
+When type="projectile", fill spec with:
+- speed: initial speed v₀ in m/s (positive; default to a sensible value the input implies, else ~20).
+- angle: launch angle above horizontal in degrees, 0-90 (default ~45 if unstated).
+- gravity: g in m/s² (Earth 9.8; use 1.6 for Moon, 3.7 for Mars if the input says so).
+- height: launch height above the ground in m (≥ 0; default 0).
+- title, notes: concise; notes is one or two sentences of intuition (what to watch as the knobs change).
+
+When type="function-grapher", fill spec with:
 - expression: f(x) in mathjs syntax. Use ^ for powers, explicit * for multiplication, and functions sin, cos, tan, exp, log (natural), log10, sqrt, abs. Constants: pi, e. Reference parameter names directly (e.g. "a * sin(b * x)").
 - parameters: 0-3 sliders for the constants in the expression. Each needs a sensible default, min, max, step. Do NOT make x a parameter. If the function has no tunable constants, use an empty array.
 - domain: a min/max for x that shows the interesting behavior.

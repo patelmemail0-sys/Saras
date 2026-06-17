@@ -8,31 +8,34 @@
  */
 import { useState } from 'react';
 import FunctionGrapher from './widgets/FunctionGrapher.tsx';
-import { validateFunctionGrapher } from './validate.ts';
-import type { FunctionGrapherSpec, SpecResponse } from './spec.ts';
+import ProjectileSim from './widgets/ProjectileSim.tsx';
+import { validateFunctionGrapher, validateProjectile } from './validate.ts';
+import type { VizSpec, SpecResponse } from './spec.ts';
 import './visualize.css';
 
-const EXAMPLES = ['y = x^2', 'a sine wave', 'exponential growth', 'a damped oscillation'];
+const EXAMPLES = ['projectile motion', 'y = x^2', 'a sine wave', 'a damped oscillation'];
 
-const EXAMPLE_SPEC: FunctionGrapherSpec = {
-  type: 'function-grapher',
-  title: 'Damped oscillation',
-  expression: 'A * exp(-k * x) * cos(w * x)',
-  xLabel: 'time',
-  yLabel: 'displacement',
-  domain: { min: 0, max: 12 },
-  parameters: [
-    { name: 'A', label: 'amplitude A', default: 1, min: 0.1, max: 2, step: 0.1 },
-    { name: 'k', label: 'damping k', default: 0.3, min: 0, max: 1, step: 0.05 },
-    { name: 'w', label: 'angular freq ω', default: 3, min: 0.5, max: 8, step: 0.1 },
-  ],
-  notes: 'Raise damping k to watch the envelope decay faster; ω sets how many wiggles fit in the window.',
+const EXAMPLE_SPEC: VizSpec = {
+  type: 'projectile',
+  title: 'Projectile motion',
+  speed: 22,
+  angle: 50,
+  gravity: 9.8,
+  height: 0,
+  notes: 'Range peaks near 45°; push the angle past it and the arc climbs higher but lands shorter. Swap to the Moon and watch the whole flight stretch out.',
 };
+
+/** Run the right deterministic gate for the spec's type. */
+function validate(spec: VizSpec) {
+  return spec.type === 'projectile'
+    ? validateProjectile(spec)
+    : validateFunctionGrapher(spec);
+}
 
 type State =
   | { kind: 'idle' }
   | { kind: 'loading' }
-  | { kind: 'spec'; spec: FunctionGrapherSpec; concept: string }
+  | { kind: 'spec'; spec: VizSpec; concept: string }
   | { kind: 'unsupported'; concept: string; reason: string }
   | { kind: 'invalid'; concept: string; reason: string }
   | { kind: 'error'; message: string };
@@ -72,7 +75,7 @@ export default function VisualizePanel() {
       return;
     }
     // The binding correctness gate, on the client, before render.
-    const check = validateFunctionGrapher(data.spec);
+    const check = validate(data.spec);
     if (!check.valid) {
       setState({ kind: 'invalid', concept: data.concept, reason: check.reason ?? 'Failed validation.' });
       return;
@@ -88,8 +91,9 @@ export default function VisualizePanel() {
       </header>
 
       <p className="viz__lede">
-        Paste a concept or formula. If it's a single-variable function, you get an
-        interactive graph you can push around.
+        Paste a concept or formula. A single-variable function becomes an
+        interactive graph; a projectile launch becomes a trajectory you can push
+        around — both yours to play with.
       </p>
 
       <form
@@ -132,7 +136,11 @@ export default function VisualizePanel() {
         {state.kind === 'spec' && (
           <figure className="viz__result">
             <figcaption className="viz__caption">{state.spec.title}</figcaption>
-            <FunctionGrapher spec={state.spec} />
+            {state.spec.type === 'projectile' ? (
+              <ProjectileSim spec={state.spec} />
+            ) : (
+              <FunctionGrapher spec={state.spec} />
+            )}
             <p className="viz__notes">{state.spec.notes}</p>
           </figure>
         )}
@@ -142,8 +150,9 @@ export default function VisualizePanel() {
             <b>No interactive visual for “{state.concept}” yet.</b>
             <p>{state.reason}</p>
             <p className="viz__muted">
-              This is a logged coverage gap — the first build covers single-variable
-              functions. More spec types (3D surfaces, vector fields, molecules) come next.
+              This is a logged coverage gap — the current build covers single-variable
+              functions and projectile motion. More spec types (3D surfaces, vector
+              fields, molecules) come next.
             </p>
           </div>
         )}

@@ -69,11 +69,11 @@ export const SPEC_TYPES: SpecType[] = [
     built: false,
   },
   {
-    id: 'projectile-sim',
+    id: 'projectile',
     label: 'Projectile / 2D motion',
     category: 'physical',
     description: 'Launch under gravity; tune angle/speed, see trajectory and components.',
-    built: false,
+    built: true,
   },
   {
     id: 'orbit-sim',

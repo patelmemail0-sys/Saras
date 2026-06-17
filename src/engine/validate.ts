@@ -9,7 +9,7 @@
  * numbers across most of the domain at the default parameter values.
  */
 import { parse, type MathNode } from 'mathjs';
-import type { FunctionGrapherSpec } from './spec.ts';
+import type { FunctionGrapherSpec, ProjectileSpec } from './spec.ts';
 
 /** Constants mathjs exposes as symbols that we allow without declaration. */
 const ALLOWED_CONSTANTS = new Set(['pi', 'e', 'tau', 'phi', 'Infinity']);
@@ -110,4 +110,74 @@ export function validateFunctionGrapher(spec: FunctionGrapherSpec): ValidationRe
   };
 
   return { valid: true, evaluate };
+}
+
+/**
+ * Closed-form projectile kinematics — the single source of truth shared by the
+ * correctness gate (validateProjectile) and the renderer (ProjectileSim), so the
+ * verified physics and the drawn physics can never drift apart.
+ *
+ * Vertical plane, constant gravity, no drag:
+ *   x(t) = vx·t,   y(t) = y₀ + vy₀·t − ½·g·t²
+ */
+export interface ProjectileKinematics {
+  /** Horizontal velocity component vx = v₀·cos θ (m/s). */
+  vx: number;
+  /** Initial vertical velocity vy₀ = v₀·sin θ (m/s). */
+  vy0: number;
+  /** Time from launch until it returns to ground level y = 0 (s). */
+  flightTime: number;
+  /** Horizontal distance at landing (m). */
+  range: number;
+  /** Peak height above the ground (m). */
+  maxHeight: number;
+  /** Time of the peak (s). */
+  apexTime: number;
+  /** Position (m) at time t (s). */
+  at: (t: number) => { x: number; y: number };
+}
+
+export function projectileKinematics(spec: ProjectileSpec): ProjectileKinematics {
+  const rad = (spec.angle * Math.PI) / 180;
+  const vx = spec.speed * Math.cos(rad);
+  const vy0 = spec.speed * Math.sin(rad);
+  const g = spec.gravity;
+  const y0 = spec.height;
+  // Larger root of y(t) = 0 — the landing time, accounting for launch height.
+  const flightTime = (vy0 + Math.sqrt(vy0 * vy0 + 2 * g * y0)) / g;
+  return {
+    vx,
+    vy0,
+    flightTime,
+    range: vx * flightTime,
+    maxHeight: y0 + (vy0 * vy0) / (2 * g),
+    apexTime: Math.max(0, vy0 / g),
+    at: (t: number) => ({ x: vx * t, y: y0 + vy0 * t - 0.5 * g * t * t }),
+  };
+}
+
+/**
+ * Deterministic correctness gate for a projectile spec. Checks the inputs are
+ * physically meaningful and the derived trajectory is finite before any render.
+ */
+export function validateProjectile(spec: ProjectileSpec): ValidationResult {
+  if (!Number.isFinite(spec.speed) || spec.speed <= 0)
+    return { valid: false, reason: 'Initial speed must be a positive number.' };
+  if (!Number.isFinite(spec.angle) || spec.angle < 0 || spec.angle > 90)
+    return { valid: false, reason: 'Launch angle must be between 0° and 90°.' };
+  if (!Number.isFinite(spec.gravity) || spec.gravity <= 0)
+    return { valid: false, reason: 'Gravity must be a positive number.' };
+  if (!Number.isFinite(spec.height) || spec.height < 0)
+    return { valid: false, reason: 'Launch height cannot be negative.' };
+
+  const k = projectileKinematics(spec);
+  if (
+    !Number.isFinite(k.flightTime) ||
+    k.flightTime <= 0 ||
+    !Number.isFinite(k.range) ||
+    !Number.isFinite(k.maxHeight)
+  ) {
+    return { valid: false, reason: 'Trajectory is not physically realizable.' };
+  }
+  return { valid: true };
 }
