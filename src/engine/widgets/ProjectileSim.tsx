@@ -265,18 +265,17 @@ export default function ProjectileSim({ spec }: { spec: ProjectileSpec }) {
   return (
     <div className="pmodel">
       <div className="pmodel__wp">
-        <div className="wp__head">word problem → model</div>
-        <textarea
-          className="wp__input"
-          rows={2}
-          placeholder="e.g. A ball is kicked at 22 m/s at 40° from a 10 m cliff. How far does it land?"
-          value={wpText}
-          onChange={(e) => setWpText(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) modelProblem();
-          }}
-        />
-        <div className="wp__row">
+        <div className="wp__bar">
+          <input
+            className="wp__input"
+            type="text"
+            placeholder="Word problem → model: e.g. a ball is kicked at 22 m/s at 40° from a 10 m cliff. How far does it land?"
+            value={wpText}
+            onChange={(e) => setWpText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') modelProblem();
+            }}
+          />
           <button
             type="button"
             className="wp__go"
@@ -286,7 +285,7 @@ export default function ProjectileSim({ spec }: { spec: ProjectileSpec }) {
             {wpBusy ? 'Modeling…' : 'Model it →'}
           </button>
           <button type="button" className="wp__ex" onClick={() => setWpText(WP_EXAMPLE)}>
-            try an example
+            example
           </button>
         </div>
         {!wpBusy &&
@@ -309,6 +308,7 @@ export default function ProjectileSim({ spec }: { spec: ProjectileSpec }) {
           ))}
       </div>
 
+      <div className="pmodel__body">
       <div className="pmodel__visual">
         <div className="ps">
           <svg className="ps__svg" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={spec.title}>
@@ -391,6 +391,7 @@ export default function ProjectileSim({ spec }: { spec: ProjectileSpec }) {
         onBaseChange={baseChange}
         onAuxChange={(sym, val) => setAux((p) => ({ ...p, [sym]: val }))}
       />
+      </div>
     </div>
   );
 }
