@@ -18,6 +18,7 @@ import type {
   Subject,
   SubjectCurriculum,
 } from './types.ts';
+import { SPEC_TYPE_IDS } from './specTypes.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const RAW_DIR = join(HERE, 'raw');
@@ -101,6 +102,8 @@ for (const file of rawFiles) {
     for (const r of concept.representations ?? [])
       if (!REPRESENTATIONS.has(r)) errors.push(`${where} invalid representation "${r}"`);
     if (!DIAGRAM_FIT.has(concept.diagram3dFit)) errors.push(`${where} invalid diagram3dFit "${concept.diagram3dFit}"`);
+    if (concept.specType != null && !SPEC_TYPE_IDS.has(concept.specType))
+      errors.push(`${where} references unknown specType "${concept.specType}"`);
 
     const units = courseUnits.get(concept.course);
     if (!units) errors.push(`${where} references unknown course "${concept.course}"`);
@@ -150,6 +153,15 @@ for (const subject of SUBJECTS) {
       `(3D fit: ${fit('high')} high / ${fit('medium')} med / ${fit('low')} low / ${fit('none')} none)`,
   );
 }
+// Renderability / coverage-gap report.
+const renderable = allConcepts.filter((c) => c.specType);
+const highFit = allConcepts.filter((c) => c.diagram3dFit === 'high');
+const highFitGap = highFit.filter((c) => !c.specType).length;
+console.log(
+  `\nRenderable: ${renderable.length}/${allConcepts.length} concepts mapped to a spec type ` +
+    `(${highFitGap} high-3D-fit concepts still unmapped — the build queue).`,
+);
+
 if (warnings.length) {
   console.log(`\n⚠️  ${warnings.length} warning(s) (non-fatal):`);
   for (const w of warnings.slice(0, 20)) console.log('  - ' + w);

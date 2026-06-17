@@ -22,6 +22,7 @@ import biologyData from './biology.json' with { type: 'json' };
 import computingData from './computing.json' with { type: 'json' };
 
 export * from './types.ts';
+export { SPEC_TYPES, getSpecType, type SpecType } from './specTypes.ts';
 
 const subjectData: Record<Subject, SubjectCurriculum> = {
   math: mathData as SubjectCurriculum,
@@ -97,12 +98,31 @@ export function search(query: string): Concept[] {
   });
 }
 
+/** Concepts already mapped to a renderable spec type. */
+export function renderableConcepts(): Concept[] {
+  return concepts.filter((c) => !!c.specType);
+}
+
+/**
+ * The coverage gap: concepts NOT yet mapped to a spec type, ranked so the most
+ * valuable widgets to build next come first (highest 3D fit). This is the
+ * prioritized build queue — DESIGN.md's "every fallback is a logged coverage
+ * gap that ranks the next spec type."
+ */
+export function coverageGaps(minFit: Diagram3dFit = 'low'): Concept[] {
+  const rank: Record<Diagram3dFit, number> = { none: 0, low: 1, medium: 2, high: 3 };
+  return concepts
+    .filter((c) => !c.specType && rank[c.diagram3dFit] >= rank[minFit])
+    .sort((a, b) => rank[b.diagram3dFit] - rank[a.diagram3dFit]);
+}
+
 /** Aggregate counts, handy for dashboards / coverage reports. */
 export function stats() {
   const subjects = Object.keys(subjectData) as Subject[];
   return {
     totalConcepts: concepts.length,
     totalCourses: courses.length,
+    renderable: concepts.filter((c) => !!c.specType).length,
     bySubject: Object.fromEntries(
       subjects.map((s) => [s, subjectData[s].concepts.length]),
     ) as Record<Subject, number>,

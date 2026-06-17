@@ -71,6 +71,12 @@ export interface Concept {
   representations: RepresentationCategory[];
   /** Suitability for an interactive 3D diagram. */
   diagram3dFit: Diagram3dFit;
+  /**
+   * Id of the widget template (see specTypes.ts) that can render this concept,
+   * once one is mapped. Absent = not yet renderable (a coverage gap). This is
+   * how the database tracks which concepts the engine can actually draw.
+   */
+  specType?: string;
   /** Canonical Khan Academy URL for the lesson/topic, when known. */
   khanUrl?: string;
 }
