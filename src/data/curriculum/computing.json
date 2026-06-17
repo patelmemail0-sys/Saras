@@ -1,0 +1,1406 @@
+{
+  "subject": "computing",
+  "courses": [
+    {
+      "slug": "algorithms",
+      "name": "Algorithms",
+      "subject": "computing",
+      "gradeBand": "college",
+      "level": "college",
+      "units": [
+        "Intro to algorithms",
+        "Binary search",
+        "Asymptotic notation",
+        "Selection sort",
+        "Insertion sort",
+        "Recursive algorithms",
+        "Towers of Hanoi",
+        "Merge sort",
+        "Quick sort",
+        "Graph representation",
+        "Breadth-first search"
+      ],
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms"
+    },
+    {
+      "slug": "ap-csp",
+      "name": "AP Computer Science Principles",
+      "subject": "computing",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "units": [
+        "Digital information",
+        "The Internet",
+        "Programming",
+        "Algorithms",
+        "Online data security",
+        "Simulations",
+        "Computing innovations"
+      ],
+      "khanUrl": "https://www.khanacademy.org/computing/ap-csp"
+    },
+    {
+      "slug": "computer-programming",
+      "name": "Computer programming",
+      "subject": "computing",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "units": [
+        "Intro to JS: Drawing & Animation",
+        "Advanced JS: Natural Simulations",
+        "Intro to HTML/CSS: Making webpages",
+        "HTML/JS: Making webpages interactive",
+        "Intro to SQL: Querying and managing data"
+      ],
+      "khanUrl": "https://www.khanacademy.org/computing/computer-programming"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "computing.algorithms.asymptotic-notation",
+      "title": "Asymptotic notation (Big-O)",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Asymptotic notation",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Describing how an algorithm's running time grows with input size using big-O, big-Omega, and big-Theta notation.",
+      "keywords": [
+        "big-O",
+        "big-Theta",
+        "big-Omega",
+        "growth rate",
+        "complexity"
+      ],
+      "prerequisites": [
+        "computing.algorithms.binary-search"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation"
+    },
+    {
+      "id": "computing.algorithms.binary-search",
+      "title": "Binary search",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Binary search",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "An efficient search that repeatedly halves a sorted array, discarding the half that cannot contain the target.",
+      "keywords": [
+        "binary search",
+        "sorted array",
+        "divide and conquer",
+        "logarithmic",
+        "search"
+      ],
+      "prerequisites": [
+        "computing.algorithms.what-is-an-algorithm"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search"
+    },
+    {
+      "id": "computing.algorithms.breadth-first-search",
+      "title": "Breadth-first search",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Breadth-first search",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Exploring a graph level by level from a source vertex using a queue to find shortest unweighted paths.",
+      "keywords": [
+        "breadth-first search",
+        "BFS",
+        "queue",
+        "shortest path",
+        "graph traversal"
+      ],
+      "prerequisites": [
+        "computing.algorithms.graph-representation"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/breadth-first-search/a/breadth-first-search"
+    },
+    {
+      "id": "computing.algorithms.graph-representation",
+      "title": "Graph representation",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Graph representation",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Modeling relationships as vertices and edges, stored as adjacency lists or adjacency matrices.",
+      "keywords": [
+        "graph",
+        "vertices",
+        "edges",
+        "adjacency list",
+        "adjacency matrix"
+      ],
+      "prerequisites": [
+        "computing.algorithms.what-is-an-algorithm"
+      ],
+      "representations": [
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/describing-graphs"
+    },
+    {
+      "id": "computing.algorithms.insertion-sort",
+      "title": "Insertion sort",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Insertion sort",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Building a sorted region one element at a time by inserting each new element into its correct position.",
+      "keywords": [
+        "insertion sort",
+        "sorting",
+        "shifting",
+        "in-place",
+        "quadratic"
+      ],
+      "prerequisites": [
+        "computing.algorithms.asymptotic-notation"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/insertion-sort/a/insertion-sort"
+    },
+    {
+      "id": "computing.algorithms.linear-search",
+      "title": "Linear search",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Binary search",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Scanning a list element by element until the target is found, the baseline against which binary search is compared.",
+      "keywords": [
+        "linear search",
+        "sequential search",
+        "scan",
+        "baseline",
+        "search"
+      ],
+      "prerequisites": [
+        "computing.algorithms.what-is-an-algorithm"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.algorithms.merge-sort",
+      "title": "Merge sort",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Merge sort",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "A divide-and-conquer sort that recursively splits the array, sorts each half, then merges them in order.",
+      "keywords": [
+        "merge sort",
+        "divide and conquer",
+        "recursion",
+        "merge",
+        "linearithmic"
+      ],
+      "prerequisites": [
+        "computing.algorithms.recursion",
+        "computing.algorithms.asymptotic-notation"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "medium",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms"
+    },
+    {
+      "id": "computing.algorithms.quick-sort",
+      "title": "Quick sort",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Quick sort",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "A divide-and-conquer sort that partitions around a pivot so smaller elements go left and larger go right, then recurses.",
+      "keywords": [
+        "quick sort",
+        "pivot",
+        "partition",
+        "divide and conquer",
+        "recursion"
+      ],
+      "prerequisites": [
+        "computing.algorithms.recursion",
+        "computing.algorithms.asymptotic-notation"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "medium",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/overview-of-quicksort"
+    },
+    {
+      "id": "computing.algorithms.recursion",
+      "title": "Recursion",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Recursive algorithms",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Solving a problem by having a function call itself on smaller subproblems until reaching a base case.",
+      "keywords": [
+        "recursion",
+        "base case",
+        "recursive case",
+        "call stack",
+        "self-reference"
+      ],
+      "prerequisites": [
+        "computing.algorithms.what-is-an-algorithm"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "medium",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/recursion"
+    },
+    {
+      "id": "computing.algorithms.runtime-analysis",
+      "title": "Measuring running time",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Asymptotic notation",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Counting basic operations as a function of input size to compare algorithms independent of hardware.",
+      "keywords": [
+        "running time",
+        "operations",
+        "input size",
+        "analysis",
+        "worst case"
+      ],
+      "prerequisites": [
+        "computing.algorithms.asymptotic-notation"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.algorithms.selection-sort",
+      "title": "Selection sort",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Selection sort",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Repeatedly selecting the smallest remaining element and placing it at the front of the unsorted region.",
+      "keywords": [
+        "selection sort",
+        "sorting",
+        "minimum",
+        "in-place",
+        "quadratic"
+      ],
+      "prerequisites": [
+        "computing.algorithms.asymptotic-notation"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/sorting-algorithms/a/sorting"
+    },
+    {
+      "id": "computing.algorithms.towers-of-hanoi",
+      "title": "Towers of Hanoi",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Towers of Hanoi",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "A classic recursive puzzle of moving a stack of disks between pegs, illustrating exponential recursion.",
+      "keywords": [
+        "towers of hanoi",
+        "recursion",
+        "puzzle",
+        "exponential",
+        "disks"
+      ],
+      "prerequisites": [
+        "computing.algorithms.recursion"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/towers-of-hanoi/a/towers-of-hanoi"
+    },
+    {
+      "id": "computing.algorithms.what-is-an-algorithm",
+      "title": "What is an algorithm",
+      "subject": "computing",
+      "course": "Algorithms",
+      "unit": "Intro to algorithms",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "A precise, finite sequence of steps that solves a problem or computes a result, independent of any programming language.",
+      "keywords": [
+        "algorithm",
+        "steps",
+        "procedure",
+        "problem solving",
+        "pseudocode"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "procedural"
+      ],
+      "diagram3dFit": "none",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-science/algorithms/intro-to-algorithms/a/a-guessing-game"
+    },
+    {
+      "id": "computing.ap-csp.algorithm-efficiency",
+      "title": "Algorithm efficiency",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Algorithms",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Comparing algorithms by how their running time grows, distinguishing reasonable from unreasonable time.",
+      "keywords": [
+        "efficiency",
+        "running time",
+        "reasonable time",
+        "scalability",
+        "comparison"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.iteration-loops"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.binary-numbers",
+      "title": "Binary numbers",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Digital information",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Representing numbers using only the digits 0 and 1, and converting between binary and decimal.",
+      "keywords": [
+        "binary",
+        "base-2",
+        "bits",
+        "decimal conversion",
+        "place value"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/ap-csp/x2d2f703b37b450a3:digital-information"
+    },
+    {
+      "id": "computing.ap-csp.bits-and-bytes",
+      "title": "Bits and bytes",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Digital information",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How data is grouped into bits and bytes, and how the number of bits limits how many values can be represented.",
+      "keywords": [
+        "bit",
+        "byte",
+        "data size",
+        "storage",
+        "powers of two"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.binary-numbers"
+      ],
+      "representations": [
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.boolean-logic",
+      "title": "Boolean logic and expressions",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Programming",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Combining true/false values with AND, OR, and NOT to form conditions that control program behavior.",
+      "keywords": [
+        "boolean",
+        "AND",
+        "OR",
+        "NOT",
+        "truth table"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.variables-and-assignment"
+      ],
+      "representations": [
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.conditionals",
+      "title": "Conditionals",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Programming",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Using if/else statements to choose which block of code runs based on a boolean condition.",
+      "keywords": [
+        "if",
+        "else",
+        "conditional",
+        "branching",
+        "control flow"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.boolean-logic"
+      ],
+      "representations": [
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.cybersecurity-threats",
+      "title": "Cybersecurity threats",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Online data security",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Common attacks such as phishing, malware, and weak passwords, and the practices that defend against them.",
+      "keywords": [
+        "phishing",
+        "malware",
+        "passwords",
+        "multifactor",
+        "PII"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "none"
+    },
+    {
+      "id": "computing.ap-csp.data-and-information",
+      "title": "Extracting information from data",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Computing innovations",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Turning raw data into knowledge through filtering, cleaning, and visualization to find patterns and correlations.",
+      "keywords": [
+        "data",
+        "information",
+        "visualization",
+        "patterns",
+        "correlation"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.data-compression",
+      "title": "Data compression",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Digital information",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Reducing the number of bits needed to store data, distinguishing lossless from lossy compression.",
+      "keywords": [
+        "compression",
+        "lossless",
+        "lossy",
+        "run-length encoding",
+        "file size"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.bits-and-bytes"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.encoding-text-and-color",
+      "title": "Encoding text and color",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Digital information",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How characters (ASCII/Unicode) and colors (RGB) are mapped to numeric binary codes.",
+      "keywords": [
+        "ASCII",
+        "Unicode",
+        "RGB",
+        "encoding",
+        "character codes"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.bits-and-bytes"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.encryption",
+      "title": "Encryption",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Online data security",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Scrambling data so only authorized parties can read it, including symmetric and public-key encryption.",
+      "keywords": [
+        "encryption",
+        "symmetric",
+        "public key",
+        "cipher",
+        "keys"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.impact-of-computing",
+      "title": "Benefits and harms of computing innovations",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Computing innovations",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Weighing the social, economic, and ethical effects of computing innovations, including bias and the digital divide.",
+      "keywords": [
+        "impact",
+        "ethics",
+        "digital divide",
+        "bias",
+        "innovation"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "structural"
+      ],
+      "diagram3dFit": "none"
+    },
+    {
+      "id": "computing.ap-csp.internet-protocols",
+      "title": "Internet protocols (IP, TCP, UDP)",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "The Internet",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The layered protocols that move data across the Internet, and the reliability tradeoffs between TCP and UDP.",
+      "keywords": [
+        "IP",
+        "TCP",
+        "UDP",
+        "protocol",
+        "layers"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.ip-addressing-dns",
+      "title": "IP addressing and DNS",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "The Internet",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How devices are identified by IP addresses and how DNS translates human-readable domain names into those addresses.",
+      "keywords": [
+        "IP address",
+        "DNS",
+        "domain name",
+        "addressing",
+        "lookup"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.internet-protocols"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.iteration-loops",
+      "title": "Iteration and loops",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Programming",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Repeating a block of code with for and while loops, controlled by a counter or condition.",
+      "keywords": [
+        "loop",
+        "iteration",
+        "for",
+        "while",
+        "repeat"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.conditionals"
+      ],
+      "representations": [
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.lists",
+      "title": "Lists",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Programming",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Ordered collections of values accessed by index, and traversing them with loops.",
+      "keywords": [
+        "list",
+        "array",
+        "index",
+        "collection",
+        "traversal"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.iteration-loops"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.packets-and-routing",
+      "title": "Packets and routing",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "The Internet",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How messages are split into packets that travel independent, redundant paths across a network of routers.",
+      "keywords": [
+        "packet",
+        "routing",
+        "redundancy",
+        "network path",
+        "fault tolerance"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.internet-protocols"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "computing.ap-csp.procedures-and-abstraction",
+      "title": "Procedures and abstraction",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Programming",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Defining reusable procedures with parameters and return values to manage complexity through abstraction.",
+      "keywords": [
+        "procedure",
+        "function",
+        "parameter",
+        "abstraction",
+        "return value"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.iteration-loops"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.public-key-cryptography",
+      "title": "Public key cryptography",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Online data security",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Using a public key to encrypt and a private key to decrypt, enabling secure communication without sharing a secret.",
+      "keywords": [
+        "public key",
+        "private key",
+        "asymmetric",
+        "key exchange",
+        "HTTPS"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.encryption"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "computing.ap-csp.randomness-and-simulation",
+      "title": "Randomness and simulation",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Simulations",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Using random number generation to model uncertain real-world systems and run repeatable experiments.",
+      "keywords": [
+        "randomness",
+        "simulation",
+        "model",
+        "random number",
+        "experiment"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.procedures-and-abstraction"
+      ],
+      "representations": [
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "computing.ap-csp.sampling-analog-data",
+      "title": "Sampling analog data",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Digital information",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Converting continuous analog signals such as sound into discrete digital samples, and how sampling rate affects fidelity.",
+      "keywords": [
+        "analog",
+        "digital",
+        "sampling rate",
+        "audio",
+        "discretization"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.bits-and-bytes"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.ap-csp.scalability-and-redundancy",
+      "title": "Scalability and redundancy",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "The Internet",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Why the Internet is designed to scale and tolerate failures through redundant connections and distributed systems.",
+      "keywords": [
+        "scalability",
+        "redundancy",
+        "fault tolerance",
+        "distributed",
+        "reliability"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.packets-and-routing"
+      ],
+      "representations": [
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "computing.ap-csp.sequential-vs-parallel",
+      "title": "Sequential, parallel, and distributed computing",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Algorithms",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How splitting work across multiple processors or machines can speed up a computation, and the limits of that speedup.",
+      "keywords": [
+        "parallel",
+        "distributed",
+        "sequential",
+        "speedup",
+        "processors"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.algorithm-efficiency"
+      ],
+      "representations": [
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "computing.ap-csp.undecidable-problems",
+      "title": "Solvable and unsolvable problems",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Algorithms",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The distinction between problems an algorithm can solve, problems solvable only approximately, and undecidable problems.",
+      "keywords": [
+        "decidable",
+        "undecidable",
+        "heuristic",
+        "approximation",
+        "limits of computing"
+      ],
+      "prerequisites": [
+        "computing.ap-csp.algorithm-efficiency"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "none"
+    },
+    {
+      "id": "computing.ap-csp.variables-and-assignment",
+      "title": "Variables and assignment",
+      "subject": "computing",
+      "course": "AP Computer Science Principles",
+      "unit": "Programming",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Named storage that holds a value, and how assignment updates the value a variable refers to.",
+      "keywords": [
+        "variable",
+        "assignment",
+        "value",
+        "state",
+        "pseudocode"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.computer-programming.animation-frame-loop",
+      "title": "Animation and the frame loop",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to JS: Drawing & Animation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Producing motion by redrawing the canvas every frame while updating position variables over time.",
+      "keywords": [
+        "animation",
+        "draw loop",
+        "frame",
+        "movement",
+        "update"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.variables",
+        "computing.computer-programming.functions"
+      ],
+      "representations": [
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "computing.computer-programming.arrays",
+      "title": "Arrays",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to JS: Drawing & Animation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Ordered lists of values stored under one name and accessed by numeric index.",
+      "keywords": [
+        "array",
+        "index",
+        "list",
+        "element",
+        "length"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.loops"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-programming/programming/arrays/a/intro-to-arrays"
+    },
+    {
+      "id": "computing.computer-programming.conditionals",
+      "title": "Conditionals (if/else)",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to JS: Drawing & Animation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Running different code depending on whether a boolean condition is true or false.",
+      "keywords": [
+        "if",
+        "else",
+        "condition",
+        "boolean",
+        "branching"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.expressions-and-operators"
+      ],
+      "representations": [
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-programming/programming/logic-if-statements/a/if-statements"
+    },
+    {
+      "id": "computing.computer-programming.coordinate-system",
+      "title": "The canvas coordinate system",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to JS: Drawing & Animation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "How positions on the drawing canvas are addressed by x and y pixel coordinates, with the origin at the top-left.",
+      "keywords": [
+        "coordinates",
+        "canvas",
+        "x-y",
+        "pixels",
+        "origin"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.computer-programming.css-styling",
+      "title": "CSS styling and the box model",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to HTML/CSS: Making webpages",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Applying CSS rules with selectors to control color, layout, and spacing via the content/padding/border/margin box model.",
+      "keywords": [
+        "CSS",
+        "selector",
+        "box model",
+        "padding",
+        "margin"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.html-structure"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "computing.computer-programming.dom-events",
+      "title": "DOM manipulation and events",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "HTML/JS: Making webpages interactive",
+      "gradeBand": "11-12",
+      "level": "hs",
+      "description": "Responding to user actions by reading and changing the page's element tree through JavaScript event handlers.",
+      "keywords": [
+        "DOM",
+        "event",
+        "handler",
+        "interactive",
+        "manipulation"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.html-structure",
+        "computing.computer-programming.functions"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "computing.computer-programming.expressions-and-operators",
+      "title": "Expressions and operators",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to JS: Drawing & Animation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Combining values with arithmetic and comparison operators to compute new values.",
+      "keywords": [
+        "expression",
+        "operator",
+        "arithmetic",
+        "comparison",
+        "evaluation"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.variables"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.computer-programming.functions",
+      "title": "Functions",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to JS: Drawing & Animation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Reusable named blocks of code that take parameters and optionally return a value.",
+      "keywords": [
+        "function",
+        "parameter",
+        "argument",
+        "return",
+        "reuse"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.loops"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-programming/programming/functions/a/intro-to-functions"
+    },
+    {
+      "id": "computing.computer-programming.html-structure",
+      "title": "HTML document structure",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to HTML/CSS: Making webpages",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Building a webpage from nested HTML elements and tags that form a tree of content.",
+      "keywords": [
+        "HTML",
+        "tag",
+        "element",
+        "nesting",
+        "DOM tree"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "structural"
+      ],
+      "diagram3dFit": "medium",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-programming/html-css"
+    },
+    {
+      "id": "computing.computer-programming.loops",
+      "title": "Loops",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to JS: Drawing & Animation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Repeating a block of code many times with for and while loops to avoid duplication.",
+      "keywords": [
+        "loop",
+        "for",
+        "while",
+        "iteration",
+        "repeat"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.conditionals"
+      ],
+      "representations": [
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-programming/programming/looping/a/intro-to-while-loops"
+    },
+    {
+      "id": "computing.computer-programming.objects",
+      "title": "Objects",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to JS: Drawing & Animation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Collections of named properties that group related data and behavior into a single value.",
+      "keywords": [
+        "object",
+        "property",
+        "key",
+        "value",
+        "data structure"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.variables"
+      ],
+      "representations": [
+        "structural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-programming/programming/objects/a/intro-to-objects"
+    },
+    {
+      "id": "computing.computer-programming.objects-and-state",
+      "title": "Object-oriented design",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Advanced JS: Natural Simulations",
+      "gradeBand": "11-12",
+      "level": "hs",
+      "description": "Modeling many similar entities by bundling their data and methods into objects created from a constructor.",
+      "keywords": [
+        "object-oriented",
+        "constructor",
+        "method",
+        "instance",
+        "state"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.objects",
+        "computing.computer-programming.functions"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "computing.computer-programming.recursion",
+      "title": "Recursion in programs",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Advanced JS: Natural Simulations",
+      "gradeBand": "11-12",
+      "level": "hs",
+      "description": "Writing functions that call themselves to draw self-similar patterns such as fractal trees.",
+      "keywords": [
+        "recursion",
+        "base case",
+        "fractal",
+        "self-similar",
+        "recursive function"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.functions"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "computing.computer-programming.relational-data-joins",
+      "title": "Relational tables and joins",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to SQL: Querying and managing data",
+      "gradeBand": "11-12",
+      "level": "hs",
+      "description": "Linking rows across multiple tables by matching key columns with JOIN to combine related data.",
+      "keywords": [
+        "join",
+        "relational",
+        "primary key",
+        "foreign key",
+        "tables"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.sql-queries"
+      ],
+      "representations": [
+        "structural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "computing.computer-programming.sql-queries",
+      "title": "SQL queries",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to SQL: Querying and managing data",
+      "gradeBand": "11-12",
+      "level": "hs",
+      "description": "Selecting, filtering, and aggregating rows from relational database tables using SQL SELECT statements.",
+      "keywords": [
+        "SQL",
+        "SELECT",
+        "table",
+        "query",
+        "WHERE"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-programming/sql"
+    },
+    {
+      "id": "computing.computer-programming.variables",
+      "title": "Variables",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Intro to JS: Drawing & Animation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Named containers that store values such as numbers and strings so they can be reused and updated.",
+      "keywords": [
+        "variable",
+        "value",
+        "assignment",
+        "number",
+        "string"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/computing/computer-programming/programming/variables/a/intro-to-variables"
+    },
+    {
+      "id": "computing.computer-programming.vectors-and-motion",
+      "title": "Vectors and motion",
+      "subject": "computing",
+      "course": "Computer programming",
+      "unit": "Advanced JS: Natural Simulations",
+      "gradeBand": "11-12",
+      "level": "hs",
+      "description": "Representing position, velocity, and acceleration as vectors to simulate realistic movement and forces.",
+      "keywords": [
+        "vector",
+        "velocity",
+        "acceleration",
+        "force",
+        "simulation"
+      ],
+      "prerequisites": [
+        "computing.computer-programming.animation-frame-loop"
+      ],
+      "representations": [
+        "graph",
+        "physical"
+      ],
+      "diagram3dFit": "medium"
+    }
+  ]
+}

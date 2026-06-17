@@ -1,0 +1,2009 @@
+{
+  "subject": "chemistry",
+  "courses": [
+    {
+      "slug": "ap-chemistry",
+      "name": "AP Chemistry",
+      "subject": "chemistry",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "units": [
+        "Atomic structure and properties",
+        "Compound structure and properties",
+        "Intermolecular forces and properties",
+        "Chemical reactions",
+        "Kinetics",
+        "Thermodynamics",
+        "Equilibrium",
+        "Acids and bases",
+        "Applications of thermodynamics"
+      ],
+      "khanUrl": "https://www.khanacademy.org/science/ap-chemistry-beta"
+    },
+    {
+      "slug": "high-school-chemistry",
+      "name": "High school chemistry",
+      "subject": "chemistry",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "units": [
+        "Atoms, isotopes, and ions",
+        "Atomic models and periodicity",
+        "Chemical bonding",
+        "Chemical nomenclature",
+        "Chemical reactions and stoichiometry",
+        "The mole and Avogadro's number",
+        "States of matter and intermolecular forces",
+        "Gases",
+        "Solutions and mixtures",
+        "Thermochemistry",
+        "Chemical equilibrium",
+        "Acids and bases",
+        "Nuclear chemistry"
+      ],
+      "khanUrl": "https://www.khanacademy.org/science/hs-chemistry"
+    },
+    {
+      "slug": "organic-chemistry",
+      "name": "Organic chemistry",
+      "subject": "chemistry",
+      "gradeBand": "college",
+      "level": "college",
+      "units": [
+        "Structure and bonding",
+        "Resonance and acid-base chemistry",
+        "Alkanes, cycloalkanes, and functional groups",
+        "Stereochemistry",
+        "Substitution and elimination reactions",
+        "Alkenes and alkynes",
+        "Alcohols, ethers, epoxides, and sulfides",
+        "Conjugated systems and pericyclic reactions",
+        "Aromatic compounds",
+        "Aldehydes and ketones",
+        "Carboxylic acids and derivatives",
+        "Alpha carbon chemistry",
+        "Amines",
+        "Spectroscopy"
+      ],
+      "khanUrl": "https://www.khanacademy.org/science/organic-chemistry"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "chemistry.ap-chemistry.beer-lambert-law",
+      "title": "Beer-Lambert law and spectroscopy",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Intermolecular forces and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How absorbance relates linearly to concentration and path length, enabling concentration measurement via UV-Vis spectroscopy.",
+      "keywords": [
+        "Beer-Lambert law",
+        "absorbance",
+        "concentration",
+        "molar absorptivity",
+        "spectroscopy"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.solutions-solubility"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.bond-hybridization",
+      "title": "Hybridization and sigma/pi bonds",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Compound structure and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Mixing of atomic orbitals into sp, sp2, and sp3 hybrids and how sigma and pi bonds account for molecular geometry and multiple bonds. AP-specific extension of HS VSEPR/bonding.",
+      "keywords": [
+        "hybridization",
+        "sigma bond",
+        "pi bond",
+        "sp3",
+        "valence bond"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.vsepr-molecular-geometry",
+        "chemistry.high-school-chemistry.atomic-orbitals"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.ap-chemistry.buffers-titration-curves",
+      "title": "Buffers and titration curves",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Acids and bases",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How buffers resist pH change (Henderson-Hasselbalch) and interpreting acid-base titration curves and equivalence points.",
+      "keywords": [
+        "buffer",
+        "Henderson-Hasselbalch",
+        "titration curve",
+        "equivalence point",
+        "pKa"
+      ],
+      "prerequisites": [
+        "chemistry.ap-chemistry.weak-acid-base-equilibria"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.collision-theory-activation",
+      "title": "Collision theory and activation energy",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Kinetics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How molecular collisions, orientation, and the activation-energy barrier (Arrhenius equation) control reaction rate and temperature dependence.",
+      "keywords": [
+        "collision theory",
+        "activation energy",
+        "Arrhenius",
+        "transition state",
+        "orientation"
+      ],
+      "prerequisites": [
+        "chemistry.ap-chemistry.reaction-rates-rate-laws"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.ap-chemistry.coulombs-law-periodicity",
+      "title": "Coulomb's law and periodic trends",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Atomic structure and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Quantitative explanation of atomic radius and ionization energy trends using Coulomb's law, effective nuclear charge, and shielding. AP-specific depth on HS periodic trends.",
+      "keywords": [
+        "Coulomb's law",
+        "effective nuclear charge",
+        "shielding",
+        "Zeff",
+        "periodic trend"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.periodic-trends"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.ap-chemistry.deviations-ideal-gas",
+      "title": "Real gases and deviations from ideality",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Intermolecular forces and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Why real gases deviate from the ideal gas law at high pressure and low temperature due to molecular volume and attractions.",
+      "keywords": [
+        "real gas",
+        "ideal gas deviation",
+        "high pressure",
+        "molecular volume",
+        "compressibility"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.kinetic-molecular-theory"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.ap-chemistry.electrochemistry-galvanic-cells",
+      "title": "Galvanic and electrolytic cells",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Applications of thermodynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Cell construction, electrode reactions, and computing cell potential and its link to free energy; electrolysis as the driven reverse process.",
+      "keywords": [
+        "galvanic cell",
+        "electrolytic cell",
+        "cell potential",
+        "electrode",
+        "electrochemistry"
+      ],
+      "prerequisites": [
+        "chemistry.ap-chemistry.redox-reactions",
+        "chemistry.ap-chemistry.entropy-gibbs-free-energy"
+      ],
+      "representations": [
+        "structural",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.ap-chemistry.elemental-composition-formulas",
+      "title": "Elemental composition and empirical formulas",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Atomic structure and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Determining empirical and molecular formulas from percent composition and combustion analysis data.",
+      "keywords": [
+        "empirical formula",
+        "percent composition",
+        "molecular formula",
+        "combustion analysis",
+        "moles"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.stoichiometry"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.enthalpy-hess-law",
+      "title": "Enthalpy, calorimetry, and Hess's law",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Thermodynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Measuring heat with calorimetry and computing reaction enthalpy from bond energies, formation enthalpies, and Hess's law. AP-specific depth on HS thermochemistry.",
+      "keywords": [
+        "enthalpy",
+        "calorimetry",
+        "Hess's law",
+        "bond energy",
+        "heat of formation"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.thermochemistry-enthalpy"
+      ],
+      "representations": [
+        "symbolic",
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.entropy-gibbs-free-energy",
+      "title": "Entropy and Gibbs free energy",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Thermodynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How entropy change and Gibbs free energy (G = H - TS) determine whether a process is thermodynamically favorable.",
+      "keywords": [
+        "entropy",
+        "Gibbs free energy",
+        "spontaneity",
+        "delta G",
+        "favorability"
+      ],
+      "prerequisites": [
+        "chemistry.ap-chemistry.enthalpy-hess-law"
+      ],
+      "representations": [
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.equilibrium-constant",
+      "title": "Equilibrium constant and the reaction quotient",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Equilibrium",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Writing K expressions, comparing Q to K to predict direction, and solving for equilibrium concentrations with ICE tables. AP-specific depth on HS equilibrium.",
+      "keywords": [
+        "equilibrium constant",
+        "Kc",
+        "Kp",
+        "reaction quotient",
+        "ICE table"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.equilibrium-le-chatelier"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.integrated-rate-laws",
+      "title": "Integrated rate laws and half-life",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Kinetics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Using integrated rate laws for zero, first, and second order reactions to find concentration over time and half-life via linearized plots.",
+      "keywords": [
+        "integrated rate law",
+        "first order",
+        "second order",
+        "half-life",
+        "linear plot"
+      ],
+      "prerequisites": [
+        "chemistry.ap-chemistry.reaction-rates-rate-laws"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.mass-spectrometry",
+      "title": "Mass spectrometry of elements",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Atomic structure and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Interpreting mass spectra to determine isotopic masses and abundances and compute average atomic mass.",
+      "keywords": [
+        "mass spectrometry",
+        "isotope",
+        "abundance",
+        "average atomic mass",
+        "spectrum"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.isotopes-atomic-mass"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.metallic-alloys-bonding",
+      "title": "Metallic bonding and alloys",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Compound structure and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The electron-sea model of metallic bonding and how interstitial and substitutional alloys explain metal properties.",
+      "keywords": [
+        "metallic bonding",
+        "electron sea",
+        "alloy",
+        "interstitial",
+        "substitutional"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.ionic-bonding"
+      ],
+      "representations": [
+        "structural",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.ap-chemistry.nernst-thermodynamic-favorability",
+      "title": "Free energy, cell potential, and the Nernst equation",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Applications of thermodynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Linking standard cell potential, Gibbs free energy, and the equilibrium constant, and using the Nernst equation for nonstandard conditions.",
+      "keywords": [
+        "Nernst equation",
+        "cell potential",
+        "free energy",
+        "equilibrium constant",
+        "nonstandard"
+      ],
+      "prerequisites": [
+        "chemistry.ap-chemistry.electrochemistry-galvanic-cells",
+        "chemistry.ap-chemistry.equilibrium-constant"
+      ],
+      "representations": [
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.net-ionic-equations",
+      "title": "Net ionic equations and precipitation",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Chemical reactions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Writing complete and net ionic equations for precipitation reactions by removing spectator ions.",
+      "keywords": [
+        "net ionic equation",
+        "precipitation",
+        "spectator ion",
+        "solubility rules",
+        "aqueous"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.reaction-types"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.photoelectron-spectroscopy",
+      "title": "Photoelectron spectroscopy (PES)",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Atomic structure and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Reading PES spectra to infer electron configuration and subshell energies from peak positions and relative heights. AP-specific depth beyond HS atomic structure.",
+      "keywords": [
+        "photoelectron spectroscopy",
+        "PES",
+        "binding energy",
+        "subshell",
+        "ionization"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.electron-configuration"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.ap-chemistry.reaction-mechanisms-catalysis",
+      "title": "Reaction mechanisms and catalysis",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Kinetics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Elementary steps, the rate-determining step, intermediates, and how catalysts lower activation energy by providing an alternate pathway.",
+      "keywords": [
+        "mechanism",
+        "rate-determining step",
+        "intermediate",
+        "catalyst",
+        "elementary step"
+      ],
+      "prerequisites": [
+        "chemistry.ap-chemistry.collision-theory-activation"
+      ],
+      "representations": [
+        "graph",
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.ap-chemistry.reaction-rates-rate-laws",
+      "title": "Reaction rates and rate laws",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Kinetics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Defining reaction rate and determining rate-law order and rate constants from concentration-versus-time data.",
+      "keywords": [
+        "reaction rate",
+        "rate law",
+        "order of reaction",
+        "rate constant",
+        "kinetics"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.stoichiometry"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.redox-reactions",
+      "title": "Oxidation-reduction reactions",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Chemical reactions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Assigning oxidation numbers, identifying oxidation and reduction half-reactions, and balancing redox equations.",
+      "keywords": [
+        "redox",
+        "oxidation number",
+        "half-reaction",
+        "reduction",
+        "electron transfer"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.reaction-types"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.resonance-formal-charge",
+      "title": "Resonance and formal charge",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Compound structure and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Drawing resonance structures, assigning formal charges, and using them to select the most stable Lewis representation.",
+      "keywords": [
+        "resonance",
+        "formal charge",
+        "delocalization",
+        "Lewis structure",
+        "stability"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.covalent-bonding-lewis"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.ap-chemistry.solids-types",
+      "title": "Types of solids and crystal lattices",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Intermolecular forces and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Classifying ionic, molecular, covalent network, and metallic solids and relating their lattice structure to physical properties.",
+      "keywords": [
+        "crystal lattice",
+        "covalent network",
+        "molecular solid",
+        "unit cell",
+        "solid type"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.intermolecular-forces",
+        "chemistry.ap-chemistry.metallic-alloys-bonding"
+      ],
+      "representations": [
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.ap-chemistry.solubility-equilibria-ksp",
+      "title": "Solubility equilibria and Ksp",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Equilibrium",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Using the solubility product constant Ksp to predict precipitation and the common-ion effect on solubility.",
+      "keywords": [
+        "Ksp",
+        "solubility product",
+        "common-ion effect",
+        "precipitation",
+        "molar solubility"
+      ],
+      "prerequisites": [
+        "chemistry.ap-chemistry.equilibrium-constant"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.solutions-separation",
+      "title": "Solutions, mixtures, and separation techniques",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Intermolecular forces and properties",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Particle-level view of solutions and physical separation methods such as chromatography and distillation based on intermolecular interactions.",
+      "keywords": [
+        "mixture",
+        "chromatography",
+        "distillation",
+        "separation",
+        "solution"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.solutions-solubility"
+      ],
+      "representations": [
+        "structural",
+        "procedural",
+        "physical"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.ap-chemistry.titrations",
+      "title": "Stoichiometry and titrations",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Chemical reactions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Using titration data and solution stoichiometry to determine unknown concentrations at the equivalence point.",
+      "keywords": [
+        "titration",
+        "equivalence point",
+        "molarity",
+        "stoichiometry",
+        "indicator"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.stoichiometry",
+        "chemistry.high-school-chemistry.solutions-solubility"
+      ],
+      "representations": [
+        "graph",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.ap-chemistry.weak-acid-base-equilibria",
+      "title": "Weak acid-base equilibria, Ka and Kb",
+      "subject": "chemistry",
+      "course": "AP Chemistry",
+      "unit": "Acids and bases",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Calculating pH of weak acid and base solutions using Ka, Kb, and percent ionization. AP-specific depth on HS acid-base.",
+      "keywords": [
+        "weak acid",
+        "Ka",
+        "Kb",
+        "percent ionization",
+        "pH"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.acids-bases-ph",
+        "chemistry.ap-chemistry.equilibrium-constant"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.acids-bases-ph",
+      "title": "Acids, bases, and the pH scale",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Acids and bases",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Defining acids and bases, the pH scale, and how hydrogen-ion concentration determines acidity and basicity.",
+      "keywords": [
+        "acid",
+        "base",
+        "pH",
+        "hydrogen ion",
+        "neutralization"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.solutions-solubility"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.atomic-orbitals",
+      "title": "Atomic orbitals and the quantum mechanical model",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Atomic models and periodicity",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The shapes and orientations of s, p, and d orbitals as probability regions for electrons in the quantum mechanical model of the atom.",
+      "keywords": [
+        "orbital",
+        "s orbital",
+        "p orbital",
+        "quantum",
+        "electron cloud"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.electron-configuration"
+      ],
+      "representations": [
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.atomic-structure",
+      "title": "Atomic structure: protons, neutrons, and electrons",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Atoms, isotopes, and ions",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The nucleus of protons and neutrons surrounded by electrons, and how subatomic particle counts define an atom's identity and charge.",
+      "keywords": [
+        "proton",
+        "neutron",
+        "electron",
+        "nucleus",
+        "atomic number"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/science/hs-chemistry"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.balancing-equations",
+      "title": "Balancing chemical equations",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Chemical reactions and stoichiometry",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Adjusting coefficients so atoms are conserved on both sides of a chemical equation, enforcing the law of conservation of mass.",
+      "keywords": [
+        "balancing",
+        "coefficient",
+        "conservation of mass",
+        "chemical equation",
+        "reactant"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.naming-ionic-compounds"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.bond-polarity",
+      "title": "Bond polarity and molecular polarity",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Chemical bonding",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "How electronegativity differences create polar bonds and how bond dipoles combine with geometry to make a molecule polar or nonpolar.",
+      "keywords": [
+        "polarity",
+        "dipole",
+        "electronegativity",
+        "polar bond",
+        "nonpolar"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.vsepr-molecular-geometry",
+        "chemistry.high-school-chemistry.periodic-trends"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.covalent-bonding-lewis",
+      "title": "Covalent bonding and Lewis structures",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Chemical bonding",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Sharing of electron pairs between atoms and how to draw Lewis dot structures showing bonding and lone pairs to satisfy the octet rule.",
+      "keywords": [
+        "covalent bond",
+        "Lewis structure",
+        "octet rule",
+        "lone pair",
+        "electron pair"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.electron-configuration"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.electron-configuration",
+      "title": "Electron configuration",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Atomic models and periodicity",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "How electrons fill orbitals and energy levels following the Aufbau principle, Pauli exclusion, and Hund's rule, written as configuration notation.",
+      "keywords": [
+        "electron configuration",
+        "orbital",
+        "Aufbau",
+        "Hund's rule",
+        "subshell"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.atomic-structure"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.equilibrium-le-chatelier",
+      "title": "Chemical equilibrium and Le Chatelier's principle",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Chemical equilibrium",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Dynamic equilibrium in reversible reactions and how changing concentration, pressure, or temperature shifts the balance per Le Chatelier's principle.",
+      "keywords": [
+        "equilibrium",
+        "Le Chatelier",
+        "reversible reaction",
+        "shift",
+        "stress"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.reaction-types"
+      ],
+      "representations": [
+        "graph",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.gas-laws",
+      "title": "Gas laws and the ideal gas law",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Gases",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Relationships among pressure, volume, temperature, and moles (Boyle, Charles, Gay-Lussac) unified by the ideal gas law PV = nRT.",
+      "keywords": [
+        "ideal gas law",
+        "Boyle's law",
+        "Charles's law",
+        "pressure",
+        "PV=nRT"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.mole-concept"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.intermolecular-forces",
+      "title": "Intermolecular forces",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "States of matter and intermolecular forces",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "London dispersion, dipole-dipole, and hydrogen bonding between molecules and how their strength governs boiling point and state.",
+      "keywords": [
+        "intermolecular force",
+        "hydrogen bond",
+        "dipole-dipole",
+        "London dispersion",
+        "boiling point"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.bond-polarity"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.ionic-bonding",
+      "title": "Ionic bonding and lattices",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Chemical bonding",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Electrostatic attraction between oppositely charged ions and how it builds repeating crystal lattices in ionic solids.",
+      "keywords": [
+        "ionic bond",
+        "lattice",
+        "crystal",
+        "electrostatic",
+        "salt"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.ions-formation"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.ions-formation",
+      "title": "Ion formation and charge",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Atoms, isotopes, and ions",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "How atoms gain or lose electrons to form cations and anions, and the relationship between electron transfer and net charge.",
+      "keywords": [
+        "ion",
+        "cation",
+        "anion",
+        "charge",
+        "electron transfer"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.atomic-structure"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.isotopes-atomic-mass",
+      "title": "Isotopes and average atomic mass",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Atoms, isotopes, and ions",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Atoms of the same element with different neutron counts, and how isotopic abundances combine into the weighted average atomic mass on the periodic table.",
+      "keywords": [
+        "isotope",
+        "atomic mass",
+        "mass number",
+        "abundance",
+        "weighted average"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.atomic-structure"
+      ],
+      "representations": [
+        "symbolic",
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.kinetic-molecular-theory",
+      "title": "Kinetic molecular theory of gases",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Gases",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The model of gases as fast-moving particles in constant random motion, explaining pressure and temperature in terms of molecular kinetic energy.",
+      "keywords": [
+        "kinetic molecular theory",
+        "gas particles",
+        "pressure",
+        "temperature",
+        "collisions"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.gas-laws"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.mole-concept",
+      "title": "The mole and Avogadro's number",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "The mole and Avogadro's number",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The mole as a counting unit linking the number of particles to mass via Avogadro's number and molar mass.",
+      "keywords": [
+        "mole",
+        "Avogadro's number",
+        "molar mass",
+        "particles",
+        "conversion"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.isotopes-atomic-mass"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.naming-covalent-compounds",
+      "title": "Naming covalent compounds",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Chemical nomenclature",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Using Greek prefixes to name molecular compounds formed from two nonmetals and translating names back into formulas.",
+      "keywords": [
+        "covalent nomenclature",
+        "prefix",
+        "molecular compound",
+        "naming",
+        "formula"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.covalent-bonding-lewis"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.naming-ionic-compounds",
+      "title": "Naming ionic compounds and writing formulas",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Chemical nomenclature",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Rules for naming ionic compounds and polyatomic ions and balancing charges to write correct chemical formulas.",
+      "keywords": [
+        "nomenclature",
+        "ionic compound",
+        "polyatomic ion",
+        "formula",
+        "charge balance"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.ionic-bonding"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.nuclear-chemistry",
+      "title": "Radioactive decay and nuclear reactions",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Nuclear chemistry",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Alpha, beta, and gamma decay, half-life, and the difference between fission and fusion in nuclear reactions.",
+      "keywords": [
+        "radioactivity",
+        "alpha decay",
+        "beta decay",
+        "half-life",
+        "fission"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.isotopes-atomic-mass"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.periodic-trends",
+      "title": "Periodic trends",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Atomic models and periodicity",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "How atomic radius, ionization energy, electron affinity, and electronegativity vary across periods and down groups of the periodic table.",
+      "keywords": [
+        "periodic trend",
+        "atomic radius",
+        "ionization energy",
+        "electronegativity",
+        "periodic table"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.electron-configuration"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.reaction-types",
+      "title": "Types of chemical reactions",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Chemical reactions and stoichiometry",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Classifying reactions as synthesis, decomposition, single replacement, double replacement, or combustion based on their patterns.",
+      "keywords": [
+        "synthesis",
+        "decomposition",
+        "combustion",
+        "replacement",
+        "reaction type"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.balancing-equations"
+      ],
+      "representations": [
+        "procedural",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.solutions-solubility",
+      "title": "Solutions, solubility, and concentration",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Solutions and mixtures",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "How solutes dissolve in solvents, factors affecting solubility, and expressing concentration as molarity.",
+      "keywords": [
+        "solution",
+        "solubility",
+        "molarity",
+        "solute",
+        "concentration"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.intermolecular-forces",
+        "chemistry.high-school-chemistry.mole-concept"
+      ],
+      "representations": [
+        "structural",
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.states-phase-changes",
+      "title": "States of matter and phase changes",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "States of matter and intermolecular forces",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Particle arrangement in solids, liquids, and gases, and the energy changes during melting, boiling, and sublimation shown on a heating curve.",
+      "keywords": [
+        "solid",
+        "liquid",
+        "gas",
+        "phase change",
+        "heating curve"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.intermolecular-forces"
+      ],
+      "representations": [
+        "structural",
+        "graph",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.stoichiometry",
+      "title": "Stoichiometry and limiting reactants",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "The mole and Avogadro's number",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Using mole ratios from a balanced equation to compute product amounts and identify the limiting reactant and percent yield.",
+      "keywords": [
+        "stoichiometry",
+        "mole ratio",
+        "limiting reactant",
+        "percent yield",
+        "balanced equation"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.mole-concept",
+        "chemistry.high-school-chemistry.balancing-equations"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.thermochemistry-enthalpy",
+      "title": "Energy changes and enthalpy in reactions",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Thermochemistry",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Exothermic and endothermic reactions, enthalpy change, and reading energy diagrams that show reactant and product energy levels.",
+      "keywords": [
+        "enthalpy",
+        "exothermic",
+        "endothermic",
+        "energy diagram",
+        "heat"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.reaction-types"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.high-school-chemistry.vsepr-molecular-geometry",
+      "title": "VSEPR theory and molecular geometry",
+      "subject": "chemistry",
+      "course": "High school chemistry",
+      "unit": "Chemical bonding",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "How electron-pair repulsion sets the 3D shape of a molecule (linear, trigonal, tetrahedral, bent) and the bond angles that result.",
+      "keywords": [
+        "VSEPR",
+        "molecular geometry",
+        "bond angle",
+        "tetrahedral",
+        "shape"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.covalent-bonding-lewis"
+      ],
+      "representations": [
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.alcohols-reactions",
+      "title": "Alcohols: synthesis and reactions",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Alcohols, ethers, epoxides, and sulfides",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Preparing alcohols and their conversion to alkyl halides, oxidation states of alcohols, and dehydration to alkenes.",
+      "keywords": [
+        "alcohol",
+        "oxidation",
+        "dehydration",
+        "alkoxide",
+        "substitution"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.alkene-addition"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.organic-chemistry.alkene-addition",
+      "title": "Electrophilic addition to alkenes",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Alkenes and alkynes",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Addition of electrophiles to C=C double bonds, Markovnikov versus anti-Markovnikov selectivity, and carbocation versus concerted pathways.",
+      "keywords": [
+        "electrophilic addition",
+        "Markovnikov",
+        "alkene",
+        "hydration",
+        "halogenation"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.e1-e2-reactions"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.alkyne-reactions",
+      "title": "Alkyne reactions and synthesis",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Alkenes and alkynes",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Addition reactions of triple bonds, acidity of terminal alkynes, and using acetylide nucleophiles to build carbon chains.",
+      "keywords": [
+        "alkyne",
+        "acetylide",
+        "triple bond",
+        "terminal alkyne",
+        "addition"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.alkene-addition"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.organic-chemistry.amines-reactions",
+      "title": "Amines: structure, basicity, and reactions",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Amines",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Naming and classifying amines, their basicity and nucleophilicity, and key reactions including reductive amination and diazonium chemistry.",
+      "keywords": [
+        "amine",
+        "basicity",
+        "nucleophile",
+        "reductive amination",
+        "diazonium"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.organic-acid-base",
+        "chemistry.organic-chemistry.carbonyl-nucleophilic-addition"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.organic-chemistry.aromaticity",
+      "title": "Aromaticity and Huckel's rule",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Aromatic compounds",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The cyclic, planar, fully conjugated criteria and Huckel's 4n+2 pi-electron rule that confer special aromatic stability.",
+      "keywords": [
+        "aromaticity",
+        "Huckel's rule",
+        "benzene",
+        "pi electrons",
+        "conjugation"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.resonance-structures"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.atomic-orbitals-hybridization",
+      "title": "Atomic orbitals and hybridization in organic molecules",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Structure and bonding",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "How sp, sp2, and sp3 hybridization of carbon determines bond angles, sigma/pi bonding, and the 3D shape of organic molecules.",
+      "keywords": [
+        "hybridization",
+        "sp3",
+        "sigma bond",
+        "pi bond",
+        "carbon"
+      ],
+      "prerequisites": [
+        "chemistry.ap-chemistry.bond-hybridization"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.bond-line-structures",
+      "title": "Bond-line structures and condensed formulas",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Structure and bonding",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Reading and drawing skeletal (bond-line) structures, condensed formulas, and converting between organic structural representations.",
+      "keywords": [
+        "bond-line structure",
+        "skeletal formula",
+        "condensed formula",
+        "line notation",
+        "structural drawing"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.covalent-bonding-lewis"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.organic-chemistry.carbonyl-nucleophilic-addition",
+      "title": "Nucleophilic addition to aldehydes and ketones",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Aldehydes and ketones",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The polarized carbonyl group and nucleophilic addition reactions (hydrates, acetals, imines, Grignard additions) at the carbonyl carbon.",
+      "keywords": [
+        "carbonyl",
+        "nucleophilic addition",
+        "acetal",
+        "imine",
+        "Grignard"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.alcohols-reactions"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.carboxylic-acid-derivatives",
+      "title": "Nucleophilic acyl substitution",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Carboxylic acids and derivatives",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Interconversion of carboxylic acid derivatives (esters, amides, anhydrides, acid chlorides) by addition-elimination at the carbonyl, ranked by reactivity.",
+      "keywords": [
+        "acyl substitution",
+        "ester",
+        "amide",
+        "acid chloride",
+        "reactivity"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.carbonyl-nucleophilic-addition"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.chirality-stereoisomers",
+      "title": "Chirality and stereoisomers",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Stereochemistry",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Identifying chiral centers, enantiomers and diastereomers, and assigning R/S configuration with Cahn-Ingold-Prelog priority rules.",
+      "keywords": [
+        "chirality",
+        "enantiomer",
+        "stereocenter",
+        "R/S configuration",
+        "diastereomer"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.conformations-newman"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.conformations-newman",
+      "title": "Conformational analysis and Newman projections",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Alkanes, cycloalkanes, and functional groups",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Rotation about single bonds, staggered versus eclipsed conformations on Newman projections, and chair conformations of cyclohexane.",
+      "keywords": [
+        "conformation",
+        "Newman projection",
+        "staggered",
+        "chair",
+        "cyclohexane"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.nomenclature-functional-groups"
+      ],
+      "representations": [
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.conjugation-diels-alder",
+      "title": "Conjugated dienes and the Diels-Alder reaction",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Conjugated systems and pericyclic reactions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Stability of conjugated dienes and the concerted [4+2] cycloaddition of a diene and dienophile to form a six-membered ring.",
+      "keywords": [
+        "conjugation",
+        "Diels-Alder",
+        "cycloaddition",
+        "diene",
+        "dienophile"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.resonance-structures",
+        "chemistry.organic-chemistry.alkene-addition"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.e1-e2-reactions",
+      "title": "E1 and E2 elimination reactions",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Substitution and elimination reactions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Elimination to form alkenes by concerted (E2) or stepwise carbocation (E1) mechanisms, including Zaitsev's rule for product selectivity.",
+      "keywords": [
+        "E1",
+        "E2",
+        "elimination",
+        "Zaitsev's rule",
+        "alkene formation"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.sn1-sn2-reactions"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.electronegativity-bond-polarity",
+      "title": "Electronegativity, bond polarity, and inductive effects",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Structure and bonding",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "How electronegativity differences create dipoles and inductive effects that shape reactivity and acidity in organic molecules.",
+      "keywords": [
+        "electronegativity",
+        "dipole",
+        "inductive effect",
+        "polarity",
+        "partial charge"
+      ],
+      "prerequisites": [
+        "chemistry.high-school-chemistry.bond-polarity"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.organic-chemistry.electrophilic-aromatic-substitution",
+      "title": "Electrophilic aromatic substitution",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Aromatic compounds",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Substitution on benzene rings and how existing substituents direct new groups to ortho, meta, or para positions and affect reactivity.",
+      "keywords": [
+        "electrophilic aromatic substitution",
+        "EAS",
+        "directing effects",
+        "ortho-para",
+        "benzene"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.aromaticity"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.enols-enolates",
+      "title": "Enols, enolates, and alpha-carbon reactions",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Alpha carbon chemistry",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Keto-enol tautomerism, enolate formation, and alpha-carbon reactions such as alkylation and the aldol and Claisen condensations.",
+      "keywords": [
+        "enol",
+        "enolate",
+        "tautomerism",
+        "aldol",
+        "alpha carbon"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.carboxylic-acid-derivatives"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.epoxides-ethers",
+      "title": "Ethers and epoxide ring-opening",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Alcohols, ethers, epoxides, and sulfides",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Forming and cleaving ethers and the regioselective and stereospecific opening of strained epoxide rings under acidic and basic conditions.",
+      "keywords": [
+        "ether",
+        "epoxide",
+        "ring-opening",
+        "regioselectivity",
+        "Williamson synthesis"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.alcohols-reactions"
+      ],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.ir-spectroscopy",
+      "title": "Infrared (IR) spectroscopy",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Spectroscopy",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Identifying functional groups from characteristic IR absorption bands tied to bond vibrations and stretching frequencies.",
+      "keywords": [
+        "IR spectroscopy",
+        "functional group",
+        "absorption band",
+        "stretching frequency",
+        "wavenumber"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.nomenclature-functional-groups"
+      ],
+      "representations": [
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.organic-chemistry.nmr-spectroscopy",
+      "title": "Proton NMR spectroscopy",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Spectroscopy",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Using chemical shift, integration, and spin-spin splitting in 1H NMR spectra to deduce the structure of an organic molecule.",
+      "keywords": [
+        "NMR",
+        "chemical shift",
+        "splitting",
+        "integration",
+        "structure determination"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.ir-spectroscopy"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "chemistry.organic-chemistry.nomenclature-functional-groups",
+      "title": "IUPAC nomenclature and functional groups",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Alkanes, cycloalkanes, and functional groups",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Systematic IUPAC naming of alkanes and substituents and recognizing the common functional groups that define reactivity.",
+      "keywords": [
+        "IUPAC nomenclature",
+        "functional group",
+        "alkane",
+        "substituent",
+        "naming"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.bond-line-structures"
+      ],
+      "representations": [
+        "structural",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.organic-chemistry.optical-activity",
+      "title": "Optical activity and Fischer projections",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Stereochemistry",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "How chiral molecules rotate plane-polarized light, racemic mixtures, and representing stereochemistry with Fischer projections.",
+      "keywords": [
+        "optical activity",
+        "polarized light",
+        "racemic",
+        "Fischer projection",
+        "specific rotation"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.chirality-stereoisomers"
+      ],
+      "representations": [
+        "structural",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.organic-acid-base",
+      "title": "Organic acids and bases",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Resonance and acid-base chemistry",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Predicting relative acidity and basicity from conjugate-base stability, resonance, induction, and hybridization (the ARIO factors).",
+      "keywords": [
+        "acidity",
+        "pKa",
+        "conjugate base stability",
+        "Bronsted-Lowry",
+        "Lewis acid"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.resonance-structures",
+        "chemistry.ap-chemistry.weak-acid-base-equilibria"
+      ],
+      "representations": [
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "chemistry.organic-chemistry.resonance-structures",
+      "title": "Resonance structures and delocalization",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Resonance and acid-base chemistry",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Drawing resonance structures, using curved arrows to move electrons, and ranking contributors to understand delocalized systems.",
+      "keywords": [
+        "resonance",
+        "delocalization",
+        "curved arrow",
+        "contributor",
+        "conjugation"
+      ],
+      "prerequisites": [
+        "chemistry.ap-chemistry.resonance-formal-charge"
+      ],
+      "representations": [
+        "structural",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.sn1-sn2-reactions",
+      "title": "SN1 and SN2 reactions",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Substitution and elimination reactions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Nucleophilic substitution by concerted backside attack (SN2) versus stepwise carbocation pathway (SN1), and the factors selecting between them.",
+      "keywords": [
+        "SN1",
+        "SN2",
+        "nucleophile",
+        "leaving group",
+        "backside attack"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.chirality-stereoisomers",
+        "chemistry.organic-chemistry.organic-acid-base"
+      ],
+      "representations": [
+        "structural",
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "chemistry.organic-chemistry.substitution-vs-elimination",
+      "title": "Choosing between substitution and elimination",
+      "subject": "chemistry",
+      "course": "Organic chemistry",
+      "unit": "Substitution and elimination reactions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Using substrate, nucleophile/base strength, and temperature to predict whether SN1, SN2, E1, or E2 dominates.",
+      "keywords": [
+        "substitution vs elimination",
+        "substrate",
+        "base strength",
+        "decision",
+        "competing reactions"
+      ],
+      "prerequisites": [
+        "chemistry.organic-chemistry.e1-e2-reactions"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "medium"
+    }
+  ]
+}

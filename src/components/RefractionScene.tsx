@@ -44,8 +44,8 @@ export default function RefractionScene() {
         <path className="ray ray--c" d="M262 262 C 330 300, 360 350, 430 344" />
 
         {/* three representation tiles */}
-        <Tile y={104} channel="a" label="GRAPH">
-          <GraphGlyph />
+        <Tile y={104} channel="a" label="MODEL">
+          <CubeGlyph />
         </Tile>
         <Tile y={206} channel="b" label="ANALOGY">
           <PendulumGlyph />
@@ -71,7 +71,7 @@ function Tile({
 }) {
   const color =
     channel === 'a'
-      ? 'var(--ch-graph)'
+      ? 'var(--ch-model)'
       : channel === 'b'
         ? 'var(--ch-analogy)'
         : 'var(--ch-steps)'
@@ -94,16 +94,29 @@ function Tile({
   )
 }
 
-function GraphGlyph() {
+function CubeGlyph() {
+  // A small isometric block — the hands-on 3D "model" channel in miniature.
   return (
-    <g stroke="var(--ch-graph)" fill="none">
-      <path d="M0 36 L118 36" stroke="var(--line)" strokeWidth="1" />
-      <path
-        id="curve"
-        d="M2 34 C 30 34, 36 6, 60 18 S 96 34, 118 8"
-        strokeWidth="2"
+    <g className="cube-bob">
+      <polygon
+        points="56,1 69,8.5 56,16 43,8.5"
+        fill="var(--ch-model)"
+        fillOpacity="0.85"
+        stroke="var(--ink)"
+        strokeWidth="1"
       />
-      <circle className="dot-on-curve" r="3.5" fill="var(--ch-graph)" stroke="none" />
+      <polygon
+        points="69,8.5 69,23.5 56,31 56,16"
+        fill="oklch(0.46 0.035 285)"
+        stroke="var(--line)"
+        strokeWidth="1"
+      />
+      <polygon
+        points="43,8.5 56,16 56,31 43,23.5"
+        fill="oklch(0.34 0.03 285)"
+        stroke="var(--line)"
+        strokeWidth="1"
+      />
     </g>
   )
 }

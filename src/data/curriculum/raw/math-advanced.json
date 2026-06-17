@@ -1,0 +1,3362 @@
+{
+  "courses": [
+    {
+      "slug": "ap-statistics",
+      "name": "AP Statistics",
+      "subject": "math",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "units": [
+        "Exploring categorical data",
+        "Exploring one-variable quantitative data: Displaying and describing",
+        "Exploring one-variable quantitative data: Summary statistics",
+        "Modeling data distributions",
+        "Exploring two-variable quantitative data",
+        "Study design",
+        "Probability",
+        "Counting, permutations, and combinations",
+        "Random variables and probability distributions",
+        "Sampling distributions",
+        "Confidence intervals",
+        "Significance tests (hypothesis testing)",
+        "Inference for categorical data: Chi-square",
+        "Inference for quantitative data: Slopes"
+      ],
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics"
+    },
+    {
+      "slug": "multivariable-calculus",
+      "name": "Multivariable calculus",
+      "subject": "math",
+      "gradeBand": "college",
+      "level": "college",
+      "units": [
+        "Thinking about multivariable functions",
+        "Derivatives of multivariable functions",
+        "Applications of multivariable derivatives",
+        "Integrating multivariable functions",
+        "Green's, Stokes', and the divergence theorems"
+      ],
+      "khanUrl": "https://www.khanacademy.org/math/multivariable-calculus"
+    },
+    {
+      "slug": "linear-algebra",
+      "name": "Linear algebra",
+      "subject": "math",
+      "gradeBand": "college",
+      "level": "college",
+      "units": [
+        "Vectors and spaces",
+        "Matrix transformations",
+        "Alternate coordinate systems (bases)"
+      ],
+      "khanUrl": "https://www.khanacademy.org/math/linear-algebra"
+    },
+    {
+      "slug": "differential-equations",
+      "name": "Differential equations",
+      "subject": "math",
+      "gradeBand": "college",
+      "level": "college",
+      "units": [
+        "First order differential equations",
+        "Second order linear equations",
+        "Laplace transform"
+      ],
+      "khanUrl": "https://www.khanacademy.org/math/differential-equations"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "math.ap-statistics.two-way-tables",
+      "title": "Two-way tables and marginal/conditional distributions",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Exploring categorical data",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Organizing two categorical variables in a contingency table and reading off marginal, joint, and conditional distributions to detect association.",
+      "keywords": [
+        "contingency table",
+        "marginal distribution",
+        "conditional distribution",
+        "categorical",
+        "association"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "structural",
+        "procedural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/analyzing-categorical-ap"
+    },
+    {
+      "id": "math.ap-statistics.bar-charts-categorical",
+      "title": "Bar charts and segmented bar charts",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Exploring categorical data",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Displaying counts or proportions of a categorical variable with bar charts, and comparing groups with side-by-side or segmented bars.",
+      "keywords": [
+        "bar chart",
+        "segmented bar",
+        "frequency",
+        "relative frequency",
+        "categorical"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.two-way-tables"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.dotplots-histograms",
+      "title": "Dot plots, histograms, and stem-and-leaf plots",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Exploring one-variable quantitative data: Displaying and describing",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Visualizing the distribution of one quantitative variable and describing its shape, center, and spread.",
+      "keywords": [
+        "histogram",
+        "dot plot",
+        "stem-and-leaf",
+        "distribution shape",
+        "frequency"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/quantitative-data-ap"
+    },
+    {
+      "id": "math.ap-statistics.shape-skew-outliers",
+      "title": "Describing distributions: shape, skew, and outliers",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Exploring one-variable quantitative data: Displaying and describing",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Characterizing a distribution as symmetric or skewed, unimodal or multimodal, and identifying gaps and outliers.",
+      "keywords": [
+        "skewness",
+        "symmetric",
+        "unimodal",
+        "outlier",
+        "modality"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.dotplots-histograms"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.mean-median-spread",
+      "title": "Measures of center and spread",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Exploring one-variable quantitative data: Summary statistics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Computing and interpreting mean, median, range, IQR, variance, and standard deviation as summaries of a distribution.",
+      "keywords": [
+        "mean",
+        "median",
+        "standard deviation",
+        "IQR",
+        "variance"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.dotplots-histograms"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap"
+    },
+    {
+      "id": "math.ap-statistics.boxplots-five-number",
+      "title": "Boxplots and the five-number summary",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Exploring one-variable quantitative data: Summary statistics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Summarizing a distribution with the five-number summary and comparing groups with parallel boxplots and the 1.5*IQR outlier rule.",
+      "keywords": [
+        "boxplot",
+        "five-number summary",
+        "quartiles",
+        "IQR rule",
+        "outlier"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.mean-median-spread"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.normal-distribution",
+      "title": "The normal distribution and the empirical rule",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Modeling data distributions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Modeling bell-shaped data with the normal curve and using the 68-95-99.7 rule to estimate proportions.",
+      "keywords": [
+        "normal distribution",
+        "bell curve",
+        "empirical rule",
+        "68-95-99.7",
+        "density curve"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.mean-median-spread"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/modeling-distributions-of-data"
+    },
+    {
+      "id": "math.ap-statistics.z-scores",
+      "title": "Z-scores and standardization",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Modeling data distributions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Converting values to z-scores to express position in standard-deviation units and comparing values across different distributions.",
+      "keywords": [
+        "z-score",
+        "standardization",
+        "standard normal",
+        "percentile",
+        "relative position"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.normal-distribution"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.normal-probability-calculations",
+      "title": "Normal probability and percentile calculations",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Modeling data distributions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Finding areas under the normal curve to compute probabilities and inverse-normal values to find cutoffs from percentiles.",
+      "keywords": [
+        "normal probability",
+        "area under curve",
+        "inverse normal",
+        "percentile",
+        "z-table"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.z-scores"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.scatterplots-correlation",
+      "title": "Scatterplots and correlation",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Exploring two-variable quantitative data",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Displaying the relationship between two quantitative variables and quantifying linear strength and direction with the correlation coefficient r.",
+      "keywords": [
+        "scatterplot",
+        "correlation",
+        "r",
+        "linear association",
+        "direction"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.dotplots-histograms"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/bivariate-data-ap"
+    },
+    {
+      "id": "math.ap-statistics.least-squares-regression",
+      "title": "Least-squares regression line",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Exploring two-variable quantitative data",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Fitting a line that minimizes squared residuals and interpreting its slope and intercept in context.",
+      "keywords": [
+        "regression line",
+        "least squares",
+        "slope",
+        "intercept",
+        "prediction"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.scatterplots-correlation"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.residuals-rsquared",
+      "title": "Residuals, residual plots, and R-squared",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Exploring two-variable quantitative data",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Using residuals to assess fit, reading residual plots for non-linear patterns, and interpreting the coefficient of determination.",
+      "keywords": [
+        "residual",
+        "residual plot",
+        "r-squared",
+        "goodness of fit",
+        "coefficient of determination"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.least-squares-regression"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.sampling-methods",
+      "title": "Sampling methods and bias",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Study design",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Comparing simple random, stratified, cluster, and systematic sampling, and recognizing sources of sampling bias.",
+      "keywords": [
+        "simple random sample",
+        "stratified",
+        "cluster",
+        "bias",
+        "sampling"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/gathering-data-ap"
+    },
+    {
+      "id": "math.ap-statistics.experimental-design",
+      "title": "Experiments, control, and randomization",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Study design",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Designing experiments with treatments, control, randomization, replication, and blocking to support causal conclusions.",
+      "keywords": [
+        "experiment",
+        "randomization",
+        "control group",
+        "blocking",
+        "confounding"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.sampling-methods"
+      ],
+      "representations": [
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.probability-rules",
+      "title": "Basic probability rules and Venn diagrams",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Probability",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Computing probabilities using complement, addition, and multiplication rules, visualized with Venn diagrams.",
+      "keywords": [
+        "probability",
+        "addition rule",
+        "complement",
+        "Venn diagram",
+        "mutually exclusive"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "structural",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/probability-ap"
+    },
+    {
+      "id": "math.ap-statistics.conditional-probability",
+      "title": "Conditional probability and independence",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Probability",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Updating probabilities given information, testing for independence, and using tree diagrams for multi-stage events.",
+      "keywords": [
+        "conditional probability",
+        "independence",
+        "tree diagram",
+        "Bayes",
+        "multiplication rule"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.probability-rules"
+      ],
+      "representations": [
+        "structural",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.permutations-combinations",
+      "title": "Permutations and combinations",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Counting, permutations, and combinations",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Counting ordered arrangements and unordered selections to compute probabilities of complex events.",
+      "keywords": [
+        "permutation",
+        "combination",
+        "factorial",
+        "counting principle",
+        "nCr"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.probability-rules"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/probability-combinatorics"
+    },
+    {
+      "id": "math.ap-statistics.discrete-random-variables",
+      "title": "Discrete random variables: mean and variance",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Random variables and probability distributions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Describing a discrete distribution with a probability table and computing expected value and variance.",
+      "keywords": [
+        "random variable",
+        "expected value",
+        "variance",
+        "probability distribution",
+        "discrete"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.probability-rules"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/random-variables-ap"
+    },
+    {
+      "id": "math.ap-statistics.binomial-distribution",
+      "title": "Binomial distribution",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Random variables and probability distributions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Modeling the number of successes in a fixed number of independent trials, and computing binomial probabilities, mean, and standard deviation.",
+      "keywords": [
+        "binomial",
+        "Bernoulli trials",
+        "n choose k",
+        "success probability",
+        "distribution"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.discrete-random-variables",
+        "math.ap-statistics.permutations-combinations"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.geometric-distribution",
+      "title": "Geometric distribution",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Random variables and probability distributions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Modeling the number of trials until the first success, and computing geometric probabilities and expected value.",
+      "keywords": [
+        "geometric distribution",
+        "first success",
+        "waiting time",
+        "expected value",
+        "trials"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.discrete-random-variables"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.combining-random-variables",
+      "title": "Combining and transforming random variables",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Random variables and probability distributions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Finding the mean and variance of sums, differences, and linear transformations of random variables.",
+      "keywords": [
+        "sum of random variables",
+        "linear transformation",
+        "mean",
+        "variance",
+        "independence"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.discrete-random-variables"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.sampling-distributions",
+      "title": "Sampling distributions",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Sampling distributions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Understanding how a statistic varies from sample to sample, including the sampling distribution of the sample mean and proportion.",
+      "keywords": [
+        "sampling distribution",
+        "sampling variability",
+        "standard error",
+        "sample statistic",
+        "unbiased estimator"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.normal-distribution",
+        "math.ap-statistics.discrete-random-variables"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "medium",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/sampling-distribution-ap"
+    },
+    {
+      "id": "math.ap-statistics.central-limit-theorem",
+      "title": "Central limit theorem",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Sampling distributions",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Explaining why the sampling distribution of the mean becomes approximately normal as sample size grows, regardless of population shape.",
+      "keywords": [
+        "central limit theorem",
+        "CLT",
+        "normality",
+        "sample size",
+        "sampling distribution of the mean"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.sampling-distributions"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.ap-statistics.confidence-interval-proportion",
+      "title": "Confidence interval for a proportion",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Confidence intervals",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Constructing and interpreting a confidence interval for a population proportion using the standard error and a critical z-value.",
+      "keywords": [
+        "confidence interval",
+        "proportion",
+        "margin of error",
+        "critical value",
+        "confidence level"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.sampling-distributions"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/estimating-confidence-ap"
+    },
+    {
+      "id": "math.ap-statistics.confidence-interval-mean",
+      "title": "Confidence interval for a mean (t-interval)",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Confidence intervals",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Using the t-distribution to build a confidence interval for a population mean when the population standard deviation is unknown.",
+      "keywords": [
+        "t-interval",
+        "confidence interval",
+        "t-distribution",
+        "degrees of freedom",
+        "mean"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.central-limit-theorem"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.hypothesis-testing-logic",
+      "title": "Hypothesis testing: null, alternative, and p-values",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Significance tests (hypothesis testing)",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Framing null and alternative hypotheses, computing a test statistic, and interpreting the p-value against a significance level.",
+      "keywords": [
+        "null hypothesis",
+        "alternative hypothesis",
+        "p-value",
+        "significance level",
+        "test statistic"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.sampling-distributions"
+      ],
+      "representations": [
+        "graph",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/xfb5d8e68:inference-categorical-proportions"
+    },
+    {
+      "id": "math.ap-statistics.type-i-ii-errors",
+      "title": "Type I and Type II errors and power",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Significance tests (hypothesis testing)",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Distinguishing false-positive and false-negative errors and understanding how sample size and effect size affect the power of a test.",
+      "keywords": [
+        "Type I error",
+        "Type II error",
+        "power",
+        "alpha",
+        "beta"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.hypothesis-testing-logic"
+      ],
+      "representations": [
+        "graph",
+        "procedural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.ap-statistics.two-sample-tests",
+      "title": "Two-sample tests for means and proportions",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Significance tests (hypothesis testing)",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Comparing two groups with two-sample t-tests and two-proportion z-tests, including paired designs.",
+      "keywords": [
+        "two-sample t-test",
+        "two-proportion z-test",
+        "paired",
+        "difference of means",
+        "comparison"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.hypothesis-testing-logic",
+        "math.ap-statistics.confidence-interval-mean"
+      ],
+      "representations": [
+        "graph",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.ap-statistics.chi-square-tests",
+      "title": "Chi-square tests for categorical data",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Inference for categorical data: Chi-square",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Testing goodness-of-fit, independence, and homogeneity by comparing observed and expected counts with the chi-square statistic.",
+      "keywords": [
+        "chi-square",
+        "goodness of fit",
+        "independence",
+        "expected counts",
+        "categorical inference"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.hypothesis-testing-logic",
+        "math.ap-statistics.two-way-tables"
+      ],
+      "representations": [
+        "graph",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/chi-square-tests"
+    },
+    {
+      "id": "math.ap-statistics.inference-for-slopes",
+      "title": "Inference for regression slopes",
+      "subject": "math",
+      "course": "AP Statistics",
+      "unit": "Inference for quantitative data: Slopes",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Constructing confidence intervals and significance tests for the slope of a least-squares regression line.",
+      "keywords": [
+        "regression inference",
+        "slope",
+        "t-test for slope",
+        "standard error of slope",
+        "confidence interval"
+      ],
+      "prerequisites": [
+        "math.ap-statistics.least-squares-regression",
+        "math.ap-statistics.hypothesis-testing-logic"
+      ],
+      "representations": [
+        "graph",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/ap-statistics/inference-slope-linear-regression"
+    },
+    {
+      "id": "math.multivariable-calculus.functions-of-several-variables",
+      "title": "Functions of several variables",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Thinking about multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Extending the idea of a function to several inputs and outputs, including scalar fields, parametric curves, and vector-valued functions.",
+      "keywords": [
+        "multivariable function",
+        "scalar field",
+        "vector-valued function",
+        "domain",
+        "mapping"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/math/multivariable-calculus/thinking-about-multivariable-function"
+    },
+    {
+      "id": "math.multivariable-calculus.graphs-and-level-curves",
+      "title": "Graphs, level curves, and contour maps",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Thinking about multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Visualizing a function of two variables as a surface in 3D and as contour lines (level curves) in the plane.",
+      "keywords": [
+        "surface",
+        "level curve",
+        "contour map",
+        "graph of z=f(x,y)",
+        "topographic"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.functions-of-several-variables"
+      ],
+      "representations": [
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.parametric-surfaces",
+      "title": "Parametric curves and surfaces",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Thinking about multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Describing curves and surfaces in space by mapping parameters to position vectors, the foundation for line and surface integrals.",
+      "keywords": [
+        "parametric surface",
+        "parametrization",
+        "position vector",
+        "space curve",
+        "mapping"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.functions-of-several-variables"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.vector-fields",
+      "title": "Vector fields",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Thinking about multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Assigning a vector to every point in the plane or space, visualized as a field of arrows representing flow, force, or velocity.",
+      "keywords": [
+        "vector field",
+        "flow",
+        "arrows",
+        "gradient field",
+        "field lines"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.functions-of-several-variables"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.partial-derivatives",
+      "title": "Partial derivatives",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Measuring the rate of change of a multivariable function with respect to one variable while holding the others fixed, seen as a slope of a slice of the surface.",
+      "keywords": [
+        "partial derivative",
+        "slice",
+        "rate of change",
+        "second partials",
+        "tangent slope"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.graphs-and-level-curves"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives"
+    },
+    {
+      "id": "math.multivariable-calculus.gradient",
+      "title": "The gradient and directional derivatives",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Packaging partial derivatives into the gradient vector, which points in the direction of steepest ascent and is perpendicular to level curves.",
+      "keywords": [
+        "gradient",
+        "directional derivative",
+        "steepest ascent",
+        "del operator",
+        "level curve normal"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.partial-derivatives",
+        "math.multivariable-calculus.vector-fields"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.divergence-curl",
+      "title": "Divergence and curl",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Local measures of how a vector field spreads out (divergence) and rotates (curl) at a point.",
+      "keywords": [
+        "divergence",
+        "curl",
+        "vector field",
+        "rotation",
+        "source and sink"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.vector-fields",
+        "math.multivariable-calculus.partial-derivatives"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.jacobian",
+      "title": "The Jacobian matrix and local linearization",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Using the matrix of partial derivatives to linearly approximate a transformation near a point and measure local area/volume scaling.",
+      "keywords": [
+        "Jacobian",
+        "local linearization",
+        "total derivative",
+        "tangent plane",
+        "approximation"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.partial-derivatives"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.tangent-planes",
+      "title": "Tangent planes and local linear approximation",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Applications of multivariable derivatives",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Approximating a surface near a point with the tangent plane defined by partial derivatives.",
+      "keywords": [
+        "tangent plane",
+        "linear approximation",
+        "differential",
+        "surface",
+        "local linearity"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.partial-derivatives"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives"
+    },
+    {
+      "id": "math.multivariable-calculus.quadratic-approximation",
+      "title": "Quadratic approximation and the Hessian",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Applications of multivariable derivatives",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Approximating a surface with a second-order paraboloid using second partial derivatives collected in the Hessian matrix.",
+      "keywords": [
+        "quadratic approximation",
+        "Hessian",
+        "second partials",
+        "paraboloid",
+        "Taylor"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.tangent-planes"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.optimization-critical-points",
+      "title": "Optimizing multivariable functions: critical points and the second-derivative test",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Applications of multivariable derivatives",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Finding maxima, minima, and saddle points where the gradient vanishes and classifying them with the second-partial-derivative test.",
+      "keywords": [
+        "critical point",
+        "saddle point",
+        "second derivative test",
+        "local maximum",
+        "local minimum"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.gradient",
+        "math.multivariable-calculus.quadratic-approximation"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.lagrange-multipliers",
+      "title": "Constrained optimization and Lagrange multipliers",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Applications of multivariable derivatives",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Optimizing a function subject to a constraint by aligning the gradients of the objective and constraint surfaces.",
+      "keywords": [
+        "Lagrange multiplier",
+        "constrained optimization",
+        "constraint",
+        "gradient alignment",
+        "tangency"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.gradient",
+        "math.multivariable-calculus.optimization-critical-points"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.double-integrals",
+      "title": "Double integrals",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Integrating a function over a planar region to compute the volume under a surface, evaluated as an iterated integral.",
+      "keywords": [
+        "double integral",
+        "iterated integral",
+        "volume under surface",
+        "region",
+        "Fubini"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.graphs-and-level-curves"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/math/multivariable-calculus/integrating-multivariable-functions"
+    },
+    {
+      "id": "math.multivariable-calculus.triple-integrals",
+      "title": "Triple integrals",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Integrating over a three-dimensional solid region to compute volume, mass, or average value.",
+      "keywords": [
+        "triple integral",
+        "solid region",
+        "volume",
+        "iterated integral",
+        "mass"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.double-integrals"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.polar-cylindrical-spherical",
+      "title": "Integration in polar, cylindrical, and spherical coordinates",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Changing coordinates to simplify integrals over circular and spherical regions, with the Jacobian supplying the area/volume element.",
+      "keywords": [
+        "polar coordinates",
+        "cylindrical",
+        "spherical",
+        "change of variables",
+        "Jacobian"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.triple-integrals",
+        "math.multivariable-calculus.jacobian"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.line-integrals",
+      "title": "Line integrals in scalar and vector fields",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Integrating along a curve to compute arc-length-weighted quantities or the work done by a vector field along a path.",
+      "keywords": [
+        "line integral",
+        "work",
+        "vector field",
+        "path",
+        "arc length"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.parametric-surfaces",
+        "math.multivariable-calculus.vector-fields"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.surface-integrals-flux",
+      "title": "Surface integrals and flux",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Integrating over a parametrized surface to compute area or the flux of a vector field through the surface.",
+      "keywords": [
+        "surface integral",
+        "flux",
+        "normal vector",
+        "parametrized surface",
+        "vector field"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.parametric-surfaces",
+        "math.multivariable-calculus.line-integrals"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.greens-theorem",
+      "title": "Green's theorem",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Green's, Stokes', and the divergence theorems",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Relating a line integral around a closed planar curve to a double integral of curl over the region it encloses.",
+      "keywords": [
+        "Green's theorem",
+        "circulation",
+        "curl",
+        "closed curve",
+        "planar region"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.line-integrals",
+        "math.multivariable-calculus.divergence-curl"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/math/multivariable-calculus/greens-theorem-and-stokes-theorem"
+    },
+    {
+      "id": "math.multivariable-calculus.stokes-theorem",
+      "title": "Stokes' theorem",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Green's, Stokes', and the divergence theorems",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Generalizing Green's theorem to surfaces in space, relating the circulation around a boundary curve to the curl flux through the surface.",
+      "keywords": [
+        "Stokes' theorem",
+        "curl",
+        "circulation",
+        "boundary curve",
+        "surface flux"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.surface-integrals-flux",
+        "math.multivariable-calculus.greens-theorem"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.divergence-theorem",
+      "title": "Divergence theorem",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Green's, Stokes', and the divergence theorems",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Relating the flux of a vector field through a closed surface to the triple integral of its divergence over the enclosed solid.",
+      "keywords": [
+        "divergence theorem",
+        "Gauss theorem",
+        "flux",
+        "closed surface",
+        "divergence"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.surface-integrals-flux",
+        "math.multivariable-calculus.divergence-curl"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.vectors-and-operations",
+      "title": "Vectors and vector operations",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Representing vectors as arrows or coordinate lists and combining them with addition and scalar multiplication.",
+      "keywords": [
+        "vector",
+        "addition",
+        "scalar multiplication",
+        "components",
+        "magnitude"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces"
+    },
+    {
+      "id": "math.linear-algebra.linear-combinations-span",
+      "title": "Linear combinations and span",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Building new vectors as weighted sums of others and describing the span as the set of all reachable vectors (a line, plane, or all of space).",
+      "keywords": [
+        "linear combination",
+        "span",
+        "spanning set",
+        "subspace",
+        "weights"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.vectors-and-operations"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.linear-independence",
+      "title": "Linear independence",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Determining whether a set of vectors contains redundancy, i.e. whether any vector lies in the span of the others.",
+      "keywords": [
+        "linear independence",
+        "redundancy",
+        "dependent",
+        "trivial solution",
+        "basis test"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.linear-combinations-span"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.subspaces-basis-dimension",
+      "title": "Subspaces, basis, and dimension",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Defining a subspace and choosing a minimal spanning, independent set (a basis) whose size is the dimension.",
+      "keywords": [
+        "subspace",
+        "basis",
+        "dimension",
+        "spanning",
+        "coordinates"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.linear-independence"
+      ],
+      "representations": [
+        "structural",
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.dot-product",
+      "title": "Dot product and orthogonality",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Measuring length, angle, and projection between vectors, and recognizing orthogonality when the dot product is zero.",
+      "keywords": [
+        "dot product",
+        "inner product",
+        "orthogonal",
+        "projection",
+        "angle"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.vectors-and-operations"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.cross-product",
+      "title": "Cross product",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Producing a vector perpendicular to two given vectors in 3D, with magnitude equal to the area of the parallelogram they span.",
+      "keywords": [
+        "cross product",
+        "perpendicular",
+        "parallelogram area",
+        "right-hand rule",
+        "3D"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.dot-product"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.matrix-vector-product",
+      "title": "Matrices as linear transformations",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Interpreting matrix-vector multiplication as a linear transformation that moves space, sending basis vectors to the matrix columns.",
+      "keywords": [
+        "linear transformation",
+        "matrix-vector product",
+        "basis vectors",
+        "columns",
+        "mapping"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.linear-combinations-span"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/math/linear-algebra/matrix-transformations"
+    },
+    {
+      "id": "math.linear-algebra.composition-matrix-multiplication",
+      "title": "Composition of transformations and matrix multiplication",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Understanding matrix multiplication as applying one transformation after another.",
+      "keywords": [
+        "matrix multiplication",
+        "composition",
+        "transformation",
+        "associativity",
+        "order"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.matrix-vector-product"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.determinant",
+      "title": "The determinant",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Interpreting the determinant as the factor by which a transformation scales area or volume, with sign indicating orientation.",
+      "keywords": [
+        "determinant",
+        "area scaling",
+        "volume",
+        "orientation",
+        "invertibility"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.matrix-vector-product"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.matrix-inverse",
+      "title": "Inverse transformations and matrix inverses",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Undoing a transformation with its inverse matrix, which exists precisely when the determinant is nonzero.",
+      "keywords": [
+        "matrix inverse",
+        "invertible",
+        "identity",
+        "singular",
+        "undo transformation"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.determinant",
+        "math.linear-algebra.composition-matrix-multiplication"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.column-null-space",
+      "title": "Column space, null space, and rank",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Describing the image (column space) and kernel (null space) of a transformation and relating their dimensions through the rank-nullity theorem.",
+      "keywords": [
+        "column space",
+        "null space",
+        "rank",
+        "kernel",
+        "rank-nullity"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.subspaces-basis-dimension",
+        "math.linear-algebra.matrix-vector-product"
+      ],
+      "representations": [
+        "structural",
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.gaussian-elimination",
+      "title": "Solving linear systems with Gaussian elimination",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Row-reducing an augmented matrix to reduced row echelon form to solve a system of linear equations.",
+      "keywords": [
+        "Gaussian elimination",
+        "row echelon",
+        "RREF",
+        "augmented matrix",
+        "pivot"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.matrix-vector-product"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.linear-algebra.change-of-basis",
+      "title": "Change of basis",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Alternate coordinate systems (bases)",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Expressing the same vector or transformation in a different coordinate system using a change-of-basis matrix.",
+      "keywords": [
+        "change of basis",
+        "coordinates",
+        "basis matrix",
+        "similar matrices",
+        "representation"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.subspaces-basis-dimension",
+        "math.linear-algebra.matrix-inverse"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high",
+      "khanUrl": "https://www.khanacademy.org/math/linear-algebra/alternate-bases"
+    },
+    {
+      "id": "math.linear-algebra.orthogonal-projection",
+      "title": "Orthogonal projections and least squares",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Alternate coordinate systems (bases)",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Projecting a vector onto a subspace to find the closest approximation, the geometric basis of least-squares fitting.",
+      "keywords": [
+        "orthogonal projection",
+        "least squares",
+        "orthogonal complement",
+        "closest point",
+        "subspace"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.dot-product",
+        "math.linear-algebra.subspaces-basis-dimension"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.gram-schmidt",
+      "title": "Orthonormal bases and Gram-Schmidt",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Alternate coordinate systems (bases)",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Constructing an orthonormal basis from any basis via the Gram-Schmidt process, simplifying projections and coordinates.",
+      "keywords": [
+        "orthonormal basis",
+        "Gram-Schmidt",
+        "orthogonalization",
+        "QR",
+        "unit vectors"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.orthogonal-projection"
+      ],
+      "representations": [
+        "graph",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.eigenvalues-eigenvectors",
+      "title": "Eigenvalues and eigenvectors",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Alternate coordinate systems (bases)",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Finding directions a transformation only stretches or compresses (eigenvectors) and the corresponding scale factors (eigenvalues).",
+      "keywords": [
+        "eigenvalue",
+        "eigenvector",
+        "characteristic polynomial",
+        "invariant direction",
+        "scaling"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.determinant",
+        "math.linear-algebra.matrix-vector-product"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.diagonalization",
+      "title": "Eigenbasis and diagonalization",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Alternate coordinate systems (bases)",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Using an eigenbasis to write a transformation as a diagonal matrix, making powers and dynamics easy to compute.",
+      "keywords": [
+        "diagonalization",
+        "eigenbasis",
+        "diagonal matrix",
+        "matrix powers",
+        "similar"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.eigenvalues-eigenvectors",
+        "math.linear-algebra.change-of-basis"
+      ],
+      "representations": [
+        "symbolic",
+        "structural",
+        "graph"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.differential-equations.intro-slope-fields",
+      "title": "Introduction to differential equations and slope fields",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "First order differential equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Interpreting a differential equation as a rule for slopes and visualizing all solution curves with a direction (slope) field.",
+      "keywords": [
+        "differential equation",
+        "slope field",
+        "direction field",
+        "solution curve",
+        "order"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium",
+      "khanUrl": "https://www.khanacademy.org/math/differential-equations/first-order-differential-equations"
+    },
+    {
+      "id": "math.differential-equations.separable-equations",
+      "title": "Separable equations",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "First order differential equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Solving first-order equations by separating variables onto opposite sides and integrating each independently.",
+      "keywords": [
+        "separable equation",
+        "separation of variables",
+        "integration",
+        "first order",
+        "implicit solution"
+      ],
+      "prerequisites": [
+        "math.differential-equations.intro-slope-fields"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.differential-equations.exponential-models",
+      "title": "Exponential growth and decay models",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "First order differential equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Modeling quantities whose rate of change is proportional to their size, including population growth, decay, and Newton's law of cooling.",
+      "keywords": [
+        "exponential growth",
+        "decay",
+        "proportional rate",
+        "Newton's cooling",
+        "modeling"
+      ],
+      "prerequisites": [
+        "math.differential-equations.separable-equations"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.differential-equations.logistic-model",
+      "title": "The logistic growth model",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "First order differential equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Modeling growth that saturates at a carrying capacity, producing the characteristic S-shaped solution curve.",
+      "keywords": [
+        "logistic equation",
+        "carrying capacity",
+        "S-curve",
+        "saturation",
+        "equilibrium"
+      ],
+      "prerequisites": [
+        "math.differential-equations.exponential-models"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.differential-equations.eulers-method",
+      "title": "Euler's method",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "First order differential equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Numerically approximating a solution by stepping along the slope field in small increments.",
+      "keywords": [
+        "Euler's method",
+        "numerical approximation",
+        "step size",
+        "tangent line",
+        "iteration"
+      ],
+      "prerequisites": [
+        "math.differential-equations.intro-slope-fields"
+      ],
+      "representations": [
+        "graph",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.differential-equations.first-order-linear",
+      "title": "First-order linear equations and integrating factors",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "First order differential equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Solving linear first-order equations by multiplying through by an integrating factor to make the left side an exact derivative.",
+      "keywords": [
+        "first-order linear",
+        "integrating factor",
+        "exact derivative",
+        "general solution",
+        "linear ODE"
+      ],
+      "prerequisites": [
+        "math.differential-equations.separable-equations"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.differential-equations.second-order-homogeneous",
+      "title": "Second-order linear homogeneous equations",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Second order linear equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Solving constant-coefficient homogeneous equations via the characteristic equation, with real, repeated, or complex roots.",
+      "keywords": [
+        "second order",
+        "characteristic equation",
+        "homogeneous",
+        "constant coefficients",
+        "general solution"
+      ],
+      "prerequisites": [
+        "math.differential-equations.first-order-linear"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/differential-equations/second-order-differential-equations"
+    },
+    {
+      "id": "math.differential-equations.complex-roots-oscillation",
+      "title": "Complex roots and oscillatory solutions",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Second order linear equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Interpreting complex characteristic roots as sinusoidal solutions, linking the algebra to oscillating physical systems.",
+      "keywords": [
+        "complex roots",
+        "oscillation",
+        "sinusoidal",
+        "Euler's formula",
+        "damping"
+      ],
+      "prerequisites": [
+        "math.differential-equations.second-order-homogeneous"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.differential-equations.undetermined-coefficients",
+      "title": "Nonhomogeneous equations and undetermined coefficients",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Second order linear equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Finding a particular solution to a forced equation by guessing a form matching the forcing term and combining it with the homogeneous solution.",
+      "keywords": [
+        "nonhomogeneous",
+        "undetermined coefficients",
+        "particular solution",
+        "forcing function",
+        "superposition"
+      ],
+      "prerequisites": [
+        "math.differential-equations.second-order-homogeneous"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.differential-equations.spring-mass-damping",
+      "title": "Spring-mass systems, damping, and resonance",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Second order linear equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Modeling a mass on a spring as a second-order equation and classifying underdamped, critically damped, overdamped, and resonant behavior.",
+      "keywords": [
+        "spring-mass",
+        "damping",
+        "resonance",
+        "harmonic oscillator",
+        "amplitude"
+      ],
+      "prerequisites": [
+        "math.differential-equations.complex-roots-oscillation",
+        "math.differential-equations.undetermined-coefficients"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.differential-equations.laplace-transform-definition",
+      "title": "The Laplace transform: definition and properties",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Laplace transform",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Defining the Laplace transform as an integral operator that maps functions of time to functions of a complex frequency variable, and establishing its linearity.",
+      "keywords": [
+        "Laplace transform",
+        "integral transform",
+        "linear operator",
+        "transform table",
+        "frequency domain"
+      ],
+      "prerequisites": [
+        "math.differential-equations.second-order-homogeneous"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low",
+      "khanUrl": "https://www.khanacademy.org/math/differential-equations/laplace-transform"
+    },
+    {
+      "id": "math.differential-equations.inverse-laplace",
+      "title": "Inverse Laplace transform and partial fractions",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Laplace transform",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Recovering a time-domain function from its transform, using partial-fraction decomposition to match table entries.",
+      "keywords": [
+        "inverse Laplace",
+        "partial fractions",
+        "transform table",
+        "time domain",
+        "decomposition"
+      ],
+      "prerequisites": [
+        "math.differential-equations.laplace-transform-definition"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.differential-equations.laplace-solving-ivp",
+      "title": "Solving initial value problems with the Laplace transform",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Laplace transform",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Transforming a differential equation and its initial conditions into an algebraic equation, solving, and inverting to obtain the solution.",
+      "keywords": [
+        "initial value problem",
+        "Laplace method",
+        "algebraic equation",
+        "initial conditions",
+        "solution"
+      ],
+      "prerequisites": [
+        "math.differential-equations.inverse-laplace"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.differential-equations.step-impulse-functions",
+      "title": "Step functions, impulses, and the Dirac delta",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Laplace transform",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Using the unit step (Heaviside) function and the Dirac delta to model switches and instantaneous forcing, and transforming them with the Laplace transform.",
+      "keywords": [
+        "unit step function",
+        "Heaviside",
+        "Dirac delta",
+        "impulse",
+        "piecewise forcing"
+      ],
+      "prerequisites": [
+        "math.differential-equations.laplace-solving-ivp"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.multivariable-calculus.transformations-of-space",
+      "title": "Transformations and mappings of space",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Thinking about multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Viewing a vector-valued function as a map that warps one region of space into another, bending grids and distorting areas.",
+      "keywords": [
+        "transformation",
+        "mapping",
+        "warp space",
+        "input output space",
+        "deformation"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.functions-of-several-variables"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.three-dimensional-graphs",
+      "title": "Three-dimensional graphs of two-variable functions",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Thinking about multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Reading and building the surface z = f(x, y) above the xy-plane, including peaks, valleys, ridges, and saddles.",
+      "keywords": [
+        "3D graph",
+        "surface plot",
+        "saddle",
+        "ridge",
+        "z = f(x,y)"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.functions-of-several-variables"
+      ],
+      "representations": [
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.vector-valued-functions",
+      "title": "Vector-valued functions and space curves",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Thinking about multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Tracing a moving point through space as a parameter advances, with derivative and integral giving velocity and displacement along the curve.",
+      "keywords": [
+        "vector-valued function",
+        "space curve",
+        "velocity vector",
+        "tangent vector",
+        "parametrized path"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.functions-of-several-variables"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.directional-derivatives",
+      "title": "Directional derivatives",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Measuring the rate of change of a surface as you step in any chosen unit direction, computed as the gradient dotted with that direction.",
+      "keywords": [
+        "directional derivative",
+        "unit direction",
+        "slope in a direction",
+        "gradient dot",
+        "rate of change"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.gradient"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.multivariable-chain-rule",
+      "title": "The multivariable chain rule",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Differentiating compositions where inputs depend on other variables, tracking contributions through a tree of dependencies.",
+      "keywords": [
+        "chain rule",
+        "dependency tree",
+        "composition",
+        "total derivative",
+        "intermediate variables"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.partial-derivatives",
+        "math.multivariable-calculus.gradient"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural",
+        "structural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.multivariable-calculus.second-partials-mixed",
+      "title": "Second partial derivatives and Clairaut's theorem",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Taking derivatives twice to measure concavity and twist of a surface, with mixed partials equal under continuity (Clairaut's theorem).",
+      "keywords": [
+        "second partial derivative",
+        "mixed partials",
+        "Clairaut's theorem",
+        "concavity",
+        "curvature"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.partial-derivatives"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.divergence",
+      "title": "Divergence of a vector field",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Measuring how much a vector field acts as a source or sink at each point, the net outward flow per unit area or volume.",
+      "keywords": [
+        "divergence",
+        "source",
+        "sink",
+        "outward flow",
+        "nabla dot"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.vector-fields",
+        "math.multivariable-calculus.partial-derivatives"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.curl",
+      "title": "Curl of a vector field",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Measuring the local spinning of a vector field, with the curl vector pointing along the axis of rotation by the right-hand rule.",
+      "keywords": [
+        "curl",
+        "rotation",
+        "circulation density",
+        "right-hand rule",
+        "nabla cross"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.vector-fields",
+        "math.multivariable-calculus.partial-derivatives"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.two-dimensional-curl-divergence",
+      "title": "2D curl and 2D divergence",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The scalar curl and divergence of a planar vector field, capturing rotation and expansion of flow in the plane.",
+      "keywords": [
+        "2D curl",
+        "2D divergence",
+        "planar flow",
+        "rotation",
+        "expansion"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.divergence",
+        "math.multivariable-calculus.curl"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.laplacian",
+      "title": "The Laplacian",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Derivatives of multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The divergence of the gradient, measuring how a point's value compares to the average of its neighbors, central to heat flow and harmonic functions.",
+      "keywords": [
+        "Laplacian",
+        "divergence of gradient",
+        "harmonic function",
+        "heat equation",
+        "neighborhood average"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.gradient",
+        "math.multivariable-calculus.divergence"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.optimization-applications",
+      "title": "Applied optimization with multivariable functions",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Applications of multivariable derivatives",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Using critical points and boundary analysis to maximize or minimize quantities like volume, cost, or distance in applied settings.",
+      "keywords": [
+        "applied optimization",
+        "maximum",
+        "minimum",
+        "boundary analysis",
+        "modeling"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.optimization-critical-points"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.double-integrals-polar",
+      "title": "Double integrals in polar coordinates",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Evaluating double integrals over circular and annular regions by switching to polar coordinates with the r dr dθ area element.",
+      "keywords": [
+        "polar double integral",
+        "r dr dtheta",
+        "circular region",
+        "annulus",
+        "area element"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.double-integrals"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.change-of-variables-jacobian",
+      "title": "Change of variables and the Jacobian determinant",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Transforming an integral to new coordinates, with the Jacobian determinant accounting for how the substitution stretches area or volume.",
+      "keywords": [
+        "change of variables",
+        "Jacobian determinant",
+        "substitution",
+        "area scaling",
+        "coordinate transform"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.double-integrals",
+        "math.multivariable-calculus.jacobian"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.fundamental-theorem-line-integrals",
+      "title": "Conservative fields and the fundamental theorem of line integrals",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Recognizing gradient (conservative) fields whose line integrals depend only on endpoints, evaluated via a potential function.",
+      "keywords": [
+        "conservative field",
+        "potential function",
+        "path independence",
+        "gradient field",
+        "fundamental theorem"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.line-integrals",
+        "math.multivariable-calculus.gradient"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.surface-area",
+      "title": "Surface area of parametrized surfaces",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Computing the area of a curved surface by integrating the magnitude of the cross product of its tangent vectors over the parameter domain.",
+      "keywords": [
+        "surface area",
+        "parametrized surface",
+        "tangent vectors",
+        "cross product",
+        "area element"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.parametric-surfaces",
+        "math.multivariable-calculus.surface-integrals-flux"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.subspaces",
+      "title": "Subspaces of R-n",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Identifying subsets closed under addition and scalar multiplication, such as lines and planes through the origin, that behave like smaller vector spaces.",
+      "keywords": [
+        "subspace",
+        "closure",
+        "line through origin",
+        "plane through origin",
+        "vector space"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.linear-combinations-span"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.basis-of-subspace",
+      "title": "Basis of a subspace",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Choosing a minimal set of independent vectors that spans a subspace, giving every vector unique coordinates.",
+      "keywords": [
+        "basis",
+        "spanning set",
+        "independent vectors",
+        "coordinates",
+        "minimal"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.subspaces",
+        "math.linear-algebra.linear-independence"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.functions-and-transformations",
+      "title": "Functions and transformations",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Treating a transformation as a function between vector spaces, with domain, codomain, image, and preimage.",
+      "keywords": [
+        "transformation",
+        "function",
+        "domain",
+        "codomain",
+        "image preimage"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.vectors-and-operations"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.linear-transformation-matrices",
+      "title": "Finding the matrix of a linear transformation",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Building the matrix of a linear transformation by recording where it sends each standard basis vector as a column.",
+      "keywords": [
+        "transformation matrix",
+        "standard basis",
+        "columns",
+        "linear map",
+        "image of basis"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.matrix-vector-product",
+        "math.linear-algebra.functions-and-transformations"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.rotation-reflection-projection-matrices",
+      "title": "Rotation, reflection, and projection matrices",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Reading off the standard 2D and 3D matrices that rotate, reflect across a line or plane, or project onto a subspace.",
+      "keywords": [
+        "rotation matrix",
+        "reflection matrix",
+        "projection matrix",
+        "geometric transformation",
+        "shear"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.linear-transformation-matrices"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.image-and-preimage",
+      "title": "Image and preimage of a transformation",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Tracking where a set of points lands under a transformation (image) and which inputs map to a given output (preimage).",
+      "keywords": [
+        "image",
+        "preimage",
+        "range",
+        "mapping",
+        "transformation"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.functions-and-transformations"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.matrix-multiplication-mechanics",
+      "title": "Matrix multiplication: rows, columns, and mechanics",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Computing matrix products entry by entry as row-by-column dot products and understanding the dimension-matching rule.",
+      "keywords": [
+        "matrix multiplication",
+        "row times column",
+        "dot product",
+        "dimensions",
+        "product entries"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.matrix-vector-product"
+      ],
+      "representations": [
+        "procedural",
+        "symbolic",
+        "structural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.linear-algebra.transpose",
+      "title": "The transpose of a matrix",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Flipping a matrix across its diagonal, swapping rows and columns, and its role in dot products, symmetry, and least squares.",
+      "keywords": [
+        "transpose",
+        "rows to columns",
+        "symmetric matrix",
+        "diagonal flip",
+        "dot product"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.matrix-multiplication-mechanics"
+      ],
+      "representations": [
+        "structural",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.linear-algebra.determinant-area-volume",
+      "title": "The determinant as area and volume",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Matrix transformations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Seeing the absolute determinant as the area of the parallelogram or volume of the parallelepiped spanned by a matrix's columns.",
+      "keywords": [
+        "determinant",
+        "parallelogram area",
+        "parallelepiped volume",
+        "spanned region",
+        "orientation"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.determinant"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.orthogonal-complements",
+      "title": "Orthogonal complements",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Alternate coordinate systems (bases)",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Splitting a space into a subspace and the set of all vectors orthogonal to it, the perpendicular companion used in projections.",
+      "keywords": [
+        "orthogonal complement",
+        "perpendicular subspace",
+        "direct sum",
+        "row space",
+        "null space"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.dot-product",
+        "math.linear-algebra.subspaces-basis-dimension"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.eigenbasis",
+      "title": "Eigenbasis",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Alternate coordinate systems (bases)",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Assembling a basis entirely of eigenvectors so a transformation acts as simple independent stretches along each axis.",
+      "keywords": [
+        "eigenbasis",
+        "eigenvectors",
+        "decoupled axes",
+        "invariant directions",
+        "scaling"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.eigenvalues-eigenvectors",
+        "math.linear-algebra.basis-of-subspace"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.differential-equations.autonomous-equilibria-stability",
+      "title": "Autonomous equations, equilibria, and stability",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "First order differential equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Analyzing equations whose rate depends only on the state, locating equilibrium solutions and classifying them as stable or unstable with a phase line.",
+      "keywords": [
+        "autonomous equation",
+        "equilibrium",
+        "stability",
+        "phase line",
+        "fixed point"
+      ],
+      "prerequisites": [
+        "math.differential-equations.intro-slope-fields"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.differential-equations.exact-equations",
+      "title": "Exact equations",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "First order differential equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Recognizing an equation as the total differential of a potential function and solving it by reconstructing that function.",
+      "keywords": [
+        "exact equation",
+        "total differential",
+        "potential function",
+        "test for exactness",
+        "implicit solution"
+      ],
+      "prerequisites": [
+        "math.differential-equations.separable-equations"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.differential-equations.repeated-roots",
+      "title": "Repeated characteristic roots",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Second order linear equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Handling the degenerate case where the characteristic equation has a double root, introducing the extra t times exponential solution.",
+      "keywords": [
+        "repeated roots",
+        "double root",
+        "critical damping",
+        "second solution",
+        "reduction of order"
+      ],
+      "prerequisites": [
+        "math.differential-equations.second-order-homogeneous"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.differential-equations.variation-of-parameters",
+      "title": "Variation of parameters",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Second order linear equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Finding a particular solution to any forced linear equation by varying the constants of the homogeneous solution, using the Wronskian.",
+      "keywords": [
+        "variation of parameters",
+        "particular solution",
+        "Wronskian",
+        "forcing function",
+        "general forcing"
+      ],
+      "prerequisites": [
+        "math.differential-equations.undetermined-coefficients"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.differential-equations.rlc-circuits",
+      "title": "RLC circuits as second-order systems",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Second order linear equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Modeling charge and current in a resistor-inductor-capacitor circuit with a second-order linear equation analogous to the spring-mass system.",
+      "keywords": [
+        "RLC circuit",
+        "second order",
+        "electrical oscillation",
+        "impedance",
+        "spring-mass analogy"
+      ],
+      "prerequisites": [
+        "math.differential-equations.complex-roots-oscillation"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.differential-equations.laplace-common-transforms",
+      "title": "Laplace transforms of common functions",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Laplace transform",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Building the transform table for exponentials, sines, cosines, and polynomials, and applying shift and derivative properties.",
+      "keywords": [
+        "transform table",
+        "exponential",
+        "sine cosine",
+        "shift theorem",
+        "derivative property"
+      ],
+      "prerequisites": [
+        "math.differential-equations.laplace-transform-definition"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "math.differential-equations.systems-phase-plane",
+      "title": "Systems of differential equations and the phase plane",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Second order linear equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Representing coupled first-order equations as a vector field in the phase plane and reading trajectories, nodes, spirals, and saddles.",
+      "keywords": [
+        "system of ODEs",
+        "phase plane",
+        "trajectory",
+        "vector field",
+        "spiral node saddle"
+      ],
+      "prerequisites": [
+        "math.differential-equations.complex-roots-oscillation"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.visualizing-scalar-fields",
+      "title": "Visualizing scalar-valued functions",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Thinking about multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Comparing ways to picture a scalar field of several variables: graphs, contour maps, and color-coded heat maps of its values.",
+      "keywords": [
+        "scalar field",
+        "heat map",
+        "contour",
+        "value coloring",
+        "visualization"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.graphs-and-level-curves"
+      ],
+      "representations": [
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.gradient-descent",
+      "title": "Gradient descent intuition",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Applications of multivariable derivatives",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Following the negative gradient downhill on a surface to iteratively approach a minimum, the geometric idea behind optimization algorithms.",
+      "keywords": [
+        "gradient descent",
+        "downhill",
+        "negative gradient",
+        "iteration",
+        "minimum"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.gradient",
+        "math.multivariable-calculus.optimization-critical-points"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "procedural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.flux-in-three-dimensions",
+      "title": "Flux of a 3D vector field through a surface",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Measuring the net flow of a three-dimensional vector field across an oriented surface using the outward unit normal.",
+      "keywords": [
+        "flux",
+        "3D vector field",
+        "oriented surface",
+        "unit normal",
+        "net flow"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.surface-integrals-flux",
+        "math.multivariable-calculus.divergence"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.work-along-a-path",
+      "title": "Work done by a force field along a path",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Integrating multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Computing the work a vector force field does on a particle moving along a curve as the line integral of the field dotted with displacement.",
+      "keywords": [
+        "work",
+        "force field",
+        "line integral",
+        "path",
+        "tangential component"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.line-integrals"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.multivariable-calculus.cylindrical-spherical-coordinates",
+      "title": "Cylindrical and spherical coordinate systems",
+      "subject": "math",
+      "course": "Multivariable calculus",
+      "unit": "Thinking about multivariable functions",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Locating points in space by radius and angles, the natural coordinates for cylinders, cones, and spheres.",
+      "keywords": [
+        "cylindrical coordinates",
+        "spherical coordinates",
+        "radius",
+        "azimuth",
+        "polar angle"
+      ],
+      "prerequisites": [
+        "math.multivariable-calculus.functions-of-several-variables"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.unit-vectors-and-magnitude",
+      "title": "Magnitude, unit vectors, and normalization",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Measuring a vector's length and scaling it to a unit vector that keeps direction but has magnitude one.",
+      "keywords": [
+        "magnitude",
+        "norm",
+        "unit vector",
+        "normalization",
+        "direction"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.vectors-and-operations"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.span-as-reachable-set",
+      "title": "Span as the set of reachable vectors",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Visualizing the span of vectors as everything you can reach by scaling and adding them: a line, a plane, or all of space.",
+      "keywords": [
+        "span",
+        "reachable set",
+        "line plane space",
+        "linear combination",
+        "fill space"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.linear-combinations-span"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.dimension-and-rank",
+      "title": "Dimension and rank",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Vectors and spaces",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Counting the number of independent directions in a space or the column space of a matrix to capture its true size.",
+      "keywords": [
+        "dimension",
+        "rank",
+        "independent directions",
+        "column space",
+        "degrees of freedom"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.basis-of-subspace",
+        "math.linear-algebra.column-null-space"
+      ],
+      "representations": [
+        "structural",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.linear-algebra.orthonormal-bases",
+      "title": "Orthonormal bases and coordinates",
+      "subject": "math",
+      "course": "Linear algebra",
+      "unit": "Alternate coordinate systems (bases)",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Using a basis of mutually perpendicular unit vectors so that coordinates come directly from dot products and projections are simple.",
+      "keywords": [
+        "orthonormal basis",
+        "perpendicular unit vectors",
+        "coordinates by dot product",
+        "orthogonal matrix",
+        "easy projection"
+      ],
+      "prerequisites": [
+        "math.linear-algebra.gram-schmidt"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "math.differential-equations.modeling-with-first-order",
+      "title": "Modeling with first-order equations",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "First order differential equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Translating real situations such as mixing tanks, falling bodies with drag, and cooling into first-order differential equations and solving them.",
+      "keywords": [
+        "modeling",
+        "mixing problem",
+        "drag",
+        "Newton's cooling",
+        "applications"
+      ],
+      "prerequisites": [
+        "math.differential-equations.first-order-linear"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.differential-equations.resonance",
+      "title": "Forced oscillations and resonance",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Second order linear equations",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Studying how a periodically forced oscillator responds, with amplitude growing dramatically when the forcing frequency matches the natural frequency.",
+      "keywords": [
+        "resonance",
+        "forced oscillation",
+        "natural frequency",
+        "amplitude growth",
+        "beats"
+      ],
+      "prerequisites": [
+        "math.differential-equations.spring-mass-damping"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "math.differential-equations.convolution",
+      "title": "Convolution and the Laplace transform",
+      "subject": "math",
+      "course": "Differential equations",
+      "unit": "Laplace transform",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Using the convolution theorem to invert a product of transforms and to express the response of a system to an arbitrary input.",
+      "keywords": [
+        "convolution",
+        "convolution theorem",
+        "impulse response",
+        "product of transforms",
+        "system response"
+      ],
+      "prerequisites": [
+        "math.differential-equations.step-impulse-functions"
+      ],
+      "representations": [
+        "symbolic",
+        "procedural",
+        "graph"
+      ],
+      "diagram3dFit": "low"
+    }
+  ]
+}

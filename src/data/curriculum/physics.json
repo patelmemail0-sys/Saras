@@ -1,0 +1,2532 @@
+{
+  "subject": "physics",
+  "courses": [
+    {
+      "slug": "ap-physics-1",
+      "name": "AP Physics 1",
+      "subject": "physics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "units": [
+        "Kinematics",
+        "Force and translational dynamics",
+        "Work, energy, and power",
+        "Linear momentum",
+        "Torque and rotational dynamics",
+        "Energy and momentum of rotating systems",
+        "Oscillations",
+        "Fluids"
+      ],
+      "khanUrl": "https://www.khanacademy.org/science/ap-physics-1"
+    },
+    {
+      "slug": "ap-physics-2",
+      "name": "AP Physics 2",
+      "subject": "physics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "units": [
+        "Fluids",
+        "Thermodynamics",
+        "Electric charge, field, and potential",
+        "Circuits",
+        "Magnetic forces, magnetic fields, and Faraday's law",
+        "Electromagnetic induction",
+        "Geometric and physical optics",
+        "Quantum, atomic, and nuclear physics"
+      ],
+      "khanUrl": "https://www.khanacademy.org/science/ap-physics-2"
+    },
+    {
+      "slug": "high-school-physics",
+      "name": "High school physics",
+      "subject": "physics",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "units": [
+        "One-dimensional motion",
+        "Two-dimensional motion",
+        "Forces and Newton's laws of motion",
+        "Uniform circular motion and gravitation",
+        "Work and energy",
+        "Linear momentum and collisions",
+        "Simple harmonic motion",
+        "Waves",
+        "Sound",
+        "Electricity",
+        "Magnetism"
+      ],
+      "khanUrl": "https://www.khanacademy.org/science/high-school-physics"
+    },
+    {
+      "slug": "physics-library",
+      "name": "Physics library",
+      "subject": "physics",
+      "gradeBand": "college",
+      "level": "college",
+      "units": [
+        "One-dimensional motion",
+        "Two-dimensional motion",
+        "Forces and Newton's laws of motion",
+        "Centripetal force and gravitation",
+        "Work and energy",
+        "Impacts and linear momentum",
+        "Torque and angular momentum",
+        "Oscillations and mechanical waves",
+        "Fluids",
+        "Thermodynamics",
+        "Electric charge, field, and potential",
+        "Circuits",
+        "Magnetic forces, magnetic fields, and Faraday's law",
+        "Electromagnetic waves and interference",
+        "Geometric optics",
+        "Special relativity",
+        "Quantum Physics",
+        "Nuclear physics"
+      ],
+      "khanUrl": "https://www.khanacademy.org/science/physics"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "physics.ap-physics-1.angular-kinematics",
+      "title": "Angular kinematics",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Torque and rotational dynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Rotational analogs of linear kinematics: angular position, angular velocity, and angular acceleration.",
+      "keywords": [
+        "angular velocity",
+        "angular acceleration",
+        "radians",
+        "rotation"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.uniform-circular-motion"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.angular-momentum",
+      "title": "Angular momentum and its conservation",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Energy and momentum of rotating systems",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The rotational analog of linear momentum, conserved when no external torque acts, explaining spinning skaters and gyroscopes.",
+      "keywords": [
+        "angular momentum",
+        "conservation",
+        "spin",
+        "skater",
+        "L=Iomega"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.moment-of-inertia"
+      ],
+      "representations": [
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.buoyancy",
+      "title": "Buoyancy and Archimedes' principle",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Fluids",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The upward force on a submerged or floating object equal to the weight of the fluid it displaces.",
+      "keywords": [
+        "buoyancy",
+        "Archimedes",
+        "displacement",
+        "float",
+        "density"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.free-body-diagrams"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.center-of-mass",
+      "title": "Center of mass",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Linear momentum",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The mass-weighted average position of a system, which moves as though all mass and external force act there.",
+      "keywords": [
+        "center of mass",
+        "weighted average",
+        "system",
+        "balance point"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.conservation-of-momentum"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.continuity-and-bernoulli",
+      "title": "Continuity and Bernoulli's principle",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Fluids",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Conservation of mass (continuity) and energy (Bernoulli) in flowing fluids, relating speed, pressure, and elevation.",
+      "keywords": [
+        "Bernoulli",
+        "continuity",
+        "flow rate",
+        "fluid speed",
+        "pressure"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.fluid-pressure",
+        "physics.high-school-physics.conservation-of-energy"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.fluid-pressure",
+      "title": "Fluid density and pressure",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Fluids",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How pressure in a static fluid increases with depth and acts equally in all directions.",
+      "keywords": [
+        "pressure",
+        "density",
+        "hydrostatic",
+        "depth",
+        "Pascal"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.newtons-second-law"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.gravitational-orbits",
+      "title": "Gravitational fields and orbital motion",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Force and translational dynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Gravitational field strength and the use of gravity as a centripetal force to sustain circular and elliptical orbits.",
+      "keywords": [
+        "gravitational field",
+        "orbit",
+        "Kepler",
+        "satellite",
+        "centripetal"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.newtons-law-of-gravitation",
+        "physics.high-school-physics.centripetal-force"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.moment-of-inertia",
+      "title": "Moment of inertia",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Energy and momentum of rotating systems",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "An object's resistance to angular acceleration, depending on its mass distribution relative to the axis of rotation.",
+      "keywords": [
+        "moment of inertia",
+        "rotational inertia",
+        "mass distribution",
+        "axis"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.angular-kinematics"
+      ],
+      "representations": [
+        "structural",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.pendulum-and-spring-oscillators",
+      "title": "Energy in oscillators (pendulum and spring)",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Oscillations",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How energy continuously transforms between kinetic and potential forms in simple harmonic oscillators, and what sets their period.",
+      "keywords": [
+        "pendulum",
+        "spring",
+        "period",
+        "energy",
+        "oscillation"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.simple-harmonic-motion",
+        "physics.high-school-physics.conservation-of-energy"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.rotational-dynamics",
+      "title": "Newton's second law for rotation",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Energy and momentum of rotating systems",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Net torque equals moment of inertia times angular acceleration, the rotational form of Newton's second law.",
+      "keywords": [
+        "rotational dynamics",
+        "net torque",
+        "angular acceleration",
+        "tau=Ialpha"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.torque",
+        "physics.ap-physics-1.moment-of-inertia"
+      ],
+      "representations": [
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.rotational-energy",
+      "title": "Rotational kinetic energy and rolling",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Energy and momentum of rotating systems",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Energy of a rotating body and the combined translational-plus-rotational energy of objects rolling without slipping.",
+      "keywords": [
+        "rotational kinetic energy",
+        "rolling",
+        "without slipping",
+        "energy"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.moment-of-inertia",
+        "physics.high-school-physics.conservation-of-energy"
+      ],
+      "representations": [
+        "physical",
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.rotational-equilibrium",
+      "title": "Static equilibrium and torque balance",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Torque and rotational dynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Conditions for an extended body to be in equilibrium: net force and net torque both zero, as with balanced beams and ladders.",
+      "keywords": [
+        "equilibrium",
+        "torque balance",
+        "beam",
+        "ladder",
+        "static"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.torque",
+        "physics.high-school-physics.free-body-diagrams"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-1.torque",
+      "title": "Torque",
+      "subject": "physics",
+      "course": "AP Physics 1",
+      "unit": "Torque and rotational dynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The rotational equivalent of force, equal to the force times the lever arm, that causes angular acceleration.",
+      "keywords": [
+        "torque",
+        "moment arm",
+        "lever arm",
+        "rotation",
+        "pivot"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.newtons-second-law"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.atomic-energy-levels",
+      "title": "Atomic energy levels and spectra",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Quantum, atomic, and nuclear physics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Electrons occupy discrete energy levels; transitions between them emit or absorb photons of specific wavelengths, producing line spectra.",
+      "keywords": [
+        "energy levels",
+        "atomic spectra",
+        "Bohr model",
+        "emission",
+        "absorption"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.photoelectric-effect"
+      ],
+      "representations": [
+        "structural",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.capacitors",
+      "title": "Capacitors and dielectrics",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Circuits",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Devices that store charge and energy in an electric field between conducting plates, and how dielectrics increase capacitance.",
+      "keywords": [
+        "capacitor",
+        "capacitance",
+        "dielectric",
+        "stored energy",
+        "parallel plate"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.electric-potential"
+      ],
+      "representations": [
+        "structural",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.double-slit-diffraction",
+      "title": "Interference and diffraction of light",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Geometric and physical optics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Wave behavior of light producing interference fringes (double slit) and diffraction patterns, evidence of light's wave nature.",
+      "keywords": [
+        "double slit",
+        "diffraction",
+        "interference",
+        "fringes",
+        "wavelength"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.wave-interference"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.electric-potential",
+      "title": "Electric potential and voltage",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Electric charge, field, and potential",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The electric potential energy per unit charge, its relationship to the electric field, and equipotential surfaces.",
+      "keywords": [
+        "electric potential",
+        "voltage",
+        "equipotential",
+        "potential energy"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.electric-fields"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.electromagnetic-induction",
+      "title": "Faraday's law and induction",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Electromagnetic induction",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "A changing magnetic flux through a loop induces an EMF and current, with direction set by Lenz's law.",
+      "keywords": [
+        "Faraday's law",
+        "induction",
+        "magnetic flux",
+        "Lenz's law",
+        "EMF"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.magnetic-field-from-current"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.first-law-thermodynamics",
+      "title": "First law of thermodynamics",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Thermodynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Energy conservation for thermal systems: the change in internal energy equals heat added minus work done by the gas.",
+      "keywords": [
+        "first law",
+        "internal energy",
+        "heat",
+        "work",
+        "PV diagram"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.kinetic-theory-of-gases"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.ap-physics-2.gauss-law",
+      "title": "Gauss's law and flux",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Electric charge, field, and potential",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The relationship between electric flux through a closed surface and the enclosed charge, used to find fields of symmetric charge distributions.",
+      "keywords": [
+        "Gauss's law",
+        "electric flux",
+        "Gaussian surface",
+        "symmetry"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.electric-fields"
+      ],
+      "representations": [
+        "structural",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.heat-engines-entropy",
+      "title": "Heat engines and the second law",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Thermodynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Cyclic processes that convert heat to work, their efficiency limits, and the second law's statement about entropy and irreversibility.",
+      "keywords": [
+        "heat engine",
+        "entropy",
+        "second law",
+        "efficiency",
+        "Carnot"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.first-law-thermodynamics"
+      ],
+      "representations": [
+        "graph",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.ap-physics-2.kinetic-theory-of-gases",
+      "title": "Kinetic theory and ideal gas law",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Thermodynamics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The model of a gas as many colliding particles, connecting microscopic motion to macroscopic pressure, temperature, and the ideal gas law.",
+      "keywords": [
+        "kinetic theory",
+        "ideal gas law",
+        "PV=nRT",
+        "temperature",
+        "molecules"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.fluid-pressure",
+        "physics.high-school-physics.kinetic-and-potential-energy"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.lenses-and-mirrors",
+      "title": "Lenses and mirrors (ray diagrams)",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Geometric and physical optics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How converging and diverging lenses and curved mirrors form images, found with ray diagrams and the thin-lens equation.",
+      "keywords": [
+        "lens",
+        "mirror",
+        "ray diagram",
+        "focal length",
+        "image formation"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.refraction-snells-law"
+      ],
+      "representations": [
+        "structural",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.magnetic-field-from-current",
+      "title": "Magnetic fields from currents",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Magnetic forces, magnetic fields, and Faraday's law",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "How currents in wires, loops, and solenoids generate magnetic fields, described by the Biot-Savart and Ampere relationships.",
+      "keywords": [
+        "Ampere's law",
+        "solenoid",
+        "current loop",
+        "Biot-Savart",
+        "field"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.magnetic-force-on-charges"
+      ],
+      "representations": [
+        "structural",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.magnetic-force-on-charges",
+      "title": "Magnetic force on moving charges",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Magnetic forces, magnetic fields, and Faraday's law",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The force on a moving charge in a magnetic field, perpendicular to both velocity and field, governed by the right-hand rule.",
+      "keywords": [
+        "magnetic force",
+        "Lorentz force",
+        "right-hand rule",
+        "moving charge",
+        "F=qvB"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.magnetic-fields"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.ap-physics-2.nuclear-physics",
+      "title": "Nuclear decay and mass-energy",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Quantum, atomic, and nuclear physics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Radioactive decay, nuclear reactions, and the equivalence of mass and energy expressed by E = mc^2.",
+      "keywords": [
+        "radioactivity",
+        "alpha decay",
+        "beta decay",
+        "E=mc^2",
+        "half-life"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.atomic-energy-levels"
+      ],
+      "representations": [
+        "structural",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.ap-physics-2.photoelectric-effect",
+      "title": "Photoelectric effect and photons",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Quantum, atomic, and nuclear physics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Light ejecting electrons from a metal, explained by quantized photons with energy proportional to frequency.",
+      "keywords": [
+        "photoelectric effect",
+        "photon",
+        "work function",
+        "quantum",
+        "Planck"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.wave-properties"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.ap-physics-2.rc-circuits",
+      "title": "RC circuits",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Circuits",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "Circuits combining resistors and capacitors, where charge and current change exponentially over a characteristic time constant.",
+      "keywords": [
+        "RC circuit",
+        "time constant",
+        "charging",
+        "discharging",
+        "exponential"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.capacitors",
+        "physics.high-school-physics.series-parallel-circuits"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "physics.ap-physics-2.refraction-snells-law",
+      "title": "Refraction and Snell's law",
+      "subject": "physics",
+      "course": "AP Physics 2",
+      "unit": "Geometric and physical optics",
+      "gradeBand": "11-12",
+      "level": "ap",
+      "description": "The bending of light as it passes between media of different refractive indices, including total internal reflection.",
+      "keywords": [
+        "refraction",
+        "Snell's law",
+        "index of refraction",
+        "total internal reflection"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.wave-properties"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.centripetal-force",
+      "title": "Centripetal force and acceleration",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Uniform circular motion and gravitation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The inward net force and acceleration required to keep an object moving in a circular path, directed toward the center.",
+      "keywords": [
+        "centripetal force",
+        "centripetal acceleration",
+        "radius",
+        "inward"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.uniform-circular-motion",
+        "physics.high-school-physics.newtons-second-law"
+      ],
+      "representations": [
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.collisions",
+      "title": "Elastic and inelastic collisions",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Linear momentum and collisions",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Collisions classified by whether kinetic energy is conserved (elastic) or lost (inelastic), with momentum conserved in both.",
+      "keywords": [
+        "elastic collision",
+        "inelastic collision",
+        "kinetic energy",
+        "2D collision"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.conservation-of-momentum",
+        "physics.high-school-physics.kinetic-and-potential-energy"
+      ],
+      "representations": [
+        "physical",
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.conservation-of-energy",
+      "title": "Conservation of mechanical energy",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Work and energy",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "In the absence of non-conservative forces, the total of kinetic and potential energy of a system remains constant.",
+      "keywords": [
+        "conservation of energy",
+        "mechanical energy",
+        "energy transformation"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.kinetic-and-potential-energy"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.conservation-of-momentum",
+      "title": "Conservation of momentum",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Linear momentum and collisions",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The total momentum of an isolated system is conserved, allowing analysis of collisions and explosions.",
+      "keywords": [
+        "conservation of momentum",
+        "isolated system",
+        "collision",
+        "recoil"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.momentum-and-impulse"
+      ],
+      "representations": [
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.doppler-effect",
+      "title": "Doppler effect",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Sound",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The change in observed frequency of a wave due to relative motion between source and observer.",
+      "keywords": [
+        "Doppler effect",
+        "frequency shift",
+        "source motion",
+        "pitch change"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.sound-waves"
+      ],
+      "representations": [
+        "physical",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.electric-charge",
+      "title": "Electric charge and Coulomb's law",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Electricity",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Charged objects exert forces on each other described by Coulomb's law, with like charges repelling and opposites attracting.",
+      "keywords": [
+        "charge",
+        "Coulomb's law",
+        "electrostatic force",
+        "attraction",
+        "repulsion"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.newtons-law-of-gravitation"
+      ],
+      "representations": [
+        "physical",
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.electric-fields",
+      "title": "Electric fields",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Electricity",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The region around a charge where it exerts force on other charges, visualized with field lines pointing away from positive and toward negative charges.",
+      "keywords": [
+        "electric field",
+        "field lines",
+        "test charge",
+        "vector field"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.electric-charge"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.electromagnetism-basics",
+      "title": "Electromagnetism (current and magnetism)",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Magnetism",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Electric currents create magnetic fields and changing magnetic fields induce currents, linking electricity and magnetism.",
+      "keywords": [
+        "electromagnet",
+        "induction",
+        "current",
+        "right-hand rule",
+        "solenoid"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.magnetic-fields",
+        "physics.high-school-physics.ohms-law"
+      ],
+      "representations": [
+        "physical",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.free-body-diagrams",
+      "title": "Free-body diagrams",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Forces and Newton's laws of motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Diagrams isolating a single object and showing all external forces acting on it as vectors.",
+      "keywords": [
+        "free-body diagram",
+        "force vectors",
+        "net force",
+        "FBD"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.newtons-first-law"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.free-fall",
+      "title": "Free fall and acceleration due to gravity",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "One-dimensional motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Motion of objects under constant gravitational acceleration near Earth's surface, neglecting air resistance.",
+      "keywords": [
+        "free fall",
+        "g",
+        "9.8 m/s^2",
+        "gravity",
+        "falling object"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.kinematic-equations"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.high-school-physics.friction",
+      "title": "Friction (static and kinetic)",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Forces and Newton's laws of motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Contact force opposing relative motion or tendency of motion between surfaces, characterized by coefficients of friction and the normal force.",
+      "keywords": [
+        "friction",
+        "static",
+        "kinetic",
+        "coefficient",
+        "normal force"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.free-body-diagrams"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.hookes-law",
+      "title": "Hooke's law and springs",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Simple harmonic motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The restoring force of an ideal spring is proportional to its displacement from equilibrium.",
+      "keywords": [
+        "Hooke's law",
+        "spring constant",
+        "restoring force",
+        "elastic"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.free-body-diagrams"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.high-school-physics.inclined-planes",
+      "title": "Forces on an inclined plane",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Forces and Newton's laws of motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Resolving gravity into components parallel and perpendicular to a ramp to analyze sliding and equilibrium.",
+      "keywords": [
+        "inclined plane",
+        "ramp",
+        "normal force",
+        "component",
+        "slope"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.free-body-diagrams",
+        "physics.high-school-physics.friction"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.kinematic-equations",
+      "title": "Kinematic equations",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "One-dimensional motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The equations of constant-acceleration motion relating displacement, velocity, acceleration, and time.",
+      "keywords": [
+        "kinematic equations",
+        "constant acceleration",
+        "SUVAT",
+        "displacement"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.position-velocity-acceleration"
+      ],
+      "representations": [
+        "symbolic",
+        "graph",
+        "physical"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "physics.high-school-physics.kinematic-graphs",
+      "title": "Motion graphs (x-t, v-t, a-t)",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "One-dimensional motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Reading and connecting position-time, velocity-time, and acceleration-time graphs, including slope and area interpretations.",
+      "keywords": [
+        "motion graph",
+        "slope",
+        "area under curve",
+        "velocity-time",
+        "position-time"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.position-velocity-acceleration"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "physics.high-school-physics.kinetic-and-potential-energy",
+      "title": "Kinetic and potential energy",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Work and energy",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Energy of motion (kinetic) and energy stored due to position or configuration (gravitational and elastic potential).",
+      "keywords": [
+        "kinetic energy",
+        "potential energy",
+        "gravitational PE",
+        "elastic PE"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.work"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.high-school-physics.magnetic-fields",
+      "title": "Magnetic fields and magnets",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Magnetism",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The region of magnetic influence around magnets and currents, visualized with field lines running from north to south pole.",
+      "keywords": [
+        "magnetic field",
+        "magnet",
+        "poles",
+        "field lines",
+        "compass"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.electric-fields"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.momentum-and-impulse",
+      "title": "Momentum and impulse",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Linear momentum and collisions",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Momentum is mass times velocity; impulse is the force applied over a time interval and equals the change in momentum.",
+      "keywords": [
+        "momentum",
+        "impulse",
+        "impulse-momentum theorem",
+        "force-time"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.newtons-second-law"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.high-school-physics.newtons-first-law",
+      "title": "Newton's first law (inertia)",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Forces and Newton's laws of motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "An object at rest stays at rest and an object in motion stays in motion at constant velocity unless acted on by a net external force.",
+      "keywords": [
+        "inertia",
+        "net force",
+        "equilibrium",
+        "Newton's first law"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.vectors-and-components"
+      ],
+      "representations": [
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.high-school-physics.newtons-law-of-gravitation",
+      "title": "Newton's law of universal gravitation",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Uniform circular motion and gravitation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Every mass attracts every other mass with a force proportional to the product of masses and inversely proportional to the square of the distance between them.",
+      "keywords": [
+        "gravitation",
+        "inverse square",
+        "universal gravity",
+        "G",
+        "orbit"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.centripetal-force"
+      ],
+      "representations": [
+        "physical",
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.newtons-second-law",
+      "title": "Newton's second law (F = ma)",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Forces and Newton's laws of motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The net force on an object equals its mass times its acceleration, defining how forces change motion.",
+      "keywords": [
+        "Newton's second law",
+        "net force",
+        "mass",
+        "acceleration",
+        "F=ma"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.free-body-diagrams"
+      ],
+      "representations": [
+        "physical",
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.high-school-physics.newtons-third-law",
+      "title": "Newton's third law (action-reaction)",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Forces and Newton's laws of motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "For every action force there is an equal and opposite reaction force acting on a different object.",
+      "keywords": [
+        "Newton's third law",
+        "action-reaction",
+        "force pair",
+        "interaction"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.newtons-second-law"
+      ],
+      "representations": [
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.high-school-physics.ohms-law",
+      "title": "Ohm's law and resistance",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Electricity",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The relationship among voltage, current, and resistance in a circuit, where voltage equals current times resistance.",
+      "keywords": [
+        "Ohm's law",
+        "voltage",
+        "current",
+        "resistance",
+        "V=IR"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.electric-charge"
+      ],
+      "representations": [
+        "symbolic",
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "physics.high-school-physics.position-velocity-acceleration",
+      "title": "Position, velocity, and acceleration",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "One-dimensional motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The relationships among position, velocity, and acceleration for an object moving in a straight line, and how each is the rate of change of the previous.",
+      "keywords": [
+        "kinematics",
+        "velocity",
+        "acceleration",
+        "displacement",
+        "rate of change"
+      ],
+      "prerequisites": [],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium",
+      "khanUrl": "https://www.khanacademy.org/science/high-school-physics/x2a2d643227022488:one-dimensional-motion"
+    },
+    {
+      "id": "physics.high-school-physics.power",
+      "title": "Power",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Work and energy",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The rate at which work is done or energy is transferred, measured in watts.",
+      "keywords": [
+        "power",
+        "watt",
+        "rate of work",
+        "energy per time"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.work"
+      ],
+      "representations": [
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "physics.high-school-physics.projectile-motion",
+      "title": "Projectile motion",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Two-dimensional motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Two-dimensional motion under gravity, where horizontal and vertical motions are independent, producing a parabolic trajectory.",
+      "keywords": [
+        "projectile",
+        "trajectory",
+        "parabola",
+        "launch angle",
+        "range"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.vectors-and-components",
+        "physics.high-school-physics.free-fall"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.relative-velocity",
+      "title": "Relative velocity",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Two-dimensional motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Velocity measured with respect to different reference frames, combined using vector addition (e.g. boat crossing a river).",
+      "keywords": [
+        "relative velocity",
+        "reference frame",
+        "vector addition",
+        "river boat"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.vectors-and-components"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.series-parallel-circuits",
+      "title": "Series and parallel circuits",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Electricity",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "How resistors combine and how current and voltage distribute differently when components are wired in series versus in parallel.",
+      "keywords": [
+        "series",
+        "parallel",
+        "resistor",
+        "circuit diagram",
+        "equivalent resistance"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.ohms-law"
+      ],
+      "representations": [
+        "structural",
+        "symbolic",
+        "graph"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.high-school-physics.simple-harmonic-motion",
+      "title": "Simple harmonic motion",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Simple harmonic motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Periodic oscillation produced by a restoring force proportional to displacement, as in a mass on a spring or a pendulum.",
+      "keywords": [
+        "SHM",
+        "oscillation",
+        "period",
+        "amplitude",
+        "pendulum"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.hookes-law"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.sound-waves",
+      "title": "Sound as a longitudinal wave",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Sound",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Sound propagates as a longitudinal pressure wave through a medium, with pitch set by frequency and loudness by amplitude.",
+      "keywords": [
+        "sound",
+        "longitudinal",
+        "compression",
+        "rarefaction",
+        "pitch"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.wave-properties"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.standing-waves",
+      "title": "Standing waves and resonance",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Waves",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Stationary wave patterns with fixed nodes and antinodes formed by interfering waves on strings or in tubes at resonant frequencies.",
+      "keywords": [
+        "standing wave",
+        "node",
+        "antinode",
+        "harmonic",
+        "resonance"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.wave-interference"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "structural"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.tension-and-pulleys",
+      "title": "Tension and pulley systems",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Forces and Newton's laws of motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Analyzing connected objects linked by ropes over pulleys, where tension transmits force through the system.",
+      "keywords": [
+        "tension",
+        "pulley",
+        "Atwood machine",
+        "connected objects"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.newtons-second-law"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.uniform-circular-motion",
+      "title": "Uniform circular motion",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Uniform circular motion and gravitation",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Motion in a circle at constant speed, where velocity continuously changes direction and points tangent to the path.",
+      "keywords": [
+        "circular motion",
+        "tangential velocity",
+        "period",
+        "angular speed"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.vectors-and-components"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.vectors-and-components",
+      "title": "Vectors and vector components",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Two-dimensional motion",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Representing quantities with magnitude and direction, and resolving vectors into perpendicular components.",
+      "keywords": [
+        "vector",
+        "components",
+        "magnitude",
+        "direction",
+        "resultant"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.position-velocity-acceleration"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.wave-interference",
+      "title": "Wave interference and superposition",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Waves",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "When waves overlap their displacements add, producing constructive and destructive interference.",
+      "keywords": [
+        "interference",
+        "superposition",
+        "constructive",
+        "destructive"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.wave-properties"
+      ],
+      "representations": [
+        "physical",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.wave-properties",
+      "title": "Wave properties (wavelength, frequency, speed)",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Waves",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "The defining quantities of a wave and the relationship that wave speed equals frequency times wavelength.",
+      "keywords": [
+        "wavelength",
+        "frequency",
+        "amplitude",
+        "wave speed",
+        "transverse"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.simple-harmonic-motion"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.high-school-physics.work",
+      "title": "Work done by a force",
+      "subject": "physics",
+      "course": "High school physics",
+      "unit": "Work and energy",
+      "gradeBand": "9-10",
+      "level": "hs",
+      "description": "Energy transferred when a force acts on an object over a displacement, equal to force times displacement times the cosine of the angle between them.",
+      "keywords": [
+        "work",
+        "force",
+        "displacement",
+        "joule",
+        "dot product"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.newtons-second-law"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.physics-library.2d-collisions",
+      "title": "Two-dimensional collisions",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Impacts and linear momentum",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Applying conservation of momentum component-wise to glancing collisions in a plane.",
+      "keywords": [
+        "2D collision",
+        "momentum components",
+        "glancing",
+        "scattering"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.collisions",
+        "physics.physics-library.vector-operations-3d"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.banked-curves",
+      "title": "Banked curves and circular motion forces",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Centripetal force and gravitation",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "How banking a curve lets the normal force supply centripetal force, and the role of friction at various speeds.",
+      "keywords": [
+        "banked curve",
+        "centripetal",
+        "normal force",
+        "friction",
+        "turn"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.centripetal-force",
+        "physics.high-school-physics.inclined-planes"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.beats",
+      "title": "Beats",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Oscillations and mechanical waves",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The slow periodic variation in amplitude that arises when two waves of slightly different frequencies superpose.",
+      "keywords": [
+        "beats",
+        "beat frequency",
+        "superposition",
+        "amplitude modulation"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.wave-interference"
+      ],
+      "representations": [
+        "graph",
+        "physical"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.physics-library.calculus-of-motion",
+      "title": "Calculus of motion (derivatives and integrals)",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "One-dimensional motion",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Treating velocity as the derivative of position and acceleration as the derivative of velocity, with integrals recovering motion from acceleration.",
+      "keywords": [
+        "derivative",
+        "integral",
+        "calculus",
+        "instantaneous",
+        "kinematics"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.kinematic-graphs"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "physics.physics-library.damped-driven-oscillations",
+      "title": "Damped and driven oscillations",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Oscillations and mechanical waves",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "How friction damps oscillations over time and how a periodic driving force produces resonance near the natural frequency.",
+      "keywords": [
+        "damping",
+        "driven oscillation",
+        "resonance",
+        "natural frequency",
+        "decay"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.pendulum-and-spring-oscillators"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.physics-library.drag-and-terminal-velocity",
+      "title": "Air resistance and terminal velocity",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Forces and Newton's laws of motion",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Velocity-dependent drag forces that grow until they balance gravity, producing a constant terminal velocity.",
+      "keywords": [
+        "drag",
+        "air resistance",
+        "terminal velocity",
+        "velocity-dependent force"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.free-body-diagrams",
+        "physics.high-school-physics.free-fall"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.physics-library.electric-dipole",
+      "title": "Electric dipoles and field superposition",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Electric charge, field, and potential",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The field and potential of two opposite charges, and how fields from multiple charges superpose in space.",
+      "keywords": [
+        "dipole",
+        "superposition",
+        "field lines",
+        "potential",
+        "vector field"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.electric-potential",
+        "physics.physics-library.vector-operations-3d"
+      ],
+      "representations": [
+        "structural",
+        "graph",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.electromagnetic-waves",
+      "title": "Electromagnetic waves and the spectrum",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Electromagnetic waves and interference",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Self-propagating oscillations of perpendicular electric and magnetic fields traveling at the speed of light, spanning the EM spectrum.",
+      "keywords": [
+        "electromagnetic wave",
+        "EM spectrum",
+        "Maxwell",
+        "light speed",
+        "polarization"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.electromagnetic-induction"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.gravitational-potential-energy-field",
+      "title": "Gravitational potential energy and escape velocity",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Centripetal force and gravitation",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The general form of gravitational potential energy for an inverse-square field and the speed needed to escape a body's gravity.",
+      "keywords": [
+        "gravitational potential energy",
+        "escape velocity",
+        "binding energy",
+        "orbit"
+      ],
+      "prerequisites": [
+        "physics.physics-library.keplers-laws",
+        "physics.high-school-physics.conservation-of-energy"
+      ],
+      "representations": [
+        "graph",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.gyroscopic-precession",
+      "title": "Gyroscopes and precession",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Torque and angular momentum",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The vector nature of angular momentum and torque, producing the surprising precession of a spinning gyroscope.",
+      "keywords": [
+        "gyroscope",
+        "precession",
+        "angular momentum vector",
+        "torque",
+        "spin"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.angular-momentum",
+        "physics.physics-library.vector-operations-3d"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.heat-transfer",
+      "title": "Heat transfer (conduction, convection, radiation)",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Thermodynamics",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The three mechanisms by which thermal energy moves: conduction through materials, convection by fluid motion, and radiation by electromagnetic waves.",
+      "keywords": [
+        "conduction",
+        "convection",
+        "radiation",
+        "heat transfer",
+        "thermal"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.kinetic-theory-of-gases"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.keplers-laws",
+      "title": "Kepler's laws of planetary motion",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Centripetal force and gravitation",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The three empirical laws describing elliptical orbits, equal-area sweeps, and the period-radius relationship, derived from gravitation.",
+      "keywords": [
+        "Kepler's laws",
+        "ellipse",
+        "orbit",
+        "planetary motion",
+        "period"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.gravitational-orbits"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.kirchhoffs-laws",
+      "title": "Kirchhoff's circuit laws",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Circuits",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The junction (current) and loop (voltage) rules used to analyze multi-loop circuits that cannot be reduced to simple series and parallel.",
+      "keywords": [
+        "Kirchhoff's laws",
+        "junction rule",
+        "loop rule",
+        "multi-loop circuit"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.series-parallel-circuits"
+      ],
+      "representations": [
+        "structural",
+        "procedural",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "physics.physics-library.motional-emf-and-inductance",
+      "title": "Motional EMF and inductance",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Magnetic forces, magnetic fields, and Faraday's law",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "EMF generated by a conductor moving through a magnetic field, and the self-induced EMF of an inductor opposing changing current.",
+      "keywords": [
+        "motional EMF",
+        "inductance",
+        "inductor",
+        "self-induction",
+        "rail"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.electromagnetic-induction"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.nuclear-binding-fission-fusion",
+      "title": "Nuclear binding energy, fission, and fusion",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Nuclear physics",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "How the binding-energy-per-nucleon curve explains why fission of heavy nuclei and fusion of light nuclei both release energy.",
+      "keywords": [
+        "binding energy",
+        "fission",
+        "fusion",
+        "mass defect",
+        "nucleon"
+      ],
+      "prerequisites": [
+        "physics.physics-library.radioactive-decay-law"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.optical-instruments",
+      "title": "Optical instruments and lens combinations",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Geometric optics",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "How combinations of lenses build microscopes, telescopes, and the eye, with magnification from multiple optical elements.",
+      "keywords": [
+        "microscope",
+        "telescope",
+        "magnification",
+        "lens combination",
+        "eye"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.lenses-and-mirrors"
+      ],
+      "representations": [
+        "structural",
+        "physical",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.potential-energy-curves",
+      "title": "Potential energy curves and equilibrium",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Work and energy",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Reading a potential energy versus position graph to identify stable and unstable equilibria, turning points, and force as the negative slope.",
+      "keywords": [
+        "potential energy curve",
+        "stable equilibrium",
+        "turning point",
+        "force gradient"
+      ],
+      "prerequisites": [
+        "physics.physics-library.work-energy-theorem"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.physics-library.quantum-wavefunction",
+      "title": "Wavefunctions and quantum probability",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Quantum Physics",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The wavefunction encodes a particle's state, with its squared magnitude giving the probability distribution for measurements.",
+      "keywords": [
+        "wavefunction",
+        "probability density",
+        "Schrodinger",
+        "quantum state",
+        "orbital"
+      ],
+      "prerequisites": [
+        "physics.physics-library.uncertainty-principle"
+      ],
+      "representations": [
+        "graph",
+        "structural",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.radioactive-decay-law",
+      "title": "Radioactive decay and half-life",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Nuclear physics",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The exponential law governing how a population of unstable nuclei decays over time, characterized by the half-life.",
+      "keywords": [
+        "radioactive decay",
+        "half-life",
+        "exponential",
+        "decay constant",
+        "activity"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.nuclear-physics"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "physics.physics-library.relativistic-energy-momentum",
+      "title": "Relativistic energy and momentum",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Special relativity",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "How energy and momentum are redefined at high speeds, including rest energy E = mc^2 and the energy-momentum relation.",
+      "keywords": [
+        "relativistic energy",
+        "rest energy",
+        "E=mc^2",
+        "relativistic momentum",
+        "Lorentz factor"
+      ],
+      "prerequisites": [
+        "physics.physics-library.time-dilation-length-contraction"
+      ],
+      "representations": [
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "low"
+    },
+    {
+      "id": "physics.physics-library.thermodynamic-processes",
+      "title": "PV diagrams and thermodynamic processes",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Thermodynamics",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Visualizing isothermal, adiabatic, isobaric, and isochoric processes on a pressure-volume diagram, where area represents work.",
+      "keywords": [
+        "PV diagram",
+        "isothermal",
+        "adiabatic",
+        "isobaric",
+        "work"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.first-law-thermodynamics"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "procedural"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.physics-library.thin-film-interference",
+      "title": "Thin-film interference",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Electromagnetic waves and interference",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Color patterns from light reflecting off the two surfaces of a thin film, where path difference and phase shifts cause interference.",
+      "keywords": [
+        "thin film",
+        "interference",
+        "phase shift",
+        "path difference",
+        "soap bubble"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.double-slit-diffraction"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.time-dilation-length-contraction",
+      "title": "Time dilation and length contraction",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Special relativity",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Consequences of the constant speed of light: moving clocks run slow and moving objects contract along the direction of motion.",
+      "keywords": [
+        "special relativity",
+        "time dilation",
+        "length contraction",
+        "Lorentz",
+        "frame"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.relative-velocity"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.traveling-wave-equation",
+      "title": "The traveling wave equation",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Oscillations and mechanical waves",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "The mathematical description of a wave as a function of space and time, characterized by wave number, angular frequency, and phase.",
+      "keywords": [
+        "wave equation",
+        "wave number",
+        "angular frequency",
+        "phase",
+        "traveling wave"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.wave-properties",
+        "physics.physics-library.calculus-of-motion"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.uncertainty-principle",
+      "title": "Heisenberg uncertainty principle",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Quantum Physics",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "A fundamental limit on the simultaneous precision of complementary quantities such as position and momentum.",
+      "keywords": [
+        "uncertainty principle",
+        "Heisenberg",
+        "position-momentum",
+        "quantum limit"
+      ],
+      "prerequisites": [
+        "physics.physics-library.wave-particle-duality"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.physics-library.vector-operations-3d",
+      "title": "3D vectors, dot and cross products",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Two-dimensional motion",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Operating on vectors in three dimensions, including dot products (projection) and cross products (perpendicular vector and area).",
+      "keywords": [
+        "dot product",
+        "cross product",
+        "3D vector",
+        "unit vector",
+        "projection"
+      ],
+      "prerequisites": [
+        "physics.high-school-physics.vectors-and-components"
+      ],
+      "representations": [
+        "structural",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.viscous-flow",
+      "title": "Viscosity and laminar vs turbulent flow",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Fluids",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Internal friction in fluids and the transition between smooth laminar flow and chaotic turbulent flow characterized by the Reynolds number.",
+      "keywords": [
+        "viscosity",
+        "laminar",
+        "turbulent",
+        "Reynolds number",
+        "Poiseuille"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-1.continuity-and-bernoulli"
+      ],
+      "representations": [
+        "physical",
+        "structural",
+        "graph"
+      ],
+      "diagram3dFit": "high"
+    },
+    {
+      "id": "physics.physics-library.wave-particle-duality",
+      "title": "Wave-particle duality and de Broglie waves",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Quantum Physics",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Matter and light both exhibit wave and particle behavior; particles have a de Broglie wavelength inversely proportional to momentum.",
+      "keywords": [
+        "wave-particle duality",
+        "de Broglie",
+        "matter wave",
+        "wavelength",
+        "quantum"
+      ],
+      "prerequisites": [
+        "physics.ap-physics-2.photoelectric-effect"
+      ],
+      "representations": [
+        "physical",
+        "graph",
+        "symbolic"
+      ],
+      "diagram3dFit": "medium"
+    },
+    {
+      "id": "physics.physics-library.work-energy-theorem",
+      "title": "Work-energy theorem and variable forces",
+      "subject": "physics",
+      "course": "Physics library",
+      "unit": "Work and energy",
+      "gradeBand": "college",
+      "level": "college",
+      "description": "Work as the integral of a variable force over displacement, equal to the change in kinetic energy.",
+      "keywords": [
+        "work-energy theorem",
+        "variable force",
+        "integral",
+        "kinetic energy"
+      ],
+      "prerequisites": [
+        "physics.physics-library.calculus-of-motion",
+        "physics.high-school-physics.work"
+      ],
+      "representations": [
+        "graph",
+        "symbolic",
+        "physical"
+      ],
+      "diagram3dFit": "medium"
+    }
+  ]
+}
