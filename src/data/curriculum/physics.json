@@ -1495,7 +1495,8 @@
         "graph",
         "symbolic"
       ],
-      "diagram3dFit": "high"
+      "diagram3dFit": "high",
+      "specType": "projectile"
     },
     {
       "id": "physics.high-school-physics.relative-velocity",
