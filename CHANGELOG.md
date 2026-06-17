@@ -4,6 +4,19 @@ All notable changes to Saras are documented in this file.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com); versions
 use `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.2.0.1] - 2026-06-17
+
+### Changed
+- **Visualize surface (`#/try`) is now full-bleed and fits the viewport.** Replaced
+  the centered 980px column with a full-width, full-height (`100dvh`) flex layout;
+  the projectile model fills the stage with no page scroll (visual + equation panel
+  in a flexing row, the SVG sized to fit, equation variables in two columns).
+- Removed the free-text concept box and example chips (a STEM-field menu will
+  replace them) and render the projectile model by default so the stage is never
+  empty.
+- Header polish: larger "Saras" in brushed-chrome Space Grotesk, a quiet
+  uppercase-tracked "visualize", and the current topic shown in a glassy chrome pill.
+
 ## [0.2.0.0] - 2026-06-17
 
 ### Added
