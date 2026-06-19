@@ -4,6 +4,24 @@ All notable changes to Saras are documented in this file.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com); versions
 use `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.3.0.0] - 2026-06-17
+
+### Added
+- **Login + onboarding.** New `#/get-started` flow (name → education level →
+  topics of interest → create account) and an `#/login` screen for returning
+  users. Account creation supports email + password and Google OAuth.
+- **Supabase auth wired.** New browser client (`src/lib/supabase.ts`, PKCE flow),
+  an `AuthProvider` + `useAuth` hook tracking session and profile, and a
+  `profiles` table (RLS own-row, on-signup trigger) storing `full_name`,
+  `grade_level`, `subjects`, and `onboarding_completed`.
+- Onboarding answers are held across the email-confirm / OAuth round-trip and
+  applied automatically when the user returns authenticated.
+- Landing nav now links to "Log in" and "Get started".
+
+### Notes
+- Two dashboard ops steps remain before the flow is fully live: turn off email
+  confirmation (or configure custom SMTP) and configure the Google OAuth provider.
+
 ## [0.2.0.1] - 2026-06-17
 
 ### Changed

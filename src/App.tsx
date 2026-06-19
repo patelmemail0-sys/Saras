@@ -214,9 +214,10 @@ function Nav() {
         <nav className="nav__links">
           <a href="#how">How it works</a>
           <a href="#early">The idea</a>
+          <a href="#/login">Log in</a>
         </nav>
-        <a href="#early" className="btn btn--ghost btn--sm">
-          <span>Get early access</span>
+        <a href="#/get-started" className="btn btn--ghost btn--sm">
+          <span>Get started</span>
         </a>
       </div>
     </header>

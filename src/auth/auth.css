@@ -1,0 +1,243 @@
+/* ============================================================
+   Saras auth + onboarding screens
+   Centered glass card over the aurora, reusing the landing tokens.
+   ============================================================ */
+
+.auth {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.5rem, 5vw, 4rem) var(--gutter);
+
+  /* Seafoam green accent for selection + focus, in the same luminous family
+     as the model-channel aqua and the iris green stop. */
+  --seafoam: oklch(0.82 0.17 170);
+  --seafoam-soft: oklch(0.82 0.17 170 / 0.28);
+  --seafoam-fill: oklch(0.82 0.17 170 / 0.16);
+}
+
+.auth__card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--glass-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  padding: clamp(1.6rem, 4vw, 2.4rem);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.12),
+    0 30px 80px -40px oklch(0 0 0 / 0.8);
+}
+
+.auth__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.15rem;
+  margin-bottom: 1.4rem;
+}
+
+.auth__title {
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+  margin-bottom: 0.4rem;
+}
+.auth__sub {
+  color: var(--ink-2);
+  font-size: 0.98rem;
+  margin-bottom: 1.6rem;
+}
+
+/* progress dots for the onboarding steps */
+.auth__steps {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.4rem;
+}
+.auth__steps span {
+  height: 4px;
+  flex: 1;
+  border-radius: 999px;
+  background: oklch(0.5 0.01 285 / 0.25);
+  transition: background 0.3s var(--ease);
+}
+.auth__steps span.is-on {
+  background: var(--chrome);
+}
+
+/* fields */
+.field {
+  display: block;
+  margin-bottom: 1rem;
+}
+.field__label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.45rem;
+}
+.field__input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+.field__input::placeholder {
+  color: var(--ink-3);
+}
+.field__input:focus {
+  outline: none;
+  border-color: var(--seafoam);
+  box-shadow: 0 0 0 3px var(--seafoam-soft);
+}
+.field__input[aria-invalid='true'] {
+  border-color: var(--ch-steps);
+}
+
+.auth__error {
+  margin: 0.2rem 0 1rem;
+  color: oklch(0.62 0.2 18);
+  font-size: 0.9rem;
+}
+
+/* full-width actions */
+.btn--block {
+  width: 100%;
+}
+.auth__actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+.auth__actions .btn {
+  flex: 1;
+}
+
+/* OR divider */
+.auth__or {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 1.1rem 0;
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.auth__or::before,
+.auth__or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line-soft);
+}
+
+/* Google button */
+.btn--google {
+  width: 100%;
+  gap: 0.6rem;
+  background: var(--glass);
+  color: var(--ink);
+  border-color: var(--line);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.btn--google:hover {
+  border-color: var(--seafoam);
+  background: var(--glass-2);
+}
+.btn--google svg {
+  width: 18px;
+  height: 18px;
+}
+
+.auth__alt {
+  margin-top: 1.4rem;
+  text-align: center;
+  color: var(--ink-2);
+  font-size: 0.92rem;
+}
+.auth__alt button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--seafoam);
+  cursor: pointer;
+}
+.auth__alt button:hover {
+  text-decoration: underline;
+}
+
+/* choice chips (grade level + subjects) */
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.4rem;
+}
+.chip {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--glass);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    border-color 0.2s var(--ease),
+    background 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+.chip:hover {
+  border-color: var(--seafoam);
+}
+.chip[aria-pressed='true'] {
+  border-color: var(--seafoam);
+  background: var(--seafoam-fill);
+  box-shadow: 0 0 0 1px var(--seafoam) inset;
+}
+
+.auth__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+.auth__back {
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  cursor: pointer;
+}
+.auth__back:hover {
+  color: var(--ink);
+}
+.auth__back:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
