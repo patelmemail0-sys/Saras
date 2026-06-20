@@ -108,6 +108,48 @@ function App() {
           </div>
         </section>
 
+        {/* TOPICS — browse the curriculum */}
+        <section className="topics-band">
+          <div className="shell topics-band__inner">
+            <div className="topics-band__copy">
+              <span className="label reveal">Curriculum</span>
+              <h2 className="reveal" style={revealDelay(60)}>
+                734 concepts. Four subjects. One engine.
+              </h2>
+              <p className="reveal" style={revealDelay(120)}>
+                From Algebra 1 to multivariable calculus, high school physics to
+                organic chemistry — browse the full curriculum and open any
+                concept in Saras.
+              </p>
+            </div>
+            <div className="topics-band__subjects reveal" style={revealDelay(160)}>
+              {[
+                { label: 'Physics', count: '95', slug: 'physics' },
+                { label: 'Math', count: '438', slug: 'math' },
+                { label: 'Biology', count: '71', slug: 'biology' },
+                { label: 'Chemistry', count: '76', slug: 'chemistry' },
+              ].map((s) => (
+                <a
+                  key={s.slug}
+                  href="#/topics"
+                  className="topics-band__subject"
+                  data-slug={s.slug}
+                >
+                  <span className="topics-band__subject-label">{s.label}</span>
+                  <span className="topics-band__subject-count">{s.count} topics</span>
+                </a>
+              ))}
+            </div>
+            <a
+              href="#/topics"
+              className="btn btn--ghost btn--sm reveal topics-band__cta"
+              style={revealDelay(220)}
+            >
+              <span>Browse all topics <Arrow /></span>
+            </a>
+          </div>
+        </section>
+
         {/* THE THREE CHANNELS — bento, the triad of meaning */}
         <section className="channels">
           <div className="shell">
@@ -213,6 +255,7 @@ function Nav() {
         </a>
         <nav className="nav__links">
           <a href="#how">How it works</a>
+          <a href="#/topics">Topics</a>
           <a href="#early">The idea</a>
         </nav>
         <a href="#early" className="btn btn--ghost btn--sm">
