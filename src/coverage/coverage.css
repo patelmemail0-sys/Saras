@@ -2,23 +2,23 @@
    Self-contained styles (no dependency on App.css) so it stays isolated. */
 
 .cov {
-  --bg: #0b0d10;
-  --panel: #14171c;
-  --panel-2: #181c22;
-  --line: #262b33;
-  --line-soft: #1e232a;
-  --ink: #e8ebf0;
-  --ink-dim: #9aa3af;
-  --ink-faint: #6b7280;
-  --pearl: #d6dbe3;
-  --chrome: #aeb6c2;
-  --accent: #7fb0ff;
-  --good: #6fcf97;
+  --bg: #100c08;
+  --panel: #1b1611;
+  --panel-2: #211a13;
+  --line: #352a1e;
+  --line-soft: #271f16;
+  --ink: #f1ece3;
+  --ink-dim: #b3a892;
+  --ink-faint: #80755f;
+  --pearl: #e6ddcc;
+  --chrome: #c8b89c;
+  --accent: #e3a64d;
+  --good: #93c9b9;
   --warn: #e0b15a;
   --gap: #d98a8a;
 
   min-height: 100vh;
-  background: radial-gradient(1200px 600px at 80% -10%, #161b22 0%, var(--bg) 60%);
+  background: radial-gradient(1200px 600px at 80% -10%, #1d1812 0%, var(--bg) 60%);
   color: var(--ink);
   font: 14px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   padding: 28px clamp(16px, 4vw, 48px) 80px;
@@ -100,7 +100,7 @@
 }
 .row:first-child { border-top: 0; }
 .row:hover { background: var(--panel-2); }
-.row.is-queued { background: rgba(127,176,255,0.06); }
+.row.is-queued { background: rgba(227,166,77,0.07); }
 
 .star {
   appearance: none; background: none; border: 0; cursor: pointer;
@@ -121,7 +121,7 @@
 }
 
 .fit { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; justify-self: start; }
-.fit-high { color: #bfe6cf; background: rgba(111,207,151,0.14); border: 1px solid rgba(111,207,151,0.3); }
+.fit-high { color: #c2e3d6; background: rgba(147,201,185,0.14); border: 1px solid rgba(147,201,185,0.32); }
 .fit-medium { color: #e7d4a6; background: rgba(224,177,90,0.12); border: 1px solid rgba(224,177,90,0.28); }
 .fit-low { color: var(--ink-dim); background: var(--panel-2); border: 1px solid var(--line); }
 .fit-none { color: var(--ink-faint); background: transparent; border: 1px dashed var(--line); }
@@ -130,7 +130,7 @@
   width: 100%; background: var(--panel-2); border: 1px solid var(--line);
   color: var(--ink); border-radius: 8px; padding: 6px 8px; font: inherit; font-size: 12px;
 }
-.row select.specsel.is-set { border-color: rgba(111,207,151,0.45); color: var(--good); }
+.row select.specsel.is-set { border-color: rgba(147,201,185,0.5); color: var(--good); }
 
 .cov__empty { padding: 40px; text-align: center; color: var(--ink-faint); }
 

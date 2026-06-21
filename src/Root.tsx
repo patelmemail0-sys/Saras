@@ -1,5 +1,4 @@
 import { Suspense, lazy } from 'react'
-import App from './App.tsx'
 import AuthProvider from './auth/AuthProvider.tsx'
 
 // Lightweight hash routes, lazy-loaded so their chunks (and the ~600KB
@@ -13,6 +12,7 @@ const CurriculumCoverage = lazy(() => import('./coverage/CurriculumCoverage.tsx'
 const VisualizePanel = lazy(() => import('./engine/VisualizePanel.tsx'))
 const Onboarding = lazy(() => import('./auth/Onboarding.tsx'))
 const Login = lazy(() => import('./auth/Login.tsx'))
+const LandingLotus = lazy(() => import('./landing/LandingLotus.tsx'))
 
 const route = () => window.location.hash.replace(/^#/, '')
 
@@ -30,5 +30,5 @@ function renderRoute(path: string) {
   if (path.startsWith('/try')) return <VisualizePanel />
   if (path.startsWith('/get-started')) return <Onboarding />
   if (path.startsWith('/login')) return <Login />
-  return <App />
+  return <LandingLotus />
 }

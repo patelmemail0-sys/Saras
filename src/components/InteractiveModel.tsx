@@ -53,8 +53,8 @@ export default function InteractiveModel() {
           fill="oklch(0 0 0 / 0.35)"
         />
         {/* three visible faces: light top, mid right, dark left = chrome read */}
-        <polygon points={pts(left)} fill="oklch(0.34 0.03 285)" stroke="var(--line)" strokeWidth="1" />
-        <polygon points={pts(right)} fill="oklch(0.46 0.035 285)" stroke="var(--line)" strokeWidth="1" />
+        <polygon points={pts(left)} fill="oklch(0.34 0.03 62)" stroke="var(--line)" strokeWidth="1" />
+        <polygon points={pts(right)} fill="oklch(0.46 0.035 62)" stroke="var(--line)" strokeWidth="1" />
         <polygon points={pts(top)} fill="var(--ch-model)" fillOpacity="0.85" stroke="var(--ink)" strokeWidth="1" />
         {gridTop.map((g, i) => (
           <g key={i} stroke="oklch(1 0 0 / 0.4)" strokeWidth="0.75">

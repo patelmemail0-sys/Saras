@@ -1,0 +1,708 @@
+/* ============================================================
+   Saras — pearl / glass / chrome lotus scrollytelling landing
+   Deep obsidian water, pearlescent glass, brushed chrome, a glassy
+   iridescent lotus. Display: Clash Display. Body: General Sans.
+   ============================================================ */
+
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap');
+
+/* Lenis smooth-scroll baseline */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@property --hue {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 250;
+}
+
+.lotus-landing {
+  --obsidian: oklch(0.15 0.012 255);
+  --ink-deep: oklch(0.1 0.01 255);
+  --pearl: oklch(0.97 0.008 250);
+  --pearl-2: oklch(0.86 0.012 250);
+  --silt: oklch(0.66 0.014 250);
+  --chrome-1: oklch(0.95 0.006 250);
+  --chrome-2: oklch(0.78 0.01 252);
+  --chrome-3: oklch(0.6 0.012 255);
+  --glass: oklch(0.9 0.02 250 / 0.05);
+  --glass-2: oklch(0.92 0.025 250 / 0.09);
+  --glass-edge: oklch(0.98 0.012 250 / 0.4);
+  --glass-edge-soft: oklch(0.9 0.02 250 / 0.16);
+
+  --font-display: 'Clash Display', system-ui, sans-serif;
+  --font-body: 'General Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --ease-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --maxw: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 3.25rem);
+  --hue: 250;
+  --px: 0;
+  --py: 0;
+
+  position: relative;
+  background: var(--ink-deep);
+  color: var(--pearl);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* clip, NOT hidden (hidden makes this a nested scroll container) */
+  overflow-x: clip;
+  transition: --hue 1s var(--ease-quint);
+}
+
+.lotus-landing h1,
+.lotus-landing h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ---------- Fixed lotus stage ---------- */
+.lh-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+.lh-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.lh-wash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    80% 70% at 56% 46%,
+    oklch(0.7 0.1 var(--hue) / 0.16),
+    transparent 72%
+  );
+  transition: background 0.4s linear;
+}
+.lh-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(135% 100% at 52% 46%, transparent 58%, oklch(0.12 0.025 262 / 0.3) 100%),
+    linear-gradient(0deg, oklch(0.1 0.02 260 / 0.4), transparent 32%);
+}
+
+/* ---------- Fixed nav ---------- */
+.lh-nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 30;
+}
+.lh-nav-inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 1.4rem var(--gutter) 0;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+.lh-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  color: var(--pearl);
+  text-decoration: none;
+}
+.lh-brand svg {
+  flex: none;
+}
+.lh-links {
+  display: flex;
+  gap: 1.7rem;
+  margin-left: 2rem;
+  font-size: 0.95rem;
+  color: var(--silt);
+}
+.lh-links a {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s var(--ease-quint);
+}
+.lh-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: var(--chrome-1);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease-quint);
+}
+.lh-links a:hover {
+  color: var(--pearl);
+}
+.lh-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---------- Chapters ---------- */
+main {
+  position: relative;
+  z-index: 2;
+}
+.lh-chapter {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+.lh-shell {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.lh-hero {
+  align-items: stretch;
+}
+.lh-hero .lh-shell {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 6.5rem;
+}
+
+/* hero lede (bottom-left), subtle pointer parallax */
+.lh-lede {
+  margin-top: auto;
+  margin-bottom: 9svh;
+  transform: translate3d(calc(var(--px) * 14px), calc(var(--py) * 10px), 0);
+  transition: transform 0.4s var(--ease-quint);
+}
+.lh-eyebrow {
+  display: block;
+  max-width: 42ch;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--silt);
+  margin-bottom: 1.6rem;
+  opacity: 0;
+  animation: lh-fade 1s var(--ease-quint) 0.1s forwards;
+}
+.lh-title {
+  font-size: clamp(3rem, 7.4vw, 6.5rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: var(--pearl);
+  margin-bottom: 1.5rem;
+}
+.lh-title .ln {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+}
+.lh-title .wd {
+  display: inline-block;
+  transform: translateY(115%);
+  animation: lh-rise 1.05s var(--ease-expo) both;
+}
+.lh-title .wd--accent {
+  /* solid chrome — background-clip:text leaks a rectangular seam on large glyphs */
+  color: var(--chrome-2);
+  animation: lh-rise 1.05s var(--ease-expo) both;
+}
+.lh-sub {
+  max-width: 46ch;
+  color: var(--pearl-2);
+  font-size: clamp(1.02rem, 1.1vw, 1.18rem);
+  line-height: 1.62;
+  margin: 0 0 1.9rem;
+}
+.lh-sub code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  color: var(--chrome-1);
+  background: oklch(0.9 0.02 250 / 0.08);
+  padding: 0.08em 0.4em;
+  border-radius: 6px;
+}
+
+/* chapter copy on a frosted-glass panel with a chrome refraction edge */
+.lh-block {
+  max-width: 46ch;
+  padding: clamp(1.5rem, 2.6vw, 2.4rem);
+  border-radius: 20px;
+  background: var(--glass);
+  border: 1px solid var(--glass-edge-soft);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.14),
+    inset 0 -1px 1px oklch(0 0 0 / 0.3),
+    0 40px 80px -40px oklch(0.04 0.01 255 / 0.9);
+}
+.lh-ch--left .lh-block {
+  margin-right: auto;
+}
+.lh-ch--right .lh-block {
+  margin-left: auto;
+  text-align: right;
+}
+.lh-eyebrow2 {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: oklch(0.78 0.07 var(--hue));
+  margin-bottom: 1rem;
+}
+.lh-h2 {
+  font-size: clamp(2rem, 4.4vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--pearl);
+}
+.lh-body {
+  margin-top: 1.1rem;
+  color: var(--pearl-2);
+  font-size: clamp(1.04rem, 1.1vw, 1.2rem);
+  line-height: 1.62;
+}
+.lh-ch--right .lh-body {
+  margin-left: auto;
+}
+
+/* reveal (own namespace — must NOT collide with index.css .reveal) */
+.lh-reveal {
+  opacity: 0;
+  transform: translateY(42px);
+  transition:
+    opacity 1s var(--ease-expo),
+    transform 1.1s var(--ease-expo);
+}
+.lh-reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- buttons (brushed chrome + ghost glass) ---------- */
+.lh-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 0.25s var(--ease-quint),
+    box-shadow 0.25s var(--ease-quint),
+    border-color 0.25s var(--ease-quint);
+}
+.lh-btn--chrome {
+  color: oklch(0.2 0.01 255);
+  background: linear-gradient(
+    180deg,
+    var(--chrome-1) 0%,
+    oklch(0.86 0.008 252) 22%,
+    var(--chrome-3) 52%,
+    oklch(0.84 0.01 250) 66%,
+    var(--chrome-1) 100%
+  );
+  border-color: oklch(0.7 0.01 255);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.85),
+    0 12px 34px -14px oklch(0.8 0.02 250 / 0.5);
+}
+.lh-btn--chrome::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(105deg, transparent 32%, oklch(1 0 0 / 0.85) 48%, transparent 64%);
+  transform: translateX(-120%);
+  transition: transform 0.6s var(--ease-quint);
+}
+.lh-btn--chrome:hover::before {
+  transform: translateX(120%);
+}
+.lh-btn--chrome:hover {
+  transform: translateY(-1px);
+}
+.lh-btn--chrome:active {
+  transform: translateY(0) scale(0.99);
+}
+.lh-btn--ghost {
+  background: var(--glass);
+  border-color: var(--glass-edge-soft);
+  color: var(--pearl);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.lh-btn--ghost:hover {
+  border-color: var(--glass-edge);
+}
+.lh-btn--sm {
+  padding: 0.58rem 1.1rem;
+  font-size: 0.88rem;
+  margin-left: auto;
+}
+.lh-textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--silt);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.25s var(--ease-quint), gap 0.25s var(--ease-quint);
+}
+.lh-textlink:hover {
+  color: var(--pearl);
+  gap: 0.7rem;
+}
+.lh-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.lh-ch--right .lh-cta {
+  justify-content: flex-end;
+}
+
+/* scroll cue */
+.lh-scrollcue {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--silt);
+}
+.lh-scrollcue i {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(var(--chrome-2), transparent);
+  animation: lh-cue 2.6s var(--ease-quint) infinite;
+}
+
+/* footer */
+.lh-foot {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--glass-edge-soft);
+  padding-block: 2.6rem;
+  background: oklch(0.08 0.008 255 / 0.6);
+  backdrop-filter: blur(8px);
+}
+.lh-foot-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: var(--silt);
+  font-size: 0.9rem;
+}
+
+@keyframes lh-rise {
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes lh-fade {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes lh-chrome {
+  to {
+    background-position: 200% 0;
+  }
+}
+@keyframes lh-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  40% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  60% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@media (max-width: 760px) {
+  .lh-links {
+    display: none;
+  }
+  .lh-title {
+    font-size: clamp(2.6rem, 13vw, 4.2rem);
+  }
+  .lh-ch--right .lh-block,
+  .lh-ch--left .lh-block {
+    margin: 0;
+    text-align: left;
+  }
+  .lh-ch--right .lh-cta,
+  .lh-ch--right .lh-body {
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+}
+
+/* ============================================================
+   Horizontal corridor (data-mode = h)
+   ============================================================ */
+.lotus-landing[data-mode='h'] {
+  --pan: 0vw;
+  --ribbon: 0vw;
+  --flare: 0;
+  --climax: 0;
+  --prog: 0;
+}
+.lh-spacer {
+  width: 100%;
+}
+.lh-viewport {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  perspective: 1500px;
+  pointer-events: none;
+}
+.lh-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100svh;
+  display: flex;
+  transform: translate3d(var(--pan), 0, 0);
+  transform-style: preserve-3d;
+  will-change: transform;
+  opacity: calc(1 - var(--climax) * 1.2);
+}
+.lh-cell {
+  position: relative;
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100svh;
+  transform-style: preserve-3d;
+}
+.lh-cell__inner {
+  width: 100%;
+  height: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: flex;
+  align-items: center;
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--d, 0) * 19deg))
+    translateZ(calc(var(--dz, 0) * -380px)) scale(calc(1 - var(--dz, 0) * 0.08));
+  opacity: calc(1 - var(--dz, 0) * 0.72);
+}
+.lh-cell--hero .lh-cell__inner {
+  align-items: flex-end;
+  padding-bottom: 11svh;
+}
+.lotus-landing[data-mode='h'] .lh-lede {
+  margin: 0;
+  transform: none;
+}
+.lh-cell__panel,
+.lotus-landing[data-mode='h'] .lh-lede,
+.lh-climax__cta {
+  pointer-events: auto;
+}
+.lh-ch--right .lh-cell__inner {
+  justify-content: flex-end;
+}
+.lh-ch--left .lh-cell__inner {
+  justify-content: flex-start;
+}
+
+/* split room (reflection): two glass cards on different Z planes */
+.lh-split {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 40ch;
+  margin-left: auto;
+}
+.lh-split__a {
+  transform: translateZ(50px);
+}
+.lh-split__b {
+  transform: translateZ(-12px);
+  margin-left: clamp(1rem, 4vw, 3.5rem);
+}
+/* steps room: panel surfaces from below as it arrives */
+.lh-cell--surface .lh-cell__panel {
+  transform: translateY(calc(var(--dz, 0) * 90px));
+}
+
+/* kinetic ribbon — oversized word per room on a 1.4x parallax sub-track */
+.lh-ribbon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: flex;
+  z-index: 0;
+  pointer-events: none;
+  transform: translate3d(var(--ribbon), -50%, 0);
+  will-change: transform;
+  opacity: calc(1 - var(--climax) * 1.2);
+}
+.lh-rib {
+  flex: 0 0 100vw;
+  width: 100vw;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 23vw;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: oklch(0.92 0.03 250 / 0.05);
+  user-select: none;
+}
+
+/* climax: white glass flare, then the wordmark + CTA resolve out of it */
+.lh-flare {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: radial-gradient(58% 62% at 56% 48%, #eff5fc, #cdd9e8 52%, transparent 78%);
+  opacity: var(--flare, 0);
+}
+.lh-climax {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  pointer-events: none;
+  opacity: var(--climax, 0);
+}
+.lh-wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(4rem, 17vw, 14rem);
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  /* solid chrome, NOT background-clip:text — on a glyph this large the clipped
+     gradient leaks a rectangular seam in Chrome (worsened by the scale() and the
+     fading-opacity parent). A flat metal tone is clean and artifact-free. */
+  color: var(--chrome-1);
+  transform: scale(calc(0.92 + var(--climax, 0) * 0.08));
+}
+.lh-climax__cta {
+  text-align: center;
+  max-width: 46ch;
+  opacity: calc(max(0, (var(--climax, 0) - 0.5) * 2.4));
+  transform: translateY(calc((1 - var(--climax, 0)) * 26px));
+}
+.lh-climax__cta .lh-cta {
+  justify-content: center;
+}
+
+/* progress rail + horizontal scroll cue */
+.lh-rail {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 1.5rem;
+  height: 2px;
+  z-index: 7;
+  background: oklch(0.9 0.02 250 / 0.1);
+  pointer-events: none;
+}
+.lh-rail i {
+  display: block;
+  height: 100%;
+  width: calc(var(--prog, 0) * 100%);
+  background: var(--chrome-2);
+}
+.lh-scrollcue--h {
+  bottom: 2.6rem;
+  left: auto;
+  right: var(--gutter);
+  transform: none;
+  flex-direction: row;
+  opacity: calc(1 - var(--prog, 0) * 6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lotus-landing {
+    transition: none;
+  }
+  .lh-title .wd,
+  .lh-title .wd--accent {
+    transform: none;
+    animation: none;
+  }
+  .lh-eyebrow {
+    opacity: 1;
+    animation: none;
+  }
+  .lh-scrollcue i {
+    animation: none;
+  }
+  .lh-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .lh-lede {
+    transform: none;
+  }
+}
