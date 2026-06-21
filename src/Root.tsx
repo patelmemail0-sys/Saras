@@ -13,6 +13,7 @@ const CurriculumCoverage = lazy(() => import('./coverage/CurriculumCoverage.tsx'
 const VisualizePanel = lazy(() => import('./engine/VisualizePanel.tsx'))
 const Onboarding = lazy(() => import('./auth/Onboarding.tsx'))
 const Login = lazy(() => import('./auth/Login.tsx'))
+const TopicsPage = lazy(() => import('./topics/TopicsPage.tsx'))
 
 const route = () => window.location.hash.replace(/^#/, '')
 
@@ -30,5 +31,6 @@ function renderRoute(path: string) {
   if (path.startsWith('/try')) return <VisualizePanel />
   if (path.startsWith('/get-started')) return <Onboarding />
   if (path.startsWith('/login')) return <Login />
+  if (path.startsWith('/topics')) return <TopicsPage />
   return <App />
 }
