@@ -108,6 +108,44 @@ function App() {
           </div>
         </section>
 
+        {/* TOPICS BAND — subject navigation */}
+        <section className="topics-band">
+          <div className="shell topics-band__inner">
+            <div className="topics-band__copy">
+              <span className="label reveal">Browse by subject</span>
+              <h2 className="reveal" style={revealDelay(60)}>
+                Every concept, organised and ready.
+              </h2>
+              <p className="reveal" style={revealDelay(120)}>
+                Four subjects, dozens of courses, hundreds of concepts — each
+                one ready to refract into three interactive views the moment
+                you open it.
+              </p>
+            </div>
+
+            <div className="topics-band__subjects">
+              {SUBJECTS.map((s, i) => (
+                <a
+                  key={s.slug}
+                  className="topics-band__subject reveal-fade"
+                  href="#/topics"
+                  data-slug={s.slug}
+                  style={revealDelay(i * 60)}
+                >
+                  <span className="topics-band__subject-label">{s.label}</span>
+                  <span className="topics-band__subject-count">{s.count} concepts</span>
+                </a>
+              ))}
+            </div>
+
+            <div className="topics-band__cta reveal" style={revealDelay(180)}>
+              <a className="btn btn--ghost btn--sm" href="#/topics">
+                Browse all topics
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* THE THREE CHANNELS — bento, the triad of meaning */}
         <section className="channels">
           <div className="shell">
@@ -214,6 +252,7 @@ function Nav() {
         <nav className="nav__links">
           <a href="#how">How it works</a>
           <a href="#early">The idea</a>
+          <a href="#/topics">Topics</a>
           <a href="#/login">Log in</a>
         </nav>
         <a href="#/get-started" className="btn btn--ghost btn--sm">
@@ -274,6 +313,13 @@ function Arrow() {
 function revealDelay(ms: number): CSSProperties {
   return { '--reveal-delay': `${ms}ms` } as CSSProperties
 }
+
+const SUBJECTS = [
+  { slug: 'physics',   label: 'Physics',   count: 95  },
+  { slug: 'math',      label: 'Math',      count: 436 },
+  { slug: 'biology',   label: 'Biology',   count: 71  },
+  { slug: 'chemistry', label: 'Chemistry', count: 76  },
+]
 
 const STEPS = [
   {
