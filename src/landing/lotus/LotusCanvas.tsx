@@ -225,6 +225,7 @@ function RoomHeadline({
       <Text
         ref={txt as never}
         font={HEADLINE_FONT}
+        // @ts-expect-error curveRadius is a valid troika-three-text prop, not in drei's Text types
         curveRadius={HEADLINE_CURVE}
         fontSize={0.235}
         maxWidth={2.45}
