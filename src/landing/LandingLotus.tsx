@@ -2,7 +2,8 @@ import { Suspense, lazy, useEffect, useMemo, useRef, type CSSProperties } from '
 import Lenis from 'lenis'
 import './landing.css'
 import LotusFallback from './lotus/LotusFallback'
-import { CELLS, panVw, ribbonVw, cellN, sceneAt } from './scrollScene'
+import { CELLS, panVw, ribbonVw, cellN, sceneAt, easedIndex } from './scrollScene'
+import type { RoomCopy } from './lotus/LotusCanvas'
 
 const LotusCanvas = lazy(() => import('./lotus/LotusCanvas'))
 
@@ -54,7 +55,7 @@ const ROOMS: Room[] = [
   {
     id: 'reflection',
     align: 'right',
-    ribbon: 'Mirror',
+    ribbon: 'Visualize',
     hue: 295,
     variant: 'split',
     eyebrow: 'The same idea, twice',
@@ -72,6 +73,16 @@ const ROOMS: Room[] = [
     body: 'When you want the procedure, Saras lays the work out in order, and you can replay any step until it finally holds.',
   },
 ]
+
+// ROOMS[i] is rendered in corridor cell i+1 (cell 0 is the hero). The headline
+// is drawn in the 3D scene (orbiting the lotus), the eyebrow + body stay in the
+// fixed copy layer.
+const HEADLINE_ROOMS: RoomCopy[] = ROOMS.map((r, i) => ({
+  id: r.id,
+  cell: i + 1,
+  headline: r.headline,
+  ribbon: r.ribbon,
+}))
 
 export default function LandingLotus() {
   const rootRef = useRef<HTMLDivElement>(null)
@@ -98,6 +109,7 @@ export default function LandingLotus() {
     // ---------- HORIZONTAL CORRIDOR ----------
     if (horizontal) {
       const cells = Array.from(root.querySelectorAll<HTMLElement>('.lh-cell'))
+      const copies = Array.from(root.querySelectorAll<HTMLElement>('.lh-copy'))
       const update = () => {
         const max = document.documentElement.scrollHeight - window.innerHeight
         const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0
@@ -108,11 +120,27 @@ export default function LandingLotus() {
         root.style.setProperty('--ribbon', ribbonVw(p).toFixed(2) + 'vw')
         root.style.setProperty('--flare', s.flare.toFixed(3))
         root.style.setProperty('--climax', s.climax.toFixed(3))
+        root.style.setProperty('--space', s.space.toFixed(3))
         root.style.setProperty('--prog', p.toFixed(4))
         for (let i = 0; i < cells.length; i++) {
           const n = cellN(i, p)
           cells[i].style.setProperty('--d', n.toFixed(3))
           cells[i].style.setProperty('--dz', Math.min(Math.abs(n), 1).toFixed(3))
+        }
+        // fixed copy layer: eyebrow + body fade/drift in step with their room's
+        // 3D headline (which orbits the lotus). cell index = room index + 1.
+        // The whole layer is also killed off as the lotus shatters, so the last
+        // room's copy is fully gone once the explosion starts.
+        const ei = easedIndex(p)
+        const kill = 1 - Math.min(1, s.shatter / 0.15)
+        for (let i = 0; i < copies.length; i++) {
+          const u = ei - (i + 1)
+          const a = Math.abs(u)
+          // reaches 0 by one cell-width away (no faint residual at the hero or
+          // the final scene), and is killed entirely once the lotus shatters
+          const op = (a < 0.5 ? 1 : Math.max(0, 1 - (a - 0.5) / 0.5)) * kill
+          copies[i].style.setProperty('--u', u.toFixed(3))
+          copies[i].style.setProperty('--op', op.toFixed(3))
         }
       }
       const lenis = new Lenis({ lerp: 0.08, smoothWheel: true })
@@ -142,7 +170,7 @@ export default function LandingLotus() {
     const update = () => {
       const vh = window.innerHeight
       const progress = Math.min(1, window.scrollY / (vh * 1.8))
-      bloomRef.current = 0.24 + progress * 0.76
+      bloomRef.current = Math.min(0.93, 0.24 + progress * 0.76)
       for (const sec of sections) {
         const r = sec.getBoundingClientRect()
         if (r.top < vh * 0.8 && r.bottom > 0) {
@@ -242,6 +270,7 @@ export default function LandingLotus() {
               bloomRef={bloomRef}
               focusRef={focusRef}
               progressRef={horizontal ? progressRef : undefined}
+              rooms={horizontal ? HEADLINE_ROOMS : undefined}
             />
           </Suspense>
         ) : (
@@ -253,19 +282,21 @@ export default function LandingLotus() {
 
       {horizontal ? (
         <>
-          <div className="lh-viewport">
-            {/* kinetic ribbon, parallax sub-track at 1.4x */}
-            <div className="lh-ribbon" aria-hidden="true">
-              <span className="lh-rib" />
-              {ROOMS.map((r) => (
-                <span className="lh-rib" key={r.id}>
-                  {r.ribbon}
-                </span>
-              ))}
-              <span className="lh-rib" />
-            </div>
+          {/* fixed copy layer: eyebrow + supporting line per room. The headline
+              itself is drawn in the 3D scene, orbiting the lotus. */}
+          <div className="lh-copy-layer" aria-hidden="false">
+            {ROOMS.map((r) => (
+              <div className="lh-copy" data-align={r.align} key={r.id}>
+                <span className="lh-eyebrow2">{r.eyebrow}</span>
+                <h2 className="lh-h2 lh-sr">{r.headline}</h2>
+                <p className="lh-body">{r.body}</p>
+              </div>
+            ))}
+          </div>
 
-            {/* the corridor of rooms */}
+          <div className="lh-viewport">
+            {/* the corridor of rooms (the kinetic ribbon words now live in the
+                3D scene, sliding behind the lotus) */}
             <div className="lh-track">
               <section className="lh-cell lh-cell--hero" id="top">
                 <div className="lh-cell__inner">{heroLede}</div>
@@ -273,31 +304,12 @@ export default function LandingLotus() {
 
               {ROOMS.map((r) => (
                 <section
-                  className={`lh-cell lh-ch--${r.align}${r.variant ? ' lh-cell--' + r.variant : ''}`}
+                  className="lh-cell lh-cell--room"
                   id={r.id}
                   key={r.id}
                   data-hue={String(r.hue)}
-                >
-                  <div className="lh-cell__inner">
-                    {r.variant === 'split' ? (
-                      <div className="lh-split">
-                        <div className="lh-block lh-cell__panel lh-split__a">
-                          <span className="lh-eyebrow2">{r.eyebrow}</span>
-                          <h2 className="lh-h2">{r.headline}</h2>
-                        </div>
-                        <div className="lh-block lh-cell__panel lh-split__b">
-                          <p className="lh-body">{r.body}</p>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="lh-block lh-cell__panel">
-                        <span className="lh-eyebrow2">{r.eyebrow}</span>
-                        <h2 className="lh-h2">{r.headline}</h2>
-                        <p className="lh-body">{r.body}</p>
-                      </div>
-                    )}
-                  </div>
-                </section>
+                  aria-hidden="true"
+                />
               ))}
 
               <section className="lh-cell lh-cell--climax" id="early">

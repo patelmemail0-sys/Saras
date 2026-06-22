@@ -11,11 +11,11 @@
   place-items: center;
   padding: clamp(1.5rem, 5vw, 4rem) var(--gutter);
 
-  /* Warm gold accent for selection + focus, in the same metal family as the
-     bronze chrome and the amber-gold model channel. */
-  --gold: oklch(0.8 0.13 74);
-  --gold-soft: oklch(0.8 0.13 74 / 0.28);
-  --gold-fill: oklch(0.8 0.13 74 / 0.16);
+  /* Cool accent for selection + focus, in the same family as the chrome-silver
+     highlights and the pearl/glass channel. */
+  --gold: var(--accent);
+  --gold-soft: oklch(0.76 0.12 256 / 0.28);
+  --gold-fill: oklch(0.76 0.12 256 / 0.16);
 }
 
 .auth__card {
@@ -62,7 +62,7 @@
   height: 4px;
   flex: 1;
   border-radius: 999px;
-  background: oklch(0.5 0.03 68 / 0.25);
+  background: oklch(0.5 0.012 255 / 0.25);
   transition: background 0.3s var(--ease);
 }
 .auth__steps span.is-on {
@@ -110,7 +110,8 @@
 
 .auth__error {
   margin: 0.2rem 0 1rem;
-  color: oklch(0.64 0.16 35);
+  /* functional danger colour keeps a red affordance even in the cool theme */
+  color: oklch(0.68 0.17 22);
   font-size: 0.9rem;
 }
 

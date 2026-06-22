@@ -94,6 +94,8 @@ html.lenis body {
     transparent 72%
   );
   transition: background 0.4s linear;
+  /* the water-glow recedes as the scene morphs into space */
+  opacity: calc(1 - var(--space, 0));
 }
 .lh-vignette {
   position: absolute;
@@ -109,14 +111,38 @@ html.lenis body {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 30;
+  display: flex;
+  justify-content: center;
+  /* float the slim bubble in from the top, with only a small side inset */
+  padding: clamp(0.55rem, 1.2vw, 0.9rem) clamp(0.8rem, 1.5vw, 1.25rem) 0;
+  pointer-events: none; /* the gaps around the bubble must not capture scroll */
 }
+/* a slim floating BUBBLE of clear glass: rounded capsule, top gloss highlight, a
+   fine rim, and a soft lift shadow. Clear, not frosted (only a hint of blur). */
 .lh-nav-inner {
-  max-width: var(--maxw);
-  margin-inline: auto;
-  padding: 1.4rem var(--gutter) 0;
+  pointer-events: auto;
+  width: 100%;
+  max-width: 1600px;
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 1.25rem;
+  padding: 0.3rem 0.45rem 0.3rem 1.25rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(125% 150% at 50% -45%, oklch(1 0 0 / 0.18), transparent 60%),
+    linear-gradient(
+      180deg,
+      oklch(0.97 0.012 250 / 0.14),
+      oklch(0.9 0.02 250 / 0.05) 55%,
+      oklch(0.92 0.02 250 / 0.1)
+    );
+  border: 1px solid oklch(0.97 0.01 250 / 0.26);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.5),
+    inset 0 -1px 3px oklch(0.7 0.02 250 / 0.12),
+    0 12px 32px -18px oklch(0.03 0.01 258 / 0.5);
+  -webkit-backdrop-filter: saturate(150%) blur(4px);
+  backdrop-filter: saturate(150%) blur(4px);
 }
 .lh-brand {
   display: inline-flex;
@@ -124,20 +150,27 @@ html.lenis body {
   gap: 0.6rem;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.08rem;
   letter-spacing: -0.02em;
   color: var(--pearl);
   text-decoration: none;
 }
 .lh-brand svg {
   flex: none;
+  width: 18px;
+  height: 18px;
 }
 .lh-links {
   display: flex;
   gap: 1.7rem;
-  margin-left: 2rem;
-  font-size: 0.95rem;
-  color: var(--silt);
+  margin-left: 1.9rem;
+  /* same mono / uppercase / tracked treatment as the hero eyebrow */
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  /* brighter than --silt so it clears 4.5:1 over the lightened glass */
+  color: oklch(0.74 0.012 250);
 }
 .lh-links a {
   position: relative;
@@ -163,6 +196,30 @@ html.lenis body {
 .lh-links a:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* keyboard focus — visible pearl-chrome ring, on-brand, shown to keyboard users
+   only (mouse clicks don't trigger it) */
+.lh-links a:focus-visible,
+.lh-brand:focus-visible {
+  outline: 2px solid var(--chrome-1);
+  outline-offset: 4px;
+  border-radius: 5px;
+}
+.lh-btn:focus-visible {
+  outline: 2px solid var(--chrome-1);
+  outline-offset: 3px;
+}
+
+/* comfortable 44px touch targets on touch devices (incl. tablets where the
+   links are still shown) */
+@media (pointer: coarse) {
+  .lh-btn {
+    min-height: 44px;
+  }
+  .lh-links a {
+    padding-block: 0.5rem;
+  }
 }
 
 /* ---------- Chapters ---------- */
@@ -374,8 +431,8 @@ main {
   border-color: var(--glass-edge);
 }
 .lh-btn--sm {
-  padding: 0.58rem 1.1rem;
-  font-size: 0.88rem;
+  padding: 0.42rem 1.05rem;
+  font-size: 0.82rem;
   margin-left: auto;
 }
 .lh-textlink {
@@ -544,13 +601,21 @@ main {
   display: flex;
   align-items: center;
   transform-style: preserve-3d;
-  transform: rotateY(calc(var(--d, 0) * 19deg))
-    translateZ(calc(var(--dz, 0) * -380px)) scale(calc(1 - var(--dz, 0) * 0.08));
-  opacity: calc(1 - var(--dz, 0) * 0.72);
+  will-change: transform, opacity;
+  /* the words arc in: sweep up from below, recede deep + turn (wrapping around
+     the lotus as it rotates), read at centre, then peel up-and-left and away.
+     The track already carries the horizontal left-ward travel. */
+  transform: translateY(calc(var(--d, 0) * 24vh))
+    translateZ(calc(var(--dz, 0) * -720px)) rotateY(calc(var(--d, 0) * 52deg))
+    rotateZ(calc(var(--d, 0) * 5deg));
+  opacity: calc(1 - var(--dz, 0) * 0.85);
 }
 .lh-cell--hero .lh-cell__inner {
   align-items: flex-end;
   padding-bottom: 11svh;
+  /* hero exits gentler: recede + slight turn, no big vertical sweep */
+  transform: translateZ(calc(var(--dz, 0) * -460px))
+    rotateY(calc(var(--d, 0) * 12deg));
 }
 .lotus-landing[data-mode='h'] .lh-lede {
   margin: 0;
@@ -566,6 +631,67 @@ main {
 }
 .lh-ch--left .lh-cell__inner {
   justify-content: flex-start;
+}
+
+/* free-floating room words (no tile) */
+.lh-words {
+  max-width: 38ch;
+  text-shadow: 0 1px 28px oklch(0.05 0.012 258 / 0.75);
+}
+.lh-ch--right .lh-words {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* visually-hidden (the visible headline is drawn in the 3D scene; this keeps it
+   in the accessibility tree + DOM for SEO) */
+.lh-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* fixed copy layer: eyebrow + supporting line, pinned low while the room's 3D
+   headline orbits the lotus above. JS sets --u (signed cell distance) and --op
+   (visibility) each frame; nothing here pans with the corridor. */
+.lh-copy-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.lh-copy {
+  position: absolute;
+  bottom: clamp(6vh, 8vh, 9vh);
+  width: min(40ch, 76vw);
+  opacity: var(--op, 0);
+  transform: translate(calc(var(--u, 0) * -2.6vw), calc((1 - var(--op, 0)) * 2.8vh));
+  text-shadow: 0 1px 30px oklch(0.05 0.012 258 / 0.82);
+  will-change: opacity, transform;
+}
+.lh-copy[data-align='left'] {
+  left: var(--gutter);
+  text-align: left;
+}
+.lh-copy[data-align='right'] {
+  right: var(--gutter);
+  text-align: right;
+}
+.lh-copy[data-align='right'] .lh-body {
+  margin-left: auto;
+}
+.lh-copy .lh-eyebrow2 {
+  margin-bottom: 0.55rem;
+}
+.lh-copy .lh-body {
+  max-width: 40ch;
 }
 
 /* split room (reflection): two glass cards on different Z planes */
@@ -618,8 +744,8 @@ main {
   inset: 0;
   z-index: 5;
   pointer-events: none;
-  background: radial-gradient(58% 62% at 56% 48%, #eff5fc, #cdd9e8 52%, transparent 78%);
-  opacity: var(--flare, 0);
+  background: radial-gradient(46% 52% at 50% 46%, #f4f8fd, #d4e0ee 46%, transparent 72%);
+  opacity: calc(var(--flare, 0) * 0.82);
 }
 .lh-climax {
   position: absolute;

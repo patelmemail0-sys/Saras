@@ -1,88 +1,89 @@
 /* ============================================================
    Saras — design tokens + base
-   Aesthetic: bronze instrument — deep warm espresso surfaces, polished
-   bronze/gold metal, champagne glass, and cool chrome-silver highlights.
-   A two-tone (bronze + silver) bi-metal read for an elegant, upscale feel.
-   Fonts: Satoshi (Fontshare) + JetBrains Mono.
-   Color: OKLCH, warm bronze neutrals + bronze metal + silver highlights.
+   Aesthetic: cool glass instrument — deep obsidian water, pearlescent
+   glass, brushed chrome-silver, and an azure / iridescent accent. Matches
+   the lotus landing. A cool, upscale, high-clarity read.
+   Fonts: Clash Display + General Sans + JetBrains Mono.
+   Color: OKLCH, cool blue-grey neutrals + chrome metal + azure accent.
    The 3-channel triad is MEANING (the 3 representations), not decor.
    ============================================================ */
 
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   color-scheme: dark;
 
-  /* Surfaces — deep warm espresso, faint bronze tint */
-  --bg: oklch(0.165 0.012 65);
-  --bg-1: oklch(0.225 0.016 65); /* raised solid (fallback) */
-  --bg-2: oklch(0.135 0.01 60); /* recessed wells (model, tiles) */
+  /* Surfaces — deep obsidian water, faint cool tint */
+  --bg: oklch(0.15 0.012 258);
+  --bg-1: oklch(0.21 0.014 258); /* raised solid (fallback) */
+  --bg-2: oklch(0.11 0.01 258); /* recessed wells (model, tiles) */
 
-  /* Glass — warm champagne translucency over the dark base */
-  --glass: oklch(0.82 0.04 78 / 0.06);
-  --glass-2: oklch(0.85 0.05 80 / 0.11);
-  --glass-blur: 22px;
+  /* Glass — cool pearl translucency over the dark base */
+  --glass: oklch(0.9 0.02 250 / 0.06);
+  --glass-2: oklch(0.92 0.025 250 / 0.11);
+  --glass-blur: 18px;
 
-  /* Hairlines — warm bronze */
-  --line: oklch(0.52 0.035 70 / 0.6);
-  --line-soft: oklch(0.42 0.028 66 / 0.55);
+  /* Hairlines — cool chrome */
+  --line: oklch(0.72 0.012 255 / 0.5);
+  --line-soft: oklch(0.6 0.012 255 / 0.42);
 
-  /* Ink — warm champagne pearl on dark */
-  --ink: oklch(0.97 0.012 85);
-  --ink-2: oklch(0.83 0.022 80);
-  --ink-3: oklch(0.66 0.028 74);
+  /* Ink — cool pearl on dark */
+  --ink: oklch(0.97 0.008 250);
+  --ink-2: oklch(0.85 0.012 250);
+  --ink-3: oklch(0.66 0.014 250);
 
-  /* Accent — warm amber (focus, beams, input focus, live values) */
-  --accent: oklch(0.79 0.13 72);
-  --accent-press: oklch(0.71 0.13 64);
-  --on-accent: oklch(0.21 0.025 60); /* dark warm ink on metal buttons */
+  /* Accent — azure (focus, beams, input focus, live values) */
+  --accent: oklch(0.76 0.12 256);
+  --accent-press: oklch(0.68 0.13 258);
+  --on-accent: oklch(0.18 0.012 258); /* dark cool ink on metal buttons */
 
-  /* Bronze metal — polished bronze/gold gradient for buttons & metal edges.
-     The bright top/bottom stops read as chrome-silver highlights on the metal. */
+  /* Chrome metal — brushed chrome-silver gradient for buttons & metal edges.
+     The bright top/bottom stops read as polished highlights on the metal. */
   --chrome: linear-gradient(
     180deg,
-    oklch(0.95 0.045 90) 0%,
-    oklch(0.85 0.1 80) 20%,
-    oklch(0.62 0.105 56) 50%,
-    oklch(0.83 0.1 80) 64%,
-    oklch(0.95 0.045 90) 100%
-  );
-  --chrome-hi: linear-gradient(
-    180deg,
-    oklch(0.97 0.04 92) 0%,
-    oklch(0.9 0.085 82) 22%,
-    oklch(0.7 0.11 60) 50%,
-    oklch(0.9 0.085 82) 64%,
-    oklch(0.98 0.04 92) 100%
-  );
-
-  /* Cool chrome-silver — the highlight metal; the bi-metal contrast to bronze */
-  --silver: linear-gradient(
-    180deg,
-    oklch(0.99 0.004 250) 0%,
+    oklch(0.98 0.005 250) 0%,
     oklch(0.87 0.008 250) 22%,
-    oklch(0.66 0.012 255) 50%,
+    oklch(0.64 0.012 255) 50%,
     oklch(0.85 0.008 250) 64%,
     oklch(0.98 0.005 250) 100%
   );
-
-  /* Bronze sheen — flowing metallic gradient for glows, edges, progress.
-     Oversized so background-position animation makes the metal flow. */
-  --iris: linear-gradient(
-    100deg,
-    oklch(0.58 0.1 42),
-    oklch(0.8 0.14 76),
-    oklch(0.94 0.055 92),
-    oklch(0.76 0.12 60),
-    oklch(0.58 0.1 42),
-    oklch(0.8 0.14 76)
+  --chrome-hi: linear-gradient(
+    180deg,
+    oklch(0.99 0.004 250) 0%,
+    oklch(0.91 0.007 250) 22%,
+    oklch(0.7 0.012 255) 50%,
+    oklch(0.9 0.007 250) 64%,
+    oklch(0.99 0.004 250) 100%
   );
 
-  /* The three representation channels — warm metal triad */
-  --ch-model: oklch(0.83 0.14 82); /* hands-on 3D model  — amber-gold */
-  --ch-analogy: oklch(0.72 0.13 42); /* physical analogy  — copper */
-  --ch-steps: oklch(0.7 0.12 22); /* procedural / steps — rose-bronze */
+  /* Silver — the highlight metal (same cool family as chrome) */
+  --silver: linear-gradient(
+    180deg,
+    oklch(0.99 0.004 250) 0%,
+    oklch(0.88 0.008 250) 22%,
+    oklch(0.67 0.012 255) 50%,
+    oklch(0.86 0.008 250) 64%,
+    oklch(0.99 0.005 250) 100%
+  );
+
+  /* Iridescent sheen — flowing cool gradient for glows, edges, progress.
+     Oversized so background-position animation makes it flow. */
+  --iris: linear-gradient(
+    100deg,
+    oklch(0.6 0.12 256),
+    oklch(0.82 0.09 226),
+    oklch(0.95 0.02 250),
+    oklch(0.72 0.12 292),
+    oklch(0.6 0.12 256),
+    oklch(0.82 0.09 226)
+  );
+
+  /* The three representation channels — cool triad */
+  --ch-model: oklch(0.78 0.12 256); /* hands-on 3D model  — azure */
+  --ch-analogy: oklch(0.8 0.1 212); /* physical analogy  — cyan */
+  --ch-steps: oklch(0.74 0.12 292); /* procedural / steps — violet */
 
   /* pointer field (set by usePointerField) */
   --px: 0;
@@ -97,8 +98,8 @@
   /* Easing — ease-out exponential, no bounce */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --font-display: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Clash Display', system-ui, -apple-system, sans-serif;
+  --font-body: 'General Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 }
 
@@ -114,11 +115,11 @@ html {
 
 body {
   margin: 0;
-  /* deep espresso base + warm bronze top vignette; aurora is its own layer */
+  /* deep obsidian base + cool top vignette; aurora is its own layer */
   background:
     radial-gradient(
       120% 90% at 50% -10%,
-      oklch(0.28 0.03 62),
+      oklch(0.26 0.03 262),
       transparent 60%
     ),
     var(--bg);
@@ -136,7 +137,7 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.04;
   margin: 0;
@@ -254,7 +255,7 @@ a {
   left: -10%;
   background: radial-gradient(
     circle at 50% 50%,
-    oklch(0.74 0.12 72 / 0.9),
+    oklch(0.7 0.12 258 / 0.85),
     transparent 62%
   );
   animation: blobA 22s ease-in-out infinite;
@@ -264,7 +265,7 @@ a {
   right: -16%;
   background: radial-gradient(
     circle at 50% 50%,
-    oklch(0.66 0.11 46 / 0.85),
+    oklch(0.64 0.12 292 / 0.8),
     transparent 62%
   );
   animation: blobB 26s ease-in-out infinite;
@@ -274,7 +275,7 @@ a {
   left: 24%;
   background: radial-gradient(
     circle at 50% 50%,
-    oklch(0.88 0.07 92 / 0.8),
+    oklch(0.85 0.07 220 / 0.75),
     transparent 62%
   );
   animation: blobC 30s ease-in-out infinite;
@@ -347,7 +348,7 @@ a {
   height: 3px;
   z-index: 60;
   pointer-events: none;
-  background: oklch(0.5 0.03 66 / 0.15);
+  background: oklch(0.6 0.02 255 / 0.15);
 }
 .scrollbar__fill {
   height: 100%;
@@ -356,7 +357,7 @@ a {
   background: var(--iris);
   background-size: 200% 100%;
   animation: iris-flow 6s linear infinite;
-  box-shadow: 0 0 14px oklch(0.8 0.13 70 / 0.6);
+  box-shadow: 0 0 14px oklch(0.8 0.12 256 / 0.55);
 }
 
 :focus-visible {

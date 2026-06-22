@@ -6,6 +6,11 @@
 
 export const CELLS = 6 // hero + unfurl + data + reflection + steps + early
 export const PAN_END = 0.86 // progress where the track pins and the climax dolly begins
+// the bloom never opens past this — petals hold here (open but cupped) and the
+// lower whorl never detaches, even through the climax
+const BLOOM_MAX = 0.93
+// the lotus begins to shatter once the last heading is crossing/fading out
+const SHATTER_START = 0.74
 
 const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x)
 const clamp = (x: number, a: number, b: number) => (x < a ? a : x > b ? b : x)
@@ -40,6 +45,54 @@ export function cellN(i: number, p: number) {
   return clamp(i - easedIndex(p), -1.6, 1.6)
 }
 
+// ---- Room headline orbit ---------------------------------------------------
+// Each room's headline lives in the 3D scene as curved glass-lit text riding an
+// ELLIPTICAL orbit around the lotus — narrow in X (so it stays over the petals'
+// screen footprint, grazing through the glass at the sides) and deep in Z (so
+// it passes clearly behind the bloom). As the corridor advances the headline
+// sweeps in low from the front-right, reads at the front while its room is
+// centred (easedIndex === cellIndex → u === 0), then wraps around the BACK of
+// the lotus — occluded by the petals and refracted through the glass — and
+// rises off to the upper-left. Pure function of progress so it scrubs both
+// ways identically.
+const DEG = Math.PI / 180
+const ORBIT_RX = 1.22 // horizontal half-axis (kept tight to overlap the petals)
+const ORBIT_RZ = 2.05 // depth half-axis (front readable, back clearly behind)
+const ORBIT_CY = -0.12 // orbit centre height (≈ lotus centre)
+
+export type RoomText = {
+  x: number
+  y: number
+  z: number
+  rotY: number // faces the camera at the front, turns as it wraps
+  scale: number
+  opacity: number
+}
+
+export function roomTextAt(cellIndex: number, p: number): RoomText {
+  const u = easedIndex(p) - cellIndex // <0 upcoming (right), 0 centred, >0 past
+  // a: 0 at the readable front, swings negative (clockwise from above) so the
+  // headline travels front → left → behind as the room passes.
+  const a = clamp(-126 * u, -210, 112) * DEG
+  // enters slightly low, lifts gently as it drifts left
+  const lift = u < 0 ? u * 0.55 : u * u * 0.42
+  const near = 1 - smoothstep(0, 1.3, Math.abs(u))
+  const scale = 0.58 + 0.42 * near
+  // fade in as it arrives from the right; once it crosses centre (u = 0) start
+  // fading out, fully gone by the left-perpendicular point — orbit angle −90°,
+  // i.e. u = 90 / 126 ≈ 0.714.
+  const opacity =
+    clamp01(smoothstep(-1.0, -0.42, u)) * (1 - smoothstep(0, 0.714, u))
+  return {
+    x: ORBIT_RX * Math.sin(a),
+    y: ORBIT_CY + lift,
+    z: ORBIT_RZ * Math.cos(a),
+    rotY: a,
+    scale,
+    opacity,
+  }
+}
+
 export type Scene = {
   spin: number // rotation.y
   tiltX: number // rotation.x
@@ -47,30 +100,38 @@ export type Scene = {
   scale: number
   posY: number // vertical position (rises from below at scroll start)
   posZ: number
-  shard: number // outer-whorl radial detach amount
   fade: number // petal alpha during the flare
-  climax: number // 0..1 within the climax
-  flare: number // 0..1 white-flare intensity
+  climax: number // 0..1 within the climax (drives the final-page UI reveal)
+  flare: number // 0..1 white-flare intensity (the explosion flash)
+  shatter: number // 0..1 lotus shatter/explosion progress
+  space: number // 0..1 space-scene morph (starfield in, atmosphere dims)
 }
 
 export function sceneAt(p: number): Scene {
   const climax = smoothstep(PAN_END, 1, p)
+  const shatter = smoothstep(SHATTER_START, 0.96, p)
+  const space = smoothstep(0.82, 1, p)
   const ei = easedIndex(p) // dwells per room
   // rotation follows the eased rooms (so it slows as each face arrives) plus a
-  // gentle continuous drift, and a final quarter-turn into the dolly
-  const spin = -0.4 + (ei / (CELLS - 1)) * Math.PI * 2.3 + ei * 0.18 + climax * 0.8
+  // gentle drift, then whirls up as it shatters
+  const spin =
+    -0.4 + (ei / (CELLS - 1)) * Math.PI * 2.3 + ei * 0.18 + shatter * 2.6
   const tiltX =
     p < 0.4
       ? lerp(-0.18, 0.06, smoothstep(0, 0.4, p))
-      : lerp(0.04, -0.3, smoothstep(0, 1, climax))
-  const bloom = climax > 0 ? 1 : clamp01(0.18 + smoothstep(0, 0.56, p) * 0.77)
-  const shard = smoothstep(0.54, 0.64, p) - smoothstep(0.7, 0.8, p)
-  const scale = 1 + smoothstep(0, 1, climax) * 5
-  const posZ = smoothstep(0, 1, climax) * 2.2
+      : lerp(0.04, -0.16, shatter)
+  // opens toward BLOOM_MAX and holds there — never fully flat, never past the
+  // capped state
+  const bloom = Math.min(BLOOM_MAX, 0.18 + smoothstep(0, 0.56, p) * 0.77)
+  // no camera dolly — the lotus shatters in place instead of the camera diving
+  // in; a small swell as it bursts
+  const scale = 1 + shatter * 0.12
+  const posZ = 0
   // entrance: hidden below the frame at rest, rises into place as scroll begins
   const entry = smoothstep(0, 0.07, p)
   const posY = lerp(-6, -0.35, entry)
   const fade = 1 - smoothstep(0.93, 1, p)
-  const flare = smoothstep(0.86, 0.95, p) - smoothstep(0.97, 1, p) * 0.6
-  return { spin, tiltX, bloom, scale, posY, posZ, shard, fade, climax, flare }
+  // a bright flash at the instant of the shatter
+  const flare = smoothstep(SHATTER_START, 0.81, p) - smoothstep(0.81, 0.93, p)
+  return { spin, tiltX, bloom, scale, posY, posZ, fade, climax, flare, shatter, space }
 }
