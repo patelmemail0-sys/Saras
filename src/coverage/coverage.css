@@ -2,23 +2,23 @@
    Self-contained styles (no dependency on App.css) so it stays isolated. */
 
 .cov {
-  --bg: #0b0d10;
-  --panel: #14171c;
-  --panel-2: #181c22;
-  --line: #262b33;
-  --line-soft: #1e232a;
-  --ink: #e8ebf0;
-  --ink-dim: #9aa3af;
-  --ink-faint: #6b7280;
-  --pearl: #d6dbe3;
-  --chrome: #aeb6c2;
-  --accent: #7fb0ff;
-  --good: #6fcf97;
-  --warn: #e0b15a;
-  --gap: #d98a8a;
+  --bg: oklch(0.11 0.01 258);
+  --panel: oklch(0.15 0.012 258);
+  --panel-2: oklch(0.21 0.014 258);
+  --line: oklch(0.72 0.012 255 / 0.5);
+  --line-soft: oklch(0.6 0.012 255 / 0.42);
+  --ink: oklch(0.97 0.008 250);
+  --ink-dim: oklch(0.85 0.012 250);
+  --ink-faint: oklch(0.66 0.014 250);
+  --pearl: oklch(0.9 0.008 250);
+  --chrome: oklch(0.8 0.012 255);
+  --accent: oklch(0.76 0.12 256);
+  --good: oklch(0.78 0.07 200); /* success — cool teal */
+  --warn: oklch(0.82 0.12 85); /* caution — keeps a warm amber affordance */
+  --gap: oklch(0.7 0.15 22); /* "needs coverage" — keeps a red/attention affordance */
 
   min-height: 100vh;
-  background: radial-gradient(1200px 600px at 80% -10%, #161b22 0%, var(--bg) 60%);
+  background: radial-gradient(1200px 600px at 80% -10%, oklch(0.21 0.014 258) 0%, var(--bg) 60%);
   color: var(--ink);
   font: 14px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   padding: 28px clamp(16px, 4vw, 48px) 80px;
@@ -100,7 +100,7 @@
 }
 .row:first-child { border-top: 0; }
 .row:hover { background: var(--panel-2); }
-.row.is-queued { background: rgba(127,176,255,0.06); }
+.row.is-queued { background: oklch(0.76 0.12 256 / 0.07); }
 
 .star {
   appearance: none; background: none; border: 0; cursor: pointer;
@@ -121,8 +121,8 @@
 }
 
 .fit { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; justify-self: start; }
-.fit-high { color: #bfe6cf; background: rgba(111,207,151,0.14); border: 1px solid rgba(111,207,151,0.3); }
-.fit-medium { color: #e7d4a6; background: rgba(224,177,90,0.12); border: 1px solid rgba(224,177,90,0.28); }
+.fit-high { color: #c2e3d6; background: rgba(147,201,185,0.14); border: 1px solid rgba(147,201,185,0.32); }
+.fit-medium { color: oklch(0.87 0.05 256); background: oklch(0.78 0.1 256 / 0.12); border: 1px solid oklch(0.78 0.1 256 / 0.28); }
 .fit-low { color: var(--ink-dim); background: var(--panel-2); border: 1px solid var(--line); }
 .fit-none { color: var(--ink-faint); background: transparent; border: 1px dashed var(--line); }
 
@@ -130,7 +130,7 @@
   width: 100%; background: var(--panel-2); border: 1px solid var(--line);
   color: var(--ink); border-radius: 8px; padding: 6px 8px; font: inherit; font-size: 12px;
 }
-.row select.specsel.is-set { border-color: rgba(111,207,151,0.45); color: var(--good); }
+.row select.specsel.is-set { border-color: rgba(147,201,185,0.5); color: var(--good); }
 
 .cov__empty { padding: 40px; text-align: center; color: var(--ink-faint); }
 

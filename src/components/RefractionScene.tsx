@@ -31,7 +31,7 @@ export default function RefractionScene() {
         <g className="scene__prism">
           <path
             d="M250 196 L300 280 L200 280 Z"
-            fill="oklch(0.34 0.03 285)"
+            fill="oklch(0.34 0.03 62)"
             stroke="var(--line)"
             strokeWidth="1.5"
           />
@@ -107,13 +107,13 @@ function CubeGlyph() {
       />
       <polygon
         points="69,8.5 69,23.5 56,31 56,16"
-        fill="oklch(0.46 0.035 285)"
+        fill="oklch(0.46 0.035 62)"
         stroke="var(--line)"
         strokeWidth="1"
       />
       <polygon
         points="43,8.5 56,16 56,31 43,23.5"
-        fill="oklch(0.34 0.03 285)"
+        fill="oklch(0.34 0.03 62)"
         stroke="var(--line)"
         strokeWidth="1"
       />

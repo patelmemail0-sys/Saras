@@ -140,6 +140,13 @@ const VAR: Record<string, Omit<EqVariable, 'symbol'>> = {
 
 const mk = (syms: string[]): EqVariable[] => syms.map((s) => ({ symbol: s, ...VAR[s] }));
 
+/** Build a per-topic `mk` so each topic owns its own symbol metadata (no global
+ * symbol clashes — `m`, `t`, `T` mean different things across topics). */
+const makeMk =
+  (table: Record<string, Omit<EqVariable, 'symbol'>>) =>
+  (syms: string[]): EqVariable[] =>
+    syms.map((s) => ({ symbol: s, ...table[s] }));
+
 /** Time to return to ground (y = 0) from the other variables — used by range/time. */
 const flightTime = (s: Record<string, number>): number => {
   const vy = s.v0 * Math.sin(rad(s.theta));
@@ -192,7 +199,190 @@ export const PROJECTILE_EQUATION_SET: EquationSet = {
   ],
 };
 
+// --- Simple harmonic motion (mass on a spring) -------------------------------
+const SHM_VAR: Record<string, Omit<EqVariable, 'symbol'>> = {
+  A: { label: 'amplitude A', unit: 'm', min: 0.05, max: 5, step: 0.05, default: 1 },
+  k: { label: 'spring constant k', unit: 'N/m', min: 0.5, max: 400, step: 0.5, default: 20 },
+  m: { label: 'mass m', unit: 'kg', min: 0.05, max: 20, step: 0.05, default: 1 },
+  t: { label: 'time t', unit: 's', min: 0, max: 60, step: 0.02, default: 0 },
+  x: { label: 'displacement x', unit: 'm', min: -5, max: 5, step: 0.01, default: 0.5 },
+  T: { label: 'period T', unit: 's', min: 0.01, max: 60, step: 0.01, default: 1.4 },
+  f: { label: 'frequency f', unit: 'Hz', min: 0.001, max: 50, step: 0.001, default: 0.71 },
+  vmax: { label: 'max speed v_max', unit: 'm/s', min: 0, max: 200, step: 0.01, default: 4.47 },
+  E: { label: 'energy E', unit: 'J', min: 0, max: 5000, step: 0.01, default: 10 },
+};
+const shmMk = makeMk(SHM_VAR);
+
+export const SHM_EQUATION_SET: EquationSet = {
+  baseParams: ['A', 'k', 'm', 't'],
+  equations: [
+    {
+      id: 'displacement',
+      label: 'Displacement',
+      display: 'x = A\\cos\\!\\left(\\sqrt{\\tfrac{k}{m}}\\;t\\right)',
+      variables: shmMk(['x', 'A', 'k', 'm', 't']),
+      residual: (s) => s.x - s.A * Math.cos(Math.sqrt(s.k / s.m) * s.t),
+    },
+    {
+      id: 'period',
+      label: 'Period',
+      display: 'T = 2\\pi\\sqrt{\\dfrac{m}{k}}',
+      variables: shmMk(['T', 'm', 'k']),
+      residual: (s) => s.T - 2 * Math.PI * Math.sqrt(s.m / s.k),
+    },
+    {
+      id: 'frequency',
+      label: 'Frequency',
+      display: 'f = \\dfrac{1}{2\\pi}\\sqrt{\\dfrac{k}{m}}',
+      variables: shmMk(['f', 'k', 'm']),
+      residual: (s) => s.f - (1 / (2 * Math.PI)) * Math.sqrt(s.k / s.m),
+    },
+    {
+      id: 'max-speed',
+      label: 'Max speed',
+      display: 'v_{max} = A\\sqrt{\\dfrac{k}{m}}',
+      variables: shmMk(['vmax', 'A', 'k', 'm']),
+      residual: (s) => s.vmax - s.A * Math.sqrt(s.k / s.m),
+    },
+    {
+      id: 'energy',
+      label: 'Total energy',
+      display: 'E = \\tfrac{1}{2}\\,k\\,A^{2}',
+      variables: shmMk(['E', 'k', 'A']),
+      residual: (s) => s.E - 0.5 * s.k * s.A * s.A,
+    },
+  ],
+};
+
+// --- Ohm's law (single-loop resistive circuit) -------------------------------
+const CIRCUIT_VAR: Record<string, Omit<EqVariable, 'symbol'>> = {
+  V: { label: 'voltage V', unit: 'V', min: 0, max: 240, step: 0.5, default: 12 },
+  R: { label: 'resistance R', unit: 'Ω', min: 0.1, max: 2000, step: 0.1, default: 60 },
+  I: { label: 'current I', unit: 'A', min: 0, max: 100, step: 0.001, default: 0.2 },
+  P: { label: 'power P', unit: 'W', min: 0, max: 10000, step: 0.01, default: 2.4 },
+};
+const circuitMk = makeMk(CIRCUIT_VAR);
+
+export const CIRCUIT_EQUATION_SET: EquationSet = {
+  baseParams: ['V', 'R'],
+  equations: [
+    {
+      id: 'ohm',
+      label: "Ohm's law",
+      display: 'V = I\\,R',
+      variables: circuitMk(['I', 'V', 'R']),
+      residual: (s) => s.V - s.I * s.R,
+    },
+    {
+      id: 'power',
+      label: 'Power',
+      display: 'P = \\dfrac{V^{2}}{R}',
+      variables: circuitMk(['P', 'V', 'R']),
+      residual: (s) => s.P - (s.V * s.V) / s.R,
+    },
+  ],
+};
+
+// --- Block on a frictional inclined plane ------------------------------------
+const INCLINE_VAR: Record<string, Omit<EqVariable, 'symbol'>> = {
+  theta: { label: 'angle θ', unit: '°', min: 0, max: 90, step: 1, default: 30 },
+  mu: { label: 'friction μ', unit: '', min: 0, max: 2, step: 0.01, default: 0.3 },
+  m: { label: 'mass m', unit: 'kg', min: 0.1, max: 50, step: 0.1, default: 2 },
+  g: { label: 'gravity g', unit: 'm/s²', min: 0.1, max: 100, step: 0.1, default: 9.8 },
+  t: { label: 'time t', unit: 's', min: 0, max: 30, step: 0.02, default: 0 },
+  a: { label: 'acceleration a', unit: 'm/s²', min: -100, max: 100, step: 0.01, default: 2 },
+  N: { label: 'normal force N', unit: 'N', min: 0, max: 5000, step: 0.1, default: 17 },
+  fr: { label: 'friction force f', unit: 'N', min: 0, max: 5000, step: 0.1, default: 5 },
+  Fp: { label: 'gravity along slope F∥', unit: 'N', min: 0, max: 5000, step: 0.1, default: 10 },
+};
+const inclineMk = makeMk(INCLINE_VAR);
+
+export const INCLINE_EQUATION_SET: EquationSet = {
+  baseParams: ['theta', 'mu', 'm', 'g', 't'],
+  equations: [
+    {
+      id: 'accel',
+      label: 'Acceleration',
+      display: 'a = g\\,(\\sin\\theta - \\mu\\cos\\theta)',
+      variables: inclineMk(['a', 'g', 'theta', 'mu']),
+      residual: (s) => s.a - s.g * (Math.sin(rad(s.theta)) - s.mu * Math.cos(rad(s.theta))),
+    },
+    {
+      id: 'normal',
+      label: 'Normal force',
+      display: 'N = m\\,g\\,\\cos\\theta',
+      variables: inclineMk(['N', 'm', 'g', 'theta']),
+      residual: (s) => s.N - s.m * s.g * Math.cos(rad(s.theta)),
+    },
+    {
+      id: 'friction',
+      label: 'Friction force',
+      display: 'f = \\mu\\,m\\,g\\,\\cos\\theta',
+      variables: inclineMk(['fr', 'mu', 'm', 'g', 'theta']),
+      residual: (s) => s.fr - s.mu * s.m * s.g * Math.cos(rad(s.theta)),
+    },
+    {
+      id: 'gravity-parallel',
+      label: 'Gravity along slope',
+      display: 'F_\\parallel = m\\,g\\,\\sin\\theta',
+      variables: inclineMk(['Fp', 'm', 'g', 'theta']),
+      residual: (s) => s.Fp - s.m * s.g * Math.sin(rad(s.theta)),
+    },
+  ],
+};
+
+// --- Uniform circular motion -------------------------------------------------
+const CIRCULAR_VAR: Record<string, Omit<EqVariable, 'symbol'>> = {
+  r: { label: 'radius r', unit: 'm', min: 0.1, max: 100, step: 0.1, default: 5 },
+  v: { label: 'speed v', unit: 'm/s', min: 0.1, max: 300, step: 0.1, default: 10 },
+  t: { label: 'time t', unit: 's', min: 0, max: 120, step: 0.02, default: 0 },
+  omega: { label: 'angular velocity ω', unit: 'rad/s', min: 0.001, max: 200, step: 0.001, default: 2 },
+  ac: { label: 'centripetal accel a_c', unit: 'm/s²', min: 0, max: 5000, step: 0.01, default: 20 },
+  T: { label: 'period T', unit: 's', min: 0.01, max: 600, step: 0.01, default: 3.14 },
+};
+const circularMk = makeMk(CIRCULAR_VAR);
+
+export const CIRCULAR_EQUATION_SET: EquationSet = {
+  baseParams: ['r', 'v', 't'],
+  equations: [
+    {
+      id: 'angular-velocity',
+      label: 'Angular velocity',
+      display: '\\omega = \\dfrac{v}{r}',
+      variables: circularMk(['omega', 'v', 'r']),
+      residual: (s) => s.omega - s.v / s.r,
+    },
+    {
+      id: 'centripetal',
+      label: 'Centripetal acceleration',
+      display: 'a_c = \\dfrac{v^{2}}{r}',
+      variables: circularMk(['ac', 'v', 'r']),
+      residual: (s) => s.ac - (s.v * s.v) / s.r,
+    },
+    {
+      id: 'period',
+      label: 'Period',
+      display: 'T = \\dfrac{2\\pi r}{v}',
+      variables: circularMk(['T', 'r', 'v']),
+      residual: (s) => s.T - (2 * Math.PI * s.r) / s.v,
+    },
+  ],
+};
+
 /** The equation set for a spec type, or null if the widget isn't equation-based. */
 export function equationsForSpecType(type: string): EquationSet | null {
-  return type === 'projectile' ? PROJECTILE_EQUATION_SET : null;
+  switch (type) {
+    case 'projectile':
+      return PROJECTILE_EQUATION_SET;
+    case 'wave-oscillator':
+      return SHM_EQUATION_SET;
+    case 'circuit-diagram':
+      return CIRCUIT_EQUATION_SET;
+    case 'free-body-diagram':
+      return INCLINE_EQUATION_SET;
+    case 'circular-motion':
+      return CIRCULAR_EQUATION_SET;
+    default:
+      return null;
+  }
 }
