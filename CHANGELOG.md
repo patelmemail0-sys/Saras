@@ -4,6 +4,32 @@ All notable changes to Saras are documented in this file.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com); versions
 use `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.3.1.0] - 2026-06-22
+
+### Changed
+- **All five physics models are now true 3D.** The flat SVG widgets (projectile,
+  spring/SHM, Ohm's-law circuit, inclined plane, circular motion) are now
+  react-three-fiber scenes matching the landing page's obsidian/glass/azure look:
+  matte pearl/chrome surfaces with a glass accent on the focal object, an orbitable
+  camera, and a perspective grid floor. **All physics is unchanged** — every scene
+  derives from the same closed-form `validate.ts` kinematics the correctness gate
+  verifies, and the equation panel, word-problem bar, readouts, and play/scrub are
+  untouched. Each model keeps a 2D SVG fallback for non-WebGL.
+- **Visualize header.** Removed the topic-chip bubble row above the model; topic
+  selection moves to a single glass "all topics" button (→ `#/topics`). The
+  "← home" link was removed. `#/try/<spec-type>` now deep-links a specific model.
+
+### Added
+- **Shared 3D scaffold** (`src/engine/widgets/three/`): a reusable `Scene3D` Canvas
+  wrapper (lighting + Environment + OrbitControls + dpr cap + reduced-motion +
+  on-demand/continuous render policy), a "clean 3D, glass accents" material kit,
+  reusable vector/grid/label primitives, and a WebGL capability gate.
+- **Plane-snap controls** on every 3D scene: X / Y / Z buttons glide the camera to
+  look down each axis (side / top / front), plus a reset to the default 3D view.
+  Distance and target are preserved; eased, and instant under reduced-motion.
+- **Per-scene legend** — a fixed glass chip keys the vector colors and key values,
+  replacing the floating in-scene labels that cluttered the animation.
+
 ## [0.3.0.0] - 2026-06-17
 
 ### Added
