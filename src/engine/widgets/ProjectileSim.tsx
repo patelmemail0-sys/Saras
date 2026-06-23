@@ -1,7 +1,8 @@
 /**
- * projectile renderer. A hands-on 2D launch under gravity: drag speed, angle,
- * gravity, and launch height and watch the trajectory, range, apex, and flight
- * time respond live. Play to animate the flight, or scrub time by hand.
+ * Projectile renderer — now a true-3D scene. A hands-on launch under gravity:
+ * drag speed, angle, gravity, and launch height and watch the trajectory, range,
+ * apex, and flight time respond live. Orbit the scene; play to animate the flight,
+ * or scrub time by hand.
  *
  * It also hosts the equation column (EquationPanel): pick an equation, set the
  * known variables, and whatever is left over is solved for and pushed into THIS
@@ -11,14 +12,20 @@
  *
  * All physics comes from projectileKinematics (validate.ts) — the same closed
  * form the correctness gate verified — so what's drawn is exactly what's checked.
- * Pure SVG, no 3D/physics library; the trajectory is sampled, not integrated.
+ * The 3D scene derives every point from it; a 2D SVG fallback (same maths) renders
+ * where WebGL is unavailable.
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { projectileKinematics, validateProjectile } from '../validate.ts';
+import { Line } from '@react-three/drei';
+import { projectileKinematics, validateProjectile, type ProjectileKinematics } from '../validate.ts';
 import { equationsForSpecType, solveFor, type Equation } from '../equations.ts';
 import { parseProjectileWordProblem } from '../projectileWordProblem.ts';
 import EquationPanel from '../EquationPanel.tsx';
 import type { ProjectileSpec, SpecResponse } from '../spec.ts';
+import Scene3D from './three/Scene3D.tsx';
+import { Vector3D } from './three/primitives.tsx';
+import { glassAccent, chrome, PALETTE } from './three/materials.ts';
+import { hasWebGL } from './three/hasWebGL.ts';
 
 const WP_EXAMPLE =
   'A ball is kicked at 22 m/s at 40° from the top of a 10 m cliff. How far does it land?';
@@ -46,6 +53,8 @@ export default function ProjectileSim({ spec }: { spec: ProjectileSpec }) {
   const [height, setHeight] = useState(spec.height);
   const [tRaw, setT] = useState(0); // scrub time (s); may outrun a shrunk flight
   const [playing, setPlaying] = useState(false);
+
+  const webgl = useMemo(() => hasWebGL(), []);
 
   // Equation-panel state.
   const [eqId, setEqId] = useState(SET.equations[0].id);
@@ -95,33 +104,42 @@ export default function ProjectileSim({ spec }: { spec: ProjectileSpec }) {
   const tEff = Math.max(0, Math.min(resolved.t, k.flightTime));
   const tLocked = unknown === 't';
 
-  const worldW = Math.max(k.range, 1);
-  const worldH = Math.max(k.maxHeight, 1);
-  const scale = Math.min((W - 2 * PAD) / worldW, (H - 2 * PAD) / worldH);
-  const sx = (x: number) => PAD + x * scale;
-  const sy = (y: number) => H - PAD - y * scale;
+  const ball = k.at(tEff);
+  const vy = k.vy0 - resolved.g * tEff;
+  const speedNow = Math.hypot(k.vx, vy) || 1;
+  const apex = k.at(k.apexTime);
 
-  const path = useMemo(() => {
-    let d = '';
+  // --- 3D scene geometry (world units), from the same kinematics --------------
+  const ballMat = useMemo(() => glassAccent(), []);
+  const apexMat = useMemo(() => chrome(), []);
+  const platformMat = useMemo(() => chrome(), []);
+  // Fit the trajectory into ~7 world units wide / ~3.4 tall; centre it on X.
+  const s3 = Math.min(7 / Math.max(k.range, 1), 3.4 / Math.max(k.maxHeight, 1));
+  const map3 = (x: number, y: number): [number, number, number] => [(x - k.range / 2) * s3, y * s3, 0];
+  const arcPts = useMemo<[number, number, number][]>(() => {
+    const out: [number, number, number][] = [];
     for (let i = 0; i <= SAMPLES; i++) {
       const p = k.at((k.flightTime * i) / SAMPLES);
-      d += `${i ? 'L' : 'M'}${sx(p.x).toFixed(1)} ${sy(p.y).toFixed(1)} `;
+      out.push([(p.x - k.range / 2) * s3, p.y * s3, 0]);
     }
-    return d.trim();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [k, scale]);
-
-  const trail = useMemo(() => {
-    if (tEff <= 0 || k.flightTime <= 0) return '';
+    return out;
+  }, [k, s3]);
+  const trailPts = useMemo<[number, number, number][]>(() => {
+    if (tEff <= 0 || k.flightTime <= 0) return [];
     const n = Math.max(2, Math.ceil((SAMPLES * tEff) / k.flightTime));
-    let d = '';
+    const out: [number, number, number][] = [];
     for (let i = 0; i <= n; i++) {
       const p = k.at((tEff * i) / n);
-      d += `${i ? 'L' : 'M'}${sx(p.x).toFixed(1)} ${sy(p.y).toFixed(1)} `;
+      out.push([(p.x - k.range / 2) * s3, p.y * s3, 0]);
     }
-    return d.trim();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [k, scale, tEff]);
+    return out;
+  }, [k, s3, tEff]);
+  const ball3 = map3(ball.x, ball.y);
+  const apex3 = map3(apex.x, apex.y);
+  const velDir3: [number, number, number] = [k.vx, vy, 0];
+  const velLen3 = 0.5 + 1.0 * (speedNow / Math.max(resolved.v0, 1));
+  const launchX = -(k.range / 2) * s3;
+  const platH = resolved.h * s3;
 
   // Animation loop: replay the flight over a watchable duration, looping. Never
   // auto-runs (honors prefers-reduced-motion); disabled while time is the unknown.
@@ -142,14 +160,6 @@ export default function ProjectileSim({ spec }: { spec: ProjectileSpec }) {
       if (raf.current) cancelAnimationFrame(raf.current);
     };
   }, [playing, tLocked, k.flightTime]);
-
-  const ball = k.at(tEff);
-  const vy = k.vy0 - resolved.g * tEff;
-  const speedNow = Math.hypot(k.vx, vy) || 1;
-  const arrowLen = 34;
-  const ax = sx(ball.x) + (k.vx / speedNow) * arrowLen;
-  const ay = sy(ball.y) - (vy / speedNow) * arrowLen;
-  const apex = k.at(k.apexTime);
 
   function play() {
     if (tEff >= k.flightTime - 1e-3) setT(0);
@@ -220,8 +230,8 @@ export default function ProjectileSim({ spec }: { spec: ProjectileSpec }) {
           const data = (await res.json()) as SpecResponse;
           // Trust AI numbers only for a projectile spec that passes the gate.
           if (data.supported && data.spec?.type === 'projectile' && validateProjectile(data.spec).valid) {
-            const s = data.spec;
-            params = { speed: s.speed, angle: s.angle, gravity: s.gravity, height: s.height };
+            const sp = data.spec;
+            params = { speed: sp.speed, angle: sp.angle, gravity: sp.gravity, height: sp.height };
             source = 'AI';
           }
         }
@@ -309,90 +319,164 @@ export default function ProjectileSim({ spec }: { spec: ProjectileSpec }) {
       </div>
 
       <div className="pmodel__body">
-      <div className="pmodel__visual">
-        <div className="ps">
-          <svg className="ps__svg" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={spec.title}>
-            <defs>
-              <marker
-                id="ps-arrow"
-                viewBox="0 0 10 10"
-                refX="8"
-                refY="5"
-                markerWidth="6"
-                markerHeight="6"
-                orient="auto-start-reverse"
-              >
-                <path d="M0 0 L10 5 L0 10 z" className="ps__arrowhead" />
-              </marker>
-            </defs>
+        <div className="pmodel__visual">
+          <div className="ps">
+            {webgl ? (
+              <div className="ps__canvas">
+                <Scene3D
+                  label={spec.title}
+                  axisSnap
+                  frameloop={playing && !tLocked ? 'always' : 'demand'}
+                  camera={{ position: [2, 2.6, 6.6], fov: 46 }}
+                  controls={{ target: [0, 0.7, 0], minDistance: 3, maxDistance: 18 }}
+                >
+                  {/* launch platform / cliff */}
+                  {platH > 0.02 && (
+                    <mesh position={[launchX - 0.18, platH / 2, 0]} material={platformMat}>
+                      <boxGeometry args={[0.36, platH, 0.7]} />
+                    </mesh>
+                  )}
 
-            <line x1={PAD} x2={W - PAD} y1={sy(0)} y2={sy(0)} className="ps__ground" />
+                  {/* full trajectory (faint) + the flown trail (bright) */}
+                  <Line points={arcPts} color={PALETTE.pearl} lineWidth={1.2} transparent opacity={0.32} />
+                  {trailPts.length > 1 && <Line points={trailPts} color={PALETTE.azure} lineWidth={2.6} />}
 
-            <path d={path} className="ps__arc" />
-            <path d={trail} className="ps__arc ps__arc--trail" />
+                  {/* apex marker + drop line */}
+                  <mesh position={apex3} material={apexMat}>
+                    <sphereGeometry args={[0.07, 20, 20]} />
+                  </mesh>
+                  <Line points={[apex3, [apex3[0], 0, apex3[2]]]} color={PALETTE.pearl} lineWidth={1} transparent opacity={0.22} />
 
-            <line x1={sx(apex.x)} x2={sx(apex.x)} y1={sy(apex.y)} y2={sy(0)} className="ps__guide" />
-            <circle cx={sx(apex.x)} cy={sy(apex.y)} r={3} className="ps__apex" />
-            <text x={sx(apex.x)} y={sy(apex.y) - 8} className="ps__lbl ps__lbl--mid">
-              apex {fmt(k.maxHeight)} m
-            </text>
+                  {/* the projectile (glass accent) + its velocity */}
+                  <mesh position={ball3} material={ballMat}>
+                    <sphereGeometry args={[0.16, 32, 32]} />
+                  </mesh>
+                  <Vector3D origin={ball3} dir={velDir3} length={velLen3} color={PALETTE.azure} />
+                </Scene3D>
 
-            {resolved.h > 0 && (
-              <line x1={PAD} x2={sx(0)} y1={sy(resolved.h)} y2={sy(resolved.h)} className="ps__guide" />
+                <div className="ps__legend" aria-hidden="true">
+                  <span className="ps__legend-row"><i className="ps__legend-dot" style={{ background: PALETTE.azure }} /> velocity <b>v</b></span>
+                  <span className="ps__legend-row">launch <b>v₀ = {fmt(resolved.v0)} m/s</b></span>
+                  <span className="ps__legend-row">angle <b>θ = {fmt(resolved.theta)}°</b></span>
+                </div>
+              </div>
+            ) : (
+              <ProjectileFallback2D k={k} resolved={resolved} tEff={tEff} title={spec.title} />
             )}
 
-            <line x1={sx(ball.x)} y1={sy(ball.y)} x2={ax} y2={ay} className="ps__vel" markerEnd="url(#ps-arrow)" />
-            <circle cx={sx(ball.x)} cy={sy(ball.y)} r={6} className="ps__ball" />
+            <div className="ps__readout">
+              <span>range <b>{fmt(k.range)}</b> m</span>
+              <span>max height <b>{fmt(k.maxHeight)}</b> m</span>
+              <span>flight time <b>{fmt(k.flightTime)}</b> s</span>
+            </div>
 
-            <text x={sx(k.range)} y={sy(0) + 18} className="ps__lbl ps__lbl--end">
-              {fmt(k.range)} m
-            </text>
-            <text x={PAD} y={sy(0) + 18} className="ps__lbl">0</text>
-          </svg>
-
-          <div className="ps__readout">
-            <span>range <b>{fmt(k.range)}</b> m</span>
-            <span>max height <b>{fmt(k.maxHeight)}</b> m</span>
-            <span>flight time <b>{fmt(k.flightTime)}</b> s</span>
-          </div>
-
-          <div className="ps__transport">
-            <button type="button" className="ps__play" disabled={tLocked} onClick={play}>
-              {playing ? '❚❚ pause' : '▶ play'}
-            </button>
-            <input
-              className="ps__scrub"
-              type="range"
-              min={0}
-              max={k.flightTime}
-              step={k.flightTime / 200}
-              value={tEff}
-              disabled={tLocked}
-              aria-label="Flight time"
-              onChange={(e) => {
-                setPlaying(false);
-                setT(Number(e.target.value));
-              }}
-            />
-            <span className="ps__time">t = {fmt(tEff)} s</span>
+            <div className="ps__transport">
+              <button type="button" className="ps__play" disabled={tLocked} onClick={play}>
+                {playing ? '❚❚ pause' : '▶ play'}
+              </button>
+              <input
+                className="ps__scrub"
+                type="range"
+                min={0}
+                max={k.flightTime}
+                step={k.flightTime / 200}
+                value={tEff}
+                disabled={tLocked}
+                aria-label="Flight time"
+                onChange={(e) => {
+                  setPlaying(false);
+                  setT(Number(e.target.value));
+                }}
+              />
+              <span className="ps__time">t = {fmt(tEff)} s</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <EquationPanel
-        set={SET}
-        eqId={eqId}
-        unknown={unknown}
-        resolved={resolved}
-        aux={aux}
-        solved={solved}
-        onSelectEquation={selectEquation}
-        onSelectUnknown={selectUnknown}
-        onBaseChange={baseChange}
-        onAuxChange={(sym, val) => setAux((p) => ({ ...p, [sym]: val }))}
-      />
+        <EquationPanel
+          set={SET}
+          eqId={eqId}
+          unknown={unknown}
+          resolved={resolved}
+          aux={aux}
+          solved={solved}
+          onSelectEquation={selectEquation}
+          onSelectUnknown={selectUnknown}
+          onBaseChange={baseChange}
+          onAuxChange={(sym, val) => setAux((p) => ({ ...p, [sym]: val }))}
+        />
       </div>
     </div>
+  );
+}
+
+/** Non-WebGL fallback — the original 2D SVG, reading the same kinematics. */
+function ProjectileFallback2D({
+  k,
+  resolved,
+  tEff,
+  title,
+}: {
+  k: ProjectileKinematics;
+  resolved: Record<string, number>;
+  tEff: number;
+  title: string;
+}) {
+  const worldW = Math.max(k.range, 1);
+  const worldH = Math.max(k.maxHeight, 1);
+  const scale = Math.min((W - 2 * PAD) / worldW, (H - 2 * PAD) / worldH);
+  const sx = (x: number) => PAD + x * scale;
+  const sy = (y: number) => H - PAD - y * scale;
+
+  const samples = (count: number) => {
+    let d = '';
+    for (let i = 0; i <= count; i++) {
+      const p = k.at((k.flightTime * i) / SAMPLES);
+      d += `${i ? 'L' : 'M'}${sx(p.x).toFixed(1)} ${sy(p.y).toFixed(1)} `;
+    }
+    return d.trim();
+  };
+  const path = samples(SAMPLES);
+  let trail = '';
+  if (tEff > 0 && k.flightTime > 0) {
+    const n = Math.max(2, Math.ceil((SAMPLES * tEff) / k.flightTime));
+    for (let i = 0; i <= n; i++) {
+      const p = k.at((tEff * i) / n);
+      trail += `${i ? 'L' : 'M'}${sx(p.x).toFixed(1)} ${sy(p.y).toFixed(1)} `;
+    }
+    trail = trail.trim();
+  }
+
+  const ball = k.at(tEff);
+  const vy = k.vy0 - resolved.g * tEff;
+  const speedNow = Math.hypot(k.vx, vy) || 1;
+  const arrowLen = 34;
+  const ax = sx(ball.x) + (k.vx / speedNow) * arrowLen;
+  const ay = sy(ball.y) - (vy / speedNow) * arrowLen;
+  const apex = k.at(k.apexTime);
+
+  return (
+    <svg className="ps__svg" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={title}>
+      <defs>
+        <marker id="ps-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" className="ps__arrowhead" />
+        </marker>
+      </defs>
+
+      <line x1={PAD} x2={W - PAD} y1={sy(0)} y2={sy(0)} className="ps__ground" />
+      <path d={path} className="ps__arc" />
+      <path d={trail} className="ps__arc ps__arc--trail" />
+      <line x1={sx(apex.x)} x2={sx(apex.x)} y1={sy(apex.y)} y2={sy(0)} className="ps__guide" />
+      <circle cx={sx(apex.x)} cy={sy(apex.y)} r={3} className="ps__apex" />
+      <text x={sx(apex.x)} y={sy(apex.y) - 8} className="ps__lbl ps__lbl--mid">apex {fmt(k.maxHeight)} m</text>
+      {resolved.h > 0 && (
+        <line x1={PAD} x2={sx(0)} y1={sy(resolved.h)} y2={sy(resolved.h)} className="ps__guide" />
+      )}
+      <line x1={sx(ball.x)} y1={sy(ball.y)} x2={ax} y2={ay} className="ps__vel" markerEnd="url(#ps-arrow)" />
+      <circle cx={sx(ball.x)} cy={sy(ball.y)} r={6} className="ps__ball" />
+      <text x={sx(k.range)} y={sy(0) + 18} className="ps__lbl ps__lbl--end">{fmt(k.range)} m</text>
+      <text x={PAD} y={sy(0) + 18} className="ps__lbl">0</text>
+    </svg>
   );
 }
 
