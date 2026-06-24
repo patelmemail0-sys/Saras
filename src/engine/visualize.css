@@ -57,24 +57,17 @@
   border: 1px solid rgba(200, 176, 140, 0.4);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
-.viz__back { color: var(--ink-dim); text-decoration: none; font-size: 13px; white-space: nowrap; padding-top: 6px; }
-.viz__back:hover { color: var(--ink); }
 
-/* Topic menu — one compact, horizontally scrollable row of model switches. */
-.viz__topics {
-  flex: 0 0 auto; display: flex; gap: 8px; margin-bottom: 12px;
-  overflow-x: auto; padding-bottom: 2px;
+/* Header — a single glass "all topics" pill (→ topics page). */
+.viz__topicsbtn {
+  flex: 0 0 auto; text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line);
+  border-radius: 999px; padding: 8px 18px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
-.viz__topicchip {
-  cursor: pointer; font: inherit; font-size: 13px; white-space: nowrap;
-  background: var(--panel-2); border: 1px solid var(--line); color: var(--chrome);
-  border-radius: 999px; padding: 6px 14px;
-}
-.viz__topicchip:hover { border-color: var(--accent); color: var(--ink); }
-.viz__topicchip--on {
-  color: oklch(0.15 0.012 258); font-weight: 600; border-color: transparent;
-  background: linear-gradient(180deg, oklch(0.91 0.025 250), oklch(0.74 0.05 252));
-}
+.viz__topicsbtn:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.07); }
 
 .viz__chip {
   cursor: pointer; font: inherit; font-size: 13px;
@@ -131,6 +124,31 @@
 /* Projectile widget */
 .ps { width: 100%; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; align-items: center; }
 .ps__svg { width: 100%; flex: 1 1 auto; min-height: 0; display: block; }
+/* 3D canvas occupies the same footprint the SVG had. */
+.ps__canvas { position: relative; width: 100%; flex: 1 1 auto; min-height: 0; border-radius: 12px; overflow: hidden; }
+/* Fixed legend overlay — keys the vector colours; never moves with the animation. */
+.ps__legend {
+  position: absolute; left: 12px; bottom: 12px; z-index: 2; pointer-events: none;
+  display: grid; gap: 5px; padding: 8px 11px; line-height: 1.2;
+  font-size: 12px; color: var(--ink-dim);
+  background: rgba(11, 17, 32, 0.6); border: 1px solid var(--line);
+  border-radius: 10px; backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px);
+}
+.ps__legend-row { display: flex; align-items: center; gap: 7px; white-space: nowrap; }
+.ps__legend-dot { width: 9px; height: 9px; border-radius: 999px; flex: 0 0 auto; }
+.ps__legend b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.ps__legend sub { font-size: 0.78em; }
+
+/* Plane-snap buttons overlaid on a 3D scene (top-right). */
+.scene3d__axes { position: absolute; top: 12px; right: 12px; z-index: 3; display: flex; gap: 6px; }
+.scene3d__axes button {
+  cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; line-height: 1;
+  width: 30px; height: 30px; display: grid; place-items: center;
+  color: var(--ink-dim); background: rgba(11, 17, 32, 0.6); border: 1px solid var(--line);
+  border-radius: 8px; backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px);
+}
+.scene3d__axes button:hover { color: var(--ink); border-color: var(--accent); }
+.scene3d__axes-reset { width: auto; padding: 0 9px; letter-spacing: 0.02em; }
 .ps__ground { stroke: oklch(0.34 0.012 258); stroke-width: 1.5; }
 .ps__arc { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 3 4; }
 .ps__arc--trail { stroke: var(--curve); stroke-width: 2.5; stroke-dasharray: none; stroke-linecap: round; }
@@ -306,5 +324,5 @@
   .viz__stage { overflow: visible; }
   .pmodel__body { flex-direction: column; }
   .eqp { flex-basis: auto; overflow-y: visible; }
-  .ps__svg { min-height: 240px; }
+  .ps__svg, .ps__canvas { min-height: 240px; }
 }

@@ -125,12 +125,20 @@ type State =
   | { kind: 'invalid'; concept: string; reason: string }
   | { kind: 'error'; message: string };
 
+/** Pick the initial model from the hash (#/try/<spec-type>), else the first. */
+function modelFromHash(): VizSpec {
+  const m =
+    typeof window !== 'undefined' ? window.location.hash.match(/^#\/try\/(.+)$/) : null;
+  const key = m ? decodeURIComponent(m[1]) : '';
+  return (MODELS.find((x) => x.spec.type === key) ?? MODELS[0]).spec;
+}
+
 export default function VisualizePanel() {
-  // Show the first model right away so the surface is never an empty stage.
-  const [state, setState] = useState<State>({
-    kind: 'spec',
-    spec: MODELS[0].spec,
-    concept: MODELS[0].spec.title,
+  // Show a model right away so the surface is never an empty stage. The topics
+  // page deep-links a specific one via #/try/<spec-type>; otherwise the first.
+  const [state, setState] = useState<State>(() => {
+    const spec = modelFromHash();
+    return { kind: 'spec', spec, concept: spec.title };
   });
 
   // Kept for the spec backend (and the offline "render the example" path): turn a
@@ -152,12 +160,6 @@ export default function VisualizePanel() {
     setState({ kind: 'spec', spec: data.spec, concept: data.concept });
   }
 
-  function selectModel(spec: VizSpec) {
-    setState({ kind: 'spec', spec, concept: spec.title });
-  }
-
-  const activeType = state.kind === 'spec' ? state.spec.type : null;
-
   const topic =
     state.kind === 'spec'
       ? state.spec.title
@@ -170,23 +172,10 @@ export default function VisualizePanel() {
       <header className="viz__head">
         <div className="viz__heading">
           <h1 className="viz__title"><b>Saras</b> <span>visualize</span></h1>
-          <p className="viz__topic">{topic || 'Pick a topic to visualize'}</p>
+          <p className="viz__topic">{topic || 'Interactive model'}</p>
         </div>
-        <a className="viz__back" href="#/">← home</a>
+        <a className="viz__topicsbtn" href="#/topics">all topics</a>
       </header>
-
-      <nav className="viz__topics" aria-label="Topics">
-        {MODELS.map((m) => (
-          <button
-            key={m.spec.type}
-            type="button"
-            className={`viz__topicchip${m.spec.type === activeType ? ' viz__topicchip--on' : ''}`}
-            onClick={() => selectModel(m.spec)}
-          >
-            {m.label}
-          </button>
-        ))}
-      </nav>
 
       <div className="viz__stage">
         {state.kind === 'idle' && <div className="viz__empty">Your interactive visual appears here.</div>}
