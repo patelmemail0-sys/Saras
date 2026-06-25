@@ -255,6 +255,7 @@ export default function LandingLotus() {
           <nav className="lh-links">
             <a href="#unfurl">How it works</a>
             <a href="#steps">The idea</a>
+            <a href="#/topics">Topics</a>
             <a href="#/login">Log in</a>
           </nav>
           <a className="lh-btn lh-btn--ghost lh-btn--sm" href="#/get-started">
