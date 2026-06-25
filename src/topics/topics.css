@@ -4,20 +4,30 @@
    Inherits all design tokens from index.css (dark pearl, chrome, iris).
    ============================================================ */
 
-/* ── Per-subject accent colours ──────────────────────────────────────────── */
+/* ── Per-subject accent colours — blue scale from the glass lotus ─────────── */
 :root {
-  --tp-physics:   oklch(0.76 0.17 225);   /* steel blue   */
-  --tp-math:      oklch(0.80 0.17 200);   /* aqua         */
-  --tp-biology:   oklch(0.75 0.17 155);   /* green        */
-  --tp-chemistry: oklch(0.78 0.17 70);    /* amber        */
+  --tp-physics:   oklch(0.82 0.12 242);   /* lightest — ice periwinkle */
+  --tp-math:      oklch(0.74 0.15 250);   /* azure                     */
+  --tp-biology:   oklch(0.65 0.16 258);   /* royal blue                */
+  --tp-chemistry: oklch(0.55 0.18 245);   /* darkest — navy blue     */
 }
 
 /* ── Layout shell ─────────────────────────────────────────────────────────── */
 .tp-page {
   min-height: 100dvh;
+  /* Landing-palette vars needed for chrome/pearl surface treatment */
+  --chrome-1: oklch(0.95 0.006 250);
+  --chrome-3: oklch(0.6 0.012 255);
+  --glass-edge: oklch(0.98 0.012 250 / 0.4);
+  --glass-edge-soft: oklch(0.9 0.02 250 / 0.16);
+  /* Deep obsidian base with lotus-style aurora glow — fixed so it persists while scrolling */
   background:
-    radial-gradient(120% 70% at 50% -5%, oklch(0.27 0.018 285), transparent 55%),
-    var(--bg);
+    radial-gradient(ellipse 40% 36% at 50% 48%,   oklch(0.97 0.004 250 / 0.45), transparent 60%),
+    radial-gradient(ellipse 75% 65% at 50% 48%,   oklch(0.88 0.03  251 / 0.25), transparent 72%),
+    radial-gradient(ellipse 120% 100% at 50% 46%,  oklch(0.72 0.08  252 / 0.18), transparent 80%),
+    radial-gradient(ellipse 180% 130% at 50% 44%,  oklch(0.45 0.10  254 / 0.15), transparent 85%),
+    oklch(0.1 0.01 255);
+  background-attachment: fixed;
 }
 
 .tp-shell {
@@ -26,52 +36,94 @@
   padding-inline: var(--gutter);
 }
 
-/* ── Nav ──────────────────────────────────────────────────────────────────── */
+/* ── Nav — floating capsule matching the landing ──────────────────────────── */
 .tp-nav {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  inset: 0 0 auto 0;
   z-index: 100;
-  background: oklch(0.175 0.01 285 / 0.85);
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border-bottom: 1px solid var(--line-soft);
+  display: flex;
+  justify-content: center;
+  padding: clamp(0.55rem, 1.2vw, 0.9rem) clamp(0.8rem, 1.5vw, 1.25rem) 0;
+  pointer-events: none;
 }
 
 .tp-nav__inner {
+  pointer-events: auto;
+  /* override tp-shell max-width/padding for the pill */
+  max-width: 1600px;
+  padding: 0.3rem 0.45rem 0.3rem 1.25rem;
   display: flex;
   align-items: center;
-  height: 60px;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(125% 150% at 50% -45%, oklch(1 0 0 / 0.18), transparent 60%),
+    linear-gradient(
+      180deg,
+      oklch(0.97 0.012 250 / 0.14),
+      oklch(0.9 0.02 250 / 0.05) 55%,
+      oklch(0.92 0.02 250 / 0.1)
+    );
+  border: 1px solid oklch(0.97 0.01 250 / 0.26);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.5),
+    inset 0 -1px 3px oklch(0.7 0.02 250 / 0.12),
+    0 12px 32px -18px oklch(0.03 0.01 258 / 0.5);
+  -webkit-backdrop-filter: saturate(150%) blur(4px);
+  backdrop-filter: saturate(150%) blur(4px);
 }
 
 .tp-brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
+  font-weight: 600;
+  font-size: 1.08rem;
+  letter-spacing: -0.02em;
   color: var(--ink);
   text-decoration: none;
-  letter-spacing: -0.02em;
   flex-shrink: 0;
 }
 
 .tp-nav__links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.7rem;
   margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: oklch(0.74 0.012 250);
 }
 
 .tp-nav__links a {
-  font-size: 0.88rem;
-  color: var(--ink-3);
+  position: relative;
+  color: inherit;
   text-decoration: none;
-  transition: color 0.18s var(--ease);
+  transition: color 0.25s var(--ease);
+}
+
+.tp-nav__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease);
 }
 
 .tp-nav__links a:hover {
-  color: var(--ink-2);
+  color: var(--ink);
+}
+
+.tp-nav__links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .tp-nav__active {
@@ -79,27 +131,29 @@
 }
 
 .tp-nav__cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
-  padding: 0.45rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--glass);
-  color: var(--ink-2);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  padding: 0.42rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid oklch(0.9 0.02 250 / 0.16);
+  background: oklch(0.9 0.02 250 / 0.06);
+  color: var(--ink);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   text-decoration: none;
   white-space: nowrap;
-  transition:
-    background 0.18s var(--ease),
-    color 0.18s var(--ease),
-    border-color 0.18s var(--ease);
+  transition: border-color 0.25s var(--ease);
 }
 
 .tp-nav__cta:hover {
-  background: var(--glass-2);
-  color: var(--ink);
-  border-color: var(--line);
+  border-color: oklch(0.98 0.012 250 / 0.4);
 }
 
 /* ── Shared label ─────────────────────────────────────────────────────────── */
@@ -121,7 +175,7 @@
 
 /* ── Main content ─────────────────────────────────────────────────────────── */
 .tp-main {
-  padding-block: 4rem 6rem;
+  padding-block: 6rem 6rem;
 }
 
 /* ── Page header ──────────────────────────────────────────────────────────── */
@@ -158,12 +212,18 @@
   gap: 0.25rem;
   margin-bottom: 2rem;
   padding: 0.25rem;
-  background: var(--glass);
-  border: 1px solid var(--line-soft);
+  background:
+    radial-gradient(100% 100% at 50% 0%, oklch(1 0 0 / 0.06), transparent 60%),
+    var(--glass);
+  border: 1px solid var(--glass-edge-soft);
   border-radius: 14px;
   width: fit-content;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.22),
+    inset 0 -1px 1px oklch(0 0 0 / 0.18),
+    0 8px 24px -12px oklch(0.03 0.01 258 / 0.5);
 }
 
 .tp-tab {
@@ -203,27 +263,27 @@
 .tp-tab--active svg { opacity: 1 !important; }
 
 .tp-tab--active[data-subject="physics"] {
-  background: oklch(0.76 0.17 225 / 0.14);
-  border-color: oklch(0.76 0.17 225 / 0.38);
-  box-shadow: 0 0 14px -4px oklch(0.76 0.17 225 / 0.28);
+  background: oklch(0.82 0.12 242 / 0.14);
+  border-color: oklch(0.82 0.12 242 / 0.38);
+  box-shadow: 0 0 14px -4px oklch(0.82 0.12 242 / 0.28);
   color: var(--tp-physics) !important;
 }
 .tp-tab--active[data-subject="math"] {
-  background: oklch(0.80 0.17 200 / 0.12);
-  border-color: oklch(0.80 0.17 200 / 0.38);
-  box-shadow: 0 0 14px -4px oklch(0.80 0.17 200 / 0.28);
+  background: oklch(0.74 0.15 250 / 0.14);
+  border-color: oklch(0.74 0.15 250 / 0.38);
+  box-shadow: 0 0 14px -4px oklch(0.74 0.15 250 / 0.28);
   color: var(--tp-math) !important;
 }
 .tp-tab--active[data-subject="biology"] {
-  background: oklch(0.75 0.17 155 / 0.12);
-  border-color: oklch(0.75 0.17 155 / 0.38);
-  box-shadow: 0 0 14px -4px oklch(0.75 0.17 155 / 0.28);
+  background: oklch(0.65 0.16 258 / 0.14);
+  border-color: oklch(0.65 0.16 258 / 0.38);
+  box-shadow: 0 0 14px -4px oklch(0.65 0.16 258 / 0.28);
   color: var(--tp-biology) !important;
 }
 .tp-tab--active[data-subject="chemistry"] {
-  background: oklch(0.78 0.17 70 / 0.12);
-  border-color: oklch(0.78 0.17 70 / 0.38);
-  box-shadow: 0 0 14px -4px oklch(0.78 0.17 70 / 0.28);
+  background: oklch(0.55 0.18 245 / 0.14);
+  border-color: oklch(0.55 0.18 245 / 0.38);
+  box-shadow: 0 0 14px -4px oklch(0.55 0.18 245 / 0.28);
   color: var(--tp-chemistry) !important;
 }
 
@@ -246,87 +306,98 @@
 
 /* ── Course accordion ─────────────────────────────────────────────────────── */
 .tp-course {
-  background: var(--glass);
-  border: 1px solid var(--line-soft);
+  background:
+    linear-gradient(180deg, oklch(1 0 0 / 0.04) 0%, transparent 35%),
+    var(--glass);
+  border: 1px solid var(--glass-edge-soft);
   border-radius: var(--radius);
   overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.14),
+    inset 0 -1px 1px oklch(0 0 0 / 0.22);
   transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 
 /* Per-subject accent variables (inherited by all children) */
 .tp-course[data-subject="physics"] {
   --_accent:          var(--tp-physics);
-  --_accent-a:        oklch(0.76 0.17 225 / 0.38);
-  --_accent-b:        oklch(0.76 0.17 225 / 0.18);
-  --_accent-hi:       oklch(0.84 0.17 225);
-  --_badge-bg:        oklch(0.76 0.17 225 / 0.11);
-  --_badge-line:      oklch(0.76 0.17 225 / 0.28);
-  --_badge-ink:       oklch(0.84 0.17 225);
-  --_unit-ink:        oklch(0.82 0.17 225);
-  --_chip-line:       oklch(0.76 0.17 225 / 0.24);
-  --_chip-hover-line: oklch(0.76 0.17 225 / 0.48);
-  --_chip-hover-bg:   oklch(0.76 0.17 225 / 0.07);
-  --_try-bg:          oklch(0.76 0.17 225 / 0.14);
-  --_try-line:        oklch(0.76 0.17 225 / 0.34);
-  --_try-ink:         oklch(0.84 0.17 225);
-  --_try-hover-bg:    oklch(0.76 0.17 225 / 0.26);
-  --_try-hover-line:  oklch(0.76 0.17 225 / 0.52);
+  --_accent-a:        oklch(0.82 0.12 242 / 0.38);
+  --_accent-b:        oklch(0.82 0.12 242 / 0.18);
+  --_accent-hi:       oklch(0.92 0.08 240);
+  --_badge-bg:        oklch(0.82 0.12 242 / 0.11);
+  --_badge-line:      oklch(0.82 0.12 242 / 0.28);
+  --_badge-ink:       oklch(0.92 0.08 240);
+  --_unit-ink:        oklch(0.90 0.09 241);
+  --_chip-line:       oklch(0.82 0.12 242 / 0.24);
+  --_chip-hover-line: oklch(0.82 0.12 242 / 0.48);
+  --_chip-hover-bg:   oklch(0.82 0.12 242 / 0.07);
+  --_try-bg:          oklch(0.82 0.12 242 / 0.14);
+  --_try-line:        oklch(0.82 0.12 242 / 0.34);
+  --_try-ink:         oklch(0.92 0.08 240);
+  --_try-hover-bg:    oklch(0.82 0.12 242 / 0.26);
+  --_try-hover-line:  oklch(0.82 0.12 242 / 0.52);
 }
 .tp-course[data-subject="math"] {
   --_accent:          var(--tp-math);
-  --_accent-a:        oklch(0.80 0.17 200 / 0.38);
-  --_accent-b:        oklch(0.80 0.17 200 / 0.18);
-  --_badge-bg:        oklch(0.80 0.17 200 / 0.11);
-  --_badge-line:      oklch(0.80 0.17 200 / 0.28);
-  --_badge-ink:       oklch(0.88 0.17 200);
-  --_unit-ink:        oklch(0.86 0.17 200);
-  --_chip-line:       oklch(0.80 0.17 200 / 0.24);
-  --_chip-hover-line: oklch(0.80 0.17 200 / 0.48);
-  --_chip-hover-bg:   oklch(0.80 0.17 200 / 0.07);
-  --_try-bg:          oklch(0.80 0.17 200 / 0.14);
-  --_try-line:        oklch(0.80 0.17 200 / 0.34);
-  --_try-ink:         oklch(0.88 0.17 200);
-  --_try-hover-bg:    oklch(0.80 0.17 200 / 0.26);
-  --_try-hover-line:  oklch(0.80 0.17 200 / 0.52);
+  --_accent-a:        oklch(0.74 0.15 250 / 0.38);
+  --_accent-b:        oklch(0.74 0.15 250 / 0.18);
+  --_accent-hi:       oklch(0.84 0.10 248);
+  --_badge-bg:        oklch(0.74 0.15 250 / 0.11);
+  --_badge-line:      oklch(0.74 0.15 250 / 0.28);
+  --_badge-ink:       oklch(0.84 0.10 248);
+  --_unit-ink:        oklch(0.83 0.11 249);
+  --_chip-line:       oklch(0.74 0.15 250 / 0.24);
+  --_chip-hover-line: oklch(0.74 0.15 250 / 0.48);
+  --_chip-hover-bg:   oklch(0.74 0.15 250 / 0.07);
+  --_try-bg:          oklch(0.74 0.15 250 / 0.14);
+  --_try-line:        oklch(0.74 0.15 250 / 0.34);
+  --_try-ink:         oklch(0.84 0.10 248);
+  --_try-hover-bg:    oklch(0.74 0.15 250 / 0.26);
+  --_try-hover-line:  oklch(0.74 0.15 250 / 0.52);
 }
 .tp-course[data-subject="biology"] {
   --_accent:          var(--tp-biology);
-  --_accent-a:        oklch(0.75 0.17 155 / 0.38);
-  --_accent-b:        oklch(0.75 0.17 155 / 0.18);
-  --_badge-bg:        oklch(0.75 0.17 155 / 0.11);
-  --_badge-line:      oklch(0.75 0.17 155 / 0.28);
-  --_badge-ink:       oklch(0.84 0.17 155);
-  --_unit-ink:        oklch(0.82 0.17 155);
-  --_chip-line:       oklch(0.75 0.17 155 / 0.24);
-  --_chip-hover-line: oklch(0.75 0.17 155 / 0.48);
-  --_chip-hover-bg:   oklch(0.75 0.17 155 / 0.07);
-  --_try-bg:          oklch(0.75 0.17 155 / 0.14);
-  --_try-line:        oklch(0.75 0.17 155 / 0.34);
-  --_try-ink:         oklch(0.84 0.17 155);
-  --_try-hover-bg:    oklch(0.75 0.17 155 / 0.26);
-  --_try-hover-line:  oklch(0.75 0.17 155 / 0.52);
+  --_accent-a:        oklch(0.65 0.16 258 / 0.38);
+  --_accent-b:        oklch(0.65 0.16 258 / 0.18);
+  --_accent-hi:       oklch(0.77 0.12 256);
+  --_badge-bg:        oklch(0.65 0.16 258 / 0.11);
+  --_badge-line:      oklch(0.65 0.16 258 / 0.28);
+  --_badge-ink:       oklch(0.77 0.12 256);
+  --_unit-ink:        oklch(0.76 0.12 257);
+  --_chip-line:       oklch(0.65 0.16 258 / 0.24);
+  --_chip-hover-line: oklch(0.65 0.16 258 / 0.48);
+  --_chip-hover-bg:   oklch(0.65 0.16 258 / 0.07);
+  --_try-bg:          oklch(0.65 0.16 258 / 0.14);
+  --_try-line:        oklch(0.65 0.16 258 / 0.34);
+  --_try-ink:         oklch(0.77 0.12 256);
+  --_try-hover-bg:    oklch(0.65 0.16 258 / 0.26);
+  --_try-hover-line:  oklch(0.65 0.16 258 / 0.52);
 }
 .tp-course[data-subject="chemistry"] {
   --_accent:          var(--tp-chemistry);
-  --_accent-a:        oklch(0.78 0.17 70 / 0.38);
-  --_accent-b:        oklch(0.78 0.17 70 / 0.18);
-  --_badge-bg:        oklch(0.78 0.17 70 / 0.11);
-  --_badge-line:      oklch(0.78 0.17 70 / 0.28);
-  --_badge-ink:       oklch(0.86 0.17 70);
-  --_unit-ink:        oklch(0.84 0.17 70);
-  --_chip-line:       oklch(0.78 0.17 70 / 0.24);
-  --_chip-hover-line: oklch(0.78 0.17 70 / 0.48);
-  --_chip-hover-bg:   oklch(0.78 0.17 70 / 0.07);
-  --_try-bg:          oklch(0.78 0.17 70 / 0.14);
-  --_try-line:        oklch(0.78 0.17 70 / 0.34);
-  --_try-ink:         oklch(0.86 0.17 70);
-  --_try-hover-bg:    oklch(0.78 0.17 70 / 0.26);
-  --_try-hover-line:  oklch(0.78 0.17 70 / 0.52);
+  --_accent-a:        oklch(0.55 0.18 245 / 0.38);
+  --_accent-b:        oklch(0.55 0.18 245 / 0.18);
+  --_accent-hi:       oklch(0.69 0.13 246);
+  --_badge-bg:        oklch(0.55 0.18 245 / 0.11);
+  --_badge-line:      oklch(0.55 0.18 245 / 0.28);
+  --_badge-ink:       oklch(0.69 0.13 246);
+  --_unit-ink:        oklch(0.68 0.13 246);
+  --_chip-line:       oklch(0.55 0.18 245 / 0.24);
+  --_chip-hover-line: oklch(0.55 0.18 245 / 0.48);
+  --_chip-hover-bg:   oklch(0.55 0.18 245 / 0.07);
+  --_try-bg:          oklch(0.55 0.18 245 / 0.14);
+  --_try-line:        oklch(0.55 0.18 245 / 0.34);
+  --_try-ink:         oklch(0.69 0.13 246);
+  --_try-hover-bg:    oklch(0.55 0.18 245 / 0.26);
+  --_try-hover-line:  oklch(0.55 0.18 245 / 0.52);
 }
 
 .tp-course--open {
   border-color: var(--_accent-a);
-  box-shadow: 0 2px 20px -6px var(--_accent-b);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.14),
+    inset 0 -1px 1px oklch(0 0 0 / 0.22),
+    0 2px 20px -6px var(--_accent-b);
 }
 
 .tp-course__header {
@@ -377,9 +448,9 @@
 }
 
 .tp-badge--count {
-  background: var(--_badge-bg,   oklch(0.76 0.17 225 / 0.11));
-  border: 1px solid var(--_badge-line, oklch(0.76 0.17 225 / 0.28));
-  color: var(--_badge-ink,  oklch(0.84 0.17 225));
+  background: var(--_badge-bg,   oklch(0.82 0.12 242 / 0.11));
+  border: 1px solid var(--_badge-line, oklch(0.82 0.12 242 / 0.28));
+  color: var(--_badge-ink,  oklch(0.92 0.08 240));
 }
 
 .tp-course__chevron {
@@ -447,8 +518,11 @@
   gap: 0.4rem;
   padding: 0.28rem 0.65rem;
   border-radius: 7px;
-  background: var(--bg-2);
-  border: 1px solid var(--line-soft);
+  background:
+    linear-gradient(180deg, oklch(1 0 0 / 0.04) 0%, transparent 60%),
+    var(--bg-2);
+  border: 1px solid var(--glass-edge-soft);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.08);
   font-size: 0.8rem;
   color: var(--ink-2);
   transition:
@@ -459,17 +533,17 @@
 
 .tp-chip:hover {
   background: var(--glass-2);
-  border-color: var(--line);
+  border-color: var(--glass-edge-soft);
   color: var(--ink);
 }
 
 .tp-chip--live {
-  border-color: var(--_chip-line, oklch(0.76 0.17 225 / 0.24));
+  border-color: var(--_chip-line, oklch(0.82 0.12 242 / 0.24));
 }
 
 .tp-chip--live:hover {
-  border-color: var(--_chip-hover-line, oklch(0.76 0.17 225 / 0.48));
-  background: var(--_chip-hover-bg,   oklch(0.76 0.17 225 / 0.07));
+  border-color: var(--_chip-hover-line, oklch(0.82 0.12 242 / 0.48));
+  background: var(--_chip-hover-bg,   oklch(0.82 0.12 242 / 0.07));
 }
 
 .tp-chip__title {
@@ -483,9 +557,9 @@
   gap: 0.22rem;
   padding: 0.14rem 0.42rem;
   border-radius: 5px;
-  background: var(--_try-bg,   oklch(0.76 0.17 225 / 0.14));
-  border: 1px solid var(--_try-line,  oklch(0.76 0.17 225 / 0.34));
-  color: var(--_try-ink,   oklch(0.84 0.17 225));
+  background: var(--_try-bg,   oklch(0.82 0.12 242 / 0.14));
+  border: 1px solid var(--_try-line,  oklch(0.82 0.12 242 / 0.34));
+  color: var(--_try-ink,   oklch(0.92 0.08 240));
   font-family: var(--font-mono);
   font-size: 0.64rem;
   font-weight: 500;
@@ -499,8 +573,8 @@
 }
 
 .tp-chip__try:hover {
-  background: var(--_try-hover-bg,   oklch(0.76 0.17 225 / 0.26));
-  border-color: var(--_try-hover-line, oklch(0.76 0.17 225 / 0.52));
+  background: var(--_try-hover-bg,   oklch(0.82 0.12 242 / 0.26));
+  border-color: var(--_try-hover-line, oklch(0.82 0.12 242 / 0.52));
 }
 
 /* ── Skeleton loading ─────────────────────────────────────────────────────── */

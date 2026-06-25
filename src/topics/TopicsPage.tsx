@@ -115,12 +115,12 @@ function CourseAccordion({
               <h3 className="tp-unit__name">{unit}</h3>
               <div className="tp-chips">
                 {concepts.map(c => (
-                  <span key={c.id} className={`tp-chip${c.has_visualization ? ' tp-chip--live' : ''}`}>
-                    <span className="tp-chip__title">{c.name}</span>
-                    {c.has_visualization && c.slug && (
+                  <span key={c.id} className={`tp-chip${c.spec_type ? ' tp-chip--live' : ''}`}>
+                    <span className="tp-chip__title">{c.title}</span>
+                    {c.spec_type && (
                       <a
                         className="tp-chip__try"
-                        href={`#/try?concept=${c.slug}`}
+                        href={`#/try?concept=${c.id}`}
                         onClick={e => e.stopPropagation()}
                       >
                         Try →
@@ -174,9 +174,9 @@ export default function TopicsPage() {
 
     supabase
       .from('concepts')
-      .select('id, subject, course, unit, name, slug, has_visualization')
+      .select('id, subject, course, unit, title, spec_type')
       .eq('subject', activeSubject)
-      .order('name')
+      .order('title')
       .then(({ data, error: err }) => {
         if (err) {
           setError(err.message)
@@ -210,7 +210,7 @@ export default function TopicsPage() {
       <nav className="tp-nav" aria-label="Topics navigation">
         <div className="tp-shell tp-nav__inner">
           <a href="#/" className="tp-brand">
-            <Prismlet />
+            <LotusMark />
             <span>Saras</span>
           </a>
           <div className="tp-nav__links">
@@ -225,7 +225,7 @@ export default function TopicsPage() {
       <main className="tp-shell tp-main">
         {/* ── Header ── */}
         <header className="tp-head">
-          <span className="tp-label">Curriculum browser</span>
+          <span className="tp-label">Topics</span>
           <h1 className="tp-head__title">Every concept, three ways.</h1>
           <p className="tp-head__sub">
             Browse by subject and course. Concepts marked{' '}
@@ -253,7 +253,6 @@ export default function TopicsPage() {
               onClick={() => setActiveSubject(s.id)}
               onKeyDown={e => handleTabKeyDown(e, idx)}
             >
-              <span aria-hidden="true">{s.icon}</span>
               {s.label}
             </button>
           ))}
@@ -297,13 +296,24 @@ export default function TopicsPage() {
 }
 
 // ── Shared SVG ────────────────────────────────────────────────────────────────
-function Prismlet() {
+function LotusMark() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" className="prismlet">
-      <path d="M12 4 L20 19 L4 19 Z" fill="none" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="12" y1="4"    x2="12" y2="19" stroke="var(--ch-model)"   strokeWidth="1.4" />
-      <line x1="12" y1="11.5" x2="20" y2="19" stroke="var(--ch-analogy)" strokeWidth="1.4" />
-      <line x1="12" y1="11.5" x2="4"  y2="19" stroke="var(--ch-steps)"   strokeWidth="1.4" />
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 20 C 7 16 7 9 12 4 C 17 9 17 16 12 20 Z"
+        fill="none" stroke="var(--ink)" strokeWidth="1.4"
+      />
+      <path
+        d="M12 20 C 8 18 4.5 14 4 9 C 9 10.5 11 15 12 20 Z"
+        fill="none" stroke="var(--ink-3)" strokeWidth="1.2"
+      />
+      <path
+        d="M12 20 C 16 18 19.5 14 20 9 C 15 10.5 13 15 12 20 Z"
+        fill="none" stroke="var(--ink-3)" strokeWidth="1.2"
+      />
+      <line x1="3" y1="20.5" x2="21" y2="20.5"
+        stroke="var(--ink)" strokeWidth="1" opacity="0.45"
+      />
     </svg>
   )
 }

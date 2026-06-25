@@ -41,16 +41,16 @@ const ROOMS: Room[] = [
     hue: 270,
     eyebrow: 'It opens up',
     headline: 'A whole idea, in parts you can see.',
-    body: 'Most tools hand you one answer and move on. Saras opens the idea up, so the pieces it is built from are out in the light instead of hidden behind a single number.',
+    body: 'Most tools hand you one answer and move on. Saras opens the idea up, so the components it is built from are easy to visualize instead of hidden behind a number.',
   },
   {
     id: 'data',
     align: 'left',
     ribbon: 'Move',
     hue: 200,
-    eyebrow: 'Grab it, it answers',
+    eyebrow: 'It interacts',
     headline: 'Move one thing. The model responds.',
-    body: 'You learn the shape of an idea by bending it, not by rereading it. Pull on the model and everything updates at once, in real time, so the relationship becomes something you feel.',
+    body: 'You learn the shape of a concept by bending it, not by rereading it. Move the model and it updates in real time.',
   },
   {
     id: 'reflection',
@@ -60,7 +60,7 @@ const ROOMS: Room[] = [
     variant: 'split',
     eyebrow: 'The same idea, twice',
     headline: 'Abstract on top, physical below.',
-    body: 'Seen from another angle, a curve becomes a swing and a rate becomes a flow. Two honest readings of one idea, so it lands whichever way your mind reaches for it.',
+    body: 'Seen from another angle, a curve becomes a swing and a rate becomes a flow. Two perspectives on one idea, so it lands whichever way your mind reaches for it.',
   },
   {
     id: 'steps',
@@ -68,9 +68,9 @@ const ROOMS: Room[] = [
     ribbon: 'Solve',
     hue: 225,
     variant: 'surface',
-    eyebrow: 'Or follow the work',
+    eyebrow: 'Follow the process',
     headline: 'Watch it solve, step by step.',
-    body: 'When you want the procedure, Saras lays the work out in order, and you can replay any step until it finally holds.',
+    body: 'When you want the procedure, Saras lays the work out in order. You can replay any step until it finally holds.',
   },
 ]
 
@@ -230,8 +230,8 @@ export default function LandingLotus() {
       </span>
       {heroTitle}
       <p className="lh-sub">
-        Paste a formula or a concept. Watch it open into a model you can grab,
-        turn, and take apart, until the idea behind it finally makes sense.
+        Drop in a formula or concept. It unfolds into a model you can hold,
+        rotate, pull apart, until the idea behind it finally makes sense.
       </p>
       <div className="lh-cta">
         <a className="lh-btn lh-btn--chrome" href="#/get-started">
@@ -255,6 +255,7 @@ export default function LandingLotus() {
           <nav className="lh-links">
             <a href="#unfurl">How it works</a>
             <a href="#steps">The idea</a>
+            <a href="#/topics">Topics</a>
             <a href="#/login">Log in</a>
           </nav>
           <a className="lh-btn lh-btn--ghost lh-btn--sm" href="#/get-started">
@@ -325,13 +326,11 @@ export default function LandingLotus() {
                 <span className="lh-eyebrow2">Early access</span>
                 <h2 className="lh-h2">This is the tool, not the trailer.</h2>
                 <p className="lh-body">
-                  The lotus you just reshaped is the same engine inside Saras,
-                  running on 734 concepts across math and science. Add your campus
-                  email and we will hand you the first one to grow.
+                  The same engine as the lotus powers every concept model in Saras, hundreds across math and science. Drop your email for early access.
                 </p>
                 <div className="lh-cta">
                   <a className="lh-btn lh-btn--chrome" href="#/get-started">
-                    Request access
+                    Get access
                   </a>
                   <a className="lh-textlink" href="#/try">
                     Open the engine →
@@ -378,13 +377,11 @@ export default function LandingLotus() {
                   <span className="lh-eyebrow2">Early access</span>
                   <h2 className="lh-h2">This is the tool, not the trailer.</h2>
                   <p className="lh-body">
-                    The lotus you just reshaped is the same engine inside Saras,
-                    running on 734 concepts across math and science. Add your campus
-                    email and we will hand you the first one to grow.
+                    The same engine as the lotus powers every concept model in Saras, hundreds across math and science. Drop your email for early access.
                   </p>
                   <div className="lh-cta">
                     <a className="lh-btn lh-btn--chrome" href="#/get-started">
-                      Request access
+                      Get access
                     </a>
                     <a className="lh-textlink" href="#/try">
                       Open the engine →
