@@ -1,6 +1,7 @@
 /* ============================================================
    Saras auth + onboarding screens
-   Centered glass card over the aurora, reusing the landing tokens.
+   Glass lotus theme: deep obsidian, pearl/chrome typography,
+   iridescent card edges, aurora-glow backdrop.
    ============================================================ */
 
 .auth {
@@ -10,49 +11,138 @@
   display: grid;
   place-items: center;
   padding: clamp(1.5rem, 5vw, 4rem) var(--gutter);
+  padding-top: calc(clamp(1.5rem, 5vw, 4rem) + 4rem); /* clear the topnav */
 
-  /* Cool accent for selection + focus, in the same family as the chrome-silver
-     highlights and the pearl/glass channel. */
+  background: var(--bg);
+
   --gold: var(--accent);
   --gold-soft: oklch(0.76 0.12 256 / 0.28);
   --gold-fill: oklch(0.76 0.12 256 / 0.16);
 }
 
+/* ── Floating glass capsule nav ──────────────────────────── */
+.auth__topnav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  padding: clamp(0.55rem, 1.2vw, 0.9rem) clamp(0.8rem, 1.5vw, 1.25rem) 0;
+  pointer-events: none;
+}
+
+.auth__home {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 1.1rem 0.35rem 0.55rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: none;
+  background:
+    radial-gradient(125% 150% at 50% -45%, oklch(1 0 0 / 0.18), transparent 60%),
+    linear-gradient(
+      180deg,
+      oklch(0.97 0.012 250 / 0.14),
+      oklch(0.9 0.02 250 / 0.05) 55%,
+      oklch(0.92 0.02 250 / 0.1)
+    );
+  border: 1px solid oklch(0.97 0.01 250 / 0.26);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.5),
+    inset 0 -1px 3px oklch(0.7 0.02 250 / 0.12),
+    0 12px 32px -18px oklch(0.03 0.01 258 / 0.5);
+  -webkit-backdrop-filter: saturate(150%) blur(4px);
+  backdrop-filter: saturate(150%) blur(4px);
+  transition:
+    border-color 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.auth__home:hover {
+  color: oklch(0.97 0.008 250);
+  border-color: oklch(0.97 0.01 250 / 0.45);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.65),
+    0 12px 32px -12px oklch(0.65 0.1 256 / 0.25);
+}
+
+.auth__home:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── Card ───────────────────────────────────────────────── */
 .auth__card {
+  position: relative;
   width: 100%;
   max-width: 460px;
   background: var(--glass-2);
-  border: 1px solid var(--line);
+  border: 1px solid oklch(0.82 0.014 252 / 0.32);
   border-radius: var(--radius);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
   padding: clamp(1.6rem, 4vw, 2.4rem);
   box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.12),
-    0 30px 80px -40px oklch(0 0 0 / 0.8);
+    inset 0 1px 0 oklch(1 0 0 / 0.18),
+    0 0 48px -8px oklch(0.65 0.12 256 / 0.18),
+    0 32px 80px -36px oklch(0 0 0 / 0.85);
 }
 
+/* iridescent hairline border — same technique as App.css .card */
+.auth__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    oklch(0.9 0.02 250 / 0.55),
+    oklch(0.72 0.12 256 / 0.35) 35%,
+    oklch(0.62 0.12 292 / 0.2) 65%,
+    oklch(0.9 0.025 250 / 0.45)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Brand mark ─────────────────────────────────────────── */
 .auth__brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.52rem;
   font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 1.15rem;
-  margin-bottom: 1.4rem;
-}
-
-.auth__title {
-  font-size: clamp(1.5rem, 4vw, 1.9rem);
-  margin-bottom: 0.4rem;
-}
-.auth__sub {
-  color: var(--ink-2);
-  font-size: 0.98rem;
+  font-weight: 600;
+  font-size: 1.08rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
   margin-bottom: 1.6rem;
 }
 
-/* progress dots for the onboarding steps */
+/* ── Typography ─────────────────────────────────────────── */
+.auth__title {
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.4rem;
+}
+
+.auth__sub {
+  color: var(--ink-2);
+  font-size: 0.98rem;
+  margin-bottom: 1rem;
+}
+
+/* ── Progress dots (onboarding steps) ──────────────────── */
 .auth__steps {
   display: flex;
   gap: 0.4rem;
@@ -66,10 +156,10 @@
   transition: background 0.3s var(--ease);
 }
 .auth__steps span.is-on {
-  background: var(--chrome);
+  background: var(--ink-2);
 }
 
-/* fields */
+/* ── Fields ─────────────────────────────────────────────── */
 .field {
   display: block;
   margin-bottom: 1rem;
@@ -77,16 +167,18 @@
 .field__label {
   display: block;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+  color: var(--ink-2);
   margin-bottom: 0.45rem;
 }
 .field__input {
   width: 100%;
   padding: 0.85rem 1rem;
   border-radius: 12px;
-  border: 1px solid var(--line);
-  background: var(--glass);
+  border: 1px solid oklch(0.72 0.012 255 / 0.35);
+  background: oklch(0.9 0.02 250 / 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: var(--ink);
@@ -101,24 +193,81 @@
 }
 .field__input:focus {
   outline: none;
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px var(--gold-soft);
+  border-color: oklch(0.76 0.12 256 / 0.7);
+  box-shadow:
+    0 0 0 3px oklch(0.76 0.12 256 / 0.18),
+    inset 0 1px 0 oklch(1 0 0 / 0.06);
 }
 .field__input[aria-invalid='true'] {
   border-color: var(--ch-steps);
 }
 
+/* ── Error ──────────────────────────────────────────────── */
 .auth__error {
   margin: 0.2rem 0 1rem;
-  /* functional danger colour keeps a red affordance even in the cool theme */
   color: oklch(0.68 0.17 22);
   font-size: 0.9rem;
 }
 
-/* full-width actions */
+/* ── Buttons ─────────────────────────────────────────────── */
 .btn--block {
   width: 100%;
 }
+
+/* Primary button — exact lh-btn--chrome from the landing (chrome-1/3 inlined) */
+.auth .btn--primary {
+  background: linear-gradient(
+    180deg,
+    oklch(0.95 0.006 250) 0%,
+    oklch(0.86 0.008 252) 22%,
+    oklch(0.6 0.012 255) 52%,
+    oklch(0.84 0.01 250) 66%,
+    oklch(0.95 0.006 250) 100%
+  );
+  color: oklch(0.2 0.01 255);
+  border-color: oklch(0.7 0.01 255);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.85),
+    0 12px 34px -14px oklch(0.8 0.02 250 / 0.5);
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+.auth .btn--primary:hover {
+  background: linear-gradient(
+    180deg,
+    oklch(0.95 0.006 250) 0%,
+    oklch(0.86 0.008 252) 22%,
+    oklch(0.6 0.012 255) 52%,
+    oklch(0.84 0.01 250) 66%,
+    oklch(0.95 0.006 250) 100%
+  );
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.85),
+    0 16px 40px -14px oklch(0.8 0.02 250 / 0.6);
+}
+.auth .btn--primary:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Submit row centers the pill button */
+.auth__submit-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+/* Submit button — pill shape, slightly wider than Get early access */
+.auth__submit {
+  padding: 0.85rem 3rem;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 0.98rem;
+  letter-spacing: 0;
+}
+
 .auth__actions {
   display: flex;
   gap: 0.6rem;
@@ -128,7 +277,7 @@
   flex: 1;
 }
 
-/* OR divider */
+/* ── OR divider ─────────────────────────────────────────── */
 .auth__or {
   display: flex;
   align-items: center;
@@ -145,28 +294,30 @@
   content: '';
   flex: 1;
   height: 1px;
-  background: var(--line-soft);
+  background: oklch(0.72 0.012 255 / 0.2);
 }
 
-/* Google button */
+/* ── Google button ──────────────────────────────────────── */
 .btn--google {
   width: 100%;
   gap: 0.6rem;
-  background: var(--glass);
+  background: oklch(0.9 0.02 250 / 0.05);
   color: var(--ink);
-  border-color: var(--line);
+  border-color: oklch(0.72 0.012 255 / 0.35);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 .btn--google:hover {
-  border-color: var(--gold);
-  background: var(--glass-2);
+  border-color: oklch(0.76 0.12 256 / 0.5);
+  background: oklch(0.9 0.02 250 / 0.1);
+  box-shadow: 0 0 20px -8px oklch(0.72 0.12 256 / 0.3);
 }
 .btn--google svg {
   width: 18px;
   height: 18px;
 }
 
+/* ── Alt link ───────────────────────────────────────────── */
 .auth__alt {
   margin-top: 1.4rem;
   text-align: center;
@@ -178,14 +329,14 @@
   border: none;
   padding: 0;
   font: inherit;
-  color: var(--gold);
+  color: var(--accent);
   cursor: pointer;
 }
 .auth__alt button:hover {
   text-decoration: underline;
 }
 
-/* choice chips (grade level + subjects) */
+/* ── Choice chips (onboarding grade + subjects) ─────────── */
 .choices {
   display: flex;
   flex-wrap: wrap;
@@ -198,8 +349,8 @@
   font-size: 0.95rem;
   padding: 0.6rem 1rem;
   border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--glass);
+  border: 1px solid oklch(0.72 0.012 255 / 0.35);
+  background: oklch(0.9 0.02 250 / 0.05);
   color: var(--ink);
   cursor: pointer;
   transition:
@@ -208,14 +359,15 @@
     box-shadow 0.2s var(--ease);
 }
 .chip:hover {
-  border-color: var(--gold);
+  border-color: oklch(0.76 0.12 256 / 0.5);
 }
 .chip[aria-pressed='true'] {
-  border-color: var(--gold);
+  border-color: var(--accent);
   background: var(--gold-fill);
-  box-shadow: 0 0 0 1px var(--gold) inset;
+  box-shadow: 0 0 0 1px var(--accent) inset;
 }
 
+/* ── Onboarding back/nav row ────────────────────────────── */
 .auth__nav {
   display: flex;
   justify-content: space-between;
