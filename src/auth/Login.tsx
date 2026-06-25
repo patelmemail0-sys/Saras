@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react'
-import Aurora from '../components/Aurora'
 import { useAuth } from './useAuth'
-import { BrandMark, GoogleIcon } from './ui'
+import { LotusMark, BrandMark, GoogleIcon } from './ui'
+import '../App.css'
 import './auth.css'
 
 /**
@@ -42,7 +42,12 @@ export default function Login() {
 
   return (
     <div className="auth">
-      <Aurora />
+      <nav className="auth__topnav" aria-label="Back to home">
+        <a className="auth__home" href="#/">
+          <LotusMark />
+          <span>Saras</span>
+        </a>
+      </nav>
       <div className="auth__card">
         <BrandMark />
         <h1 className="auth__title">Welcome back</h1>
@@ -73,9 +78,11 @@ export default function Login() {
             />
           </label>
           {error && <p className="auth__error" role="alert">{error}</p>}
-          <button type="submit" className="btn btn--primary btn--block" disabled={busy}>
-            <span>{busy ? 'Logging in…' : 'Log in'}</span>
-          </button>
+          <div className="auth__submit-row">
+            <button type="submit" className="btn btn--primary auth__submit" disabled={busy}>
+              <span>{busy ? 'Logging in…' : 'Log in'}</span>
+            </button>
+          </div>
         </form>
 
         <div className="auth__or">or</div>

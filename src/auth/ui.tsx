@@ -1,14 +1,35 @@
 // Small shared bits for the auth screens.
 
+export function LotusMark() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 20 C 7 16 7 9 12 4 C 17 9 17 16 12 20 Z"
+        fill="none"
+        stroke="var(--ink)"
+        strokeWidth="1.4"
+      />
+      <path
+        d="M12 20 C 8 18 4.5 14 4 9 C 9 10.5 11 15 12 20 Z"
+        fill="none"
+        stroke="var(--ink-3)"
+        strokeWidth="1.2"
+      />
+      <path
+        d="M12 20 C 16 18 19.5 14 20 9 C 15 10.5 13 15 12 20 Z"
+        fill="none"
+        stroke="var(--ink-3)"
+        strokeWidth="1.2"
+      />
+      <line x1="3" y1="20.5" x2="21" y2="20.5" stroke="var(--ink-2)" strokeWidth="1" opacity="0.45" />
+    </svg>
+  )
+}
+
 export function BrandMark() {
   return (
     <span className="auth__brand">
-      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 4 L20 19 L4 19 Z" fill="none" stroke="currentColor" strokeWidth="1.6" />
-        <line x1="12" y1="4" x2="12" y2="19" stroke="var(--ch-model)" strokeWidth="1.4" />
-        <line x1="12" y1="11.5" x2="20" y2="19" stroke="var(--ch-analogy)" strokeWidth="1.4" />
-        <line x1="12" y1="11.5" x2="4" y2="19" stroke="var(--ch-steps)" strokeWidth="1.4" />
-      </svg>
+      <LotusMark />
       <span>Saras</span>
     </span>
   )
