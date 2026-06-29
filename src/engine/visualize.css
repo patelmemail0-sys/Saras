@@ -138,6 +138,7 @@
 .ps__legend-dot { width: 9px; height: 9px; border-radius: 999px; flex: 0 0 auto; }
 .ps__legend b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
 .ps__legend sub { font-size: 0.78em; }
+.cb__leg-note { color: var(--ink-faint); font-size: 0.85em; }
 
 /* Plane-snap buttons overlaid on a 3D scene (top-right). */
 .scene3d__axes { position: absolute; top: 12px; right: 12px; z-index: 3; display: flex; gap: 6px; }
@@ -317,6 +318,126 @@
 .eqp__hint { font-size: 12px; color: var(--accent); margin: 0; }
 .eqp__note { font-size: 11.5px; color: var(--ink-faint); margin: 0; line-height: 1.45; }
 
+/* Circuit builder ---------------------------------------------------------- */
+.cb__modebar { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.cb__modes { display: flex; gap: 6px; }
+.cb__mode {
+  cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; white-space: nowrap;
+  background: var(--panel-2); border: 1px solid var(--line); color: var(--chrome);
+  border-radius: 9px; padding: 6px 14px;
+}
+.cb__mode:hover:not(:disabled) { border-color: var(--accent); color: var(--ink); }
+.cb__mode--on { color: oklch(0.15 0.012 258); border-color: transparent; background: linear-gradient(180deg, oklch(0.91 0.025 250), oklch(0.74 0.05 252)); }
+.cb__mode:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.cb { width: 100%; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 8px; }
+.cb__toolbar { flex: 0 0 auto; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.cb__tool {
+  cursor: pointer; font: inherit; font-size: 13px; white-space: nowrap;
+  background: var(--panel-2); border: 1px solid var(--line); color: var(--chrome);
+  border-radius: 999px; padding: 5px 13px;
+}
+.cb__tool:hover { border-color: var(--accent); color: var(--ink); }
+.cb__tool--on { border-color: var(--accent); color: oklch(0.15 0.012 258); background: var(--accent); font-weight: 600; }
+.cb__hint { font-size: 12px; color: var(--ink-faint); margin-left: 4px; }
+
+.cb__svg {
+  width: 100%; flex: 1 1 auto; min-height: 0; display: block;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+  touch-action: none; cursor: crosshair;
+}
+.cb__node { fill: oklch(0.36 0.012 258); }
+.cb__node--on { fill: var(--pearl); }
+.cb__node--target { fill: var(--accent); }
+.cb__wire { stroke: oklch(0.62 0.06 254); stroke-width: 3; stroke-linecap: round; }
+.cb__lead { stroke: oklch(0.55 0.02 255); stroke-width: 2.6; stroke-linecap: round; }
+.cb__plate { stroke: var(--pearl); stroke-width: 3; stroke-linecap: round; }
+.cb__plate--lg { stroke-width: 3.4; }
+.cb__chip { fill: var(--panel-2); stroke: var(--line); stroke-width: 1.4; }
+.cb__zig { fill: none; stroke: var(--curve); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+.cb__rglow { fill: oklch(0.8 0.14 256); }
+.cb__sel { stroke: var(--accent) !important; }
+.cb__handle { fill: var(--accent); stroke: oklch(0.95 0.02 250); stroke-width: 1.4; }
+.cb__rubber { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 4 4; stroke-linecap: round; pointer-events: none; }
+.cb__sw-dot { fill: oklch(0.55 0.02 255); }
+.cb__sw { stroke: oklch(0.72 0.08 252); stroke-width: 3.2; stroke-linecap: round; }
+.cb__sw--open { stroke: oklch(0.5 0.03 255); }
+.cb__lbl {
+  fill: var(--ink-dim); font-size: 11px; pointer-events: none;
+  paint-order: stroke; stroke: var(--panel); stroke-width: 3px; stroke-linejoin: round;
+}
+.cb__lbl--mid { text-anchor: middle; }
+.cb__lbl--val { fill: var(--good); font-variant-numeric: tabular-nums; }
+.cb__lbl--open { fill: var(--accent); }
+
+/* Circuit components panel (reuses .eqp sizing) */
+.cbp__source { display: grid; gap: 5px; }
+.cbp__source-label { font-size: 13px; color: var(--ink-dim); }
+.cbp__source-label b { color: var(--good); font-variant-numeric: tabular-nums; }
+.cbp__source input[type='range'] { width: 100%; accent-color: var(--accent); }
+.cbp__totals { margin: 2px 0; font-size: 13px; color: var(--ink-dim); }
+.cbp__totals b { color: var(--good); font-variant-numeric: tabular-nums; }
+.cbp__status { margin: 2px 0; font-size: 13px; color: var(--accent); }
+.cbp__table { display: grid; gap: 3px; }
+.cbp__row {
+  display: grid; grid-template-columns: 1fr 3.4em 3.4em 3.4em; gap: 6px; align-items: center;
+  font: inherit; font-size: 12.5px; text-align: left; cursor: pointer;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px;
+  color: var(--ink-dim); font-variant-numeric: tabular-nums;
+}
+.cbp__row:hover { border-color: var(--accent); }
+.cbp__row--head { background: transparent; border-color: transparent; color: var(--ink-faint); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; cursor: default; padding-bottom: 0; }
+.cbp__row--head:hover { border-color: transparent; }
+.cbp__row--on { border-color: var(--accent); }
+.cbp__name { color: var(--ink); }
+.cbp__name b { color: var(--chrome); font-weight: 600; }
+
+.cbp__editor { display: grid; gap: 8px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.cbp__editor-head { font-size: 12px; color: var(--ink-dim); }
+.cbp__field { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--ink-dim); }
+.cbp__num { display: flex; align-items: baseline; gap: 5px; }
+.cbp__num input {
+  width: 84px; font: inherit; font-size: 14px; color: var(--ink); text-align: right;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 7px; padding: 5px 7px;
+  font-variant-numeric: tabular-nums;
+}
+.cbp__num input:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
+.cbp__del {
+  cursor: pointer; font: inherit; font-size: 13px; color: var(--accent);
+  background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; justify-self: start;
+}
+.cbp__del:hover { border-color: var(--accent); }
+.cbp__toggle {
+  cursor: pointer; font: inherit; font-size: 13px; color: var(--ink); text-align: left;
+  background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; padding: 7px 12px; justify-self: start;
+}
+.cbp__toggle:hover { background: var(--panel-2); }
+.cbp__toggle--open { color: var(--accent); }
+.cbp__state { color: var(--ink-faint); font-style: normal; font-size: 0.92em; }
+
+/* Circuit measurement: tools, labels, glyphs, probes */
+.cb__div { width: 1px; align-self: stretch; min-height: 18px; background: var(--line); margin: 0 3px; }
+.cb__tool--m { color: var(--good); }
+.cb__nlabel {
+  fill: var(--good); font-size: 10.5px; pointer-events: none;
+  paint-order: stroke; stroke: var(--panel); stroke-width: 3px; stroke-linejoin: round;
+}
+.cb__iarrow { fill: var(--accent); pointer-events: none; }
+.cb__gnd line { stroke: var(--chrome); stroke-width: 1.6; stroke-linecap: round; }
+.cb__probe-ring { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 3 3; pointer-events: none; }
+.cb__probed { stroke: var(--good) !important; stroke-width: 5 !important; }
+
+.cbp__probe { background: var(--panel); border: 1px solid var(--accent); border-radius: 9px; padding: 8px 11px; }
+.cbp__probe-val { margin: 0; font-size: 14px; color: var(--ink); }
+.cbp__probe-val b { color: var(--good); font-variant-numeric: tabular-nums; }
+.cbp__probe-hint { margin: 0; font-size: 12.5px; color: var(--ink-dim); }
+.cbp__dir { color: var(--ink-faint); font-size: 12px; }
+.cbp__nodes { display: grid; gap: 5px; }
+.cbp__nodes-head { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.cbp__nodes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 10px; }
+.cbp__node { font-size: 12.5px; color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+.cbp__node b { color: var(--chrome); }
+
 /* Narrow screens: stack the visual above the equation panel. Page may scroll
    here (unavoidable with this much content on a phone); desktop stays fit. */
 @media (max-width: 760px) {
@@ -324,5 +445,5 @@
   .viz__stage { overflow: visible; }
   .pmodel__body { flex-direction: column; }
   .eqp { flex-basis: auto; overflow-y: visible; }
-  .ps__svg, .ps__canvas { min-height: 240px; }
+  .ps__svg, .ps__canvas, .cb__svg { min-height: 300px; }
 }
