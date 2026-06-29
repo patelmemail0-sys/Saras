@@ -1,13 +1,13 @@
 {
   "name": "saras",
   "private": true,
-  "version": "0.3.2.0",
+  "version": "0.3.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test": "bun src/engine/circuitNetwork.test.ts",
+    "test": "bun src/engine/circuitNetwork.test.ts && bun src/engine/physicsModels.test.ts",
     "preview": "vite preview"
   },
   "dependencies": {
