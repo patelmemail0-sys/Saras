@@ -163,7 +163,15 @@ export default function Scene3D({
         camera={{ position: camera.position, fov: camera.fov ?? 44 }}
         dpr={effectiveDpr}
         gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
-        style={{ width: '100%', height: '100%', display: 'block' }}
+        // Absolute-fill the `.ps__canvas` parent (which is position:relative).
+        // Do NOT simplify to plain height:100%: in the stacked/mobile layout
+        // (≤760px) `.viz` drops to height:auto, so the whole flex chain becomes
+        // indefinite and `.ps__canvas` only has height via `min-height:300px`.
+        // A percentage height can't resolve against that indefinite parent and
+        // collapses to ~half (150px); R3F then sizes the canvas to the wrong
+        // box. Absolute inset resolves against the parent's *used* height, which
+        // is reliably 300px, so the canvas fills correctly on phones too.
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'block' }}
         role="img"
         aria-label={label}
       >

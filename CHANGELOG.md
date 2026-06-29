@@ -4,6 +4,48 @@ All notable changes to Saras are documented in this file.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com); versions
 use `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.3.2.0] - 2026-06-29
+
+### Added
+- **Interactive circuit builder.** The Ohm's-law circuit model is now a full DC-circuit
+  sandbox. Place, drag, rewire, and delete resistors, wires, batteries, and a new
+  **switch** component on a snap-to-grid 2D schematic; flip the switch open/closed and
+  watch the loop break or conduct. A new solver (`circuitNetwork.ts`) runs Modified Nodal
+  Analysis over the netlist and is the single correctness gate — the 2D editor, the side
+  panel, and the 3D view all read its one result; nothing recomputes physics. Degenerate
+  circuits (no source, no loop, short, floating) return a clean status, never a NaN visual.
+- **College-level analysis.** Per-component voltage / current / power, battery terminal
+  voltage with **internal resistance** (E − I·r), a selectable **ground/reference**, node
+  voltages, and signed branch currents. Lab-style probes: **voltmeter** (ΔV between two
+  nodes), **ammeter** (current + direction through any branch), and **ohmmeter**
+  (equivalent resistance between two points). Node-voltage and branch-current labels
+  toggle on the schematic.
+- **3D measurement layer.** The linked react-three-fiber view (matching the engine's
+  obsidian/glass/azure look) animates charge flow at a speed set by each branch's real
+  current, and now renders the same measurements as the 2D editor: a ground reference
+  ring, node-voltage tags, per-branch current labels, probe-node rings, and a floating
+  ΔV / I / R_eq readout. Snap-to-plane (X/Y/Z) camera and a colour legend included.
+
+### Changed
+- **Decluttered the 2D schematic.** Components show only their rating by default
+  (e.g. `12 V`, `60 Ω`); solved voltages and currents move behind the `node V` and
+  `branch I` toggles, so the diagram stays readable instead of stacking a value label on
+  every component. Charge flow honours `prefers-reduced-motion` (starts still).
+
+### Fixed
+- **Two cells in series now solve.** The loop-completeness check only looked for a return
+  path through resistors, so a valid circuit whose loop closes through another battery
+  (two cells in series) was wrongly rejected as "no complete loop." It now checks the
+  return path through every non-connector component.
+- **Total delivered current no longer double-counts series sources.** The panel's
+  "delivering X A" summed each battery's current, so two cells in series read 2 A instead
+  of the 1 A loop current. It now sums the net positive current injected into the external
+  circuit, so series sources are counted once and parallel sources add.
+- **3D model viewports fill their frame on narrow screens.** In the stacked (≤760px)
+  layout the react-three-fiber canvas resolved its height against an indefinite parent and
+  collapsed to roughly half; it now absolute-fills its container, so every 3D model renders
+  full-height on phones.
+
 ## [0.3.1.0] - 2026-06-22
 
 ### Changed
