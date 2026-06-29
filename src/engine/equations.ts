@@ -369,6 +369,104 @@ export const CIRCULAR_EQUATION_SET: EquationSet = {
   ],
 };
 
+// --- Two-body orbit (natural units, G = 1) -----------------------------------
+const ORBIT_VAR: Record<string, Omit<EqVariable, 'symbol'>> = {
+  M: { label: 'central mass M', unit: '', min: 0.1, max: 8, step: 0.1, default: 1 },
+  r: { label: 'launch distance r', unit: '', min: 0.2, max: 8, step: 0.1, default: 1 },
+  v: { label: 'launch speed v', unit: '', min: 0.05, max: 4, step: 0.01, default: 1.1 },
+  t: { label: 'time t', unit: '', min: 0, max: 400, step: 0.1, default: 0 },
+  vc: { label: 'circular speed v_c', unit: '', min: 0, max: 20, step: 0.001, default: 1 },
+  vesc: { label: 'escape speed v_esc', unit: '', min: 0, max: 40, step: 0.001, default: 1.41 },
+  a: { label: 'semi-major axis a', unit: '', min: 0.05, max: 80, step: 0.01, default: 1.4 },
+  e: { label: 'eccentricity e', unit: '', min: 0, max: 4, step: 0.001, default: 0.21 },
+  T: { label: 'period T', unit: '', min: 0.01, max: 4000, step: 0.01, default: 10.4 },
+};
+const orbitMk = makeMk(ORBIT_VAR);
+
+/** Orbit relations, in the same natural units (G = 1) as orbitMechanics. */
+export const ORBIT_EQUATION_SET: EquationSet = {
+  baseParams: ['M', 'r', 'v', 't'],
+  equations: [
+    {
+      id: 'eccentricity',
+      label: 'Eccentricity',
+      display: 'e = \\left|\\dfrac{r\\,v^{2}}{M} - 1\\right|',
+      variables: orbitMk(['e', 'r', 'v', 'M']),
+      residual: (s) => s.e - Math.abs((s.r * s.v * s.v) / s.M - 1),
+    },
+    {
+      id: 'circular-speed',
+      label: 'Circular speed',
+      display: 'v_c = \\sqrt{\\dfrac{M}{r}}',
+      variables: orbitMk(['vc', 'M', 'r']),
+      residual: (s) => s.vc - Math.sqrt(s.M / s.r),
+    },
+    {
+      id: 'escape-speed',
+      label: 'Escape speed',
+      display: 'v_{esc} = \\sqrt{\\dfrac{2M}{r}}',
+      variables: orbitMk(['vesc', 'M', 'r']),
+      residual: (s) => s.vesc - Math.sqrt((2 * s.M) / s.r),
+    },
+    {
+      id: 'semi-major',
+      label: 'Semi-major axis',
+      display: 'a = \\left(\\dfrac{2}{r} - \\dfrac{v^{2}}{M}\\right)^{-1}',
+      variables: orbitMk(['a', 'r', 'v', 'M']),
+      residual: (s) => s.a - 1 / (2 / s.r - (s.v * s.v) / s.M),
+    },
+    {
+      id: 'period',
+      label: 'Orbital period',
+      display: 'T = 2\\pi\\sqrt{\\dfrac{a^{3}}{M}},\\quad a = \\left(\\dfrac{2}{r} - \\dfrac{v^{2}}{M}\\right)^{-1}',
+      variables: orbitMk(['T', 'M', 'r', 'v']),
+      residual: (s) => {
+        const a = 1 / (2 / s.r - (s.v * s.v) / s.M);
+        return s.T - 2 * Math.PI * Math.sqrt(Math.pow(a, 3) / s.M);
+      },
+    },
+  ],
+};
+
+// --- Thin-lens optics --------------------------------------------------------
+const RAY_VAR: Record<string, Omit<EqVariable, 'symbol'>> = {
+  f: { label: 'focal length f', unit: 'm', min: -2, max: 2, step: 0.01, default: 0.1 },
+  do: { label: 'object distance d_o', unit: 'm', min: 0.02, max: 4, step: 0.01, default: 0.3 },
+  ho: { label: 'object height h_o', unit: 'm', min: 0.005, max: 1, step: 0.005, default: 0.05 },
+  di: { label: 'image distance d_i', unit: 'm', min: -10, max: 10, step: 0.01, default: 0.15 },
+  mag: { label: 'magnification m', unit: '', min: -20, max: 20, step: 0.01, default: -0.5 },
+  hi: { label: 'image height h_i', unit: 'm', min: -10, max: 10, step: 0.005, default: -0.025 },
+};
+const rayMk = makeMk(RAY_VAR);
+
+/** Thin-lens relations, consistent with lensOptics (validate.ts). */
+export const RAY_EQUATION_SET: EquationSet = {
+  baseParams: ['f', 'do', 'ho'],
+  equations: [
+    {
+      id: 'lens-equation',
+      label: 'Thin-lens equation',
+      display: '\\dfrac{1}{f} = \\dfrac{1}{d_o} + \\dfrac{1}{d_i}',
+      variables: rayMk(['di', 'f', 'do']),
+      residual: (s) => 1 / s.f - (1 / s.do + 1 / s.di),
+    },
+    {
+      id: 'magnification',
+      label: 'Magnification',
+      display: 'm = -\\dfrac{d_i}{d_o} = -\\dfrac{f}{d_o - f}',
+      variables: rayMk(['mag', 'f', 'do']),
+      residual: (s) => s.mag + s.f / (s.do - s.f),
+    },
+    {
+      id: 'image-height',
+      label: 'Image height',
+      display: 'h_i = m\\,h_o = -\\dfrac{f\\,h_o}{d_o - f}',
+      variables: rayMk(['hi', 'f', 'do', 'ho']),
+      residual: (s) => s.hi + (s.f * s.ho) / (s.do - s.f),
+    },
+  ],
+};
+
 /** The equation set for a spec type, or null if the widget isn't equation-based. */
 export function equationsForSpecType(type: string): EquationSet | null {
   switch (type) {
@@ -382,6 +480,10 @@ export function equationsForSpecType(type: string): EquationSet | null {
       return INCLINE_EQUATION_SET;
     case 'circular-motion':
       return CIRCULAR_EQUATION_SET;
+    case 'orbit-sim':
+      return ORBIT_EQUATION_SET;
+    case 'ray-diagram':
+      return RAY_EQUATION_SET;
     default:
       return null;
   }

@@ -1,6 +1,6 @@
 /**
  * Word-problem parsers for the equation-based widgets (SHM, circuit, incline,
- * circular motion). Each pulls the stated quantities out of a plain-English
+ * circular motion, orbit, thin-lens optics). Each pulls the stated quantities out of a plain-English
  * problem and detects what it's ASKING, so the model can fill itself in and
  * pre-select the unknown to solve.
  *
@@ -196,6 +196,114 @@ export function parseCircularProblem(input: string): ParsedProblem {
     solveFor = { eqId: 'period', unknown: 'T' };
   else if (/(angular velocity|angular speed|how fast.*radians)/.test(t))
     solveFor = { eqId: 'angular-velocity', unknown: 'omega' };
+
+  return { base, solveFor, found };
+}
+
+// --- Two-body orbit (natural units, G = 1) -----------------------------------
+export function parseOrbitProblem(input: string): ParsedProblem {
+  const t = input.toLowerCase();
+  const base: Record<string, number> = {};
+  const found: string[] = [];
+
+  const mass = f(
+    t.match(new RegExp('(?:central\\s*mass|mass)\\s*(?:of|=|is)?\\s*' + NUM, 'i')) ??
+      t.match(new RegExp('\\bM\\s*=\\s*' + NUM, 'i')),
+  );
+  if (mass != null) {
+    base.M = mass;
+    found.push(`central mass ${mass}`);
+  }
+
+  const dist = f(
+    t.match(new RegExp('(?:distance|radius)\\s*(?:of|=|is)?\\s*' + NUM, 'i')) ??
+      t.match(new RegExp('(?:at|from)\\s+(?:a\\s+)?(?:distance\\s+(?:of\\s+)?)?' + NUM, 'i')) ??
+      t.match(new RegExp('\\br\\s*=\\s*' + NUM, 'i')),
+  );
+  if (dist != null) {
+    base.r = dist;
+    found.push(`launch distance ${dist}`);
+  }
+
+  const speed = f(
+    t.match(new RegExp('(?:speed|velocity)\\s*(?:of|=|is)?\\s*' + NUM, 'i')) ??
+      t.match(new RegExp('(?:launched|moving|travelling|traveling)\\s+at\\s+' + NUM, 'i')) ??
+      t.match(new RegExp('\\bv\\s*=\\s*' + NUM, 'i')),
+  );
+  if (speed != null) {
+    base.v = speed;
+    found.push(`launch speed ${speed}`);
+  }
+
+  let solveFor: SolveTarget | undefined;
+  if (/(escape)/.test(t)) solveFor = { eqId: 'escape-speed', unknown: 'vesc' };
+  else if (/(circular speed|speed .*circular orbit|how fast.*circular)/.test(t))
+    solveFor = { eqId: 'circular-speed', unknown: 'vc' };
+  else if (/(period|how long .*orbit|time for one)/.test(t))
+    solveFor = { eqId: 'period', unknown: 'T' };
+  else if (/(eccentricity|how (?:elliptical|stretched)|shape of the orbit)/.test(t))
+    solveFor = { eqId: 'eccentricity', unknown: 'e' };
+  else if (/(semi-?major|size of the orbit)/.test(t)) solveFor = { eqId: 'semi-major', unknown: 'a' };
+
+  return { base, solveFor, found };
+}
+
+// --- Thin-lens optics --------------------------------------------------------
+/** Default converging focal length (m) reused when a problem only says "diverging". */
+const RAY_DEFAULT_F = 0.1;
+
+/** Parse a length that may be given in cm or m; returns meters. */
+function meters(m: RegExpMatchArray | null): number | undefined {
+  if (!m) return undefined;
+  const n = parseFloat(m[1]);
+  if (!Number.isFinite(n)) return undefined;
+  return /cm/i.test(m[0]) ? n / 100 : n;
+}
+
+export function parseRayProblem(input: string): ParsedProblem {
+  const t = input.toLowerCase();
+  const base: Record<string, number> = {};
+  const found: string[] = [];
+
+  const focal = meters(
+    t.match(new RegExp('focal\\s*length\\s*(?:of|=|is)?\\s*' + NUM + '\\s*(cm|m)', 'i')) ??
+      t.match(new RegExp('\\bf\\s*=\\s*' + NUM + '\\s*(cm|m)', 'i')),
+  );
+  if (focal != null) {
+    const sign = /diverging|concave\s*lens|negative/.test(t) ? -1 : 1;
+    base.f = sign * Math.abs(focal);
+    found.push(`focal length ${sign < 0 ? '−' : ''}${Math.abs(focal) * 100} cm`);
+  } else if (/diverging|concave\s*lens/.test(t)) {
+    // A diverging lens with no stated f still flips the default sign negative.
+    base.f = -Math.abs(RAY_DEFAULT_F);
+    found.push('diverging lens');
+  }
+
+  const objD = meters(
+    t.match(new RegExp('(?:object|placed|located)\\D{0,16}?' + NUM + '\\s*(cm|m)', 'i')) ??
+      t.match(new RegExp(NUM + '\\s*(cm|m)\\s*(?:in\\s*front|from\\s*the\\s*lens|away)', 'i')) ??
+      t.match(new RegExp('d_?o\\s*=\\s*' + NUM + '\\s*(cm|m)', 'i')),
+  );
+  if (objD != null) {
+    base.do = objD;
+    found.push(`object distance ${objD * 100} cm`);
+  }
+
+  const objH = meters(
+    t.match(new RegExp(NUM + '\\s*(cm|m)\\s*(?:tall|high|in height)', 'i')) ??
+      t.match(new RegExp('height\\s*(?:of|=)?\\s*' + NUM + '\\s*(cm|m)', 'i')),
+  );
+  if (objH != null) {
+    base.ho = objH;
+    found.push(`object height ${objH * 100} cm`);
+  }
+
+  let solveFor: SolveTarget | undefined;
+  if (/(magnif)/.test(t)) solveFor = { eqId: 'magnification', unknown: 'mag' };
+  else if (/(how (?:tall|big|large)|image height|size of the image)/.test(t))
+    solveFor = { eqId: 'image-height', unknown: 'hi' };
+  else if (/(where .*image|image distance|real or virtual|how far .*image)/.test(t))
+    solveFor = { eqId: 'lens-equation', unknown: 'di' };
 
   return { base, solveFor, found };
 }
