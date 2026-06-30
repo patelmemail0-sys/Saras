@@ -279,9 +279,12 @@ export function parseRayProblem(input: string): ParsedProblem {
     found.push('diverging lens');
   }
 
+  // Anchor the distance to a distance CUE — "30 cm in front", "placed 30 cm",
+  // "d_o = 30 cm". The old bare "object …NUM" lead-in grabbed the object HEIGHT
+  // when height was stated first ("object of height 2 cm placed 30 cm…").
   const objD = meters(
-    t.match(new RegExp('(?:object|placed|located)\\D{0,16}?' + NUM + '\\s*(cm|m)', 'i')) ??
-      t.match(new RegExp(NUM + '\\s*(cm|m)\\s*(?:in\\s*front|from\\s*the\\s*lens|away)', 'i')) ??
+    t.match(new RegExp(NUM + '\\s*(cm|m)\\s*(?:in\\s*front|from\\s*the\\s*lens|away)', 'i')) ??
+      t.match(new RegExp('(?:placed|located|object\\s*distance)\\D{0,12}?' + NUM + '\\s*(cm|m)', 'i')) ??
       t.match(new RegExp('d_?o\\s*=\\s*' + NUM + '\\s*(cm|m)', 'i')),
   );
   if (objD != null) {

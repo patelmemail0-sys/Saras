@@ -136,7 +136,12 @@ export default function RaySim({ spec }: { spec: RayDiagramSpec }) {
   }
 
   const lensTag = f >= 0 ? 'converging' : 'diverging';
-  const imageTag = `${o.real ? 'real' : 'virtual'}, ${o.upright ? 'upright' : 'inverted'}`;
+  // Object at the focal point (d₀ = f): the rays leave parallel, so the image
+  // forms at infinity — d_i/m are non-finite. Say so plainly rather than "–".
+  const atInfinity = !Number.isFinite(o.imageDistance);
+  const imageTag = atInfinity
+    ? 'image at infinity (object at focal point)'
+    : `${o.real ? 'real' : 'virtual'}, ${o.upright ? 'upright' : 'inverted'}`;
 
   return (
     <div className="pmodel">
@@ -227,9 +232,9 @@ export default function RaySim({ spec }: { spec: RayDiagramSpec }) {
             )}
 
             <div className="ps__readout">
-              <span>image distance <b>{fmt(o.imageDistance)}</b> m</span>
-              <span>magnification <b>{fmt(o.magnification)}×</b></span>
-              <span>image height <b>{fmt(o.imageHeight)}</b> m</span>
+              <span>image distance <b>{atInfinity ? '∞' : fmt(o.imageDistance)}</b> m</span>
+              <span>magnification <b>{atInfinity ? '∞' : fmt(o.magnification)}×</b></span>
+              <span>image height <b>{atInfinity ? '∞' : fmt(o.imageHeight)}</b> m</span>
               <span>{imageTag}</span>
             </div>
           </div>

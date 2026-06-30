@@ -429,13 +429,20 @@ export function orbitMechanics(spec: OrbitSpec): OrbitMechanics {
     const M0 = launchAtPeriapsis ? 0 : Math.PI;
     const Mt = (M0 + n * t) % (2 * Math.PI);
     // Solve Kepler's equation Mt = E − e·sin E for the eccentric anomaly E.
-    let E = Mt;
-    for (let i = 0; i < 24; i++) {
+    // Danby's starter plus a step clamp: near periapsis of a high-eccentricity
+    // orbit f'(E) = 1 − e·cos E approaches 0, so an unguarded Newton step
+    // overshoots and the iterate runs off to ±1e13 (the body then teleports to a
+    // physically wrong point while x/y stay finite). The starter lands close to
+    // the root and capping |ΔE| ≤ 1 keeps it converging for every bound e (<1).
+    let E = Mt + 0.85 * e * (Math.sin(Mt) >= 0 ? 1 : -1);
+    for (let i = 0; i < 40; i++) {
       const f = E - e * Math.sin(E) - Mt;
       const fp = 1 - e * Math.cos(E);
-      const dE = f / fp;
+      let dE = f / fp;
+      if (dE > 1) dE = 1;
+      else if (dE < -1) dE = -1;
       E -= dE;
-      if (Math.abs(dE) < 1e-10) break;
+      if (Math.abs(dE) < 1e-12) break;
     }
     const x = a * (Math.cos(E) - e); // focus at origin, periapsis on +x
     const y = b * Math.sin(E);

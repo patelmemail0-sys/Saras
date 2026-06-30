@@ -215,5 +215,47 @@ check('equationsForSpecType ray-diagram', equationsForSpecType('ray-diagram') ==
   check('ray parse no solveFor', p.solveFor === undefined);
 }
 
+// 14. Adversarial-review regressions.
+// Finding 1: high-eccentricity orbits must not diverge in the Kepler solve. A
+// diverging Newton iteration leaves x/y finite (cos/sin bound) but teleports the
+// body between nearby times. Sample finely and assert the path stays continuous
+// and that the apsides land where they should.
+{
+  const k = orbitMechanics(orbit(1, 1, 1.41)); // e ≈ 0.988 — near-parabolic, still bound
+  check('high-e is bound and extreme', k.bound && k.eccentricity > 0.98);
+  check('high-e periapsis at t=0', approx(k.at(0).r, k.periapsis, 1e-3));
+  check('high-e apoapsis at t=period/2', approx(k.at(k.period / 2).r, k.apoapsis, 1e-3));
+  const N = 360;
+  let maxStep = 0;
+  let prev = k.at(0);
+  let allFinite = true;
+  for (let i = 1; i <= N; i++) {
+    const p = k.at((i * k.period) / N);
+    if (!Number.isFinite(p.x) || !Number.isFinite(p.y)) allFinite = false;
+    maxStep = Math.max(maxStep, Math.hypot(p.x - prev.x, p.y - prev.y));
+    prev = p;
+  }
+  check('high-e positions all finite', allFinite);
+  // A converged solver steps smoothly; a diverging one jumps across the orbit.
+  check('high-e no teleport', maxStep < k.apoapsis);
+}
+
+// Finding 2: object exactly at the focal point ⇒ image at infinity. lensOptics
+// returns non-finite (the widget renders "∞"); the spec gate still rejects it.
+{
+  const o = lensOptics(lens(0.1, 0.1, 0.05));
+  check('lens at-focus di non-finite', !Number.isFinite(o.imageDistance));
+  check('lens at-focus rejected by gate', !validateRay(lens(0.1, 0.1, 0.05)).valid);
+}
+
+// Finding 3: distance must come from a distance cue, never from the object height
+// stated earlier in the sentence.
+{
+  const p = parseRayProblem('An object of height 2 cm placed 30 cm from the lens, focal length 10 cm. How tall is the image?');
+  check('ray distance not mis-read from height', approx(p.base.do, 0.3));
+  check('ray height read correctly', approx(p.base.ho, 0.02));
+  check('ray focal read correctly', approx(p.base.f, 0.1));
+}
+
 console.log(`physicsModels: ${pass} passed, ${failed} failed`);
 if (failed > 0) throw new Error(`${failed} assertion(s) failed`);
