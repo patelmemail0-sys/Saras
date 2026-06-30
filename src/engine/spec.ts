@@ -134,6 +134,48 @@ export interface CircularSpec {
   notes: string;
 }
 
+/**
+ * Two-body orbit under gravity, in natural units (G = 1) so the orbit's SHAPE —
+ * the thing the student is building intuition for — is stripped of astronomical
+ * constants. A body launched tangentially at distance r with speed v around a
+ * central mass M traces a conic: circular when v = √(M/r), an ellipse below the
+ * escape speed √(2M/r), unbound at or above it. Eccentricity, semi-major axis and
+ * period all follow in closed form (vis-viva + Kepler); the renderer animates the
+ * bound ellipse with Kepler's-equation timing so it sweeps fast at periapsis.
+ */
+export interface OrbitSpec {
+  type: 'orbit-sim';
+  title: string;
+  /** Central mass M, in natural units (G = 1). Must be positive. */
+  centralMass: number;
+  /** Launch distance r from the central body, in natural units. Must be positive. */
+  distance: number;
+  /** Tangential launch speed v, in natural units. Must be positive. */
+  speed: number;
+  /** One- or two-sentence intuition note shown beside the scene. */
+  notes: string;
+}
+
+/**
+ * Thin-lens optics. An upright object a distance d₀ in front of a lens of focal
+ * length f forms an image at d_i = f·d₀/(d₀ − f) with magnification m = −d_i/d₀.
+ * f > 0 is a converging lens (real inverted image when d₀ > f, else virtual
+ * upright); f < 0 is diverging (always virtual, upright, reduced). The renderer
+ * draws the three principal rays and the image they locate.
+ */
+export interface RayDiagramSpec {
+  type: 'ray-diagram';
+  title: string;
+  /** Focal length f, in m. Positive = converging, negative = diverging. Nonzero. */
+  focalLength: number;
+  /** Object distance d₀ in front of the lens, in m. Must be positive. */
+  objectDistance: number;
+  /** Object height h₀, in m. Must be positive. */
+  objectHeight: number;
+  /** One- or two-sentence intuition note shown beside the scene. */
+  notes: string;
+}
+
 /** Discriminated union of all renderable specs. */
 export type VizSpec =
   | FunctionGrapherSpec
@@ -141,7 +183,9 @@ export type VizSpec =
   | ShmSpec
   | CircuitSpec
   | InclineSpec
-  | CircularSpec;
+  | CircularSpec
+  | OrbitSpec
+  | RayDiagramSpec;
 
 /**
  * What the backend returns. `supported: false` is the honest fallback path —
@@ -285,6 +329,32 @@ export const SPEC_RESPONSE_JSON_SCHEMA = {
           },
           required: ['type', 'title', 'radius', 'speed', 'notes'],
         },
+        {
+          type: 'object',
+          additionalProperties: false,
+          properties: {
+            type: { type: 'string', enum: ['orbit-sim'] },
+            title: { type: 'string' },
+            centralMass: { type: 'number' },
+            distance: { type: 'number' },
+            speed: { type: 'number' },
+            notes: { type: 'string' },
+          },
+          required: ['type', 'title', 'centralMass', 'distance', 'speed', 'notes'],
+        },
+        {
+          type: 'object',
+          additionalProperties: false,
+          properties: {
+            type: { type: 'string', enum: ['ray-diagram'] },
+            title: { type: 'string' },
+            focalLength: { type: 'number' },
+            objectDistance: { type: 'number' },
+            objectHeight: { type: 'number' },
+            notes: { type: 'string' },
+          },
+          required: ['type', 'title', 'focalLength', 'objectDistance', 'objectHeight', 'notes'],
+        },
       ],
     },
   },
@@ -299,11 +369,14 @@ export const SPEC_SYSTEM_PROMPT = `You are the spec generator for an interactive
 - "circuit-diagram": a single-loop resistive circuit (battery + resistor) showing Ohm's law.
 - "free-body-diagram": a block on a frictional inclined plane with its force vectors.
 - "circular-motion": an object in uniform circular motion with velocity/acceleration vectors.
+- "orbit-sim": a two-body gravitational orbit; tune the central mass, launch distance and speed to morph the orbit between circular, elliptical and unbound.
+- "ray-diagram": thin-lens optics; an object in front of a converging/diverging lens, with the principal rays and the image they form.
 
 Pick the widget that most faithfully models the input, then set spec.type accordingly.
 
 Choose "projectile" for projectile/2D launch motion under gravity — "a ball thrown at 30 degrees", "cannonball range", "trajectory of a launched object". Choose "function-grapher" for a single-variable real function: "y = x^2", "sine wave", "exponential growth", "the logistic function". (Note: "projectile HEIGHT vs TIME" alone is a 1-variable function → function-grapher; the full 2D trajectory → projectile.)
 Choose "wave-oscillator" for simple harmonic motion / a mass on a spring — "Hooke's law", "spring oscillation", "SHM", "find the period of a mass on a spring". Choose "circuit-diagram" for Ohm's law / a simple resistor circuit — "V = IR", "current through a resistor", "power dissipated by a resistor". Choose "free-body-diagram" for a block on a ramp / inclined plane — "block sliding down an incline", "friction on a slope", "forces on an inclined plane". Choose "circular-motion" for uniform circular motion — "centripetal acceleration", "an object moving in a circle", "find the period of circular motion".
+Choose "orbit-sim" for gravitational orbits / Kepler's laws — "why are orbits elliptical", "planetary orbit", "escape velocity", "a satellite orbiting a planet", "what makes an orbit circular". Choose "ray-diagram" for thin-lens / mirror image formation — "converging lens", "where does a lens form an image", "magnification of a lens", "the thin-lens equation", "real vs virtual image".
 
 Set supported=false for anything none of these widgets can faithfully show: 3D surfaces z=f(x,y), vector fields, molecules, multi-component circuit networks, algorithms, etc.
 
@@ -343,5 +416,17 @@ When type="circular-motion", fill spec with:
 - radius: the path radius r in m (positive; default ~5).
 - speed: the tangential speed v in m/s (positive; default ~10).
 - title, notes: notes is one or two sentences of intuition (centripetal acceleration grows with v² and shrinks with r).
+
+When type="orbit-sim", fill spec with (NATURAL units, G = 1 — do NOT convert real masses/distances into SI):
+- centralMass: central mass M in natural units (positive; default ~1).
+- distance: tangential launch distance r in natural units (positive; default ~1).
+- speed: tangential launch speed v in natural units (positive; default ~1.1). The orbit is circular at v = √(M/r), elliptical below the escape speed √(2M/r), and unbound at or above it — keep v below √(2M/r) so a closed orbit exists (e.g. for M = r = 1, keep v < 1.41).
+- title, notes: notes is one or two sentences of intuition (e.g. speed up at a fixed distance and the ellipse stretches until the orbit unbinds at escape speed).
+
+When type="ray-diagram", fill spec with:
+- focalLength: focal length f in m (nonzero; positive for a converging lens, negative for diverging; default ~0.1).
+- objectDistance: object distance d₀ in front of the lens in m (positive; default ~0.3). Avoid setting d₀ exactly equal to f (the image would go to infinity).
+- objectHeight: object height h₀ in m (positive; default ~0.05).
+- title, notes: notes is one or two sentences of intuition (e.g. inside the focal length a converging lens makes an enlarged upright virtual image — that's a magnifying glass).
 
 Correctness is critical: the expression MUST be valid mathjs and evaluate to real numbers across most of the domain at the default parameter values. Never invent a function the input didn't imply. When supported=false, set spec=null, give a one-sentence unsupportedReason, and still fill concept with your best read of the input.`;

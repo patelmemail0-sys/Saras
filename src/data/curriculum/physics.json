@@ -267,7 +267,8 @@
         "graph",
         "symbolic"
       ],
-      "diagram3dFit": "high"
+      "diagram3dFit": "high",
+      "specType": "orbit-sim"
     },
     {
       "id": "physics.ap-physics-1.moment-of-inertia",
@@ -682,7 +683,8 @@
         "physical",
         "symbolic"
       ],
-      "diagram3dFit": "high"
+      "diagram3dFit": "high",
+      "specType": "ray-diagram"
     },
     {
       "id": "physics.ap-physics-2.magnetic-field-from-current",
@@ -2089,7 +2091,8 @@
         "graph",
         "symbolic"
       ],
-      "diagram3dFit": "high"
+      "diagram3dFit": "high",
+      "specType": "orbit-sim"
     },
     {
       "id": "physics.physics-library.kirchhoffs-laws",

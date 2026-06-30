@@ -86,8 +86,8 @@ export const SPEC_TYPES: SpecType[] = [
     id: 'orbit-sim',
     label: 'Orbit simulation',
     category: 'physical',
-    description: 'Gravitational two-body motion; vary mass/velocity to see orbit shape.',
-    built: false,
+    description: 'Gravitational two-body motion; vary mass/velocity to see orbit shape. Built as a tangential launch around a central mass in natural units (G = 1).',
+    built: true,
   },
   {
     id: 'wave-oscillator',
@@ -100,8 +100,8 @@ export const SPEC_TYPES: SpecType[] = [
     id: 'ray-diagram',
     label: 'Optics ray diagram',
     category: 'physical',
-    description: 'Lenses/mirrors with draggable object; principal rays and image formation.',
-    built: false,
+    description: 'Lenses/mirrors with draggable object; principal rays and image formation. Built as a thin lens (converging/diverging) with its principal rays.',
+    built: true,
   },
   {
     id: 'circuit-diagram',

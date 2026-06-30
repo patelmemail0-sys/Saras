@@ -4,6 +4,31 @@ All notable changes to Saras are documented in this file.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com); versions
 use `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.3.3.0] - 2026-06-29
+
+### Added
+- **Gravitational orbit model.** A new interactive two-body orbit you can orbit with the
+  mouse, in the same obsidian/glass/azure 3D look as the other models. Drag the central
+  mass, launch distance, and launch speed and watch the path morph between a circle, an
+  ellipse, and an unbound escape — the orbiting body races through periapsis and crawls at
+  apoapsis (Kepler's 2nd law). It reads eccentricity, semi-major axis, and period live, and
+  carries the same "work the equation" panel (circular speed, escape speed, eccentricity,
+  semi-major axis, period) and word-problem input as the other physics models. Units are
+  natural (G = 1) so the orbit's *shape* is the lesson, not astronomical constants. All
+  physics comes from one closed-form source (vis-viva + Kepler's equation) shared by the
+  correctness gate and the renderer, so what's drawn is exactly what's checked.
+- **Thin-lens optics model.** A new 3D optical bench: an upright object in front of a glass
+  lens, with the principal rays converging to locate the image. Drag the focal length
+  (positive converging, negative diverging), object distance, and object height and watch
+  the image flip between real-inverted and virtual-upright and grow or shrink. Slide the
+  object inside the focal length and the converging lens becomes a magnifying glass. Reads
+  image distance, magnification, and image height live, with the lens equation /
+  magnification / image-height panel and word-problem input ("a 2 cm object 30 cm from a
+  converging lens, f = 10 cm — where is the image?").
+- These complete the engine's physical-model set; the visualize menu and topic deep-links
+  now include **Orbit** and **Lens (optics)**, and the gravitational-orbits, Kepler's-laws,
+  and lenses-and-mirrors curriculum concepts map to them.
+
 ## [0.3.2.0] - 2026-06-29
 
 ### Added
