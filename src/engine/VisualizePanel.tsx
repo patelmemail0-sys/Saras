@@ -15,6 +15,8 @@ import ShmSim from './widgets/ShmSim.tsx';
 import CircuitSim from './widgets/CircuitSim.tsx';
 import InclineSim from './widgets/InclineSim.tsx';
 import CircularSim from './widgets/CircularSim.tsx';
+import OrbitSim from './widgets/OrbitSim.tsx';
+import RaySim from './widgets/RaySim.tsx';
 import {
   validateFunctionGrapher,
   validateProjectile,
@@ -22,6 +24,8 @@ import {
   validateCircuit,
   validateIncline,
   validateCircular,
+  validateOrbit,
+  validateRay,
 } from './validate.ts';
 import type { VizSpec, SpecResponse } from './spec.ts';
 import './visualize.css';
@@ -33,6 +37,8 @@ const MODEL_TYPES = new Set([
   'circuit-diagram',
   'free-body-diagram',
   'circular-motion',
+  'orbit-sim',
+  'ray-diagram',
 ]);
 
 /** The built models, in menu order, each with a ready-to-render example spec. */
@@ -97,6 +103,30 @@ const MODELS: { label: string; spec: VizSpec }[] = [
         'Velocity stays tangent to the circle while acceleration points dead at the centre. Centripetal acceleration grows with v² and shrinks as the radius widens.',
     },
   },
+  {
+    label: 'Orbit',
+    spec: {
+      type: 'orbit-sim',
+      title: 'Gravitational orbit',
+      centralMass: 1,
+      distance: 1,
+      speed: 1.2,
+      notes:
+        'In natural units (G = 1) the orbit is circular at v = √(M/r). Speed up at a fixed distance and the ellipse stretches; reach the escape speed √(2M/r) and the orbit unbinds. Watch the body race through periapsis and crawl at apoapsis.',
+    },
+  },
+  {
+    label: 'Lens (optics)',
+    spec: {
+      type: 'ray-diagram',
+      title: 'Thin-lens ray diagram',
+      focalLength: 0.1,
+      objectDistance: 0.3,
+      objectHeight: 0.05,
+      notes:
+        'Two principal rays locate the image: one parallel ray bends through the focus, one straight through the lens centre. Slide the object inside the focal length and the real inverted image flips to an enlarged upright virtual one — a magnifying glass.',
+    },
+  },
 ];
 
 /** Run the right deterministic gate for the spec's type. */
@@ -112,6 +142,10 @@ function validate(spec: VizSpec) {
       return validateIncline(spec);
     case 'circular-motion':
       return validateCircular(spec);
+    case 'orbit-sim':
+      return validateOrbit(spec);
+    case 'ray-diagram':
+      return validateRay(spec);
     default:
       return validateFunctionGrapher(spec);
   }
@@ -201,8 +235,9 @@ export default function VisualizePanel() {
             <p>{state.reason}</p>
             <p className="viz__muted">
               This is a logged coverage gap — the current build covers single-variable functions,
-              projectile motion, simple harmonic motion, Ohm's law, inclined planes, and circular
-              motion. More spec types (3D surfaces, vector fields, molecules) come next.
+              projectile motion, simple harmonic motion, Ohm's law, inclined planes, circular
+              motion, gravitational orbits, and thin-lens optics. More spec types (3D surfaces,
+              vector fields, molecules) come next.
             </p>
           </div>
         )}
@@ -252,6 +287,10 @@ function renderModel(spec: VizSpec) {
       return <InclineSim spec={spec} />;
     case 'circular-motion':
       return <CircularSim spec={spec} />;
+    case 'orbit-sim':
+      return <OrbitSim spec={spec} />;
+    case 'ray-diagram':
+      return <RaySim spec={spec} />;
     default:
       return null;
   }

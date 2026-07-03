@@ -16,6 +16,8 @@ import type {
   CircuitSpec,
   InclineSpec,
   CircularSpec,
+  OrbitSpec,
+  RayDiagramSpec,
 } from './spec.ts';
 
 /** Constants mathjs exposes as symbols that we allow without declaration. */
@@ -355,5 +357,177 @@ export function validateCircular(spec: CircularSpec): ValidationResult {
   const k = circularKinematics(spec);
   if (!Number.isFinite(k.omega) || k.omega <= 0 || !Number.isFinite(k.period))
     return { valid: false, reason: 'Circular motion is not physically realizable.' };
+  return { valid: true };
+}
+
+/**
+ * Two-body orbital mechanics in natural units (G = 1) — the source of truth
+ * shared by validateOrbit and the OrbitSim renderer. A body launched tangentially
+ * at distance r with speed v around central mass M:
+ *
+ *   energy ε = v²/2 − M/r,   a = −M/(2ε),   e = |r·v²/M − 1|   (tangential launch)
+ *   circular speed √(M/r),   escape speed √(2M/r),   period T = 2π√(a³/M)
+ *
+ * The launch point is an apsis: periapsis when v exceeds the circular speed (the
+ * body swings outward), apoapsis when it is slower. `bound` is false at or above
+ * the escape speed, where the conic opens and no closed orbit exists.
+ */
+export interface OrbitMechanics {
+  /** Circular-orbit speed at the launch distance, √(M/r). */
+  circularSpeed: number;
+  /** Escape speed at the launch distance, √(2M/r). */
+  escapeSpeed: number;
+  /** True while the orbit is bound (v below the escape speed) — a closed ellipse. */
+  bound: boolean;
+  /** Orbital eccentricity (0 circular, →1 at escape, ≥1 unbound). */
+  eccentricity: number;
+  /** Semi-major axis a (natural units); +∞/negative when unbound. */
+  semiMajor: number;
+  /** Semi-latus rectum p = (r·v)²/M (natural units) — defines the conic either way. */
+  semiLatus: number;
+  /** Periapsis distance a(1 − e) (natural units). */
+  periapsis: number;
+  /** Apoapsis distance a(1 + e), only meaningful when bound. */
+  apoapsis: number;
+  /** Orbital period T = 2π√(a³/M) (natural units); +∞ when unbound. */
+  period: number;
+  /** Whether the tangential launch point is the periapsis (vs the apoapsis). */
+  launchAtPeriapsis: boolean;
+  /**
+   * Position of the orbiting body relative to the central mass at the focus, at
+   * time t, for a BOUND orbit (solves Kepler's equation). Periapsis lies on +x;
+   * the body sweeps counter-clockwise (fast near periapsis, slow near apoapsis).
+   */
+  at: (t: number) => { x: number; y: number; r: number; speed: number };
+}
+
+export function orbitMechanics(spec: OrbitSpec): OrbitMechanics {
+  const { centralMass: M, distance: r, speed: v } = spec;
+  const circularSpeed = Math.sqrt(M / r);
+  const escapeSpeed = Math.sqrt((2 * M) / r);
+  const energy = (v * v) / 2 - M / r;
+  const bound = v < escapeSpeed;
+  const eccentricity = Math.abs((r * v * v) / M - 1);
+  const semiMajor = bound ? -M / (2 * energy) : Infinity;
+  const semiLatus = (r * v * v * r) / M; // (r·v)²/M
+  const periapsis = bound ? semiMajor * (1 - eccentricity) : semiLatus / (1 + eccentricity);
+  const apoapsis = bound ? semiMajor * (1 + eccentricity) : Infinity;
+  const period = bound ? 2 * Math.PI * Math.sqrt(Math.pow(semiMajor, 3) / M) : Infinity;
+  const launchAtPeriapsis = v >= circularSpeed;
+  const e = eccentricity;
+  const a = semiMajor;
+  const b = bound ? a * Math.sqrt(Math.max(0, 1 - e * e)) : 0;
+  const n = bound ? (2 * Math.PI) / period : 0; // mean motion
+
+  const at = (t: number) => {
+    if (!bound) {
+      // No closed orbit — hold the body at the launch apsis on +x.
+      return { x: periapsis, y: 0, r: periapsis, speed: v };
+    }
+    // Mean anomaly, measured from periapsis. When the body launches at apoapsis
+    // (slow), start it half a period along so it begins where the user launched it.
+    const M0 = launchAtPeriapsis ? 0 : Math.PI;
+    const Mt = (M0 + n * t) % (2 * Math.PI);
+    // Solve Kepler's equation Mt = E − e·sin E for the eccentric anomaly E.
+    // Danby's starter plus a step clamp: near periapsis of a high-eccentricity
+    // orbit f'(E) = 1 − e·cos E approaches 0, so an unguarded Newton step
+    // overshoots and the iterate runs off to ±1e13 (the body then teleports to a
+    // physically wrong point while x/y stay finite). The starter lands close to
+    // the root and capping |ΔE| ≤ 1 keeps it converging for every bound e (<1).
+    let E = Mt + 0.85 * e * (Math.sin(Mt) >= 0 ? 1 : -1);
+    for (let i = 0; i < 40; i++) {
+      const f = E - e * Math.sin(E) - Mt;
+      const fp = 1 - e * Math.cos(E);
+      let dE = f / fp;
+      if (dE > 1) dE = 1;
+      else if (dE < -1) dE = -1;
+      E -= dE;
+      if (Math.abs(dE) < 1e-12) break;
+    }
+    const x = a * (Math.cos(E) - e); // focus at origin, periapsis on +x
+    const y = b * Math.sin(E);
+    const rt = a * (1 - e * Math.cos(E));
+    const speed = Math.sqrt(Math.max(0, M * (2 / rt - 1 / a))); // vis-viva
+    return { x, y, r: rt, speed };
+  };
+
+  return {
+    circularSpeed,
+    escapeSpeed,
+    bound,
+    eccentricity,
+    semiMajor,
+    semiLatus,
+    periapsis,
+    apoapsis,
+    period,
+    launchAtPeriapsis,
+    at,
+  };
+}
+
+/** Correctness gate for an orbit spec — positive mass/distance/speed, real conic. */
+export function validateOrbit(spec: OrbitSpec): ValidationResult {
+  if (!Number.isFinite(spec.centralMass) || spec.centralMass <= 0)
+    return { valid: false, reason: 'Central mass must be a positive number.' };
+  if (!Number.isFinite(spec.distance) || spec.distance <= 0)
+    return { valid: false, reason: 'Launch distance must be a positive number.' };
+  if (!Number.isFinite(spec.speed) || spec.speed <= 0)
+    return { valid: false, reason: 'Launch speed must be a positive number.' };
+  const k = orbitMechanics(spec);
+  if (!Number.isFinite(k.eccentricity) || !Number.isFinite(k.semiLatus) || k.semiLatus <= 0)
+    return { valid: false, reason: 'Orbit is not physically realizable.' };
+  return { valid: true };
+}
+
+/**
+ * Thin-lens image formation — the source of truth shared by validateRay and the
+ * RaySim renderer. With the object a distance d₀ in front of a lens of focal
+ * length f:
+ *
+ *   1/f = 1/d₀ + 1/d_i  ⇒  d_i = f·d₀/(d₀ − f),   m = −d_i/d₀,   h_i = m·h₀
+ *
+ * d_i > 0 is a real image (opposite side, where rays actually converge); d_i < 0
+ * is virtual (same side as the object). m < 0 means inverted.
+ */
+export interface LensOptics {
+  /** Image distance d_i (m); >0 real (far side), <0 virtual (object's side). */
+  imageDistance: number;
+  /** Linear magnification m = −d_i/d₀ (negative ⇒ inverted). */
+  magnification: number;
+  /** Image height h_i = m·h₀ (m); sign gives orientation. */
+  imageHeight: number;
+  /** Real (rays converge) vs virtual (rays only appear to diverge from it). */
+  real: boolean;
+  /** Upright (same orientation as the object) vs inverted. */
+  upright: boolean;
+}
+
+export function lensOptics(spec: RayDiagramSpec): LensOptics {
+  const { focalLength: f, objectDistance: d0, objectHeight: h0 } = spec;
+  const imageDistance = (f * d0) / (d0 - f);
+  const magnification = -imageDistance / d0;
+  return {
+    imageDistance,
+    magnification,
+    imageHeight: magnification * h0,
+    real: imageDistance > 0,
+    upright: magnification > 0,
+  };
+}
+
+/** Correctness gate for a ray-diagram spec. */
+export function validateRay(spec: RayDiagramSpec): ValidationResult {
+  if (!Number.isFinite(spec.focalLength) || spec.focalLength === 0)
+    return { valid: false, reason: 'Focal length must be a nonzero number.' };
+  if (!Number.isFinite(spec.objectDistance) || spec.objectDistance <= 0)
+    return { valid: false, reason: 'Object distance must be a positive number.' };
+  if (!Number.isFinite(spec.objectHeight) || spec.objectHeight <= 0)
+    return { valid: false, reason: 'Object height must be a positive number.' };
+  if (Math.abs(spec.objectDistance - spec.focalLength) < 1e-9)
+    return { valid: false, reason: 'Object sits at the focal point — the image forms at infinity.' };
+  const o = lensOptics(spec);
+  if (!Number.isFinite(o.imageDistance) || !Number.isFinite(o.magnification))
+    return { valid: false, reason: 'Image formation is not physically realizable.' };
   return { valid: true };
 }
