@@ -779,6 +779,7 @@ main {
 }
 .lh-climax__cta .lh-cta {
   justify-content: center;
+  margin-top: 2rem;
 }
 
 /* progress rail + horizontal scroll cue */
