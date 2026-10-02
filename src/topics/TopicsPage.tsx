@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useId } from 'react'
 import type { CSSProperties } from 'react'
 import { supabase } from '../lib/supabase'
 import type { DbConcept } from '../lib/supabase'
+import { CONCEPT_COLUMNS, tryHref } from './concepts.ts'
 import './topics.css'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -114,20 +115,23 @@ function CourseAccordion({
             <div key={unit} className="tp-unit">
               <h3 className="tp-unit__name">{unit}</h3>
               <div className="tp-chips">
-                {concepts.map(c => (
-                  <span key={c.id} className={`tp-chip${c.spec_type ? ' tp-chip--live' : ''}`}>
-                    <span className="tp-chip__title">{c.title}</span>
-                    {c.spec_type && (
-                      <a
-                        className="tp-chip__try"
-                        href={`#/try?concept=${c.id}`}
-                        onClick={e => e.stopPropagation()}
-                      >
-                        Try →
-                      </a>
-                    )}
-                  </span>
-                ))}
+                {concepts.map(c => {
+                  const href = tryHref(c)
+                  return (
+                    <span key={c.id} className={`tp-chip${href ? ' tp-chip--live' : ''}`}>
+                      <span className="tp-chip__title">{c.title}</span>
+                      {href && (
+                        <a
+                          className="tp-chip__try"
+                          href={href}
+                          onClick={e => e.stopPropagation()}
+                        >
+                          Try →
+                        </a>
+                      )}
+                    </span>
+                  )
+                })}
               </div>
             </div>
           ))}
@@ -174,9 +178,10 @@ export default function TopicsPage() {
 
     supabase
       .from('concepts')
-      .select('id, subject, course, unit, title, spec_type')
+      .select(CONCEPT_COLUMNS)
       .eq('subject', activeSubject)
       .order('title')
+      .returns<DbConcept[]>()
       .then(({ data, error: err }) => {
         if (err) {
           setError(err.message)

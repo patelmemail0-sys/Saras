@@ -29,11 +29,10 @@ export const hasSupabaseConfig = Boolean(url && anonKey)
 
 // ── Topics / curriculum ───────────────────────────────────────────────────────
 export interface DbConcept {
-  id: number
+  id: string
   subject: string
   course: string
   unit: string
-  name: string
-  slug: string | null
-  has_visualization: boolean
+  title: string
+  spec_type: string | null
 }
