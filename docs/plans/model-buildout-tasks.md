@@ -1,0 +1,135 @@
+- [ ] **T1 (P1, human: ~3 weeks / CC: ~6 to 8 hours) — engine and browse** — Build Wave 0 as specified: per-model folders, generated registry, catalog, deep links, topics browser, function-grapher on PlotStage
+  - Surfaced by: ceo-review — Step 0 and Sections 1 to 4
+  - Files: src/engine/models, src/engine/kits, scripts/gen-models.mjs, scripts/run-tests.ts, src/data/curriculum/build.ts, src/topics, src/engine/VisualizePanel.tsx, package.json
+- [ ] **T6 (P1, human: ~9 to 11 months / CC: ~70 to 110 hours) — models** — Build each wave's models to the recipe, at most seven per PR, each with a second agent's hands-on pass and reference-data check
+  - Surfaced by: ceo-review — The catalog; CEO voice findings 4 and 5
+  - Files: 
+- [ ] **T4 (P1, human: ~2 hours / CC: ~10 min) — try page safety** — Add the Try page error boundary and the safeExpression helper
+  - Surfaced by: ceo-review — Sections 1 to 3
+  - Files: src/engine/VisualizePanel.tsx, src/engine/kits/safeExpression.ts
+- [ ] **T2 (P1, human: ~1 day / CC: ~30 min) — usage logging** — Add usage logging with table SQL, report query and coverage-page status
+  - Surfaced by: ceo-review — Premise P5; CEO voice finding 1
+  - Files: src/lib/usage.ts, supabase/model_events.sql, supabase/usage_report.sql, src/coverage/CurriculumCoverage.tsx
+- [ ] **D4 (P1, human: ~1 day / CC: ~30 min) — palette and 3D stage** — Add the series ramp, sign and reactant/product pairs and element colours; touch Rotate toggle and context-loss fallback in Scene3D
+  - Surfaced by: design-review — Design findings H9, H11, H5
+  - Files: src/engine/widgets/three/materials.ts, src/engine/widgets/three/Scene3D.tsx, src/engine/visualize.css
+- [ ] **D3 (P1, human: ~half a day / CC: ~20 min) — routing** — Re-render Root on hash change and re-resolve the Try page in place
+  - Surfaced by: design-review — Design finding H6
+  - Files: src/main.tsx, src/Root.tsx
+- [ ] **D2 (P1, human: ~2 days / CC: ~1 hour) — topics** — Topics: prominent and quiet chips, tab counts, cross-subject search, four empty states, address state, Noted requests
+  - Surfaced by: design-review — Design findings H1, M1, M2, H6
+  - Files: src/topics
+- [ ] **D1 (P1, human: ~3 days / CC: ~1.5 hours) — try page** — Build ModelFrame, the controls kit, Transport, ExpressionInput, the stage states and the header with previous, next and position
+  - Surfaced by: design-review — Design findings C1, C2, H3, H4, H6, M3
+  - Files: src/engine/kits, src/engine/VisualizePanel.tsx, src/engine/visualize.css, src/engine/format.ts
+- [ ] **T1 (P1, human: ~2d / CC: ~1h) — engine** — Define the widget-to-frame contract (frame-owned spec, set, slots, ranges, derive) and prove it on projectile and function-grapher
+  - Surfaced by: eng-review — A1, A4: the widget-to-frame contract is undefined
+  - Files: src/engine/models/types.ts, src/engine/kits/ModelFrame.tsx, src/engine/models/projectile, src/engine/models/function-grapher
+- [ ] **T5 (P1, human: ~1d / CC: ~30min) — lint** — ESLint import and global rules for model folders; colour check on TSX; check:branch
+  - Surfaced by: eng-review — A3: folder and purity rules are conventions, not checks
+  - Files: eslint.config.js, scripts/check-models.test.ts, scripts/check-branch.ts
+- [ ] **T3 (P1, human: ~1h / CC: ~10min) — security** — Switch api/spec.ts off unless SPEC_API_ENABLED is set; generic error replies
+  - Surfaced by: eng-review — S1: live unauthenticated model endpoint with no caller
+  - Files: api/spec.ts
+- [ ] **T8 (P1, human: ~3d / CC: ~1.5h) — tests** — Playwright browser specs with a fixture model and an accessibility scan
+  - Surfaced by: eng-review — T3, E4: no automated UI tests
+  - Files: e2e, package.json
+- [ ] **T2 (P1, human: ~2d / CC: ~45min) — tests** — PR 0a: pin the current behaviour of the five untested models (closed forms and exact readout text) before anything moves
+  - Surfaced by: eng-review — A2 and the regression rule: Wave 0 refactors untested code
+  - Files: src/engine
+- [ ] **T6 (P1, human: ~1d / CC: ~30min) — tests** — Range sampling in the registry test and the edge behaviours in Stage details
+  - Surfaced by: eng-review — E1, T2: controls-clamp claim never verified
+  - Files: src/engine/models/registry.test.ts
+- [ ] **T4 (P1, human: ~1d / CC: ~30min) — tooling** — Generator in TypeScript with rename-into-place and write-on-change; plugin buildStart; check mode on production deploy; stubs out of production
+  - Surfaced by: eng-review — A5, A11: generator robustness; scripts not typechecked
+  - Files: scripts/gen.ts, scripts/vite-plugin-models.ts, tsconfig.scripts.json
+- [ ] **T7 (P1, human: ~2d / CC: ~1h) — tooling** — Rebuild the sweep: one model per page, which renderer drew, real WebGL-off run, built site in CI, bad-text scan
+  - Surfaced by: eng-review — T1: the sweep can pass without 3D drawing
+  - Files: scripts/sweep.ts
+- [ ] **T9 (P1, human: ~1d / CC: ~45min) — usage** — Usage rows by plain fetch with the public key; table rules; named probe rule; delta engaged; smoke script
+  - Surfaced by: eng-review — S2, T4: model_events design and its untested rules
+  - Files: src/lib/usage.ts, supabase/model_events.sql, scripts/usage-smoke.ts
+- [ ] **T3 (P1, human: ~1d / CC: ~30min) — curriculum** — Generate the catalog in every branch; drop specType from subject JSON; normal and check build modes
+  - Surfaced by: devex-review — F2: recipe step 9 cannot be executed in a model branch
+  - Files: src/data/curriculum/build.ts, .gitignore, scripts/seed-concepts.ts, src/data/curriculum/index.ts
+- [ ] **T8 (P1, human: ~2d / CC: ~45min) — docs** — Write MODELS.md, MODEL-REVIEW.md and MODEL-BRIEF.md; correct README, CLAUDE.md and the curriculum README
+  - Surfaced by: devex-review — F13, F20: the plan ships no developer docs; vocabulary drift
+  - Files: docs/MODELS.md, docs/MODEL-REVIEW.md, docs/MODEL-BRIEF.md, README.md, CLAUDE.md, src/data/curriculum/README.md
+- [ ] **T1 (P1, human: ~4h / CC: ~20min) — engine** — Write src/engine/models/types.ts and the four-file model contract
+  - Surfaced by: devex-review — F1, F10: the model contract is never specified; preset ids duplicated
+  - Files: src/engine/models/types.ts, scripts/gen-models.mjs
+- [ ] **T6 (P1, human: ~1d / CC: ~45min) — engine** — Move projectile whole into its folder as the reference model
+  - Surfaced by: devex-review — F3: eight adapter folders give builders nothing to copy
+  - Files: src/engine/models/projectile, src/engine/validate.ts, src/engine/equations.ts, src/engine/wordProblems.ts
+- [ ] **T5 (P1, human: ~4h / CC: ~20min) — tooling** — Run the generator on postinstall and every pre-hook, add the Vite plugin and a typecheck script
+  - Surfaced by: devex-review — F5, F14: generated files only behind three hooks; folders skipped silently
+  - Files: package.json, scripts/vite-plugin-models.mjs, scripts/gen-models.mjs
+- [ ] **T7 (P1, human: ~1d / CC: ~45min) — tooling** — Add bun run sweep on Playwright with screenshots and an exit code
+  - Surfaced by: devex-review — F6: the scripted sweep has no script
+  - Files: scripts/sweep.mjs, package.json
+- [ ] **T9 (P1, human: ~1d / CC: ~30min) — tooling** — Implement the 21 builder-facing messages, each asserted by a test
+  - Surfaced by: devex-review — F15, F18: developer-facing failures have no message spec; silent fallbacks
+  - Files: src/data/curriculum/build.ts, scripts/gen-models.mjs, scripts/check-models.test.ts
+- [ ] **T2 (P1, human: ~1d / CC: ~30min) — tooling** — Add bun run new:model scaffold with the stub flag
+  - Surfaced by: devex-review — F3: no scaffold and no whole example
+  - Files: scripts/new-model.mjs, scripts/new-model.test.ts
+- [ ] **T4 (P1, human: ~4h / CC: ~20min) — tooling** — Add bun run setup:worktree, a saved strict port and a Supabase import guard
+  - Surfaced by: devex-review — F4: a fresh worktree crashes at import; the port drifts
+  - Files: scripts/setup-worktree.mjs, vite.config.ts, src/lib/supabase.ts
+- [ ] **T3 (P2, human: ~2 hours / CC: ~10 min) — ci** — Add a CI workflow for test, catalog check, lint and build
+  - Surfaced by: ceo-review — CEO voice finding 9
+  - Files: .github/workflows/ci.yml
+- [ ] **T5 (P2, human: ~1 hour / CC: ~10 min) — docs** — On approval, add the dated DESIGN.md note and write TODOS.md entries for every deferred item
+  - Surfaced by: ceo-review — CEO voice findings 2 and 10
+  - Files: docs/DESIGN.md, TODOS.md
+- [ ] **D6 (P2, human: ~1 day / CC: ~30 min) — board stage** — Build BoardStage with canvas and table layouts before Wave 1
+  - Surfaced by: design-review — Design finding H10
+  - Files: src/engine/kits/BoardStage.tsx
+- [ ] **D5 (P2, human: ~2 hours / CC: ~15 min) — checks** — Add scripts/check-models.test.ts and the design checklist
+  - Surfaced by: design-review — Design findings C2, H12
+  - Files: scripts/check-models.test.ts
+- [ ] **T13 (P2, human: ~4h / CC: ~20min) — build** — One catalog file, one loader per model, check:bundle
+  - Surfaced by: eng-review — A6, A7, A8
+  - Files: src/data/curriculum/build.ts, scripts/gen.ts, scripts/check-bundle.ts
+- [ ] **T14 (P2, human: ~4h / CC: ~20min) — frame** — Small-viewport pin, unpin under 480px, debounced live region, fmt rule, WebGL loss handling
+  - Surfaced by: eng-review — E3, E5, E8
+  - Files: src/engine/kits/ModelFrame.tsx, src/engine/format.ts, src/engine/widgets/three
+- [ ] **T11 (P2, human: ~2d / CC: ~1h) — kits** — DragHandle; kits built against named consumers on #/kits; canvas particles; split ParticleBox; quantity reader
+  - Surfaced by: eng-review — H1, T6, A8
+  - Files: src/engine/kits
+- [ ] **T12 (P2, human: ~4h / CC: ~20min) — kits** — safeExpression node rules and three profiles; rebuild function-grapher on it
+  - Surfaced by: eng-review — S4, A9
+  - Files: src/engine/kits/safeExpression.ts, src/engine/models/function-grapher
+- [ ] **T10 (P2, human: ~1d / CC: ~30min) — routing** — Route error boundary, guarded decode, skeleton for c without a type, focus on navigation
+  - Surfaced by: eng-review — E4: removing the reload changes every route lifecycle
+  - Files: src/Root.tsx, src/main.tsx, src/engine/VisualizePanel.tsx
+- [ ] **T16 (P2, human: ~2h / CC: ~10min) — tests** — Runner fails on zero checks, a 30-second limit and a rejected promise; schema-drift test
+  - Surfaced by: eng-review — T5, T7
+  - Files: scripts/run-tests.ts, src/engine/testkit.ts
+- [ ] **T15 (P2, human: ~2h / CC: ~10min) — tooling** — Worktree setup copies only VITE_ lines; port from the path; identity check
+  - Surfaced by: eng-review — S3, E7
+  - Files: scripts/setup-worktree.ts, scripts/vite-plugin-models.ts
+- [ ] **T15 (P2, human: ~2h / CC: ~10min) — ci** — Pin Bun, delete package-lock.json, add the 2D sweep to CI and the fallback workflow file
+  - Surfaced by: devex-review — F19: CI can end up silently absent; two lockfiles
+  - Files: package.json, .github/workflows/ci.yml, package-lock.json
+- [ ] **T12 (P2, human: ~2h / CC: ~10min) — engine** — Extend fmt with sig, int and percent options and exact readout strings
+  - Surfaced by: devex-review — F8: one number format contradicts the catalog gates
+  - Files: src/engine/format.ts
+- [ ] **T11 (P2, human: ~4h / CC: ~20min) — frame** — Add the aux stage slot to ModelFrame at both widths
+  - Surfaced by: devex-review — F7: one stage slot but many two-picture models
+  - Files: src/engine/kits/ModelFrame.tsx
+- [ ] **T14 (P2, human: ~1d / CC: ~30min) — kits** — Add an overlay slot to every stage, the #/kits page, the kit-request check, the temperature helper and validate field
+  - Surfaced by: devex-review — F16, F21, F22, F25
+  - Files: src/engine/kits, src/engine/units.ts
+- [ ] **T10 (P2, human: ~4h / CC: ~15min) — tests** — Add testkit.ts, a summary test runner with a path filter, and the bun test guard
+  - Surfaced by: devex-review — F11: bun test is a trap; failures print no values
+  - Files: src/engine/testkit.ts, scripts/run-tests.ts, bunfig.toml
+- [ ] **T13 (P2, human: ~4h / CC: ~20min) — usage** — Make usage logging silent in development, add the app version and the five-state probe
+  - Surfaced by: devex-review — F17: no dev opt-out; probe writes junk rows
+  - Files: src/lib/usage.ts, supabase/model_events.sql, src/coverage/CurriculumCoverage.tsx
+- [ ] **T17 (P3, human: ~1h / CC: ~10min) — ci** — CI read-only permissions, pinned actions, cached browser
+  - Surfaced by: eng-review — S5
+  - Files: .github/workflows/ci.yml
+- [ ] **T16 (P3, human: ~1h / CC: ~10min) — process** — After Wave 1, record worktree-to-stub time and builder friction, and fix the guide
+  - Surfaced by: devex-review — Pass 8: no measurement of the builder path
+  - Files: docs/MODELS.md
